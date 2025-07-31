@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulačka tržního nájemného - Vzorný nájemce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Spolehlivé CDN odkazy pro GitHub Pages -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0D28F2;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+    <script>var cemap_id = '22642/235f94312cb0beea2fe91791583a1aa735ee02fc';</script>
+    <script src="https://cemap.cz/beta2/inc/js/widget.js" async></script>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300" x-data="{ isScrolled: false, isOpen: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20" :class="{ 'h-16': isScrolled }">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="flex items-center space-x-3">
+                        <img class="h-12 w-12 rounded-full shadow-lg transform transition-transform duration-300" :class="{ 'scale-90': isScrolled }" src="images/logo.png" alt="Vzorný nájemce">
+                        <span class="text-xl font-semibold text-[#0D28F2]">Vzorný nájemce</span>
+                    </a>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
+                    <a href="index.html#jak-to-funguje" class="text-gray-600 hover:text-gray-900 transition-colors">Jak to funguje</a>
+                    <a href="kalkulator-trzniho-najemneho.html" class="text-gray-900 font-medium hover:text-[#0D28F2] transition-colors">Spočítat nájemné</a>
+                    <a href="index.html#o-sluzbe" class="text-gray-600 hover:text-gray-900 transition-colors">O službě</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+                    <a href="index.html#faq" class="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
+                    <a href="index.html#klientska-zona" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        Klientská zóna
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="isOpen = !isOpen" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="isOpen" class="md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
+                <a href="index.html#jak-to-funguje" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Jak to funguje</a>
+                <a href="kalkulator-trzniho-najemneho.html" class="block px-3 py-2 text-gray-900 font-medium hover:text-[#0D28F2] transition-colors">Spočítat nájemné</a>
+                <a href="index.html#o-sluzbe" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">O službě</a>
+                <a href="blog.html" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+                <a href="index.html#faq" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
+                <a href="index.html#klientska-zona" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Klientská zóna</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero sekce -->
+        <section class="relative h-screen flex items-center bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12 pt-20 pb-16">
+                    <!-- Levá strana s textem -->
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Kalkulačka tržního nájemného</h1>
+                        <p class="text-xl text-gray-600 mb-8">Zjistěte během několika vteřin, za kolik můžete pronajmout svou nemovitost. Náš kalkulátor vám pomůže stanovit optimální výši nájmu podle aktuálních tržních dat. A pokud zvažujete prodej, snadno si spočítáte i orientační prodejní cenu.</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <img src="images/logo.png" alt="Vzorný nájemce" class="h-16 w-16 rounded-full shadow-lg">
+                            <p class="text-gray-700 font-medium">Profesionální nástroj<br>od Vzorného nájemce</p>
+                        </div>
+                    </div>
+                    <!-- Pravá strana s obrázkem -->
+                    <div class="lg:w-1/2">
+                        <img src="images/Vzorný nájemce supermann.png" alt="Vzorný nájemce" class="w-full max-w-md mx-auto transition-all duration-700 hover:-translate-y-8">
+                    </div>
+                </div>
+                
+                <!-- Animovaná šipka dolů -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+                    <a href="#content" class="text-gray-600 hover:text-[#0D28F2] transition-colors duration-300">
+                        
+                        <div class="animate-bounce">
+                            <svg class="w-6 h-6 mx-auto" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Dekorativní pozadí - kruh -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#0D28F2]/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-[#0D28F2]/5 rounded-full blur-3xl"></div>
+        </section>
+        
+        <!-- Obsahová sekce s widgetem -->
+        <section id="content" class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Widget -->
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl p-8 border border-gray-100 mb-16 transform hover:scale-[1.02] transition-all duration-300">
+                <div class="cemap-widget" data-options="id=101"></div>
+            </div>
+
+            <!-- Výhody -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group border border-gray-100">
+                    <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
+                        <img src="images/logo.png" alt="Přesnost" class="w-full h-full rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Přesné výpočty</h3>
+                    <p class="text-gray-600">Kalkulátor využívá aktuální data z realitního trhu pro co nejpřesnější odhad nájemného.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group border border-gray-100">
+                    <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
+                        <img src="images/Vzorný nájemce busta.png.avif" alt="Rychlost" class="w-full h-full rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Okamžitý výsledek</h3>
+                    <p class="text-gray-600">Získejte odhad tržního nájemného během několika vteřin, stačí zadat základní údaje.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 group border border-gray-100">
+                    <div class="w-20 h-20 mx-auto mb-6 text-[#0D28F2] group-hover:scale-110 transition-transform duration-300">
+                        <img src="images/VZORNÝ NÁJEMCE BĚŽÍ.png.avif" alt="Profesionalita" class="w-full h-full rounded-full shadow-lg">
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">Profesionální přístup</h3>
+                    <p class="text-gray-600">Za kalkulátorem stojí tým profesionálů s dlouholetými zkušenostmi v oblasti pronájmů.</p>
+                </div>
+            </div>
+
+            <!-- CTA sekce -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Potřebujete pomoc s pronájmem?</h2>
+                <p class="text-xl text-gray-600 mb-8">Svěřte svůj pronájem do rukou profesionálů</p>
+                <a href="#kontakt" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Kontaktujte nás</a>
+            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="text-[#0D28F2] mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Přesné výpočty</h3>
+                        <p class="text-gray-600">Kalkulačka využívá aktuální data z realitního trhu a zohledňuje všechny důležité faktory ovlivňující výši nájemného.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                        <div class="text-[#0D28F2] mb-4">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Maximalizace výnosu</h3>
+                        <p class="text-gray-600">Zjistěte, zda je vaše současné nájemné nastaveno optimálně a nepřicházíte o potenciální výnos z pronájmu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- Skript pro načítání footeru -->
+<script src="js/load-footer.js"></script>
+
+</body>
+</html>

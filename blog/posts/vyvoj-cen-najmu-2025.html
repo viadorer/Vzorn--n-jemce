@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vývoj cen nájmů v roce 2025: Analýza trhu - Vzorný nájemce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        [x-cloak] { display: none !important; }
+        .article-content h2 { font-size: 1.875rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .article-content p { margin-bottom: 1.25rem; line-height: 1.7; }
+        .article-content ul, .article-content ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .article-content ul { list-style-type: disc; }
+        .article-content ol { list-style-type: decimal; }
+        .article-content li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .article-content a { color: #0D28F2; text-decoration: underline; }
+        .article-content a:hover { text-decoration: none; }
+        .article-content blockquote { border-left: 4px solid #0D28F2; padding-left: 1rem; font-style: italic; margin: 1.5rem 0; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300" x-data="{ isScrolled: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20" :class="{ 'h-16': isScrolled }">
+                <div class="flex items-center">
+                    <a href="../../index.html" class="flex-shrink-0 flex items-center space-x-3">
+                        <img class="h-12 w-12 transition-all duration-300 rounded-full shadow-md object-cover" :class="{ 'h-8 w-8': isScrolled }" src="../../images/logo.png" alt="Vzorný nájemce">
+                        <span class="text-xl font-bold text-[#0D28F2]">Vzorný nájemce</span>
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <div class="hidden md:flex md:space-x-8">
+                        <a href="../../index.html#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium">Jak to funguje</a>
+                        <a href="../../index.html#odhad-ceny" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium">Odhad ceny nájmu</a>
+                        <a href="../../index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium">O službě</a>
+                        <a href="../index.html" class="text-[#0D28F2] font-medium px-3 py-2 text-sm">Blog</a>
+                        <a href="../../index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium">FAQ</a>
+                        <button @click="Alpine.store('popup').open()" class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</button>
+                    </div>
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button class="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="pt-32 pb-10 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+                <a href="../../index.html" class="hover:text-gray-900">Domů</a>
+                <span class="mx-2">/</span>
+                <a href="../index.html" class="hover:text-gray-900">Blog</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Vývoj cen nájmů v roce 2025: Analýza trhu</span>
+            </nav>
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Vývoj cen</span>
+                    <span class="text-gray-500 text-sm">10. 3. 2025</span>
+                    <span class="text-gray-500 text-sm">•</span>
+                    <span class="text-gray-500 text-sm">6 min čtení</span>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-900 mb-6">Vývoj cen nájmů v roce 2025: Analýza trhu a předpověď</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Levá část s článkem -->
+                <div class="lg:w-2/3">
+                    <div class="mb-10">
+                        <img src="../../images/blog/clanek3.png" alt="Graf vývoje cen nájmů" class="w-full h-96 object-cover rounded-2xl">
+                    </div>
+                    <div class="article-content text-gray-700 text-lg">
+                        <p>Trh s nájemním bydlením prochází v roce 2025 významnými změnami. Přinášíme vám komplexní analýzu aktuálního stavu a výhled do budoucnosti.</p>
+
+                        <h2>1. Současné trendy cen nájmů v ČR</h2>
+                        <p>V prvním čtvrtletí roku 2025 pozorujeme následující vývoj:</p>
+                        <ul>
+                            <li>Průměrný růst cen nájmů v Praze o 5,8 % oproti minulému roku</li>
+                            <li>V krajských městech nárůst v průměru o 4,2 %</li>
+                            <li>V menších městech stabilizace růstu kolem 2,5 %</li>
+                            <li>Vyšší zájem o byty s energeticky úsporným provozem</li>
+                        </ul>
+
+                        <h2>2. Klíčové faktory ovlivňující ceny nájmů</h2>
+                        <p>Současný vývoj cen je ovlivněn několika zásadními faktory:</p>
+                        <ul>
+                            <li><strong>Ekonomická situace</strong> - mírný ekonomický růst a stabilizace po inflační vlně</li>
+                            <li><strong>Dostupnost hypoték</strong> - pozvolné snižování úrokových sazeb</li>
+                            <li><strong>Výstavba nových bytů</strong> - nedostatečná nabídka v centrech velkých měst</li>
+                            <li><strong>Energetická krize</strong> - zvyšující se náklady na energie a služby</li>
+                        </ul>
+
+                        <h2>3. Regionální rozdíly v cenách nájmů</h2>
+                        <p>Mezi jednotlivými regiony pozorujeme značné rozdíly:</p>
+                        <ul>
+                            <li>Praha a okolí - průměrný nájem 380 Kč/m²</li>
+                            <li>Brno a okolí - průměrný nájem 320 Kč/m²</li>
+                            <li>Severní Čechy - nejnižší průměrný nájem 190 Kč/m²</li>
+                        </ul>
+
+                        <h2>4. Předpověď vývoje cen do konce roku 2025</h2>
+                        <p>Na základě současných dat očekáváme do konce roku 2025:</p>
+                        <ul>
+                            <li>Další mírný růst cen nájmů o 3-5 % ve velkých městech</li>
+                            <li>Stabilizaci cen v menších regionech</li>
+                            <li>Zvýšenou poptávku po energeticky úsporných bytech</li>
+                            <li>Rozšíření nabídky služeb spojených s pronájmem (smart home, správa apod.)</li>
+                        </ul>
+
+                        <h2>Jak vám můžeme pomoci</h2>
+                        <p>Hledáte způsob, jak maximalizovat výnos ze svého pronájmu? Nebo se obáváte rizik spojených s nejistým vývojem trhu? Naše služba garantovaného nájmu vám zajistí stabilní příjem bez ohledu na tržní výkyvy. Kontaktujte nás pro nezávaznou konzultaci.</p>
+                    </div>
+                    
+                    <!-- Sdílení a tagy -->
+                    <div class="mt-10 border-t border-gray-200 pt-6">
+                        <div class="flex flex-col sm:flex-row justify-between items-start">
+                            <div class="mb-4 sm:mb-0">
+                                <h3 class="text-sm font-medium text-gray-500 mb-2">SDÍLET ČLÁNEK</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-400 hover:text-[#0D28F2]">
+                                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-[#0D28F2]">
+                                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-[#0D28F2]">
+                                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-500 mb-2">KATEGORIE</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="#" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200">Vývoj cen</a>
+                                    <a href="#" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200">Analýza trhu</a>
+                                    <a href="#" class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm hover:bg-gray-200">Prognózy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigace mezi články -->
+                    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-gray-200 pt-10">
+                        <a href="jak-zvysit-hodnotu-sveho-bytu.html" class="group">
+                            <span class="block text-sm text-gray-500 mb-2">Předchozí článek</span>
+                            <span class="text-lg font-medium text-gray-900 group-hover:text-[#0D28F2]">Jak zvýšit hodnotu svého bytu pro pronájem</span>
+                        </a>
+                        <a href="jak-resit-problemy-s-najemnikem.html" class="group text-right">
+                            <span class="block text-sm text-gray-500 mb-2">Další článek</span>
+                            <span class="text-lg font-medium text-gray-900 group-hover:text-[#0D28F2]">Jak řešit problémy s nájemníkem: Praktický průvodce</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Pravá část se sidebar -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Související články</h3>
+                        <div class="space-y-6">
+                            <a href="moderni-pronajem-2025.html" class="flex items-start gap-4 group">
+                                <img src="../../images/blog/clanek5.jpg" alt="Thumbnail" class="w-20 h-16 object-cover rounded-lg"> 
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 group-hover:text-[#0D28F2]">Moderní pronájem v roce 2025: Jak na to?</h4>
+                                    <p class="text-sm text-gray-500">28. 2. 2025</p>
+                                </div>
+                            </a>
+                            <a href="jak-zvysit-hodnotu-sveho-bytu.html" class="flex items-start gap-4 group">
+                                <img src="../../images/blog/clanek1.jpg" alt="Thumbnail" class="w-20 h-16 object-cover rounded-lg"> 
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 group-hover:text-[#0D28F2]">Jak zvýšit hodnotu svého bytu pro pronájem</h4>
+                                    <p class="text-sm text-gray-500">15. 3. 2025</p>
+                                </div>
+                            </a>
+                            <a href="pravni-aspekty-najemni-smlouvy.html" class="flex items-start gap-4 group">
+                                <img src="../../images/blog/clanek2.jpg" alt="Thumbnail" class="w-20 h-16 object-cover rounded-lg"> 
+                                <div>
+                                    <h4 class="text-base font-medium text-gray-900 group-hover:text-[#0D28F2]">Právní aspekty nájemní smlouvy: Na co si dát pozor</h4>
+                                    <p class="text-sm text-gray-500">12. 3. 2025</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#0D28F2]/5 rounded-2xl p-6 mt-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Získejte garanci nájmu</h3>
+                        <p class="text-gray-600 mb-6">Pronajímejte BEZ STAROSTÍ a s MAXIMÁLNÍM ZISKEM! Vyplňte formulář a ozveme se vám.</p>
+                        <button @click="Alpine.store('popup').open()" class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105">
+                            ZÍSKAT GARANCI NÁJMU →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Sekce 1: O společnosti -->
+                <div class="space-y-4">
+                    <img src="../../images/logo.png" alt="Vzorný nájemce" class="h-12 rounded-full">
+                    <p class="text-gray-400">Jsme společnost specializující se na kvalitní správu nemovitostí a poskytování garanci nájmů pro majitele bytů a domů.</p>
+                </div>
+
+                <!-- Sekce 2: Rychlé odkazy -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Rychlé odkazy</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="../../index.html" class="hover:text-white transition-colors">Domů</a></li>
+                        <li><a href="../../index.html#jak-to-funguje" class="hover:text-white transition-colors">Jak to funguje</a></li>
+                        <li><a href="../../index.html#o-sluzbe" class="hover:text-white transition-colors">O službě</a></li>
+                        <li><a href="../../index.html#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="../../index.html#kontakt" class="hover:text-white transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sekce 3: Kategorie blogu -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kategorie blogu</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Praktické tipy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Právní rady</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Vývoj cen</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Finance</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Péče o byt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Sekce 4: Kontakt -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Masarykova 34, Praha 1, 110 00</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>info@vzorny-najemce.cz</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-gray-400 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+420 123 456 789</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400">&copy; 2025 Vzorný nájemce. Všechna práva vyhrazena.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="../../gdpr.html" class="text-gray-400 hover:text-white transition-colors">Ochrana osobních údajů</a>
+                        <a href="../../cookies.html" class="text-gray-400 hover:text-white transition-colors">Cookies</a>
+                        <a href="../../obchodni-podminky.html" class="text-gray-400 hover:text-white transition-colors">Obchodní podmínky</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js Store -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('popup', {
+                isOpen: false,
+                open() {
+                    this.isOpen = true;
+                    document.body.classList.add('overflow-hidden');
+                },
+                close() {
+                    this.isOpen = false;
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
