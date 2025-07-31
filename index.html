@@ -240,10 +240,10 @@
                         </div>
 
                         <div class="fade-in-up mt-6 flex flex-col sm:flex-row gap-4">
-                            <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 transform hover:scale-105">
+                            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 transform hover:scale-105">
                                 ZÍSKAT GARANCI NÁJMU →
                             </button>
-                            <button @click="document.querySelector('#calculator').scrollIntoView({behavior: 'smooth'})" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
+                            <button onclick="scrollToCalculator()" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
                                 Spočítat, kolik ušetřím
                             </button>
                         </div>
@@ -271,11 +271,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-3xl shadow-xl p-8 mb-16 max-w-6xl mx-auto">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/3 mb-8 md:mb-0">
-                        <img src="images/Vzorný nájemce busta.png.avif" alt="Vzorný nájemce" class="mx-auto h-64 object-contain">
+                    <!-- Avatar -->
+                    <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                        <img src="images/Vzorný nájemce busta.png.avif" alt="Vzorný nájemce" class="w-48 h-48 rounded-full shadow-lg object-cover border-4 border-white">
                     </div>
+                    
+                    <!-- Content -->
                     <div class="md:w-2/3 md:pl-8 text-center md:text-left">
-                        <span class="inline-block px-4 py-1.5 bg-blue-100 text-[#0D28F2] text-sm font-medium rounded-full mb-4">PROFESIONÁLNÍ PÉČE</span>
+                        <!-- Badge -->
+                        <div class="mb-4">
+                            <span class="inline-block px-4 py-1.5 bg-[#0D28F2] text-white text-sm font-medium rounded-full">PROFESIONÁLNÍ PÉČE</span>
+                        </div>
+                        
                         <h2 class="text-4xl font-bold text-gray-900 mb-4">Jak to funguje?</h2>
                         <h3 class="text-2xl font-bold text-gray-700 mb-4">Zapomeňte na neplatiče a užijte si svůj klid</h3>
                         <p class="text-lg text-gray-600">Kompletní proces od první prohlídky až po dlouhodobou správu vaší nemovitosti</p>
@@ -377,10 +384,17 @@
             </div>
             
             <div class="mt-16 text-center">
-                <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                     Chci bezstarostný pronájem →
                 </button>
             </div>
+        </div>
+    </section>
+
+    <!-- Kalkulačka výhodnosti -->
+    <section id="calculator" class="py-24 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="savings-calculator-container"></div>
         </div>
     </section>
 
@@ -434,7 +448,7 @@
                         </li>
                     </ul>
                     
-                    <button @click="Alpine.store('popup').open()" class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
+                    <button onclick="openContactForm()" class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
                         CHCI JISTOTU →
                     </button>
                 </div>
@@ -490,7 +504,7 @@
                         </li>
                     </ul>
                     
-                    <button @click="Alpine.store('popup').open()" class="block w-full text-center px-6 py-3 bg-[#0D28F2] text-white font-bold rounded-full hover:bg-[#0D28F2]/90 transition-colors duration-200 shadow-lg">
+                    <button onclick="openContactForm()" class="block w-full text-center px-6 py-3 bg-[#0D28F2] text-white font-bold rounded-full hover:bg-[#0D28F2]/90 transition-colors duration-200 shadow-lg">
                         CHCI BEZSTAROSTNOST →
                     </button>
                 </div>
@@ -537,7 +551,7 @@
                         </li>
                     </ul>
                     
-                    <button @click="Alpine.store('popup').open()" class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
+                    <button onclick="openContactForm()" class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
                         CHCI ABSOLUTNÍ KLID →
                     </button>
                 </div>
@@ -555,7 +569,7 @@
                 <p class="text-xl text-gray-700">Pomůžeme vám bez starostí najít kvalitního nájemníka</p>
             </div>
             
-            <div class="bg-white rounded-2xl shadow-xl p-12 border border-white/10 max-w-5xl mx-auto">
+            <div class="bg-green-50 rounded-2xl shadow-xl p-12 border border-green-100 max-w-5xl mx-auto">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-8">
                     <div class="flex-1">
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Pomůžeme vám s nalezením kvalitního nájemníka</h3>
@@ -596,7 +610,7 @@
                     <div class="flex-shrink-0 text-center">
                         <img src="images/tenant.png" alt="Nájemník" class="w-40 h-40 mx-auto rounded-full shadow-lg object-cover border-4 border-white mb-4">
                         <div class="text-3xl font-bold text-[#0D28F2] mb-4">Zdarma</div>
-                        <button @click="Alpine.store('popup').open()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <button onclick="openContactForm()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                             Obsazení bytu bez starostí
                         </button>
                     </div>
@@ -729,7 +743,7 @@
                 
                         <!-- CTA -->
                         <div class="text-center">
-                            <button @click="Alpine.store('popup').open()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                            <button onclick="openContactForm()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                                 Chci bezstarostný pronájem
                             </button>
                         </div>
@@ -993,10 +1007,10 @@
                 </p>
                 <p class="text-lg text-gray-700 mb-4">
                     Doporučte nám ho – a my vás odměníme.
-Jako poděkování získáte 10 % z naší provize (po odečtení DPH a nákladů spojených s prodejem), pokud s vaším známým úspěšně uzavřeme obchod.
+Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákladů spojených s prodejem), pokud s vaším známým úspěšně uzavřeme obchod.
                 </p>
                 <div class="mt-8">
-                    <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Chci zjistit víc
                     </button>
                 </div>
@@ -1132,17 +1146,15 @@ Jako poděkování získáte 10 % z naší provize (po odečtení DPH a náklad�
                     <img src="images/logo.png" alt="Vzorný nájemce" class="w-40 h-40 mx-auto rounded-full shadow-lg border-4 border-white object-cover mb-4">
                     <h3 class="text-2xl font-bold text-white mb-4">Přestanete ztrácet čas i peníze</h3>
                     <p class="text-white/90 mb-6">Svěřte svůj byt do rukou profesionálů a užívejte si bezstarostný příjem</p>
-                    <a href="#kontakt" class="inline-block px-6 py-3 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-gray-100 transition-all">
+                    <button onclick="openContactForm()" class="inline-block px-6 py-3 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-gray-100 transition-all">
                         Začít hned
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
         
         <div class="mt-16 text-center">
-            <button 
-                @click="Alpine.store('popup').open()" 
-                class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 ZBAVIT SE TĚCHTO PROBLÉMŮ →
             </button>
         </div>
@@ -1166,36 +1178,14 @@ Jako poděkování získáte 10 % z naší provize (po odečtení DPH a náklad�
                         <p class="mb-6 text-lg opacity-90">Nechte na nás, ať se vám do 24 hodin ozveme. Rádi vám probereme vaše potřeby a představíme výhody naší služby.</p>
                     </div>
                     
-                    <!-- Pravá část s formulářem -->
-                    <div class="lg:w-1/2">
-                        <div class="bg-white rounded-2xl p-8 shadow-xl border border-blue-100 transform transition-all duration-300 hover:shadow-2xl">
-                            <form x-data="{ submitted: false }" @submit.prevent="submitted = true; setTimeout(() => submitted = false, 3000)" class="space-y-5">
-                                <div>
-                                    <input type="text" placeholder="Jméno a příjmení" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
-                                </div>
-                                <div>
-                                    <input type="tel" placeholder="Telefonní číslo" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent shadow-sm">
-                                </div>
-                                <div class="flex space-x-6 items-center py-2">
-                                    <div class="flex items-center">
-                                        <input type="radio" id="majitel" name="typ" value="majitel" class="mr-2 h-4 w-4 text-[#0D28F2] focus:ring-[#0D28F2]">
-                                        <label for="majitel" class="text-gray-700">Majitel nemovitosti</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input type="radio" id="jine" name="typ" value="jine" class="mr-2 h-4 w-4 text-[#0D28F2] focus:ring-[#0D28F2]">
-                                        <label for="jine" class="text-gray-700">Jiné</label>
-                                    </div>
-                                </div>
-                                <div class="text-xs text-gray-600 mb-4">
-                                    Odesláním formuláře souhlasíte se zpracováním osobních údajů.
-                                </div>
-                                <button type="submit" class="w-full inline-flex justify-center items-center px-8 py-4 text-lg font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                                    Domluvit konzultaci
-                                </button>
-                                <div x-show="submitted" class="text-green-600 text-center font-medium">
-                                    Děkujeme! Brzy vás budeme kontaktovat.
-                                </div>
-                            </form>
+                    <!-- Pravá část s tlačítkem -->
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                            <h3 class="text-2xl font-bold text-white mb-4">Nechte si poradit</h3>
+                            <p class="text-white/90 mb-6">Kontaktujte nás a my vám do 24 hodin zavoláme zpět. Probereme vaše potřeby a odpovíme na všechny otázky.</p>
+                            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-[#0D28F2] bg-white hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                Domluvit konzultaci →
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1288,9 +1278,7 @@ Jako poděkování získáte 10 % z naší provize (po odečtení DPH a náklad�
         </div>
         
         <div class="mt-16 text-center">
-            <button 
-                @click="Alpine.store('popup').open()" 
-                class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 SEZNÁMIT SE S CELÝM TÝMEM →
             </button>
         </div>
@@ -1609,6 +1597,9 @@ Jako poděkování získáte 10 % z naší provize (po odečtení DPH a náklad�
 <!-- Skript pro načítání footeru -->
 <script src="js/load-footer.js"></script>
 
+<!-- Kalkulačka výhodnosti -->
+<script src="js/savings-calculator.js"></script>
+
 <script>
 const ECOMAIL_API_KEY = 'VAS_API_KLIC'; // Nahradit vaším API klíčem
 
@@ -1719,18 +1710,54 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
 
 <script>
     console.log('Script loaded');
+    
+    // Funkce pro plynulé scrollování ke kalkulačce
+    function scrollToCalculator() {
+        const calculatorElement = document.getElementById('calculator');
+        if (calculatorElement) {
+            calculatorElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    
+    // Funkce pro otevření kontaktního formuláře
+    function openContactForm() {
+        // Pokud je Alpine.js dostupný, použij ho
+        if (typeof Alpine !== 'undefined' && Alpine.store && Alpine.store('popup')) {
+            Alpine.store('popup').open();
+        } else {
+            // Fallback - najdi popup element a zobraz ho
+            const popup = document.querySelector('[x-show="Alpine.store(\'popup\').isOpen"]');
+            if (popup) {
+                popup.style.display = 'flex';
+                popup.classList.remove('hidden');
+            }
+        }
+    }
+    
     // Zajistit, že DOM je načten před inicializací Alpine.js
     document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM fully loaded');
+        
+        // Inicializace kalkulačky výhodnosti
+        if (document.getElementById('savings-calculator-container')) {
+            console.log('Initializing savings calculator...');
+            const savingsCalc = new SavingsCalculator('savings-calculator-container');
+            console.log('Savings calculator initialized');
+        }
         
         // Manuálně zajistit, že všechny kalkulace budou fungovat
         setTimeout(function() {
             console.log('Checking calculators...');
             const landlordCalc = document.getElementById('calculator-landlord');
             const mainCalc = document.getElementById('calculator-section');
+            const savingsCalc = document.getElementById('savings-calculator-container');
             
             if (landlordCalc) console.log('Landlord calculator found');
             if (mainCalc) console.log('Main calculator found');
+            if (savingsCalc) console.log('Savings calculator found');
         }, 1000);
     });
 
