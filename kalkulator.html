@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" x-data="calculator()">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,14 @@
     
     <!-- TailwindCSS - Nahrávám z CDN pro demo účely -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js pro interaktivní kalkulačku -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <style>
         /* Zajištění jednotného vzhledu */
         .container-box {
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             border-radius: 0.75rem;
@@ -23,18 +25,33 @@
             padding: 2rem 1rem;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
+        
+        /* Animace pro přechod mezi kroky */
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.3s ease;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
     <div class="container-box bg-white overflow-hidden">
-        <!-- Horní pruh s modrým pozadím -->
-        <div class="w-full bg-blue-50 py-5 px-8 text-center border-b border-blue-100">
-            <div class="inline-block bg-blue-100 rounded-full px-6 py-2 mb-3">
-                <h2 class="text-blue-700 font-medium">Zjistěte skutečnou rentabilitu vaší nemovitosti</h2>
+        <!-- Horní pruh s logem a nadpisem -->
+        <div class="w-full bg-gradient-to-r from-blue-600 to-blue-800 py-8 px-8 text-center text-white">
+            <div class="max-w-4xl mx-auto">
+                <!-- Logo Vzorný nájemce -->
+                <div class="flex justify-center mb-4">
+                    <img src="images/busta.png" alt="Vzorný nájemce" class="h-24">
+                </div>
+                
+                <div class="inline-block bg-blue-500 bg-opacity-20 backdrop-blur-sm rounded-full px-6 py-2 mb-4">
+                    <h2 class="text-blue-100 font-medium">Zjistěte skutečnou rentabilitu vaší nemovitosti</h2>
+                </div>
+                
+                <h1 class="text-4xl font-bold mb-3 text-white">Kalkulačka pronajímatele</h1>
+                <p class="text-xl text-blue-100">Pronajímání na vlastní pěst vs. pronájem bez starostí s Vzorným nájemcem</p>
             </div>
-            
-            <h1 class="text-4xl font-bold mb-3 text-gray-900">Kalkulačka pronajímatele</h1>
-            <p class="text-xl text-gray-600">Pronajímání na vlastní pěst vs. pronájem bez starostí s Vzorným nájemcem</p>
         </div>
         
         <!-- Vysvětlující sekce -->
@@ -90,11 +107,433 @@
                 </div>
             </div>
             
+            <!-- Detailní vysvětlení nákladů -->
+            <div class="mt-8">
+                <h4 class="text-2xl font-bold text-gray-900 mb-6">Co zahrnují náklady vlastní správy?</h4>
+                
+                <div class="space-y-6">
+                    <!-- Čas strávený správou -->
+                    <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-600 rounded-full p-2 flex-shrink-0 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-red-900 mb-2">Čas strávený správou (cca 28 800 Kč)</h5>
+                                <p class="text-red-800 mb-3">Váš čas má hodnotu! Průměrně strávíte 96 hodin ročně správou nemovitosti:</p>
+                                <ul class="text-red-700 space-y-1 ml-4">
+                                    <li>• <strong>Komunikace s nájemníky:</strong> 36 hodin (telefonáty, SMS, osobní návštěvy)</li>
+                                    <li>• <strong>Administrativa:</strong> 24 hodin (dokumentace, smlouvy, účetnictví)</li>
+                                    <li>• <strong>Řešení problémů:</strong> 36 hodin (opravy, reklamace, kontroly)</li>
+                                </ul>
+                                <p class="text-red-800 mt-2 font-medium">Při hodinové sazbě 300 Kč = 28 800 Kč ročně</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ušlý příjem -->
+                    <div class="bg-orange-50 p-6 rounded-xl border border-orange-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-orange-600 rounded-full p-2 flex-shrink-0 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-orange-900 mb-2">Ušlý příjem - neobsazenost (cca 30 000 Kč)</h5>
+                                <p class="text-orange-800 mb-3">Riziko prázdného bytu mezi nájemníky:</p>
+                                <ul class="text-orange-700 space-y-1 ml-4">
+                                    <li>• <strong>Průměrná doba hledání:</strong> 2 měsíce</li>
+                                    <li>• <strong>Ušlé nájemné:</strong> 2 × 15 000 Kč = 30 000 Kč</li>
+                                    <li>• <strong>Dodatečné náklady:</strong> inzerce, prohlídky, administrativa</li>
+                                </ul>
+                                <p class="text-orange-800 mt-2 font-medium">Každý měsíc bez nájemníka = ztráta celého měsíčního nájmu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Problémový nájemník -->
+                    <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-red-600 rounded-full p-2 flex-shrink-0 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-red-900 mb-2">Problémový nájemník (cca 25 000 Kč)</h5>
+                                <p class="text-red-800 mb-3">Riziko neplatícího nebo problémového nájemníka:</p>
+                                <ul class="text-red-700 space-y-1 ml-4">
+                                    <li>• <strong>Neplacení nájmu:</strong> 3-5 měsíců = 45 000 - 75 000 Kč</li>
+                                    <li>• <strong>Statistika:</strong> 35% pronajímatelů má problémy s nájemníky</li>
+                                    <li>• <strong>Průměrná ztráta:</strong> 25 000 Kč na problémového nájemníka</li>
+                                    <li>• <strong>Dodatečný stres:</strong> upomínky, vyjednávání, kontroly</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Právní náklady -->
+                    <div class="bg-purple-50 p-6 rounded-xl border border-purple-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-purple-600 rounded-full p-2 flex-shrink-0 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-purple-900 mb-2">Právní náklady (cca 15 000 Kč)</h5>
+                                <p class="text-purple-800 mb-3">Náklady na právní služby při problémech:</p>
+                                <ul class="text-purple-700 space-y-1 ml-4">
+                                    <li>• <strong>Právní konzultace:</strong> 5 000 - 8 000 Kč</li>
+                                    <li>• <strong>Příprava dokumentů:</strong> 3 000 - 5 000 Kč</li>
+                                    <li>• <strong>Soudní poplatky:</strong> 5 000 - 10 000 Kč</li>
+                                    <li>• <strong>Exekuční náklady:</strong> 10 000 - 15 000 Kč</li>
+                                </ul>
+                                <p class="text-purple-800 mt-2 font-medium">Průměrné náklady na jeden právní spor: 15 000 Kč</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opravy a údržba -->
+                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-200">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-600 rounded-full p-2 flex-shrink-0 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="text-lg font-bold text-blue-900 mb-2">Opravy a údržba (cca 8 000 Kč)</h5>
+                                <p class="text-blue-800 mb-3">Pravidelné náklady na údržbu nemovitosti:</p>
+                                <ul class="text-blue-700 space-y-1 ml-4">
+                                    <li>• <strong>Drobné opravy:</strong> 3 000 - 5 000 Kč ročně</li>
+                                    <li>• <strong>Výměna zámků:</strong> 2 000 - 3 500 Kč</li>
+                                    <li>• <strong>Malování:</strong> 15 000 - 25 000 Kč (každé 3-5 let)</li>
+                                    <li>• <strong>Revize:</strong> 2 000 - 4 000 Kč ročně</li>
+                                </ul>
+                                <p class="text-blue-800 mt-2 font-medium">Průměrné roční náklady na údržbu: 8 000 Kč</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interaktivní kalkulačka s obrázkem -->
+            <div class="mt-8 overflow-hidden bg-white rounded-xl border border-gray-200 shadow-sm">
+                <!-- Hlavička s obrázkem nemovitosti -->
+                <div class="relative h-48 overflow-hidden bg-gray-100">
+                    <img src="images/img/u9534644866_A_stunning_modern_villa_on_the_French_Riviera_per_d63ce57f-a721-446f-8db2-adadf2d61cf7_0.png" 
+                         alt="Ukázka spravované nemovitosti" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h4 class="text-2xl font-bold mb-2">Spočítejte si své úspory</h4>
+                        <p class="text-blue-100">Zjistěte, kolik můžete ušetřit s naší službou správy nemovitostí</p>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Levý sloupec - Vstupy -->
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <h5 class="font-semibold text-blue-900 mb-3">Základní údaje</h5>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="monthlyRent" class="block text-sm font-medium text-gray-700 mb-1">Měsíční nájemné (Kč)</label>
+                                    <input type="number" id="monthlyRent" x-model="monthlyRent" @input="calculateCosts" 
+                                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                           placeholder="Např. 15000">
+                                </div>
+                                
+                                <div>
+                                    <label for="hourlyRate" class="block text-sm font-medium text-gray-700 mb-1">Vaše hodinová sazba (Kč/hod)</label>
+                                    <input type="number" id="hourlyRate" x-model="hourlyRate" @input="calculateCosts"
+                                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                           placeholder="Např. 500">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h5 class="font-semibold text-gray-900 mb-3">Přizpůsobte si výpočet</h5>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Počet hodin správy měsíčně</label>
+                                    <input type="range" x-model="hoursPerMonth" @input="calculateCosts" min="4" max="20" step="1"
+                                           class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                                    <div class="flex justify-between text-xs text-gray-500">
+                                        <span>4 hod/měsíc</span>
+                                        <span x-text="hoursPerMonth + ' hod/měsíc'"></span>
+                                        <span>20 hod/měsíc</span>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Riziko problémového nájemníka</label>
+                                    <select x-model="problematicTenantRisk" @change="calculateCosts"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="0.2">Nízké (20%)</option>
+                                        <option value="0.35" selected>Střední (35%)</option>
+                                        <option value="0.5">Vysoké (50%)</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Průměrná doba neobsazenosti</label>
+                                    <select x-model="vacancyMonths" @change="calculateCosts"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <option value="1">1 měsíc</option>
+                                        <option value="2" selected>2 měsíce</option>
+                                        <option value="3">3 měsíce</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pravý sloupec - Výsledky -->
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                        <h5 class="text-lg font-semibold text-blue-900 mb-4">Výpočet ročních nákladů</h5>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Čas strávený správou:</span>
+                                <span class="font-medium" x-text="formatCurrency(timeCosts)"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Ušlý příjem z neobsazenosti:</span>
+                                <span class="font-medium" x-text="formatCurrency(lostIncome)"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Riziko problémového nájemníka:</span>
+                                <span class="font-medium" x-text="formatCurrency(problematicTenantCost)"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Právní a administrativní náklady:</span>
+                                <span class="font-medium" x-text="formatCurrency(legalCosts)"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-700">Opravy a údržba:</span>
+                                <span class="font-medium" x-text="formatCurrency(maintenanceCosts)"></span>
+                            </div>
+                            <div class="border-t border-blue-200 my-2"></div>
+                            <div class="flex justify-between text-lg font-bold text-blue-900">
+                                <span>Celkové roční náklady:</span>
+                                <span x-text="formatCurrency(totalCosts)"></span>
+                            </div>
+                            <div class="text-sm text-blue-800 mt-1">
+                                To je <span x-text="formatCurrency(monthlyCosts)"></span> měsíčně navíc k vašemu nájmu!
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border border-blue-200">
+                            <h6 class="font-semibold text-blue-900 mb-2">Služba Vzorný nájemce</h6>
+                            <p class="text-sm text-gray-700 mb-3">Ušetřete čas a peníze s naší službou správy nemovitostí.</p>
+                            <button @click="Alpine.store('popup').open()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200">
+                                Zjistit více o službě
+                            </button>
+                        </div>
+
+                        <!-- Popup kontaktního formuláře -->
+                        <div x-data="popupFormController" x-cloak>
+                            <!-- Backdrop -->
+                            <div x-show="open" 
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0"
+                                x-transition:enter-end="opacity-100"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100"
+                                x-transition:leave-end="opacity-0"
+                                class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50"
+                                @click="close">
+                            </div>
+
+                            <!-- Modal -->
+                            <div x-show="open" 
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                                class="fixed inset-0 z-50 flex items-center justify-center p-4">
+                                
+                                <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden" @click.stop>
+                                    <div class="p-6">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <h3 class="text-xl font-bold text-gray-900">Kontaktujte nás</h3>
+                                            <button @click="close" class="text-gray-400 hover:text-gray-500">
+                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        
+                                        <form class="space-y-4">
+                                            <div>
+                                                <label for="name" class="block text-sm font-medium text-gray-700">Jméno a příjmení</label>
+                                                <input type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                            </div>
+                                            
+                                            <div>
+                                                <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+                                                <input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                            </div>
+                                            
+                                            <div>
+                                                <label for="phone" class="block text-sm font-medium text-gray-700">Telefon</label>
+                                                <input type="tel" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                            </div>
+                                            
+                                            <div>
+                                                <label for="message" class="block text-sm font-medium text-gray-700">Zpráva</label>
+                                                <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                                            </div>
+                                            
+                                            <div class="pt-2">
+                                                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                    Odeslat poptávku
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Patička kalkulačky s logem -->
+                <div class="bg-gray-50 border-t border-gray-100 p-4 flex flex-col md:flex-row items-center justify-between">
+                    <div class="flex items-center mb-3 md:mb-0">
+                        <img src="images/busta.png" alt="Vzorný nájemce" class="h-10 mr-3">
+                        <span class="text-sm text-gray-600">Výpočet je orientační, pro přesnou kalkulaci nás kontaktujte</span>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        © 2025 Vzorný nájemce. Všechna práva vyhrazena.
+                    </div>
+                </div>
+            </div>
+            
             <!-- Závěr -->
-            <div class="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200 w-full">
-                <p class="text-gray-700 font-medium">Výsledek vám nabídne jasný pohled na to, zda se vám více vyplatí pronajímat samostatně nebo využít naše služby.</p>
+            <div class="mt-8 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl border border-blue-200">
+                <div class="text-center">
+                    <h4 class="text-xl font-bold text-blue-900 mb-3">Celkové roční náklady vlastní správy</h4>
+                    <div class="text-3xl font-bold text-blue-800 mb-2" x-text="formatCurrency(totalCosts)"></div>
+                    <p class="text-blue-700 font-medium mb-4">To je <span x-text="formatCurrency(monthlyCosts)"></span> měsíčně navíc k vašemu nájmu!</p>
+                    <p class="text-blue-800">Výsledek vám nabídne jasný pohled na to, zda se vám více vyplatí pronajímat samostatně nebo využít naše služby.</p>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            // Definice globálního store pro správu popupu
+            Alpine.store('popup', {
+                isOpen: false,
+                open() {
+                    this.isOpen = true;
+                    document.body.style.overflow = 'hidden'; // Zakázání scrollování
+                },
+                close() {
+                    this.isOpen = false;
+                    document.body.style.overflow = ''; // Povolení scrollování
+                }
+            });
+
+            // Definice komponenty pop-up formuláře
+            Alpine.data('popupFormController', () => ({
+                open: false,
+                init() {
+                    // Sledování změn v globálním store
+                    this.$watch('$store.popup.isOpen', value => {
+                        this.open = value;
+                    });
+                    
+                    // Sledování změn v lokální proměnné
+                    this.$watch('open', value => {
+                        Alpine.store('popup').isOpen = value;
+                        document.body.style.overflow = value ? 'hidden' : '';
+                    });
+                },
+                close() {
+                    this.open = false;
+                    Alpine.store('popup').close();
+                }
+            }));
+        });
+
+        function calculator() {
+            return {
+                // Vstupní hodnoty
+                monthlyRent: 15000,
+                hourlyRate: 500,
+                hoursPerMonth: 8,
+                problematicTenantRisk: 0.35,
+                vacancyMonths: 2,
+                
+                // Vypočítané hodnoty
+                timeCosts: 0,
+                lostIncome: 0,
+                problematicTenantCost: 0,
+                legalCosts: 0,
+                maintenanceCosts: 0,
+                totalCosts: 0,
+                monthlyCosts: 0,
+                
+                init() {
+                    this.calculateCosts();
+                },
+                
+                calculateCosts() {
+                    // Časové náklady (měsíční hodiny * hodinová sazba * 12)
+                    this.timeCosts = this.hoursPerMonth * this.hourlyRate * 12;
+                    
+                    // Ušlý příjem (měsíční nájem * počet měsíců neobsazenosti)
+                    this.lostIncome = this.monthlyRent * this.vacancyMonths;
+                    
+                    // Náklady na problémového nájemníka (riziko * průměrné náklady)
+                    const avgProblemCost = this.monthlyRent * 5; // 5 měsíců neplacení
+                    this.problematicTenantCost = Math.round(avgProblemCost * this.problematicTenantRisk);
+                    
+                    // Právní a administrativní náklady (pevná sazba + % z nájmu)
+                    this.legalCosts = 5000 + (this.monthlyRent * 0.2 * 12);
+                    
+                    // Náklady na opravy a údržbu (pevná sazba + % z nájmu)
+                    this.maintenanceCosts = 8000 + (this.monthlyRent * 0.1 * 12);
+                    
+                    // Celkové roční náklady
+                    this.totalCosts = Math.round(
+                        this.timeCosts + 
+                        this.lostIncome + 
+                        this.problematicTenantCost + 
+                        this.legalCosts + 
+                        this.maintenanceCosts
+                    );
+                    
+                    // Měsíční náklady
+                    this.monthlyCosts = Math.round(this.totalCosts / 12);
+                },
+                
+                formatCurrency(value) {
+                    return new Intl.NumberFormat('cs-CZ', { 
+                        style: 'currency', 
+                        currency: 'CZK',
+                        maximumFractionDigits: 0
+                    }).format(value);
+                }
+            };
+        }
+    </script>
 </body>
 </html>

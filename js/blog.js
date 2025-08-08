@@ -9,7 +9,7 @@ const blogPosts = [
         slug: "moderni-pronajem-2025",
         date: "2025-02-16",
         excerpt: "Objevte nejnovější trendy a postupy v oblasti pronájmu nemovitostí pro rok 2025. Od digitalizace až po smart home řešení.",
-        content: `/blog/posts/moderni-pronajem-2025.md`
+        content: `./blog/posts/moderni-pronajem-2025.md`
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ const blogPosts = [
         slug: "jak-spravne-postupovat-pri-neplaceni-najmu",
         date: "2024-02-16",
         excerpt: "Zjistěte, jaké kroky můžete podniknout, když nájemník neplatí nájem, a jak správně postupovat v souladu se zákonem.",
-        content: `/blog/posts/neplaceni-najmu.md`
+        content: `./blog/posts/neplaceni-najmu.md`
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const blogPosts = [
         slug: "pravni-nastroje-pro-reseni-problemu",
         date: "2024-02-15",
         excerpt: "Přehled právních nástrojů, které můžete využít při řešení problémů s problémovými nájemníky.",
-        content: `/blog/posts/pravni-nastroje.md`
+        content: `./blog/posts/pravni-nastroje.md`
     }
 ];
 
@@ -45,12 +45,12 @@ async function loadBlogPosts() {
                     })}</time>
                 </div>
                 <h3 class="text-xl font-bold text-gray-900 mb-2">
-                    <a href="/blog/${post.slug}" class="hover:text-gray-600 transition-colors duration-200">
+                    <a href="${post.slug}.html" class="hover:text-gray-600 transition-colors duration-200">
                         ${post.title}
                     </a>
                 </h3>
                 <p class="text-gray-600 mb-4">${post.excerpt}</p>
-                <a href="/blog/${post.slug}" 
+                <a href="${post.slug}.html" 
                    class="inline-flex items-center text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors duration-200">
                     Číst více
                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

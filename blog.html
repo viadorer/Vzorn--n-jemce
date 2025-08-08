@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Extra nájem | Tipy a rady pro pronájem nemovitostí</title>
+    <meta name="description" content="Objevte užitečné tipy, právní rady a aktuální trendy v oblasti pronájmu nemovitostí. Blog od expertů Extra nájem.">
+    <meta name="keywords" content="pronájem nemovitostí, blog, tipy, právní rady, nájemní smlouva">
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Blog - Extra nájem">
+    <meta property="og:description" content="Užitečné tipy a rady pro pronájem nemovitostí od expertů">
+    <meta property="og:image" content="/images/blog/blog-og-image.jpg">
+    <meta property="og:url" content="https://www.extranajem.cz/blog.html">
+    <meta property="og:type" content="website">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="/js/load-components.js"></script>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Navigation -->
+    <div id="navigation-container"></div>
+
+    <!-- Blog Header -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-[#0D28F2] to-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Blog Extra nájem
+            </h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                Praktické tipy, právní rady a nejnovější trendy v oblasti pronájmu nemovitostí
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-16" x-data="blogIndex()">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Categories Filter -->
+            <div class="mb-12">
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <button @click="selectedCategory = 'all'" 
+                            :class="selectedCategory === 'all' ? 'bg-[#0D28F2] text-white' : 'bg-white text-gray-700 hover:bg-gray-50'"
+                            class="px-6 py-3 rounded-full font-medium transition-colors border">
+                        Všechny články
+                    </button>
+                    <button @click="selectedCategory = 'tips'" 
+                            :class="selectedCategory === 'tips' ? 'bg-[#0D28F2] text-white' : 'bg-white text-gray-700 hover:bg-gray-50'"
+                            class="px-6 py-3 rounded-full font-medium transition-colors border">
+                        Tipy & Triky
+                    </button>
+                    <button @click="selectedCategory = 'legal'" 
+                            :class="selectedCategory === 'legal' ? 'bg-[#0D28F2] text-white' : 'bg-white text-gray-700 hover:bg-gray-50'"
+                            class="px-6 py-3 rounded-full font-medium transition-colors border">
+                        Právní rady
+                    </button>
+                    <button @click="selectedCategory = 'market'" 
+                            :class="selectedCategory === 'market' ? 'bg-[#0D28F2] text-white' : 'bg-white text-gray-700 hover:bg-gray-50'"
+                            class="px-6 py-3 rounded-full font-medium transition-colors border">
+                        Trh & Finance
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div x-show="loading" class="text-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0D28F2] mx-auto"></div>
+                <p class="mt-4 text-gray-600">Načítám články...</p>
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div x-show="!loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="post in filteredPosts" :key="post.id">
+                    <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <img :src="post.image" :alt="post.imageAlt" class="w-full h-48 object-cover">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span :class="getCategoryClass(post.category)" 
+                                      class="inline-block px-3 py-1 text-xs font-semibold rounded-full">
+                                    <span x-text="post.categoryName"></span>
+                                </span>
+                                <time :datetime="post.date" class="text-sm text-gray-500" x-text="post.dateFormatted"></time>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                                <a :href="`/blog/detail.html?post=${post.id}`" 
+                                   class="hover:text-[#0D28F2] transition-colors"
+                                   x-text="post.title"></a>
+                            </h2>
+                            <p class="text-gray-600 mb-4 line-clamp-3" x-text="post.excerpt"></p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500" x-text="`${post.readTime} min čtení`"></span>
+                                <a :href="`/blog/detail.html?post=${post.id}`" 
+                                   class="text-[#0D28F2] hover:underline font-medium">
+                                    Číst více →
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </div>
+
+            <!-- No Posts Message -->
+            <div x-show="!loading && filteredPosts.length === 0" class="text-center py-12">
+                <div class="text-gray-400 mb-4">
+                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-600 mb-2">Žádné články v této kategorii</h3>
+                <p class="text-gray-500">Zkuste vybrat jinou kategorii nebo se vraťte později.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">
+                Potřebujete pomoc s pronájmem?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Naše tipy vám pomohou, ale profesionální správa vašeho majetku vám ušetří čas i starosti.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/index.html#garance-najmu" 
+                   class="inline-block bg-[#0D28F2] text-white font-semibold px-8 py-3 rounded-full hover:bg-blue-700 transition-colors">
+                    Získat garanci nájmu
+                </a>
+                <a href="/index.html#kontakt" 
+                   class="inline-block border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-gray-900 transition-colors">
+                    Konzultace zdarma
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="/js/blog.js"></script>
+    <script>
+        function blogIndex() {
+            return {
+                posts: [],
+                loading: true,
+                selectedCategory: 'all',
+                
+                get filteredPosts() {
+                    if (this.selectedCategory === 'all') {
+                        return this.posts;
+                    }
+                    return this.posts.filter(post => post.category === this.selectedCategory);
+                },
+                
+                getCategoryClass(category) {
+                    const classes = {
+                        'tips': 'bg-blue-100 text-blue-800',
+                        'legal': 'bg-green-100 text-green-800',
+                        'market': 'bg-purple-100 text-purple-800',
+                        'default': 'bg-gray-100 text-gray-800'
+                    };
+                    return classes[category] || classes.default;
+                },
+                
+                async init() {
+                    try {
+                        const response = await fetch('/blog/posts.json');
+                        const data = await response.json();
+                        this.posts = data.posts || [];
+                        this.loading = false;
+                    } catch (error) {
+                        console.error('Chyba při načítání článků:', error);
+                        this.loading = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

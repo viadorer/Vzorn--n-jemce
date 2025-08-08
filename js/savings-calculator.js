@@ -83,24 +83,97 @@ class SavingsCalculator {
                             </div>
                             
                             <div class="space-y-3 text-sm">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Čas strávený správou:</span>
+                                <div class="flex justify-between group relative">
+                                    <div class="flex items-center">
+                                        <span class="text-gray-600">Čas strávený správou:</span>
+                                        <div class="ml-1 relative group">
+                                            <svg class="w-4 h-4 text-gray-400 cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <div class="hidden group-hover:block absolute z-10 w-64 p-3 -left-32 -top-20 bg-white shadow-lg rounded-lg text-sm text-gray-600">
+                                                <strong>96 hodin ročně</strong> (8 hodin měsíčně) včetně:<br>
+                                                • Komunikace s nájemníky (24h)<br>
+                                                • Návštěvy bytu (12h)<br>
+                                                • Administrativa (24h)<br>
+                                                • Řešení problémů (36h)<br>
+                                                <em>Při hodinové sazbě 300 Kč</em>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <span class="font-semibold" id="timeSpentCost">0 Kč</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Ušlý příjem (neobsazenost):</span>
+                                <div class="flex justify-between group relative">
+                                    <div class="flex items-center">
+                                        <span class="text-gray-600">Ušlý příjem (neobsazenost):</span>
+                                        <div class="ml-1 relative group">
+                                            <svg class="w-4 h-4 text-gray-400 cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <div class="hidden group-hover:block absolute z-10 w-64 p-3 -left-32 -top-20 bg-white shadow-lg rounded-lg text-sm text-gray-600">
+                                                Průměrná doba neobsazenosti <strong>2 měsíce</strong> ročně<br><br>
+                                                Zahrnuje čas potřebný pro:<br>
+                                                • Hledání nového nájemníka<br>
+                                                • Úklid a drobné opravy<br>
+                                                • Převedení služeb<br>
+                                                <em>Založeno na průměrných datech z trhu</em>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <span class="font-semibold" id="vacancyCost">0 Kč</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Problémový nájemník:</span>
+                                <div class="flex justify-between group relative">
+                                    <div class="flex items-center">
+                                        <span class="text-gray-600">Problémový nájemník:</span>
+                                        <div class="ml-1 relative group">
+                                            <svg class="w-4 h-4 text-gray-400 cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <div class="hidden group-hover:block absolute z-10 w-64 p-3 -left-32 -top-24 bg-white shadow-lg rounded-lg text-sm text-gray-600">
+                                                <strong>35% pronajímatelů</strong> se setká s problémovým nájemníkem<br><br>
+                                                Průměrné náklady zahrnují:<br>
+                                                • Nezaplacený nájem (1-2 měsíce)<br>
+                                                • Poškození majetku<br>
+                                                • Právní výdaje na vystěhování<br>
+                                                • Úklid a opravy po odchodu<br>
+                                                <em>Průměrná roční ztráta</em>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <span class="font-semibold" id="problemTenantCost">0 Kč</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Právní náklady:</span>
+                                <div class="flex justify-between group relative">
+                                    <div class="flex items-center">
+                                        <span class="text-gray-600">Právní náklady:</span>
+                                        <div class="ml-1 relative group">
+                                            <svg class="w-4 h-4 text-gray-400 cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <div class="hidden group-hover:block absolute z-10 w-64 p-3 -left-32 -top-24 bg-white shadow-lg rounded-lg text-sm text-gray-600">
+                                                Roční náklady na právní servis:<br>
+                                                • Příprava smluv (5 000 Kč)<br>
+                                                • Právní konzultace (5 000 Kč)<br>
+                                                • Soudní poplatky (5 000 Kč)<br><br>
+                                                <em>I při běžném provozu jsou právní služby nutností pro řádnou ochranu vašich zájmů.</em>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <span class="font-semibold" id="legalCostDisplay">0 Kč</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Opravy a údržba:</span>
+                                <div class="flex justify-between group relative">
+                                    <div class="flex items-center">
+                                        <span class="text-gray-600">Opravy a údržba:</span>
+                                        <div class="ml-1 relative group">
+                                            <svg class="w-4 h-4 text-gray-400 cursor-help" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <div class="hidden group-hover:block absolute z-10 w-64 p-3 -left-32 -top-16 bg-white shadow-lg rounded-lg text-sm text-gray-600">
+                                                Průměrné roční náklady na údržbu:<br>
+                                                • Pravidelná údržba (5 000 Kč)<br>
+                                                • Menší opravy (3 000 Kč)<br><br>
+                                                <em>Zahrnuje výměnu žárovek, opravy kohoutků, malování apod. Větší opravy jsou kalkulovány zvlášť.</em>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <span class="font-semibold" id="repairCostDisplay">0 Kč</span>
                                 </div>
                             </div>
