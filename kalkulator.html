@@ -337,7 +337,7 @@
                         <div class="bg-white p-4 rounded-lg border border-blue-200">
                             <h6 class="font-semibold text-blue-900 mb-2">Služba Vzorný nájemce</h6>
                             <p class="text-sm text-gray-700 mb-3">Ušetřete čas a peníze s naší službou správy nemovitostí.</p>
-                            <button @click="Alpine.store('popup').open()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200">
+                            <button data-open-popup class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200">
                                 Zjistit více o službě
                             </button>
                         </div>
@@ -450,6 +450,18 @@
                     document.body.style.overflow = ''; // Povolení scrollování
                 }
             });
+
+        // Delegovaný listener pro sjednocené CTA (data-open-popup)
+        // Otevře popup přes Alpine store, pokud je dostupný
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-open-popup]');
+            if (trigger) {
+                e.preventDefault();
+                if (window.Alpine && Alpine.store && Alpine.store('popup')) {
+                    Alpine.store('popup').open();
+                }
+            }
+        });
 
             // Definice komponenty pop-up formuláře
             Alpine.data('popupFormController', () => ({

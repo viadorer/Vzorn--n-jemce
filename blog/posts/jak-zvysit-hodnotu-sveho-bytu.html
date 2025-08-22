@@ -90,7 +90,7 @@
                         <a href="../../index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">O službě</a>
                         <a href="../index.html" class="text-[#0D28F2] font-medium px-3 py-2 text-sm transition-colors duration-200">Blog</a>
                         <a href="../../index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
-                        <button @click="Alpine.store('popup').open()" class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</button>
+                        <button data-open-popup class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</button>
                     </div>
                     <!-- Mobile menu button -->
                     <div class="md:hidden flex items-center">
@@ -258,7 +258,7 @@
                     <div class="bg-[#0D28F2]/5 rounded-2xl p-6 mt-8">
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Získejte garanci nájmu</h3>
                         <p class="text-gray-600 mb-6">Pronajímejte BEZ STAROSTÍ a s MAXIMÁLNÍM ZISKEM! Vyplňte formulář a ozveme se vám.</p>
-                        <button @click="Alpine.store('popup').open()" class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105">
+                        <button data-open-popup class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105">
                             ZÍSKAT GARANCI NÁJMU →
                         </button>
                     </div>
@@ -359,6 +359,18 @@
                     document.body.classList.remove('overflow-hidden');
                 }
             });
+        });
+    </script>
+    <script>
+        // Delegated listener for unified CTA triggers (data-open-popup)
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-open-popup]');
+            if (trigger) {
+                e.preventDefault();
+                if (window.Alpine && Alpine.store && Alpine.store('popup')) {
+                    Alpine.store('popup').open();
+                }
+            }
         });
     </script>
 </body>

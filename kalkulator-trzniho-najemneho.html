@@ -149,7 +149,7 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Potřebujete pomoc s pronájmem?</h2>
                 <p class="text-xl text-gray-600 mb-8">Svěřte svůj pronájem do rukou profesionálů</p>
-                <a href="#kontakt" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Kontaktujte nás</a>
+                <button data-open-popup class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Kontaktujte nás</button>
             </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
@@ -181,5 +181,18 @@
 <!-- Skript pro načítání footeru -->
 <script src="js/load-footer.js"></script>
 
+<script>
+// Delegovaný listener pro sjednocené CTA (data-open-popup)
+// Otevře popup přes Alpine store, pokud je dostupný na stránce
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-open-popup]');
+  if (trigger) {
+    e.preventDefault();
+    if (window.Alpine && Alpine.store && Alpine.store('popup')) {
+      Alpine.store('popup').open();
+    }
+  }
+});
+</script>
 </body>
 </html>
