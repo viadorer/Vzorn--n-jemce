@@ -1,43 +1,62 @@
 # Jak zvýšit hodnotu svého bytu pro pronájem
 
-Maximalizujte výnos z pronájmu svého bytu pomocí chytrých a cenově dostupných vylepšení. V tomto článku vám představíme, jak efektivně zvýšit hodnotu vaší nemovitosti.
+Chcete vyšší nájemné, kratší dobu obsazenosti a kvalitnější nájemníky? Zaměřte se na vylepšení, která mají nejvyšší návratnost a skutečně rozhodují při prohlídce.
 
-## 1. Renovace kuchyně a koupelny
+## 1) Kuchyně a koupelna: největší vliv na dojem
 
-Kuchyně a koupelny jsou pro nájemníky klíčové:
+- Vyměňte baterie a sprchovou hlavici, doplňte kvalitní LED světla (teplá bílá ~2700–3000K).
+- Obnovte pracovní desku a dvířka (přelep fólií/renovace dvířek = nízké náklady, velký efekt).
+- Zvažte vestavné spotřebiče s nízkou spotřebou (A/nové štítky).
 
-- Výměna starých spotřebičů za energeticky úsporné modely
-- Renovace pracovních desek a skříněk
-- Modernizace baterií a sprchových koutů
-- Kvalitní osvětlení
+> 💡 Věděli jste? Byty s upravenou koupelnou a moderně působící kuchyní se pronajmou v průměru rychleji o 20–30 % než srovnatelné byty ve stejné lokalitě.
 
-## 2. Efektivní využití prostoru
+## 2) Úložné prostory a funkčnost
 
-Maximalizujte využitelnost každého metru čtverečního:
+- Vestavěné skříně na míru (chodba/ložnice) – vyšší atraktivita pro dlouhodobé nájemníky.
+- Multifunkční nábytek (rozkládací sedačka, skládací stůl) zvyšuje použitelnost menších bytů.
+- Zvažte neutrální barevnost stěn a sjednocené podlahy – byt působí větší a klidnější.
 
-- Vestavěné skříně a úložné prostory
-- Multifunkční nábytek
-- Světlé barvy pro optické zvětšení prostoru
-- Otevřený koncept bydlení
+## 3) Energetická úspornost a provozní náklady
 
-## 3. Energetická účinnost
+1. Těsnění oken, termostatické hlavice a časovače vytápění.
+2. LED osvětlení v celém bytě (nižší náklady, příjemnější světlo).
+3. Sprchové perlátory a úsporné splachování – menší účty, vyšší spokojenost.
 
-Snižte provozní náklady bytu:
+<div class="not-prose my-6 p-4 rounded-xl border border-blue-100 bg-blue-50 flex gap-3 items-start">
+  <div class="text-xl">💡</div>
+  <div>
+    <p class="m-0 font-semibold">Tip: ukažte úsporu na prohlídce</p>
+    <p class="m-0 text-sm text-gray-700">Mějte připravené orientační měsíční náklady (elektřina, plyn, voda). Transparentnost pomáhá rychlejšímu rozhodnutí nájemníků.</p>
+  </div>
+  </div>
 
-1. Izolace oken a dveří
-2. LED osvětlení v celém bytě
-3. Chytré termostaty a vytápění
-4. Energeticky úsporné spotřebiče
+## 4) První dojem, bezpečí a komfort
 
-## 4. První dojem a exteriér
+- Nová vstupní rohož, opravené zámky, čisté společné prostory.
+- Vymalování do světlých tónů a decentní dekorace (závěsy, zrcadlo do chodby).
+- Zvažte chytrý zvonek/kukátko a bezpečnostní zámek – vnímání bezpečí je klíčové.
 
-Nezapomínejte na vnější dojem:
+## Ceník rychlých vylepšení (orientačně)
 
-- Renovace vchodových dveří
-- Úprava společných prostor (pokud možno)
-- Balkon nebo terasa jako rozšíření životního prostoru
-- Kvalitní podlahy
+- LED osvětlení bytu: 1–3 tis. Kč
+- Výměna baterií/sprchové hlavice: 1,5–4 tis. Kč
+- Přelep kuchyňských dvířek: 3–10 tis. Kč
+- Zútulnění (dekorace, textilie): 2–6 tis. Kč
 
-## Jak vám můžeme pomoci
+<div class="not-prose my-8 p-5 rounded-2xl border border-gray-200 bg-white shadow-sm">
+  <h3 class="m-0 text-lg font-semibold">Nejste si jistí, co se vyplatí právě u vás?</h3>
+  <p class="m-0 mt-2 text-gray-700">Uděláme rychlý audit bytu a navrhneme konkrétní úpravy s odhadovaným vlivem na rychlost pronájmu i výši nájemného.</p>
+  <div class="mt-4">
+    <button data-open-popup class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#0D28F2] text-white hover:bg-[#0a1fc5] transition">ZÍSKAT DOPORUČENÍ NA MÍRU →</button>
+  </div>
+</div>
 
-Potřebujete poradit s konkrétním vylepšením vašeho bytu? Naši odborníci vám rádi poskytnou konzultaci na míru. Kontaktujte nás ještě dnes a zjistěte, jak maximalizovat hodnotu vaší nemovitosti.
+## Shrnutí
+
+Zaměřte se na místa, která rozhodují: kuchyně, koupelna, úložné prostory a první dojem. Přidejte pár úsporných opatření a transparentně ukažte provozní náklady.
+
+---
+
+Chcete vědět, jaké úpravy přinesou nejrychlejší návratnost u vašeho bytu? 
+
+<button data-open-popup class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition">NEZÁVAZNÁ KONZULTACE ZDARMA →</button>

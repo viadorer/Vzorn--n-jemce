@@ -1,43 +1,45 @@
 # Moderní pronájem v roce 2025: Jak na to?
 
-Pronajímání nemovitostí prochází významnou transformací. V tomto článku vám představíme nejnovější trendy a postupy pro úspěšný pronájem v roce 2025.
+Praktický tahák, jak nastavit pronájem tak, aby byl bezpečný, rychlý a s minimem starostí.
 
-## 1. Digitalizace pronájmu
+## 1) Digitalizace bez chaosu
 
-Moderní pronájem vyžaduje digitální přístup:
+- Online kalendář prohlídek a digitální žádosti zájemců.
+- Elektronický podpis smluv a dodatků.
+- Automatické připomínky a platby (trvalé příkazy, QR platby).
+- Cloudová evidence dokumentů (smlouvy, protokoly, fotky).
 
-- Online správa nemovitostí
-- Elektronické podepisování smluv
-- Automatizované platby nájemného
-- Digitální evidence dokumentů
+## 2) Prověření nájemníků: systémy, ne dojmy
 
-## 2. Prověřování nájemníků
+- Ověřte příjem a stabilitu zaměstnání, požádejte o reference.
+- Zkontrolujte historii plateb z předchozích nájmů (pokud je k dispozici).
+- Nastavte jasná pravidla užívání bytu a kontroly předem.
 
-Klíčem k úspěšnému pronájmu je důkladné prověření nájemníků:
+> 💡 Věděli jste? Většina problémů vzniká ještě před podpisem – kvůli slabému prověření a nejasným pravidlům. Dobrý proces je nejlepší pojistka.
 
-- Kontrola platební historie
-- Ověření zaměstnání a příjmů
-- Reference od předchozích pronajímatelů
-- Využití služeb jako Vzorný nájemce
+## 3) Právní a finanční jistoty
 
-## 3. Právní ochrana
+1. Aktualizované smlouvy, předávací protokoly a fotodokumentace.
+2. Kauce 2–3 nájmy, jasně popsané podmínky čerpání a vrácení.
+3. Pojištění odpovědnosti a domácnosti (doporučte i nájemníkovi).
+4. Nastavené procesy pro upomínky a kontroly.
 
-Zajistěte si maximální právní ochranu:
+## 4) Smart Home jen tam, kde dává smysl
 
-1. Profesionálně připravené smlouvy
-2. Pravidelná aktualizace dokumentace
-3. Pojištění nemovitosti i odpovědnosti
-4. Spolupráce s právními experty
+- Chytré hlavice na topení a měření spotřeby.
+- Vzdálený přístup (klíče/čipy) s logem vstupů.
+- Bezpečnostní prvky (detektor kouře/záplavy) – minimalizují škody.
 
-## 4. Smart Home řešení
+<div class="not-prose my-8 p-5 rounded-2xl border border-gray-200 bg-white shadow-sm">
+  <h3 class="m-0 text-lg font-semibold">Chcete mít pronájem nastavený moderně a bezpečně?</h3>
+  <p class="m-0 mt-2 text-gray-700">Pomůžeme s kompletním procesem: od prověření nájemníků po digitalizaci a právní dokumenty.</p>
+  <div class="mt-4">
+    <button data-open-popup class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#0D28F2] text-white hover:bg-[#0a1fc5] transition">NASTAVIT MŮJ PRONÁJEM →</button>
+  </div>
+</div>
 
-Implementace chytrých technologií:
+---
 
-- Vzdálený přístup a monitoring
-- Inteligentní měření spotřeby
-- Automatizované vytápění
-- Bezpečnostní systémy
+Chcete projít váš konkrétní případ a udělat checklist na míru?
 
-## Jak vám můžeme pomoci
-
-Náš tým profesionálů vám pomůže implementovat všechny moderní postupy a zajistit bezpečný a výnosný pronájem. Kontaktujte nás pro nezávaznou konzultaci.
+<button data-open-popup class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition">NEZÁVAZNÁ KONZULTACE ZDARMA →</button>

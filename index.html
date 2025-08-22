@@ -240,10 +240,10 @@
                         </div>
 
                         <div class="fade-in-up mt-6 flex flex-col sm:flex-row gap-4">
-                            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 transform hover:scale-105">
+                            <button data-open-popup class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 transform hover:scale-105">
                                 ZÍSKAT GARANCI NÁJMU →
                             </button>
-                            <button onclick="scrollToCalculator()" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
+                            <button data-scroll-to="calculator" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
                                 Spočítat, kolik ušetřím
                             </button>
                         </div>
@@ -265,6 +265,31 @@
         </div>
     </div>
 
+    <!-- Capacity notice (elegant) -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="capacity-info" data-remaining="2" class="relative overflow-hidden rounded-2xl border border-gray-200 bg-white/80 backdrop-blur shadow-lg">
+                <!-- decorative gradient bar -->
+                <div class="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-[#0D28F2] to-blue-400"></div>
+                <div class="pl-6 pr-6 sm:pl-8 sm:pr-8 py-6 sm:py-7">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div>
+                            <div class="text-sm inline-flex items-center px-3 py-1 rounded-full bg-[#0D28F2]/10 text-[#0D28F2] font-semibold">Péče bez kompromisů</div>
+                            <h3 class="mt-3 text-xl sm:text-2xl font-semibold text-gray-900">Tento týden otevíráme prostor pro 10 nových spoluprací</h3>
+                            <p class="mt-1.5 text-gray-600">Abychom zachovali špičkovou úroveň, přijímáme jen omezený počet žádostí.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <div class="text-sm text-gray-500">Aktuálně volná místa</div>
+                            <div class="mt-1 inline-flex items-baseline gap-1.5">
+                                <span id="remaining-slots" class="text-3xl font-bold text-gray-900">2</span>
+                                <span class="text-gray-500">/ 10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Jak to funguje sekce -->
     <section id="jak-to-funguje" class="py-24 bg-gradient-to-b from-white to-blue-50">
@@ -384,7 +409,7 @@
             </div>
             
             <div class="mt-16 text-center">
-                <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                     Chci bezstarostný pronájem →
                 </button>
             </div>
@@ -411,7 +436,7 @@
                     
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">JISTOTA</h3>
-                        <div class="text-2xl font-semibold text-[#0D28F2] mb-2">85% z nájmu</div>
+                        <!-- procento odstraněno -->
                         <p class="text-gray-600 italic">Jistota příjmu bez ohledu na platební morálku nájemníka</p>
                     </div>
                     
@@ -448,7 +473,7 @@
                         </li>
                     </ul>
                     
-                    <button onclick="openContactForm()" class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
+                    <button data-open-popup class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
                         CHCI JISTOTU →
                     </button>
                 </div>
@@ -461,7 +486,7 @@
                     
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">BEZSTAROSTNOST</h3>
-                        <div class="text-2xl font-semibold text-[#0D28F2] mb-2">88% z nájmu</div>
+                        <!-- procento odstraněno -->
                         <p class="text-gray-600 italic">Kompletní servis bez nutnosti jakéhokoliv zapojení</p>
                     </div>
                     
@@ -504,7 +529,7 @@
                         </li>
                     </ul>
                     
-                    <button onclick="openContactForm()" class="block w-full text-center px-6 py-3 bg-[#0D28F2] text-white font-bold rounded-full hover:bg-[#0D28F2]/90 transition-colors duration-200 shadow-lg">
+                    <button data-open-popup class="block w-full text-center px-6 py-3 bg-[#0D28F2] text-white font-bold rounded-full hover:bg-[#0D28F2]/90 transition-colors duration-200 shadow-lg">
                         CHCI BEZSTAROSTNOST →
                     </button>
                 </div>
@@ -551,7 +576,7 @@
                         </li>
                     </ul>
                     
-                    <button onclick="openContactForm()" class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
+                    <button data-open-popup class="mt-auto block w-full text-center px-6 py-3 border-2 border-[#0D28F2] text-[#0D28F2] font-medium rounded-full hover:bg-[#0D28F2] hover:text-white transition-colors duration-200">
                         CHCI ABSOLUTNÍ KLID →
                     </button>
                 </div>
@@ -610,7 +635,7 @@
                     <div class="flex-shrink-0 text-center">
                         <img src="images/tenant.png" alt="Nájemník" class="w-40 h-40 mx-auto rounded-full shadow-lg object-cover border-4 border-white mb-4">
                         <div class="text-3xl font-bold text-[#0D28F2] mb-4">Zdarma</div>
-                        <button onclick="openContactForm()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <button data-open-popup class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                             Obsazení bytu bez starostí
                         </button>
                     </div>
@@ -743,7 +768,7 @@
                 
                         <!-- CTA -->
                         <div class="text-center">
-                            <button onclick="openContactForm()" class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                            <button data-open-popup class="inline-block px-8 py-4 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                                 Chci bezstarostný pronájem
                             </button>
                         </div>
@@ -980,7 +1005,7 @@
                     a kontaktujte nás pro nezávaznou konzultaci.
                 </p>
                 <div class="mt-8 text-center">
-                    <button @click="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Konzultovat váš případ
                     </button>
                 </div>
@@ -1010,7 +1035,7 @@
 Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákladů spojených s prodejem), pokud s vaším známým úspěšně uzavřeme obchod.
                 </p>
                 <div class="mt-8">
-                    <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                         Chci zjistit víc
                     </button>
                 </div>
@@ -1146,7 +1171,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                     <img src="images/logo.png" alt="Vzorný nájemce" class="w-40 h-40 mx-auto rounded-full shadow-lg border-4 border-white object-cover mb-4">
                     <h3 class="text-2xl font-bold text-white mb-4">Přestanete ztrácet čas i peníze</h3>
                     <p class="text-white/90 mb-6">Svěřte svůj byt do rukou profesionálů a užívejte si bezstarostný příjem</p>
-                    <button onclick="openContactForm()" class="inline-block px-6 py-3 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-gray-100 transition-all">
+                    <button data-open-popup class="inline-block px-6 py-3 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-gray-100 transition-all">
                         Začít hned
                     </button>
                 </div>
@@ -1154,7 +1179,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
         </div>
         
         <div class="mt-16 text-center">
-            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 ZBAVIT SE TĚCHTO PROBLÉMŮ →
             </button>
         </div>
@@ -1183,7 +1208,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                             <h3 class="text-2xl font-bold text-white mb-4">Nechte si poradit</h3>
                             <p class="text-white/90 mb-6">Kontaktujte nás a my vám do 24 hodin zavoláme zpět. Probereme vaše potřeby a odpovíme na všechny otázky.</p>
-                            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-[#0D28F2] bg-white hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-[#0D28F2] bg-white hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                 Domluvit konzultaci →
                             </button>
                         </div>
@@ -1278,7 +1303,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
         </div>
         
         <div class="mt-16 text-center">
-            <button onclick="openContactForm()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 SEZNÁMIT SE S CELÝM TÝMEM →
             </button>
         </div>
@@ -1376,7 +1401,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak funguje služba vzorný nájemce?</span>
                     <svg :class="{'rotate-180': activeQuestion === 1}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 1" 
@@ -1396,7 +1421,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Na jak dlouho spolu uzavíráme smlouvu?</span>
                     <svg :class="{'rotate-180': activeQuestion === 2}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 2" 
@@ -1414,7 +1439,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak bude probíhat první schůzka?</span>
                     <svg :class="{'rotate-180': activeQuestion === 3}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 3" 
@@ -1422,7 +1447,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                      x-transition:enter-start="opacity-0 transform -translate-y-2" 
                      x-transition:enter-end="opacity-100 transform translate-y-0"
                      class="px-6 pb-4">
-                    <p class="text-gray-600">Potkáme se v bytě, který chcete pronajmout, a společně si ho projdeme. Podíváme se na stav a příslušenství bytu a pobavíme se o optimální výši nájemného a záloh a o dalších podrobnostech. Také vám vysvětlíme, jak bude vzájemná spolupráce probíhat, jaké výhody a úspory naše služba přináší a zodpovíme všechny vaše dotazy.</p>
+                    <p class="text-gray-600">Potkáme se v bytě, který chcete pronajmout, a společně si ho projdeme. Podíváme se na stav a příslušenství bytu a pobavíme se o optimální výši nájemného a záloh a o dalších podrobnostech. Také vám vysvětlíme, jak bude vzájemná spolupráce probíhat, jaké výhody a úspory naše služba přináší a zodpovíme všechna vaše dotazy.</p>
                 </div>
             </div>
 
@@ -1432,7 +1457,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Ve kterých městech působíme?</span>
                     <svg :class="{'rotate-180': activeQuestion === 4}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 4" 
@@ -1450,7 +1475,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Na koho budou psány energie?</span>
                     <svg :class="{'rotate-180': activeQuestion === 5}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 5" 
@@ -1468,7 +1493,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak vybíráte podnájemníka? Lze mít nad výběrem kontrolu?</span>
                     <svg :class="{'rotate-180': activeQuestion === 6}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 6" 
@@ -1486,7 +1511,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak rychle můj byt obsadíte?</span>
                     <svg :class="{'rotate-180': activeQuestion === 7}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 7" 
@@ -1504,7 +1529,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak ručíte za stav bytu?</span>
                     <svg :class="{'rotate-180': activeQuestion === 8}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 8" 
@@ -1522,7 +1547,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak řešíte případné škody v bytě?</span>
                     <svg :class="{'rotate-180': activeQuestion === 9}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 9" 
@@ -1540,7 +1565,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Kontrolujete, jestli je s mým bytem vše v pořádku?</span>
                     <svg :class="{'rotate-180': activeQuestion === 10}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 10" 
@@ -1558,7 +1583,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Když podnájemník skončí, kdo se postará o nalezení nového?</span>
                     <svg :class="{'rotate-180': activeQuestion === 11}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 11" 
@@ -1576,7 +1601,7 @@ Jako poděkování získáte až 10% z naší provize (po odečtení DPH a nákl
                         class="flex justify-between items-center w-full px-6 py-4 text-left">
                     <span class="text-lg font-semibold text-gray-900">Jak řešíte opravy na bytě? Kdo je platí?</span>
                     <svg :class="{'rotate-180': activeQuestion === 12}" class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
                 <div x-show="activeQuestion === 12" 
@@ -1676,7 +1701,9 @@ function initContactForm() {
     };
 }
 
-document.getElementById('ebookForm').addEventListener('submit', async function(e) {
+// Bezpečné připojení listeneru pouze pokud je formulář přítomen na stránce
+const _ebookForm = document.getElementById('ebookForm');
+if (_ebookForm) _ebookForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const submitButton = this.querySelector('button[type="submit"]');
@@ -1740,14 +1767,38 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
     // Zajistit, že DOM je načten před inicializací Alpine.js
     document.addEventListener('DOMContentLoaded', function() {
         console.log('DOM fully loaded');
-        
+        // Připojit globální handlery na všechna CTA s data-open-popup
+        try {
+            const openers = document.querySelectorAll('[data-open-popup]');
+            openers.forEach((btn) => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (window.Alpine && typeof Alpine.store === 'function') {
+                        try { Alpine.store('popup').open(); } catch (_) {}
+                    }
+                    window.dispatchEvent(new CustomEvent('open-contact-popup'));
+                    document.body.classList.add('overflow-hidden');
+                }, { once: false });
+            });
+        } catch (_) {}
+
+        // Nastavit zbývající místa z data atributu kapacitní karty
+        try {
+            const cap = document.getElementById('capacity-info');
+            const out = document.getElementById('remaining-slots');
+            if (cap && out) {
+                const val = parseInt(cap.getAttribute('data-remaining') || '0', 10);
+                if (!Number.isNaN(val)) out.textContent = String(val);
+            }
+        } catch (_) {}
+
         // Inicializace kalkulačky výhodnosti
         if (document.getElementById('savings-calculator-container')) {
             console.log('Initializing savings calculator...');
             const savingsCalc = new SavingsCalculator('savings-calculator-container');
             console.log('Savings calculator initialized');
         }
-        
+
         // Manuálně zajistit, že všechny kalkulace budou fungovat
         setTimeout(function() {
             console.log('Checking calculators...');
@@ -1759,12 +1810,33 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
             if (mainCalc) console.log('Main calculator found');
             if (savingsCalc) console.log('Savings calculator found');
         }, 1000);
+
+        // Připojit globální posluchače na CTA tlačítka (bez inline onclick)
+        document.querySelectorAll('[data-open-popup]').forEach((el) => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (typeof Alpine !== 'undefined' && Alpine.store && Alpine.store('popup')) {
+                    Alpine.store('popup').open();
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-scroll-to]').forEach((el) => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = el.getAttribute('data-scroll-to');
+                const target = document.getElementById(id);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     });
 
 // Inicializace a Alpine.js store už je definována v head sekci, 
 // opakovaná definice odstraněna pro předejití konfliktům
 </script>
-
+{{ ... }}
 <!-- Popup Form -->
 <div x-data="popupFormController" x-cloak x-init="$nextTick(() => console.log('Popup component mounted'))">
     <!-- Backdrop -->

@@ -221,7 +221,7 @@
                 <p class="text-xl text-gray-700 mb-8">Maximalizujte výnos ze své nemovitosti a zbavte se všech starostí spojených s pronájmem. Naše komplexní služby zajistí bezproblémový průběh a jistotu vašeho příjmu.</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-                    <a @click="Alpine.store('popup').open()" class="inline-flex cursor-pointer items-center justify-center px-6 py-3 text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <a data-open-popup class="inline-flex cursor-pointer items-center justify-center px-6 py-3 text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                         Mám zájem o službu
                     </a>
                     <a href="#video" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-full text-[#0D28F2] bg-white border border-gray-200 hover:bg-gray-50 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
@@ -320,7 +320,7 @@
             </div>
             
             <div class="text-center mt-16">
-                <a @click="Alpine.store('popup').open()" class="inline-flex cursor-pointer items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <a data-open-popup class="inline-flex cursor-pointer items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                     Chci mít jistý příjem →
                 </a>
             </div>
@@ -519,7 +519,9 @@ function initContactForm() {
     };
 }
 
-document.getElementById('ebookForm').addEventListener('submit', async function(e) {
+// Bezpečná inicializace odesílání e-book formuláře (pokud je na stránce přítomen)
+const _ebookForm = document.getElementById('ebookForm');
+if (_ebookForm) _ebookForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const submitButton = this.querySelector('button[type="submit"]');
@@ -549,6 +551,7 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
         submitButton.disabled = false;
     }
 });
+
 </script>
 
 <script>
@@ -570,6 +573,25 @@ document.getElementById('ebookForm').addEventListener('submit', async function(e
 
 // Inicializace a Alpine.js store už je definována v head sekci, 
 // opakovaná definice odstraněna pro předejití konfliktům
+</script>
+
+<script>
+// Globální listener na CTA s data-open-popup (sjednocení s ostatními stránkami)
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const openers = document.querySelectorAll('[data-open-popup]');
+    openers.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.Alpine && typeof Alpine.store === 'function') {
+          try { Alpine.store('popup').open(); } catch (_) {}
+        }
+        window.dispatchEvent(new CustomEvent('open-contact-popup'));
+        document.body.classList.add('overflow-hidden');
+      }, { once: false });
+    });
+  } catch (_) {}
+});
 </script>
 
 
