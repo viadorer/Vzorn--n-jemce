@@ -1,8 +1,19 @@
 // Markdown parser will be lazy-loaded only on post pages to avoid breaking the listing page
 let _marked = null;
 
-// Blog post data structure (6 posts)
+// Blog post data structure (with newest first)
 const blogPosts = [
+  {
+    id: 8,
+    title: 'Předávací protokol: Nejdůležitější dokument při pronájmu bytu',
+    slug: 'predavaci-protokol-pri-pronajmu-bytu',
+    date: '2025-08-25',
+    readTime: '7 min čtení',
+    category: 'Praktické tipy',
+    image: '../images/blog/clanek9.png',
+    excerpt: 'Proč je předávací protokol klíčovým dokumentem při pronájmu a co musí obsahovat, aby vás chránil.',
+    content: 'posts/predavaci-protokol-pri-pronajmu-bytu.md'
+  },
   {
     id: 1,
     title: 'Jak zvýšit hodnotu svého bytu pro pronájem',
@@ -92,14 +103,24 @@ function formatDate(dateStr) {
   });
 }
 
-// Function to load and render blog posts (with optional category filter)
-async function loadBlogPosts(category = 'all') {
+// Pagination config
+const POSTS_PER_PAGE = 9;
+
+// Function to load and render blog posts (with optional category filter and pagination)
+async function loadBlogPosts(category = 'all', page = 1) {
   const blogContainer = document.getElementById('blog-posts');
   if (!blogContainer) return;
 
-  const filtered = category === 'all' ? blogPosts : blogPosts.filter(p => p.category === category);
+  const filtered = category === 'all' ? blogPosts : blogPosts.filter((p) => p.category === category);
 
-  const postsHTML = filtered
+  const totalItems = filtered.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / POSTS_PER_PAGE));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * POSTS_PER_PAGE;
+  const end = Math.min(start + POSTS_PER_PAGE, totalItems);
+  const pageItems = filtered.slice(start, end);
+
+  const postsHTML = pageItems
     .map(
       (post) => `
         <article class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100">
@@ -127,8 +148,30 @@ async function loadBlogPosts(category = 'all') {
   // Update counters if present
   const shownEl = document.getElementById('shown-count');
   const totalEl = document.getElementById('total-count');
-  if (shownEl) shownEl.textContent = String(filtered.length);
-  if (totalEl) totalEl.textContent = String(blogPosts.length);
+  if (shownEl) shownEl.textContent = String(pageItems.length);
+  if (totalEl) totalEl.textContent = String(totalItems);
+
+  // Render pagination controls
+  const pagEl = document.getElementById('blog-pagination');
+  if (pagEl) {
+    if (totalPages <= 1) {
+      pagEl.innerHTML = '';
+    } else {
+      let html = '';
+      // Prev
+      html += `<button data-page="prev" class="px-3 py-2 rounded-md border text-sm ${safePage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}">Předchozí</button>`;
+      // Numbers
+      for (let i = 1; i <= totalPages; i++) {
+        const active = i === safePage;
+        html += `<button data-page="${i}" class="px-3 py-2 rounded-md border text-sm ${active ? 'bg-[#0D28F2] text-white border-[#0D28F2]' : 'hover:bg-gray-50'}">${i}</button>`;
+      }
+      // Next
+      html += `<button data-page="next" class="px-3 py-2 rounded-md border text-sm ${safePage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}">Další</button>`;
+      pagEl.innerHTML = html;
+    }
+  }
+
+  return { totalItems, totalPages, currentPage: safePage };
 }
 
 // Function to load and render a single blog post
@@ -280,7 +323,13 @@ function initBlog() {
   // Listing page
   if (document.getElementById('blog-posts')) {
     let currentCategory = 'all';
-    loadBlogPosts(currentCategory);
+    let currentPage = 1;
+    const pagEl = document.getElementById('blog-pagination');
+
+    // Initial render
+    loadBlogPosts(currentCategory, currentPage).then((meta) => {
+      if (meta) currentPage = meta.currentPage;
+    });
 
     // Wire category buttons
     const catContainer = document.getElementById('blog-categories');
@@ -307,7 +356,10 @@ function initBlog() {
         if (!target) return;
         currentCategory = target.getAttribute('data-category') || 'all';
         setActive(currentCategory);
-        loadBlogPosts(currentCategory);
+        currentPage = 1; // reset on category change
+        loadBlogPosts(currentCategory, currentPage).then((meta) => {
+          if (meta) currentPage = meta.currentPage;
+        });
       });
       // Ensure initial active is set
       setActive(currentCategory);
@@ -317,7 +369,32 @@ function initBlog() {
       clearBtn.addEventListener('click', () => {
         currentCategory = 'all';
         setActive(currentCategory);
-        loadBlogPosts(currentCategory);
+        currentPage = 1;
+        loadBlogPosts(currentCategory, currentPage).then((meta) => {
+          if (meta) currentPage = meta.currentPage;
+        });
+      });
+    }
+
+    // Pagination click handling (event delegation)
+    if (pagEl) {
+      pagEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-page]');
+        if (!btn) return;
+        const val = btn.getAttribute('data-page');
+        // Compute next page based on current meta
+        loadBlogPosts(currentCategory, currentPage).then((meta) => {
+          if (!meta) return;
+          let next = currentPage;
+          if (val === 'prev') next = Math.max(1, currentPage - 1);
+          else if (val === 'next') next = Math.min(meta.totalPages, currentPage + 1);
+          else next = Number(val) || 1;
+          if (next !== currentPage) {
+            currentPage = next;
+            loadBlogPosts(currentCategory, currentPage).then((m2) => { if (m2) currentPage = m2.currentPage; });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
       });
     }
   }
