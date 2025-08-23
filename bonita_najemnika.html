@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vzorný nájemce – Kalkulačka bonity</title>
+    <!-- Tailwind for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Brand font to match index -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="css/cookies.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffffff 0%, #eff6ff 100%); /* from white to blue-50 */
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(13, 40, 242, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%); /* indigo-50 to blue-100 */
+            color: #0D28F2;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.05em;
+            color: #374151;
+        }
+
+        .menu-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f1f5f9; /* slate-100 */
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 20px;
+            background: #e5e7eb; /* gray-200 */
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .tab:last-child {
+            border-right: none;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #0D28F2 0%, #4F46E5 100%);
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            background: #e2e8f0; /* slate-200 */
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section {
+            background: #f8fafc; /* slate-50 */
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            color: #0f172a; /* slate-900 */
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #334155; /* slate-700 */
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group select {
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb; /* gray-200 */
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #0D28F2;
+            box-shadow: 0 0 0 3px rgba(13, 40, 242, 0.12);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+
+        .result-card h4 {
+            color: #0f172a; /* slate-900 */
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .result-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 5px;
+        }
+
+        .result-value.warning {
+            color: #ffc107;
+        }
+
+        .result-value.danger {
+            color: #dc3545;
+        }
+
+        .result-description {
+            font-size: 0.9em;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        .bonita-score {
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        .bonita-score.high {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        .bonita-score.medium {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+        .bonita-score.low {
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+        }
+
+        .score-number {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .score-text {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .recommendations {
+            background: #eef2ff; /* indigo-50 */
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #c7d2fe; /* indigo-200 */
+        }
+
+        .recommendations h4 {
+            color: #0D28F2;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .recommendation-item {
+            background: white;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .risk-factors {
+            background: #fffbeb; /* amber-50 */
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #fde68a; /* amber-300 */
+        }
+
+        .risk-factors h4 {
+            color: #92400e; /* amber-800 */
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .risk-item {
+            background: white;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border: 1px solid #fde68a;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #0D28F2 0%, #4F46E5 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 9999px; /* pill */
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(13, 40, 242, 0.15);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(13, 40, 242, 0.25);
+        }
+
+        .info-text {
+            background: #eff6ff; /* blue-50 */
+            border: 1px solid #bfdbfe; /* blue-200 */
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #1e3a8a; /* blue-900 */
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .score-number {
+                font-size: 3em;
+            }
+        }
+
+        /* Gate lock state */
+        .locked {
+            opacity: 0.4;
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen p-5">
+    <!-- Top bar with unlock button -->
+    <div class="max-w-6xl mx-auto mb-4 flex items-center justify-between">
+        <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-800/90 bg-white/70 backdrop-blur px-3 py-1.5 rounded-full shadow hover:bg-white transition">
+            <span class="mr-1">←</span> Hlavní menu
+        </a>
+    </div>
+
+    <!-- CTA Modal (branding) -->
+    <div id="ctaModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 mx-auto">
+            <!-- Logo only header (as requested) -->
+            <div class="flex items-center justify-center mb-2">
+                <img src="images/logo.png" alt="Vzorný nájemce" class="h-8 w-auto" />
+            </div>
+            <!-- Title & subtitle -->
+            <h3 class="text-2xl font-extrabold text-gray-900 text-center">Bezstarostný pronájem na dosah</h3>
+            <p class="text-gray-600 text-center mt-1 mb-5">Stačí vyplnit formulář a my vám ukážeme, jak vaši nemovitost pronajmout bezpečně, výhodně a s maximální jistotou.</p>
+
+            <!-- Embedded contact widget -->
+            <div class="w-full" style="min-height: 480px;">
+                <script>
+                    (function (w,d,s,o,f,js,fjs) {
+                        w['ecm-widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+                        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                        js.id = '24-68ad80a8296783256b609ecdeff8aa3e'; js.dataset.a = 'ptf'; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+                    }(window, document, 'script', 'ecmwidget', 'https://d70shl7vidtft.cloudfront.net/widget.js'));
+                </script>
+                <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                    <div id="f-24-68ad80a8296783256b609ecdeff8aa3e" class="w-full h-full contact-embed"></div>
+                </div>
+            </div>
+            <style>
+                /* Scoped styling for embedded contact forms in CTA modal */
+                .contact-embed input,
+                .contact-embed textarea,
+                .contact-embed select {
+                    width: 100% !important;
+                    padding: 12px 14px !important;
+                    border: 1px solid #e5e7eb !important;
+                    border-radius: 12px !important;
+                    background-color: #f9fafb !important;
+                    color: #111827 !important;
+                    font-size: 14px !important;
+                    line-height: 1.5 !important;
+                    box-shadow: none !important;
+                    outline: none !important;
+                    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease !important;
+                }
+                .contact-embed input::placeholder,
+                .contact-embed textarea::placeholder { color: #9ca3af !important; }
+                /* Larger, multi-line message field */
+                .contact-embed textarea {
+                    min-height: 160px !important;
+                    resize: vertical !important;
+                    overflow: auto !important;
+                    display: block !important;
+                    white-space: pre-wrap !important;
+                    word-break: break-word !important;
+                }
+                .contact-embed input:focus,
+                .contact-embed textarea:focus,
+                .contact-embed select:focus {
+                    border-color: #0D28F2 !important;
+                    background-color: #ffffff !important;
+                    box-shadow: 0 0 0 4px rgba(13, 40, 242, 0.12) !important;
+                }
+                .contact-embed label { color: #374151 !important; font-weight: 600 !important; margin-bottom: 6px !important; display:block !important; }
+                .contact-embed button,
+                .contact-embed [type="submit"],
+                .contact-embed .btn,
+                .contact-embed .button {
+                    background-color: #0D28F2 !important;
+                    color: #ffffff !important;
+                    border-radius: 9999px !important;
+                    padding: 12px 18px !important;
+                    font-weight: 700 !important;
+                    border: none !important;
+                    box-shadow: 0 10px 15px -3px rgba(13, 40, 242, 0.25), 0 4px 6px -4px rgba(13, 40, 242, 0.25) !important;
+                    transition: transform .15s ease, background-color .2s ease !important;
+                }
+                .contact-embed button:hover,
+                .contact-embed [type="submit"]:hover,
+                .contact-embed .btn:hover,
+                .contact-embed .button:hover { background-color: rgba(13, 40, 242, 0.9) !important; transform: translateY(-1px) !important; }
+                .contact-embed button:active,
+                .contact-embed [type="submit"]:active,
+                .contact-embed .btn:active,
+                .contact-embed .button:active { transform: translateY(0) !important; }
+                .contact-embed input,
+                .contact-embed textarea,
+                .contact-embed select { margin-bottom: 10px !important; }
+                .contact-embed .form-group { margin-bottom: 12px !important; }
+                .contact-embed small,
+                .contact-embed .hint,
+                .contact-embed .consent { color: #6b7280 !important; font-size: 12px !important; }
+            </style>
+        </div>
+    </div>
+
+    <script>
+      // Handle embedded widget "Zpět na stránku" action and reset widget state
+      (function() {
+        const WIDGET_CONTAINER_ID = 'f-24-68ad80a8296783256b609ecdeff8aa3e';
+        const modalEl = document.getElementById('ctaModal');
+
+        function closeCtaModal() {
+          if (!modalEl) return;
+          modalEl.classList.add('hidden');
+          modalEl.classList.remove('flex');
+        }
+
+        function resetContactWidget() {
+          const old = document.getElementById(WIDGET_CONTAINER_ID);
+          if (!old) return;
+          const parent = old.parentElement;
+          // Remove current widget DOM (thank-you state etc.)
+          old.remove();
+          // Create fresh container with the same ID and classes
+          const fresh = document.createElement('div');
+          fresh.id = WIDGET_CONTAINER_ID;
+          fresh.className = 'w-full h-full contact-embed';
+          parent.appendChild(fresh);
+          // If the widget exposes a reinit API, try it
+          try { if (typeof window.ecmwidget === 'function') window.ecmwidget('init'); } catch (_) {}
+        }
+
+        // Delegate clicks inside the widget to catch the back button
+        document.addEventListener('click', function(e) {
+          const btn = e.target.closest('.contact-embed button, .contact-embed a');
+          if (!btn) return;
+          const label = (btn.textContent || '').trim();
+          if (label.startsWith('Zpět na stránku')) {
+            e.preventDefault();
+            closeCtaModal();
+            // Reset after close so next open shows initial form
+            setTimeout(resetContactWidget, 50);
+          }
+        });
+      })();
+    </script>
+
+    <!-- Password Gate Modal -->
+    <div id="gateModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 mx-auto">
+                <div class="flex items-center mb-4">
+                    <img src="images/logo.png" alt="Vzorný nájemce" class="h-9 w-auto" />
+                </div>
+            <div class="text-gray-700 text-[15px] leading-6 mb-4">
+                Prověřte finanční spolehlivost nájemníka během 2 minut. Výsledek berte jako doporučení – <strong>stoprocentní klid přináší Garantovaný nájem</strong>.
+            </div>
+            <div class="space-y-3">
+                <div class="flex items-stretch gap-2 rounded-2xl border border-[#0D28F2]/30 focus-within:ring-2 focus-within:ring-[#0D28F2] p-1.5">
+                    <input type="password" id="gatePassword" class="flex-1 border-0 focus:outline-none px-3 py-2 rounded-xl" placeholder="Zadejte heslo" />
+                </div>
+                <button id="unlockBtn" class="w-full px-4 py-3 rounded-full bg-[#0D28F2] text-white font-semibold hover:bg-[#0D28F2]/90 shadow-lg">Odemknout kalkulačku</button>
+                <p id="gateError" class="text-sm text-red-600 hidden"></p>
+                <div class="rounded-xl bg-[#0D28F2]/5 text-[#0D28F2] px-3 py-2 text-sm">
+                    Tip: nechcete nic řešit? <a href="#" class="js-open-cta underline font-medium">Zjistěte vše o Garantovaném nájmu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="calculatorContainer" class="container locked">
+        <div class="header">
+            <img src="images/logo.png" alt="Vzorný nájemce" class="mx-auto mb-2" style="height:40px; width:auto;" />
+            <h1>Vzorný nájemce Kalkulačka bonity</h1>
+            <p>Komplexní nástroj pro prověření platební schopnosti a rizikového profilu potenciálního nájemníka</p>
+        </div>
+
+        <div class="content">
+            <!-- Shrnutí -->
+            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 p-4">
+                <div class="font-semibold mb-1">Shrnutí</div>
+                <p class="text-sm">Kalkulačka pomáhá rychle prověřit zájemce. Sledujte <strong>poměr nájmu k příjmu</strong>, <strong>disponibilní příjem</strong> a <strong>rejstříky</strong>. Výsledek berte jako doporučení – stoprocentní klid přináší <strong>Garantovaný nájem</strong>.</p>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit více →</button>
+            </div>
+            <!-- Promo card -->
+            <div class="mb-4 rounded-2xl border border-indigo-100 bg-indigo-50 text-indigo-900 p-4">
+                <div class="font-semibold mb-1">Vzorný nájemce – Garantovaný nájem</div>
+                <p class="text-sm">100% klid: nájem vyplácíme včas každý měsíc, screening nájemníků, právní servis a řešení oprav za vás. Vy jen přijímáte platby.</p>
+                <div class="flex gap-2 mt-2">
+                    <button type="button" class="js-open-cta inline-flex items-center gap-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Získat jistotu →</button>
+                    <a href="klientska-zona.html" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-[#0D28F2] bg-[#0D28F2]/10 hover:bg-[#0D28F2]/20 text-sm font-medium">Kontaktovat nás</a>
+                </div>
+            </div>
+            <!-- Info banner: nothing is stored -->
+            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-4 py-3 text-sm flex items-start gap-2">
+                <img src="images/logo.png" alt="Vzorný nájemce" class="h-5 w-auto mt-0.5"/>
+                <p><strong>Upozornění:</strong> Výpočty jsou pouze orientační a slouží pro vaši informaci. Údaje se nikam <strong>neukládají</strong> ani dále nezpracovávají bez vašeho souhlasu.</p>
+            </div>
+            <!-- Locked notice -->
+            <div id="lockedNotice" class="mb-4">
+                <div class="rounded-xl border border-yellow-200 bg-yellow-50 text-yellow-800 px-4 py-3 text-sm">
+                    <strong>Přístup je uzamčen.</strong> Pro výpočty je potřeba zadat heslo. 
+                    <button id="reopenGate" class="inline-flex items-center gap-1 ml-2 px-2 py-1 rounded-full bg-yellow-600 text-white hover:bg-yellow-700">🔒 Odemknout kalkulačku</button>
+                </div>
+            </div>
+            <div class="tabs">
+                <button class="tab active" onclick="showTab(event, 'personal')">Osobní údaje</button>
+                <button class="tab" onclick="showTab(event, 'income')">Příjmy</button>
+                <button class="tab" onclick="showTab(event, 'expenses')">Výdaje & závazky</button>
+                <button class="tab" onclick="showTab(event, 'evaluation')">Vyhodnocení</button>
+            </div>
+
+            <!-- Osobní údaje -->
+            <div id="personal" class="tab-content active">
+                <div class="section">
+                    <h3>Základní informace o nájemníku</h3>
+                    <div class="info-text">
+                        Zadejte základní údaje o potenciálním nájemníkovi a požadovaném nájmu. Tyto informace budou použity pro výpočet bonity.
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="monthlyRent">Měsíční nájemné (Kč)</label>
+                            <input type="number" id="monthlyRent" placeholder="15000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Věk nájemníka</label>
+                            <input type="number" id="age" placeholder="35" min="0" max="120" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="employmentType">Typ zaměstnání</label>
+                            <select id="employmentType" onchange="calculateBonita()">
+                                <option value="">Vyberte typ zaměstnání</option>
+                                <option value="employee">Zaměstnanec (HPP)</option>
+                                <option value="contract">Zaměstnanec (DPP/DPČ)</option>
+                                <option value="selfemployed">OSVČ</option>
+                                <option value="pensioner">Důchodce</option>
+                                <option value="student">Student</option>
+                                <option value="unemployed">Nezaměstnaný</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employmentLength">Délka současného zaměstnání (měsíce)</label>
+                            <input type="number" id="employmentLength" placeholder="24" min="0" max="600" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="familyMembers">Počet osob v domácnosti</label>
+                            <input type="number" id="familyMembers" placeholder="2" min="1" max="12" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="previousRental">Zkušenosti s pronájmem</label>
+                            <select id="previousRental" onchange="calculateBonita()">
+                                <option value="">Vyberte zkušenost</option>
+                                <option value="none">Žádné zkušenosti</option>
+                                <option value="positive">Pozitivní reference</option>
+                                <option value="negative">Negativní zkušenosti</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Příjmy -->
+            <div id="income" class="tab-content">
+                <div class="section">
+                    <h3>Analýza příjmů</h3>
+                    <div class="info-text">
+                        Zadejte všechny zdroje příjmů nájemníka. Pro OSVČ použijte průměrný měsíční příjem za posledních 12 měsíců.
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="mainIncome">Hlavní příjem (čistý, Kč/měsíc)</label>
+                            <input type="number" id="mainIncome" placeholder="35000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalIncome">Dodatečné příjmy (Kč/měsíc)</label>
+                            <input type="number" id="additionalIncome" placeholder="5000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="partnerIncome">Příjem partnera (čistý, Kč/měsíc)</label>
+                            <input type="number" id="partnerIncome" placeholder="0" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="otherResidentsIncome">Příjmy ostatních spolubydlících (Kč/měsíc)</label>
+                            <input type="number" id="otherResidentsIncome" placeholder="0" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="socialBenefits">Sociální dávky (Kč/měsíc)</label>
+                            <input type="number" id="socialBenefits" placeholder="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="incomeStability">Stabilita příjmů</label>
+                            <select id="incomeStability" onchange="calculateBonita()">
+                                <option value="">Vyberte stabilitu</option>
+                                <option value="stable">Stabilní (pravidelný plat)</option>
+                                <option value="variable">Proměnlivý (provize, sezónní)</option>
+                                <option value="declining">Klesající trend</option>
+                                <option value="growing">Rostoucí trend</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="incomeProof">Doložení příjmů</label>
+                            <select id="incomeProof" onchange="calculateBonita()">
+                                <option value="">Vyberte způsob doložení</option>
+                                <option value="confirmed">Potvrzeno zaměstnavatelem</option>
+                                <option value="tax_return">Daňové přiznání</option>
+                                <option value="bank_statements">Výpisy z účtu</option>
+                                <option value="unconfirmed">Nedoloženo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="seasonalWork" onchange="calculateBonita()">
+                        <label for="seasonalWork">Sezónní práce (stavebnictví, cestovní ruch)</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="probationPeriod" onchange="calculateBonita()">
+                        <label for="probationPeriod">Zkušební doba (méně než 3 měsíce v zaměstnání)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Výdaje & závazky -->
+            <div id="expenses" class="tab-content">
+                <div class="section">
+                    <h3>Měsíční závazky a výdaje</h3>
+                    <div class="info-text">
+                        Zadejte všechny pravidelné měsíční závazky a výdaje. Tyto údaje jsou klíčové pro výpočet disponibilního příjmu.
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="loanPayments">Splátky úvěrů (Kč/měsíc)</label>
+                            <input type="number" id="loanPayments" placeholder="8000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="creditCards">Splátky kreditních karet (Kč/měsíc)</label>
+                            <input type="number" id="creditCards" placeholder="2000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="alimony">Výživné (Kč/měsíc)</label>
+                            <input type="number" id="alimony" placeholder="0" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="insurance">Pojištění (Kč/měsíc)</label>
+                            <input type="number" id="insurance" placeholder="3000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="otherRents">Jiné nájmy (Kč/měsíc)</label>
+                            <input type="number" id="otherRents" placeholder="0" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="livingExpenses">Životní náklady (Kč/měsíc)</label>
+                            <input type="number" id="livingExpenses" placeholder="15000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="financialReserve">Finanční rezerva (Kč)</label>
+                            <input type="number" id="financialReserve" placeholder="50000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="debtHistory">Historie dluhů</label>
+                            <select id="debtHistory" onchange="calculateBonita()">
+                                <option value="">Vyberte historii</option>
+                                <option value="clean">Čistá historie</option>
+                                <option value="minor">Drobné problémy (opozdění)</option>
+                                <option value="major">Vážné problémy</option>
+                                <option value="bankruptcy">Insolvence/exekuce</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="creditRegistry">Kontrola v rejstřících</label>
+                            <select id="creditRegistry" onchange="calculateBonita()">
+                                <option value="">Vyberte stav</option>
+                                <option value="not_checked">Nekontrolováno</option>
+                                <option value="isir_clean">Insolvenční rejstřík čistý</option>
+                                <option value="insolvency">Insolvence</option>
+                                <option value="execution_found">Exekuce – zjištěna</option>
+                                <option value="execution_not_found">Exekuce – nezjištěna</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hasExecution" onchange="calculateBonita()">
+                        <label for="hasExecution">Aktivní exekuce</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hasGuarantor" onchange="calculateBonita()">
+                        <label for="hasGuarantor">Má ručitele</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="allResidentsSigned" onchange="calculateBonita()">
+                        <label for="allResidentsSigned">Všichni spolubydlící podepíší smlouvu</label>
+                    </div>
+                </div>
+
+                <div class="section" id="guarantorSection" style="display: none;">
+                    <h3>Informace o ručiteli</h3>
+                    <div class="info-text">
+                        Pokud má nájemník ručitele, zadejte základní informace pro posouzení jeho bonity.
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="guarantorIncome">Měsíční příjem ručitele (Kč)</label>
+                            <input type="number" id="guarantorIncome" placeholder="40000" min="0" oninput="calculateBonita()">
+                        </div>
+                        <div class="form-group">
+                            <label for="guarantorEmployment">Zaměstnání ručitele</label>
+                            <select id="guarantorEmployment" onchange="calculateBonita()">
+                                <option value="">Vyberte typ</option>
+                                <option value="stable">Stabilní zaměstnání</option>
+                                <option value="selfemployed">OSVČ</option>
+                                <option value="pensioner">Důchodce</option>
+                                <option value="property_owner">Vlastník nemovitostí</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guarantorDebt">Zadlužení ručitele</label>
+                            <select id="guarantorDebt" onchange="calculateBonita()">
+                                <option value="">Vyberte stav</option>
+                                <option value="low">Nízké (do 30% příjmu)</option>
+                                <option value="medium">Střední (30-50% příjmu)</option>
+                                <option value="high">Vysoké (nad 50% příjmu)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guarantorRelation">Vztah k nájemníkovi</label>
+                            <select id="guarantorRelation" onchange="calculateBonita()">
+                                <option value="">Vyberte vztah</option>
+                                <option value="family">Rodinný příslušník</option>
+                                <option value="friend">Přítel/známý</option>
+                                <option value="business">Obchodní partner</option>
+                                <option value="other">Jiný</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vyhodnocení -->
+            <div id="evaluation" class="tab-content">
+                <button class="calculate-btn" onclick="calculateBonita()">Přepočítat bonitu</button>
+                
+                <div id="bonitaScore" class="bonita-score">
+                    <div class="score-number">0</div>
+                    <div class="score-text">Nevyhodnoceno</div>
+                    <div>Vyplňte údaje a klikněte na přepočítat</div>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>Poměr nájmu k příjmu</h4>
+                        <div class="result-value" id="rentToIncomeRatio">0%</div>
+                        <div class="result-description" id="rentToIncomeDesc">Doporučeno max. 30%</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Disponibilní příjem</h4>
+                        <div class="result-value" id="disposableIncome">0 Kč</div>
+                        <div class="result-description" id="disposableIncomeDesc">Po odečtení všech závazků</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Finanční rezerva</h4>
+                        <div class="result-value" id="reserveMonths">0</div>
+                        <div class="result-description" id="reserveDesc">Počet měsíců pokrytí nájmu</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Rizikové skóre</h4>
+                        <div class="result-value" id="riskScore">0</div>
+                        <div class="result-description" id="riskScoreDesc">Celkové riziko (0-100)</div>
+                    </div>
+                    <div class="result-card">
+                        <h4>Kontrola v rejstřících</h4>
+                        <div class="result-value" id="registryStatus">Nekontrolováno</div>
+                        <div class="result-description" id="registryStatusDesc">ISIR/CEE</div>
+                    </div>
+                </div>
+
+                <div id="recommendations" class="recommendations" style="display: none;">
+                    <h4>Doporučení</h4>
+                    <div id="recommendationsList"></div>
+                </div>
+
+                <div id="riskFactors" class="risk-factors" style="display: none;">
+                    <h4>Rizikové faktory</h4>
+                    <div id="riskFactorsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GDPR privacy notice -->
+    <div class="max-w-6xl mx-auto mt-6">
+        <div class="rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-5 py-4 text-sm leading-6">
+            <strong>Ochrana osobních údajů:</strong> Údaje zadané do kalkulačky slouží výhradně pro orientační vyhodnocení bonity a nejsou ukládány bez vašeho souhlasu. 
+            Před uzavřením smlouvy doporučujeme provést samostatné ověření v registru ISIR a CEE. Podrobnosti o zpracování údajů naleznete v dokumentu 
+            <a href="gdpr.html" class="underline font-medium hover:opacity-80">Zásady ochrany osobních údajů</a>.
+        </div>
+    </div>
+
+    <!-- Jak používat kalkulačku: průvodce -->
+    <div class="max-w-6xl mx-auto mt-6">
+        <div class="rounded-2xl bg-white shadow p-6">
+            <h2 class="text-xl font-semibold mb-3">Jak používat kalkulačku bonity nájemníka</h2>
+            <p class="text-sm text-gray-700 mb-4">Praktický návod pro majitele bytů a pronajímatele</p>
+
+            <h3 class="font-semibold mt-2 mb-2">1. Co kalkulačka vyhodnocuje</h3>
+            <p class="text-sm text-gray-700 mb-2">Naše kalkulačka vám pomůže rychle zjistit, zda je zájemce o pronájem finančně spolehlivý. Vyhodnocuje:</p>
+            <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
+                <li>výši nájemného,</li>
+                <li>příjmy domácnosti,</li>
+                <li>pravidelné závazky (úvěry, alimenty, jiné nájmy),</li>
+                <li>stabilitu zaměstnání,</li>
+                <li>finanční rezervu,</li>
+                <li>případné záznamy v rejstřících (insolvence – ISIR, exekuce – CEE).</li>
+            </ul>
+            <p class="text-sm text-gray-700 mb-3">💡 Smyslem je odhalit rizika ještě před podpisem smlouvy.</p>
+            <div>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Ověřit zájemce s Vzorným nájemcem →</button>
+            </div>
+
+            <h3 class="font-semibold mt-4 mb-2">2. Jak číst výsledky (skóre 0–100)</h3>
+            <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
+                <li><strong>70–100 bodů:</strong> Výborná bonita – nájemník má dostatečný příjem a stabilitu. Obvykle postačí standardní podmínky (kauce 1–2× nájemné).</li>
+                <li><strong>50–69 bodů:</strong> Střední bonita – doporučujeme větší obezřetnost. Může pomoci vyšší kauce (2–3× nájemné) nebo ručitel.</li>
+                <li><strong>30–49 bodů:</strong> Nízká bonita – vyšší riziko. Vhodné je podrobnější prověření, maximální zákonná kauce (3× nájemné) a zvážení ručitele.</li>
+                <li><strong>0–29 bodů:</strong> Kritické riziko – příjem nestačí na pokrytí nájemného nebo jsou zjištěny problémy v rejstřících. Zde doporučujeme maximální opatrnost.</li>
+            </ul>
+            <div>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Chci garantované nájemné →</button>
+            </div>
+
+            <h3 class="font-semibold mt-4 mb-2">3. Důležité ukazatele</h3>
+            <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
+                <li><strong>Poměr nájmu k příjmu</strong> – ideálně do 30 %. Nad 40 % už se zvyšuje riziko neplacení.</li>
+                <li><strong>Disponibilní příjem</strong> – měl by být vyšší než nájem.</li>
+                <li><strong>Finanční rezerva</strong> – 3–6 měsíců je dobrý základ, méně než 1 měsíc znamená zvýšené riziko.</li>
+                <li><strong>Rejstříky (ISIR, CEE)</strong> – aktivní insolvence nebo exekuce jsou signálem k větší opatrnosti.</li>
+            </ul>
+            <p class="text-sm text-gray-700 mb-2">👉 Naše kalkulačka vám ukáže skóre, ale skutečný klid přináší až Vzorný nájemce.</p>
+            <div>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit, jak funguje Vzorný nájemce →</button>
+            </div>
+
+            <h3 class="font-semibold mt-4 mb-2">4. Jak s výsledky pracovat</h3>
+            <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
+                <li>Berte kalkulačku jako <strong>orientační pomůcku</strong>, která ukáže hlavní rizika.</li>
+                <li>Vždy požadujte <strong>doložení příjmů</strong> (výpisy z účtu, potvrzení zaměstnavatele, daňové přiznání u OSVČ).</li>
+                <li>Ptejte se na souvislosti – krátká doba v zaměstnání nemusí být problém, pokud jde o obor s vysokou poptávkou.</li>
+                <li>Nepodceňujte <strong>nájemní smlouvu a předávací protokol</strong> – ty jsou pro ochranu majitele i nájemníka klíčové.</li>
+            </ul>
+            <p class="text-sm text-gray-700 mb-2">👉 Chcete mít smlouvy, kontroly i nájemníky pod dohledem? S Vzorným nájemcem se o vše postaráme za vás.</p>
+            <div>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Spolehnout se na Vzorný nájemce →</button>
+            </div>
+
+            <h3 class="font-semibold mt-4 mb-2">5. Jak mít úplnou jistotu</h3>
+            <p class="text-sm text-gray-700 mb-2">Ani pečlivě vybraný nájemník není zárukou, že se jeho situace v budoucnu nezmění. Proto je tu služba <strong>Vzorný nájemce</strong>:</p>
+            <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
+                <li>nájemné dostáváte pravidelně každý měsíc,</li>
+                <li>komunikaci s nájemníky a případné problémy řešíme my,</li>
+                <li>smlouvy, kontroly i správa jsou v našich rukou,</li>
+                <li>vy máte klid a jistotu, že byt vydělává.</li>
+            </ul>
+            <div>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Mít jistotu s Vzorným nájemcem →</button>
+            </div>
+
+            <div class="rounded-lg bg-indigo-50 border border-indigo-100 p-4 mt-4">
+                <div class="font-semibold text-indigo-900">Shrnutí</div>
+                <p class="text-sm text-indigo-900 mt-1">Kalkulačka vám pomůže rychle zjistit, zda je zájemce finančně spolehlivý. Sledujte hlavně poměr nájmu k příjmu, disponibilní příjem a záznamy v rejstřících. Výsledek berte jako doporučení – ale pokud chcete stoprocentní klid, využijte službu Vzorný nájemce, která vám zaručí pravidelný příjem a bezstarostný pronájem.</p>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Chci garantovaný nájem od Vzorného nájemce →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(event, tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            (event.currentTarget || event.target).classList.add('active');
+        }
+        
+        // Show/hide guarantor section based on checkbox
+        document.addEventListener('DOMContentLoaded', function() {
+            const guarantorCheckbox = document.getElementById('hasGuarantor');
+            const guarantorSection = document.getElementById('guarantorSection');
+            
+            guarantorCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    guarantorSection.style.display = 'block';
+                } else {
+                    guarantorSection.style.display = 'none';
+                    // Clear guarantor fields
+                    document.getElementById('guarantorIncome').value = '';
+                    document.getElementById('guarantorEmployment').value = '';
+                    document.getElementById('guarantorDebt').value = '';
+                    document.getElementById('guarantorRelation').value = '';
+                }
+            });
+        });
+
+        function calculateBonita() {
+            // Get all input values
+            const monthlyRent = parseFloat(document.getElementById('monthlyRent').value) || 0;
+            const mainIncome = parseFloat(document.getElementById('mainIncome').value) || 0;
+            const additionalIncome = parseFloat(document.getElementById('additionalIncome').value) || 0;
+            const partnerIncome = parseFloat(document.getElementById('partnerIncome').value) || 0;
+            const socialBenefits = parseFloat(document.getElementById('socialBenefits').value) || 0;
+            
+            const loanPayments = parseFloat(document.getElementById('loanPayments').value) || 0;
+            const creditCards = parseFloat(document.getElementById('creditCards').value) || 0;
+            const alimony = parseFloat(document.getElementById('alimony').value) || 0;
+            const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+            const otherRents = parseFloat(document.getElementById('otherRents').value) || 0;
+            const livingExpenses = parseFloat(document.getElementById('livingExpenses').value) || 0;
+            const financialReserve = parseFloat(document.getElementById('financialReserve').value) || 0;
+            
+            const employmentType = document.getElementById('employmentType').value;
+            const employmentLength = parseFloat(document.getElementById('employmentLength').value) || 0;
+            const incomeStability = document.getElementById('incomeStability').value;
+            const incomeProof = document.getElementById('incomeProof').value;
+            const debtHistory = document.getElementById('debtHistory').value;
+            const creditRegistry = document.getElementById('creditRegistry').value;
+            const previousRental = document.getElementById('previousRental').value;
+            
+            const hasExecution = document.getElementById('hasExecution').checked;
+            const hasGuarantor = document.getElementById('hasGuarantor').checked;
+            const allResidentsSigned = document.getElementById('allResidentsSigned').checked;
+            const seasonalWork = document.getElementById('seasonalWork').checked;
+            const probationPeriod = document.getElementById('probationPeriod').checked;
+            
+            // Guarantor info
+            const guarantorIncome = parseFloat(document.getElementById('guarantorIncome').value) || 0;
+            const guarantorEmployment = document.getElementById('guarantorEmployment').value;
+            const guarantorDebt = document.getElementById('guarantorDebt').value;
+            const guarantorRelation = document.getElementById('guarantorRelation').value;
+
+            // Calculate totals
+            const otherResidentsIncome = parseFloat(document.getElementById('otherResidentsIncome').value) || 0;
+            const totalIncome = mainIncome + additionalIncome + partnerIncome + socialBenefits + otherResidentsIncome;
+            const totalExpenses = loanPayments + creditCards + alimony + insurance + otherRents + livingExpenses;
+            const disposableIncome = totalIncome - totalExpenses;
+            
+            // Calculate key ratios
+            const rentToIncomeRatio = totalIncome > 0 ? (monthlyRent / totalIncome) * 100 : 0;
+            const reserveMonths = monthlyRent > 0 ? financialReserve / monthlyRent : 0;
+            
+            // Odstraněn blok omezení: kalkulace běží i při prázdných hodnotách
+
+            // Calculate bonita score (0-100)
+            let bonitaScore = 100;
+            let riskFactors = [];
+            let recommendations = [];
+
+            // Income to rent ratio evaluation
+            if (rentToIncomeRatio > 40) {
+                bonitaScore -= 30;
+                riskFactors.push('Nájemné překračuje 40% příjmu - vysoké riziko');
+                recommendations.push('Zvážit ručitele a vyšší kauci (až 3× nájemné)');
+            } else if (rentToIncomeRatio > 30) {
+                bonitaScore -= 15;
+                riskFactors.push('Nájemné překračuje 30% příjmu - střední riziko');
+                recommendations.push('Zvážit požadavek na ručitele nebo vyšší kauci (2-3x nájemné)');
+            } else if (rentToIncomeRatio > 0 && rentToIncomeRatio < 25) {
+                bonitaScore += 5;
+                recommendations.push('Nízký poměr nájmu k příjmu – pozitivní faktor');
+            }
+
+            // Employment type evaluation
+            switch (employmentType) {
+                case 'selfemployed':
+                    bonitaScore -= 15;
+                    riskFactors.push('OSVČ - vyšší riziko nestabilních příjmů');
+                    recommendations.push('Vyžádat daňová přiznání za 2 roky a výpisy z účtu za 6 měsíců');
+                    break;
+                case 'contract':
+                    bonitaScore -= 10;
+                    riskFactors.push('Práce na DPP/DPČ - nižší jistota zaměstnání');
+                    break;
+                case 'student':
+                    bonitaScore -= 20;
+                    riskFactors.push('Student - nestabilní příjmy');
+                    recommendations.push('Požadovat ručitele a vyšší kauci');
+                    break;
+                case 'unemployed':
+                    bonitaScore -= 40;
+                    riskFactors.push('Nezaměstnaný - žádný pravidelný příjem');
+                    recommendations.push('Požadovat solventního ručitele');
+                    break;
+                case 'pensioner':
+                    if (totalIncome < 20000) {
+                        bonitaScore -= 10;
+                        riskFactors.push('Nízký důchod - omezená platební schopnost');
+                    }
+                    break;
+            }
+
+            // Employment length evaluation
+            if (employmentLength < 6) {
+                bonitaScore -= 15;
+                riskFactors.push('Krátká doba zaměstnání (méně než 6 měsíců)');
+                recommendations.push('Požadovat ručitele nebo vyšší kauci');
+            } else if (employmentLength < 12) {
+                bonitaScore -= 8;
+                riskFactors.push('Relativně krátká doba zaměstnání');
+            }
+
+            // Income stability evaluation
+            switch (incomeStability) {
+                case 'declining':
+                    bonitaScore -= 20;
+                    riskFactors.push('Klesající trend příjmů');
+                    break;
+                case 'variable':
+                    bonitaScore -= 10;
+                    riskFactors.push('Proměnlivé příjmy');
+                    break;
+                case 'growing':
+                    bonitaScore += 5;
+                    break;
+            }
+
+            // Income proof evaluation
+            switch (incomeProof) {
+                case 'unconfirmed':
+                    bonitaScore -= 25;
+                    riskFactors.push('Nedoložené příjmy');
+                    recommendations.push('Vyžádat oficiální potvrzení o příjmech');
+                    break;
+                case 'bank_statements':
+                    bonitaScore -= 10;
+                    riskFactors.push('Příjmy doloženy pouze výpisy z účtu');
+                    break;
+            }
+
+            // Debt history evaluation
+            switch (debtHistory) {
+                case 'bankruptcy':
+                    bonitaScore -= 40;
+                    riskFactors.push('Historie insolvence/exekuce');
+                    recommendations.push('Důkladně zvážit riziko, požadovat vysokou kauci');
+                    break;
+                case 'major':
+                    bonitaScore -= 25;
+                    riskFactors.push('Vážné problémy s dluhy v minulosti');
+                    break;
+                case 'minor':
+                    bonitaScore -= 10;
+                    riskFactors.push('Drobné problémy s platbami v minulosti');
+                    break;
+            }
+
+            // Registry evaluation (ISIR/CEE)
+            switch (creditRegistry) {
+                case 'not_checked':
+                    bonitaScore -= 5;
+                    riskFactors.push('Rejstříky neprověřeny');
+                    recommendations.push('Doporučujeme prověřit ISIR (insolvence) a CEE (exekuce)');
+                    break;
+                case 'isir_clean':
+                    bonitaScore += 3;
+                    recommendations.push('ISIR bez záznamu – pozitivní faktor');
+                    break;
+                case 'insolvency':
+                    bonitaScore -= 50;
+                    riskFactors.push('Zjištěna insolvence – kritické riziko');
+                    recommendations.push('Kritické riziko – doporučujeme maximální zajištění (vyšší kauce, ručitel) a individuální posouzení');
+                    break;
+                case 'execution_found':
+                    bonitaScore -= 30;
+                    riskFactors.push('Zjištěna exekuce');
+                    recommendations.push('Zvážit ručitele a vyšší kauci (až 3× nájemné); rozhodnutí ponechat na individuálním posouzení');
+                    break;
+                case 'execution_not_found':
+                    bonitaScore += 2;
+                    recommendations.push('CEE bez záznamu – pozitivní faktor');
+                    break;
+            }
+
+            // Previous rental experience
+            switch (previousRental) {
+                case 'negative':
+                    bonitaScore -= 20;
+                    riskFactors.push('Negativní zkušenosti s pronájmem');
+                    break;
+                case 'positive':
+                    bonitaScore += 5;
+                    break;
+            }
+
+            // Additional risk factors
+            if (hasExecution) {
+                bonitaScore -= 30;
+                riskFactors.push('Aktivní exekuce');
+                recommendations.push('Požadovat ručitele a vyšší kauci (až 3× nájemné); případně individuální posouzení');
+            }
+
+            if (seasonalWork) {
+                bonitaScore -= 10;
+                riskFactors.push('Sezónní práce - nestabilní příjmy během roku');
+                recommendations.push('Vyžádat příjmy za celý rok, zvážit kauci podle nejnižšího měsíčního příjmu');
+            }
+
+            if (probationPeriod) {
+                bonitaScore -= 15;
+                riskFactors.push('Zkušební doba - nejistota pokračování zaměstnání');
+                recommendations.push('Počkat na ukončení zkušební doby nebo požadovat ručitele');
+            }
+
+            // Guarantor evaluation
+            if (hasGuarantor) {
+                let guarantorBonus = 15;
+                
+                // Evaluate guarantor quality
+                if (guarantorIncome >= totalIncome * 2) {
+                    guarantorBonus += 10;
+                    recommendations.push('Ručitel s vysokými příjmy - výborná záruka');
+                } else if (guarantorIncome < totalIncome) {
+                    guarantorBonus -= 5;
+                    riskFactors.push('Ručitel má nižší příjmy než nájemník');
+                }
+                
+                switch (guarantorEmployment) {
+                    case 'stable':
+                        guarantorBonus += 5;
+                        break;
+                    case 'property_owner':
+                        guarantorBonus += 10;
+                        recommendations.push('Ručitel vlastník nemovitostí - výborná záruka');
+                        break;
+                    case 'selfemployed':
+                        guarantorBonus -= 3;
+                        break;
+                }
+                
+                switch (guarantorDebt) {
+                    case 'high':
+                        guarantorBonus -= 8;
+                        riskFactors.push('Ručitel má vysoké zadlužení');
+                        break;
+                    case 'medium':
+                        guarantorBonus -= 3;
+                        break;
+                }
+                
+                if (guarantorRelation === 'family') {
+                    guarantorBonus += 3;
+                }
+                
+                bonitaScore += guarantorBonus;
+                recommendations.push(`Ručitel přináší ${guarantorBonus} bodů - ověřit jeho bonitu`);
+            }
+
+            if (reserveMonths >= 6) {
+                bonitaScore += 15;
+                recommendations.push('Výborná finanční rezerva - nízké riziko');
+            } else if (reserveMonths >= 3) {
+                bonitaScore += 10;
+            } else if (reserveMonths < 1) {
+                bonitaScore -= 15;
+                riskFactors.push('Nedostatečná finanční rezerva');
+                recommendations.push('Zvážit vyšší kauci (až 3× nájemné) kvůli nízké finanční rezervě');
+            }
+
+            // Advanced risk combinations
+            const highRiskCombination = (employmentType === 'selfemployed' && employmentLength < 24) ||
+                                      (employmentType === 'contract' && reserveMonths < 2) ||
+                                      (rentToIncomeRatio > 35 && incomeStability === 'variable');
+            
+            if (highRiskCombination) {
+                riskFactors.push('Kombinace rizikových faktorů - zvýšené riziko');
+                recommendations.push('Doporučujeme důkladnou kontrolu všech dokumentů a vyšší kauci (až 3× nájemné)');
+            }
+
+            // Age-related recommendations
+            const age = parseFloat(document.getElementById('age').value) || 0;
+            if (age < 25 && employmentLength < 12) {
+                riskFactors.push('Mladý věk s krátkou pracovní historií');
+                recommendations.push('Zvážit požadavek na ručitele nebo rodiče jako spolupodepsané');
+            }
+            
+            if (age > 65 && employmentType === 'pensioner' && totalIncome < 18000) {
+                riskFactors.push('Senior s nízkým důchodem');
+                recommendations.push('Ověřit stabilitu důchodu a případné příjmy z investic');
+            }
+
+            // Income vs expenses validation
+            if (disposableIncome < monthlyRent) {
+                riskFactors.push('Kritické: Disponibilní příjem je nižší než nájemné');
+                recommendations.push('Kritické: nedostatečné prostředky na nájem – doporučujeme silné zajištění (vyšší kauce, ručitel) a individuální posouzení');
+                bonitaScore = Math.min(bonitaScore, 20); // Cap at very low score
+            }
+
+            // Multiple income sources validation
+            const incomeSourcesCount = [mainIncome, additionalIncome, partnerIncome, socialBenefits, otherResidentsIncome].filter(income => income > 0).length;
+            
+            // Residents solidarity evaluation
+            if (otherResidentsIncome > 0 && !allResidentsSigned) {
+                riskFactors.push('Příjmy od spolubydlících, kteří nepodepíší smlouvu');
+                recommendations.push('Všichni příjmově aktivní spolubydlící musí podepsat smlouvu jako solidární dlužníci');
+                bonitaScore -= 10;
+            } else if (otherResidentsIncome > 0 && allResidentsSigned) {
+                bonitaScore += 5;
+                recommendations.push('Všichni spolubydlící podepíší jako solidární dlužníci - snížené riziko');
+            }
+            if (incomeSourcesCount === 1 && mainIncome < 30000) {
+                riskFactors.push('Závislost na jediném zdroji příjmu');
+                recommendations.push('Zvážit diverzifikaci příjmů nebo požadovat ručitele');
+            }
+
+            // Debt to income ratio
+            const debtToIncomeRatio = totalIncome > 0 ? ((loanPayments + creditCards + alimony) / totalIncome) * 100 : 0;
+            if (debtToIncomeRatio > 50) {
+                bonitaScore -= 20;
+                riskFactors.push('Vysoké zadlužení - více než 50% příjmu');
+                recommendations.push('Požadovat snížení dluhů před podpisem smlouvy');
+            } else if (debtToIncomeRatio > 30) {
+                bonitaScore -= 10;
+                riskFactors.push('Střední zadlužení - 30-50% příjmu');
+            }
+
+            // Family size considerations
+            const familyMembers = parseFloat(document.getElementById('familyMembers').value) || 1;
+            const incomePerPerson = totalIncome / familyMembers;
+            if (incomePerPerson < 15000 && familyMembers > 2) {
+                riskFactors.push('Nízký příjem na osobu ve větší domácnosti');
+                recommendations.push('Ověřit sociální dávky a podporu pro rodiny s dětmi');
+            }
+
+            // Final recommendations based on score
+            if (bonitaScore >= 70) {
+                recommendations.push('Nízké riziko – standardní podmínky (1–2× nájemné jako kauce)');
+            } else if (bonitaScore >= 50) {
+                recommendations.push('Střední riziko – zvážit zvýšenou kauci (2–3× nájemné) a důkladnější kontrolu');
+            } else if (bonitaScore >= 30) {
+                recommendations.push('Vysoké riziko – zvážit ručitele a vyšší kauci (až 3× nájemné); rozhodnutí je na vás');
+            } else {
+                recommendations.push('Kritické riziko – doporučujeme maximální zajištění a pečlivé individuální posouzení');
+            }
+
+            // Industry-specific warnings
+            if (employmentType === 'selfemployed') {
+                recommendations.push('OSVČ: Vyžádat potvrzení o bezdlužnosti vůči ČSSZ a finančnímu úřadu');
+            }
+            
+            // Registry checks recommendation
+            if (creditRegistry === 'not_checked') {
+                recommendations.push('Doporučujeme prověřit ISIR (insolvence) a CEE (exekuce)');
+            }
+
+            // Seasonal timing recommendations
+            const currentMonth = new Date().getMonth() + 1;
+            if (seasonalWork && (currentMonth >= 11 || currentMonth <= 2)) {
+                recommendations.push('Sezónní práce v zimním období - zvýšené riziko snížených příjmů');
+            }
+
+            // Ensure score is within bounds
+            bonitaScore = Math.max(0, Math.min(100, bonitaScore));
+            const riskScore = 100 - bonitaScore;
+
+            // Update UI
+            updateBonitaDisplay(bonitaScore, rentToIncomeRatio, disposableIncome, reserveMonths, riskScore, riskFactors, recommendations, creditRegistry);
+        }
+
+        function updateBonitaDisplay(bonitaScore, rentToIncomeRatio, disposableIncome, reserveMonths, riskScore, riskFactors, recommendations, creditRegistry) {
+            // Update bonita score display
+            const scoreElement = document.querySelector('.score-number');
+            const scoreTextElement = document.querySelector('.score-text');
+            const scoreContainer = document.getElementById('bonitaScore');
+            
+            scoreElement.textContent = Math.round(bonitaScore);
+            
+            // Update score classification and styling
+            scoreContainer.className = 'bonita-score';
+            if (bonitaScore >= 70) {
+                scoreTextElement.textContent = 'Výborná bonita';
+                scoreContainer.classList.add('high');
+            } else if (bonitaScore >= 50) {
+                scoreTextElement.textContent = 'Střední bonita';
+                scoreContainer.classList.add('medium');
+            } else {
+                scoreTextElement.textContent = 'Nízká bonita';
+                scoreContainer.classList.add('low');
+            }
+
+            // Update result cards
+            updateResultCard('rentToIncomeRatio', rentToIncomeRatio.toFixed(1) + '%', 
+                rentToIncomeRatio > 40 ? 'danger' : rentToIncomeRatio > 30 ? 'warning' : 'success');
+            
+            updateResultCard('disposableIncome', formatCurrency(disposableIncome), 
+                disposableIncome < 0 ? 'danger' : disposableIncome < 10000 ? 'warning' : 'success');
+            
+            updateResultCard('reserveMonths', reserveMonths.toFixed(1), 
+                reserveMonths < 1 ? 'danger' : reserveMonths < 3 ? 'warning' : 'success');
+            
+            updateResultCard('riskScore', Math.round(riskScore), 
+                riskScore > 50 ? 'danger' : riskScore > 30 ? 'warning' : 'success');
+
+            // Update registry status
+            let registryStatusText = 'Nekontrolováno';
+            let registryStatusClass = 'warning';
+            switch (creditRegistry) {
+                case 'isir_clean':
+                    registryStatusText = 'ISIR: bez záznamu';
+                    registryStatusClass = 'success';
+                    break;
+                case 'execution_not_found':
+                    registryStatusText = 'CEE: bez záznamu';
+                    registryStatusClass = 'success';
+                    break;
+                case 'execution_found':
+                    registryStatusText = 'CEE: exekuce zjištěna';
+                    registryStatusClass = 'danger';
+                    break;
+                case 'insolvency':
+                    registryStatusText = 'ISIR: insolvence zjištěna';
+                    registryStatusClass = 'danger';
+                    break;
+                case 'not_checked':
+                    registryStatusText = 'Nekontrolováno';
+                    registryStatusClass = 'warning';
+                    break;
+                default:
+                    registryStatusText = 'Nevybráno';
+                    registryStatusClass = 'warning';
+                    break;
+            }
+            updateResultCard('registryStatus', registryStatusText, registryStatusClass);
+
+            // Update recommendations
+            updateRecommendations(recommendations);
+            
+            // Update risk factors
+            updateRiskFactors(riskFactors);
+        }
+
+        function updateResultCard(id, value, status) {
+            const valueElement = document.getElementById(id);
+            const cardElement = valueElement.closest('.result-card');
+            
+            valueElement.textContent = value;
+            valueElement.className = 'result-value ' + status;
+            
+            cardElement.className = 'result-card';
+        }
+
+        function updateRecommendations(recommendations) {
+            const container = document.getElementById('recommendations');
+            const listElement = document.getElementById('recommendationsList');
+            
+            // Dedupe and normalize recommendations
+            // Remove hard reject-style recommendations so user can decide independently
+            const rejectRe = /(odmítn|nedoporuč|nepronaj)/i;
+            const unique = Array.from(new Set(
+                recommendations
+                    .filter(Boolean)
+                    .filter(rec => !rejectRe.test(rec))
+            ));
+            if (unique.length > 0) {
+                container.style.display = 'block';
+                listElement.innerHTML = unique.map(rec => 
+                    `<div class="recommendation-item">${rec}</div>`
+                ).join('');
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        function updateRiskFactors(riskFactors) {
+            const container = document.getElementById('riskFactors');
+            const listElement = document.getElementById('riskFactorsList');
+            
+            if (riskFactors.length > 0) {
+                container.style.display = 'block';
+                listElement.innerHTML = riskFactors.map(risk => 
+                    `<div class="risk-item">${risk}</div>`
+                ).join('');
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('cs-CZ', {
+                style: 'currency',
+                currency: 'CZK',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+    </script>
+    <script>
+        // Vanilla JS controller for password gate
+        (function() {
+            const closeBtn = document.getElementById('closeGateBtn');
+            const modal = document.getElementById('gateModal');
+            const pwdInput = document.getElementById('gatePassword');
+            const unlockBtn = document.getElementById('unlockBtn');
+            const errorEl = document.getElementById('gateError');
+            const container = document.getElementById('calculatorContainer');
+            const notice = document.getElementById('lockedNotice');
+            const reopenBtn = document.getElementById('reopenGate');
+            // CTA modal
+            const ctaModal = document.getElementById('ctaModal');
+            const closeCtaBtn = document.getElementById('closeCtaBtn');
+            const ctaTriggers = document.querySelectorAll('.js-open-cta');
+
+            const checkPassword = (p) => p === 'vzorny2025'; // demo only
+
+            function openModal() {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                errorEl.classList.add('hidden');
+                errorEl.textContent = '';
+                pwdInput.value = '';
+                setTimeout(() => pwdInput.focus(), 0);
+            }
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+            function unlock() {
+                const val = pwdInput.value || '';
+                if (checkPassword(val)) {
+                    container.classList.remove('locked');
+                    if (notice) notice.style.display = 'none';
+                    closeModal();
+                } else {
+                    errorEl.textContent = 'Nesprávné heslo';
+                    errorEl.classList.remove('hidden');
+                }
+            }
+
+            // CTA modal helpers
+            function openCta() {
+                if (ctaModal) {
+                    ctaModal.classList.remove('hidden');
+                    ctaModal.classList.add('flex');
+                } else {
+                    window.location.href = 'klientska-zona.html';
+                }
+            }
+            function closeCta() {
+                if (!ctaModal) return;
+                ctaModal.classList.add('hidden');
+                ctaModal.classList.remove('flex');
+            }
+
+            closeBtn?.addEventListener('click', closeModal);
+            modal?.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            unlockBtn?.addEventListener('click', unlock);
+            reopenBtn?.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+            pwdInput?.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    unlock();
+                }
+            });
+
+            // CTA modal bindings
+            ctaTriggers.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openCta();
+                });
+            });
+            closeCtaBtn?.addEventListener('click', closeCta);
+            ctaModal?.addEventListener('click', (e) => {
+                if (e.target === ctaModal) closeCta();
+            });
+
+            // CTA form submit handler
+            const ctaForm = document.getElementById('ctaForm');
+            const ctaFormMsg = document.getElementById('ctaFormMsg');
+            ctaForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (!ctaFormMsg) return;
+                const data = new FormData(ctaForm);
+                const required = ['firstName','lastName','email','phone'];
+                const missing = required.filter(k => !(data.get(k) || '').toString().trim());
+                if (missing.length) {
+                    ctaFormMsg.textContent = 'Prosíme, vyplňte všechna povinná pole (jméno, příjmení, e‑mail, telefon).';
+                    ctaFormMsg.className = 'text-sm text-red-600';
+                    return;
+                }
+                // Simulated submit – here you can integrate your backend endpoint
+                ctaFormMsg.textContent = 'Děkujeme! Ozveme se vám co nejdříve.';
+                ctaFormMsg.className = 'text-sm text-green-600';
+                // Optionally clear fields
+                ctaForm.reset();
+                // Auto-close after short delay
+                setTimeout(() => closeCta(), 1200);
+            });
+            
+            // Auto-open modal on load so odemknutí proběhne přímo v popupu
+            openModal();
+        })();
+    </script>
+</body>
+</html>

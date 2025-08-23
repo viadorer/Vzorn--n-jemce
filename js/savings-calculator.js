@@ -33,6 +33,7 @@ class SavingsCalculator {
                 <div class="text-center mb-8">
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">Ušetřete se Vzorným nájemcem</h2>
                     <p class="text-lg text-gray-600">Spočítejte si, kolik ušetříte s profesionální správou</p>
+                    <img src="images/busta.png" alt="Vzorný nájemce" class="mx-auto mt-4 w-12 h-12 object-contain hidden sm:block" loading="lazy">
                 </div>
 
                 <!-- Vstupní hodnoty -->
@@ -78,7 +79,10 @@ class SavingsCalculator {
                         <!-- Vlastní správa -->
                         <div class="bg-white rounded-xl p-6 border-2 border-gray-200">
                             <div class="text-center mb-4">
-                                <h4 class="text-lg font-bold text-gray-700 mb-2">Vlastní správa</h4>
+                                <div class="flex items-center justify-center gap-2 mb-2">
+                                    <img src="images/tenant.png" alt="Vlastní správa" class="w-6 h-6 object-contain" loading="lazy">
+                                    <h4 class="text-lg font-bold text-gray-700">Vlastní správa</h4>
+                                </div>
                                 <div class="text-2xl font-bold text-gray-800" id="selfManagementTotal">0 Kč</div>
                             </div>
                             
@@ -182,7 +186,10 @@ class SavingsCalculator {
                         <!-- Vzorný nájemce -->
                         <div class="bg-white rounded-xl p-6 border-2 border-[#0D28F2]">
                             <div class="text-center mb-4">
-                                <h4 class="text-lg font-bold text-[#0D28F2] mb-2">Vzorný nájemce</h4>
+                                <div class="flex items-center justify-center gap-2 mb-2">
+                                    <img src="images/logo.png" alt="Vzorný nájemce" class="w-6 h-6 object-contain" loading="lazy">
+                                    <h4 class="text-lg font-bold text-[#0D28F2]">Vzorný nájemce</h4>
+                                </div>
                                 <div class="text-2xl font-bold text-[#0D28F2]" id="professionalTotal">0 Kč</div>
                             </div>
                             
@@ -287,16 +294,21 @@ class SavingsCalculator {
         document.getElementById('selfManagementTotal').textContent = this.formatCurrency(calculations.selfManagementTotal);
 
         // Vzorný nájemce
-        document.getElementById('professionalCommission').textContent = this.formatCurrency(calculations.commissionCost);
-        document.getElementById('professionalTotal').textContent = this.formatCurrency(calculations.professionalTotal);
+        document.getElementById('professionalCommission').textContent = `od ${this.formatCurrency(calculations.commissionCost)}`;
+        document.getElementById('professionalTotal').textContent = `od ${this.formatCurrency(calculations.professionalTotal)}`;
 
         // Úspora
         document.getElementById('totalSavings').textContent = this.formatCurrency(calculations.totalSavings);
-        
-        const savingsDescription = calculations.totalSavings > 0 
-            ? `To je ${Math.round(calculations.totalSavings / this.data.monthlyRent)} měsíčních nájmů!`
-            : 'Profesionální správa se vyplatí dlouhodobě';
-        
+
+        // Bezpečný výpočet ekvivalentu v počtu nájmů (zabraňuje Infinity/NaN při mazání vstupu)
+        let savingsDescription = 'Profesionální správa se vyplatí dlouhodobě';
+        if (calculations.totalSavings > 0 && this.data.monthlyRent > 0) {
+            const monthsEq = Math.round(calculations.totalSavings / this.data.monthlyRent);
+            if (Number.isFinite(monthsEq) && monthsEq > 0) {
+                savingsDescription = `To je ${monthsEq} měsíčních nájmů!`;
+            }
+        }
+
         document.getElementById('savingsDescription').textContent = savingsDescription;
     }
 
