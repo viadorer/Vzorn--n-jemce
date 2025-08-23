@@ -499,8 +499,14 @@
     <div id="gateModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 mx-auto">
-                <div class="flex items-center mb-4">
-                    <img src="images/logo.png" alt="Vzorný nájemce" class="h-9 w-auto" />
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-2">
+                        <img src="images/logo.png" alt="Vzorný nájemce" class="h-9 w-auto" />
+                        <span class="text-base font-semibold text-gray-900">Vzorný nájemce</span>
+                    </div>
+                    <button id="closeGateBtn" type="button" aria-label="Zavřít" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#0D28F2]">
+                        <span class="text-xl leading-none">&times;</span>
+                    </button>
                 </div>
             <div class="text-gray-700 text-[15px] leading-6 mb-4">
                 Prověřte finanční spolehlivost nájemníka během 2 minut. Výsledek berte jako doporučení – <strong>stoprocentní klid přináší Garantovaný nájem</strong>.
@@ -515,6 +521,7 @@
                     Tip: nechcete nic řešit? <a href="#" class="js-open-cta underline font-medium">Zjistěte vše o Garantovaném nájmu</a>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -526,26 +533,6 @@
         </div>
 
         <div class="content">
-            <!-- Shrnutí -->
-            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 p-4">
-                <div class="font-semibold mb-1">Shrnutí</div>
-                <p class="text-sm">Kalkulačka pomáhá rychle prověřit zájemce. Sledujte <strong>poměr nájmu k příjmu</strong>, <strong>disponibilní příjem</strong> a <strong>rejstříky</strong>. Výsledek berte jako doporučení – stoprocentní klid přináší <strong>Garantovaný nájem</strong>.</p>
-                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit více →</button>
-            </div>
-            <!-- Promo card -->
-            <div class="mb-4 rounded-2xl border border-indigo-100 bg-indigo-50 text-indigo-900 p-4">
-                <div class="font-semibold mb-1">Vzorný nájemce – Garantovaný nájem</div>
-                <p class="text-sm">100% klid: nájem vyplácíme včas každý měsíc, screening nájemníků, právní servis a řešení oprav za vás. Vy jen přijímáte platby.</p>
-                <div class="flex gap-2 mt-2">
-                    <button type="button" class="js-open-cta inline-flex items-center gap-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Získat jistotu →</button>
-                    <a href="klientska-zona.html" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-[#0D28F2] bg-[#0D28F2]/10 hover:bg-[#0D28F2]/20 text-sm font-medium">Kontaktovat nás</a>
-                </div>
-            </div>
-            <!-- Info banner: nothing is stored -->
-            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-4 py-3 text-sm flex items-start gap-2">
-                <img src="images/logo.png" alt="Vzorný nájemce" class="h-5 w-auto mt-0.5"/>
-                <p><strong>Upozornění:</strong> Výpočty jsou pouze orientační a slouží pro vaši informaci. Údaje se nikam <strong>neukládají</strong> ani dále nezpracovávají bez vašeho souhlasu.</p>
-            </div>
             <!-- Locked notice -->
             <div id="lockedNotice" class="mb-4">
                 <div class="rounded-xl border border-yellow-200 bg-yellow-50 text-yellow-800 px-4 py-3 text-sm">
@@ -834,17 +821,35 @@
                     <div id="riskFactorsList"></div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- GDPR privacy notice -->
-    <div class="max-w-6xl mx-auto mt-6">
-        <div class="rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-5 py-4 text-sm leading-6">
-            <strong>Ochrana osobních údajů:</strong> Údaje zadané do kalkulačky slouží výhradně pro orientační vyhodnocení bonity a nejsou ukládány bez vašeho souhlasu. 
-            Před uzavřením smlouvy doporučujeme provést samostatné ověření v registru ISIR a CEE. Podrobnosti o zpracování údajů naleznete v dokumentu 
-            <a href="gdpr.html" class="underline font-medium hover:opacity-80">Zásady ochrany osobních údajů</a>.
+            <!-- Shrnutí (umístěno pod kalkulačkou v rámci stejného kontejneru) -->
+            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 p-4">
+                <div class="font-semibold mb-1">Shrnutí</div>
+                <p class="text-sm">Kalkulačka pomáhá rychle prověřit zájemce. Sledujte <strong>poměr nájmu k příjmu</strong>, <strong>disponibilní příjem</strong> a <strong>rejstříky</strong>. Výsledek berte jako doporučení – stoprocentní klid přináší <strong>Garantovaný nájem</strong>.</p>
+                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit více →</button>
+            </div>
+            <!-- Promo karta (umístěno pod kalkulačkou) -->
+            <div class="mb-4 rounded-2xl border border-indigo-100 bg-indigo-50 text-indigo-900 p-4">
+                <div class="font-semibold mb-1">Vzorný nájemce – Garantovaný nájem</div>
+                <p class="text-sm">100% klid: nájem vyplácíme včas každý měsíc, screening nájemníků, právní servis a řešení oprav za vás. Vy jen přijímáte platby.</p>
+                <div class="flex gap-2 mt-2">
+                    <button type="button" class="js-open-cta inline-flex items-center gap-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Získat jistotu →</button>
+                    <a href="klientska-zona.html" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-[#0D28F2] bg-[#0D28F2]/10 hover:bg-[#0D28F2]/20 text-sm font-medium">Kontaktovat nás</a>
+                </div>
+            </div>
+            <!-- Info banner (umístěno pod kalkulačkou) -->
+            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-4 py-3 text-sm flex items-start gap-2">
+                <img src="images/logo.png" alt="Vzorný nájemce" class="h-5 w-auto mt-0.5"/>
+                <p><strong>Upozornění:</strong> Výpočty jsou pouze orientační a slouží pro vaši informaci. Údaje se nikam <strong>neukládají</strong> ani dále nezpracovávají bez vašeho souhlasu.</p>
+            </div>
+            <!-- GDPR notice (duplicitně i uvnitř kalkulačkového kontejneru) -->
+            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-5 py-4 text-sm leading-6">
+                <strong>Ochrana osobních údajů:</strong> Údaje zadané do kalkulačky slouží výhradně pro orientační vyhodnocení bonity a nejsou ukládány bez vašeho souhlasu. 
+                Před uzavřením smlouvy doporučujeme provést samostatné ověření v registru ISIR a CEE. Podrobnosti o zpracování údajů naleznete v dokumentu 
+                <a href="gdpr.html" class="underline font-medium hover:opacity-80">Zásady ochrany osobních údajů</a>.
+            </div>
+            </div>
         </div>
-    </div>
 
     <!-- Jak používat kalkulačku: průvodce -->
     <div class="max-w-6xl mx-auto mt-6">
