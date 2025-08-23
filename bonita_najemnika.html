@@ -362,12 +362,15 @@
 
     <!-- CTA Modal (branding) -->
     <div id="ctaModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0 bg-black/50 modal-overlay"></div>
         <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 mx-auto">
             <!-- Logo only header (as requested) -->
             <div class="flex items-center justify-center mb-2">
                 <img src="images/logo.png" alt="Vzorný nájemce" class="h-8 w-auto" />
             </div>
+            <button id="closeCtaBtn" type="button" aria-label="Zavřít" class="absolute right-3 top-3 p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#0D28F2]">
+                <span aria-hidden="true" class="text-xl leading-none">&times;</span>
+            </button>
             <!-- Title & subtitle -->
             <h3 class="text-2xl font-extrabold text-gray-900 text-center">Bezstarostný pronájem na dosah</h3>
             <p class="text-gray-600 text-center mt-1 mb-5">Stačí vyplnit formulář a my vám ukážeme, jak vaši nemovitost pronajmout bezpečně, výhodně a s maximální jistotou.</p>
@@ -828,15 +831,20 @@
                 <p class="text-sm">Kalkulačka pomáhá rychle prověřit zájemce. Sledujte <strong>poměr nájmu k příjmu</strong>, <strong>disponibilní příjem</strong> a <strong>rejstříky</strong>. Výsledek berte jako doporučení – stoprocentní klid přináší <strong>Garantovaný nájem</strong>.</p>
                 <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit více →</button>
             </div>
-            <!-- Promo karta (umístěno pod kalkulačkou) -->
-            <div class="mb-4 rounded-2xl border border-indigo-100 bg-indigo-50 text-indigo-900 p-4">
-                <div class="font-semibold mb-1">Vzorný nájemce – Garantovaný nájem</div>
-                <p class="text-sm">100% klid: nájem vyplácíme včas každý měsíc, screening nájemníků, právní servis a řešení oprav za vás. Vy jen přijímáte platby.</p>
-                <div class="flex gap-2 mt-2">
-                    <button type="button" class="js-open-cta inline-flex items-center gap-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Získat jistotu →</button>
-                    <a href="klientska-zona.html" class="inline-flex items-center gap-2 px-3 py-2 rounded-full text-[#0D28F2] bg-[#0D28F2]/10 hover:bg-[#0D28F2]/20 text-sm font-medium">Kontaktovat nás</a>
+            <!-- Promo CTA (vylepšený vizuál) -->
+            <section class="mb-6">
+              <div class="relative overflow-hidden rounded-3xl text-white p-8 md:p-10 text-center ring-1 ring-white/10" style="background:#0b1020;">
+                <div class="pointer-events-none absolute inset-0 opacity-[0.22]" style="background: radial-gradient(60% 60% at 50% 0%, #1f2a64 0%, rgba(27,33,56,0) 60%), radial-gradient(40% 40% at 100% 100%, #0D28F2 0%, rgba(13,40,242,0) 60%);"></div>
+                <div class="relative">
+                  <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3">Získejte garanci nájmu již dnes</h3>
+                  <p class="mb-7 text-base md:text-lg text-white/95" style="text-shadow:0 1px 1px rgba(0,0,0,.45)">Bez prázdných měsíců, bez stresu a s plným servisem – včetně předávacích protokolů a kontrol.</p>
+                  <div class="flex flex-col sm:flex-row justify-center gap-3">
+                    <button type="button" class="js-open-cta px-6 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-sm hover:bg-gray-100 transition">Mám zájem →</button>
+                    <a href="kalkulator-trzniho-najemneho.html" class="px-6 py-3 rounded-full border border-white/80 text-white hover:text-gray-900 hover:bg-white transition">Spočítat nájemné</a>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </section>
             <!-- Info banner (umístěno pod kalkulačkou) -->
             <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-4 py-3 text-sm flex items-start gap-2">
                 <img src="images/logo.png" alt="Vzorný nájemce" class="h-5 w-auto mt-0.5"/>
@@ -1466,6 +1474,7 @@
             const reopenBtn = document.getElementById('reopenGate');
             // CTA modal
             const ctaModal = document.getElementById('ctaModal');
+            const ctaOverlay = document.querySelector('#ctaModal .modal-overlay');
             const closeCtaBtn = document.getElementById('closeCtaBtn');
             const ctaTriggers = document.querySelectorAll('.js-open-cta');
 
@@ -1537,6 +1546,7 @@
             ctaModal?.addEventListener('click', (e) => {
                 if (e.target === ctaModal) closeCta();
             });
+            ctaOverlay?.addEventListener('click', closeCta);
 
             // CTA form submit handler
             const ctaForm = document.getElementById('ctaForm');
