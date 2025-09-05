@@ -4,6 +4,17 @@ let _marked = null;
 // Blog post data structure (with newest first)
 const blogPosts = [
   {
+    id: 9,
+    title: 'Jak snížit riziko prázdného bytu: kompletní průvodce pro pronajímatele',
+    slug: 'jak-snizit-riziko-prazdneho-bytu',
+    date: '2025-09-05',
+    readTime: '7 min čtení',
+    category: 'Praktické tipy',
+    image: '../images/blog/clanek42.png',
+    excerpt: 'Prázdný byt je nejdražší. Jak správně nastavit inzerci, cenu i procesy, aby byt nezůstával bez nájemníka a výnos byl stabilní?',
+    content: 'posts/jak-snizit-riziko-prazdneho-bytu.md'
+  },
+  {
     id: 8,
     title: 'Předávací protokol: Nejdůležitější dokument při pronájmu bytu',
     slug: 'predavaci-protokol-pri-pronajmu-bytu',
@@ -178,19 +189,6 @@ async function loadBlogPosts(category = 'all', page = 1) {
 function decoratePostContent(slug, html) {
   // Vloží speciální prvky pro konkrétní články (Náš tip, CTA bannery)
   if (slug === 'pronajem-bez-starosti-5-duvodu-garantovany-najem-2025') {
-    const tipBox = `
-      <div class="not-prose mb-8">
-        <div class="flex items-start gap-4 p-5 rounded-2xl border border-blue-100 bg-blue-50/60">
-          <div class="shrink-0 w-10 h-10 rounded-full bg-[#0D28F2] text-white flex items-center justify-center font-semibold">i</div>
-          <div>
-            <div class="inline-flex items-center gap-2 mb-1">
-              <span class="px-3 py-1 text-xs font-semibold rounded-full bg-[#0D28F2]/10 text-[#0D28F2] uppercase tracking-wide">Náš tip</span>
-            </div>
-            <p class="text-gray-700">Chcete jistotu příjmu bez výpadků a starostí? Zvažte garantovaný nájem – my platíme nájem vám, ne nájemníkovi.</p>
-          </div>
-        </div>
-      </div>`;
-
     const ctaBannerMiddle = `
       <section class="not-prose my-10">
         <div class="rounded-2xl p-6 md:p-8 border border-gray-200 bg-gradient-to-r from-white to-blue-50">
@@ -219,9 +217,9 @@ function decoratePostContent(slug, html) {
         </div>
       </section>`;
 
-    // Vlož tip box na začátek a bannery doprostřed a nakonec
+    // Vlož pouze CTA bannery – bez Náš tip boxu
     // Heuristika: vložit střední banner po první H2, pokud existuje
-    let modified = tipBox + html;
+    let modified = html;
     const h2Index = modified.indexOf('<h2');
     if (h2Index !== -1) {
       const insertAt = modified.indexOf('</h2>', h2Index);
@@ -401,11 +399,30 @@ function initBlog() {
 
   // Single post template page (expects ?slug=...)
   if (document.getElementById('blog-post')) {
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get('slug');
-    if (slug) {
-      loadBlogPost(slug);
-    }
+    const slug = new URLSearchParams(window.location.search).get('slug');
+    if (slug) loadBlogPost(slug).then(() => {
+      // Bind delegated handler only once to support CTAs inside rendered Markdown
+      if (!window.__blogCtaBound) {
+        window.__blogCtaBound = true;
+        document.addEventListener('click', (e) => {
+          const target = e.target.closest('a[href="#kontakt"], [data-open-popup]');
+          if (!target) return;
+          e.preventDefault();
+          try {
+            if (window.Alpine && Alpine.store && Alpine.store('popup') && typeof Alpine.store('popup').open === 'function') {
+              Alpine.store('popup').open();
+              return;
+            }
+          } catch (_) {}
+          // Vanilla fallback: toggle modal with data attribute if present
+          const modal = document.querySelector('[data-popup], [data-modal], #kontakt-modal');
+          if (modal) {
+            modal.classList.add('isOpen', 'open', 'visible');
+            modal.style.display = 'block';
+          }
+        });
+      }
+    });
   }
 }
 

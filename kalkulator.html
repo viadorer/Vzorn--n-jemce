@@ -342,72 +342,7 @@
                             </button>
                         </div>
 
-                        <!-- Popup kontaktního formuláře -->
-                        <div x-data="popupFormController" x-cloak>
-                            <!-- Backdrop -->
-                            <div x-show="open" 
-                                x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="opacity-0"
-                                x-transition:enter-end="opacity-100"
-                                x-transition:leave="transition ease-in duration-200"
-                                x-transition:leave-start="opacity-100"
-                                x-transition:leave-end="opacity-0"
-                                class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50"
-                                @click="close">
-                            </div>
-
-                            <!-- Modal -->
-                            <div x-show="open" 
-                                x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                x-transition:leave="transition ease-in duration-200"
-                                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
-                                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                                class="fixed inset-0 z-50 flex items-center justify-center p-4">
-                                
-                                <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden" @click.stop>
-                                    <div class="p-6">
-                                        <div class="flex justify-between items-center mb-4">
-                                            <h3 class="text-xl font-bold text-gray-900">Kontaktujte nás</h3>
-                                            <button @click="close" class="text-gray-400 hover:text-gray-500">
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        
-                                        <form class="space-y-4">
-                                            <div>
-                                                <label for="name" class="block text-sm font-medium text-gray-700">Jméno a příjmení</label>
-                                                <input type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                            </div>
-                                            
-                                            <div>
-                                                <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
-                                                <input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                            </div>
-                                            
-                                            <div>
-                                                <label for="phone" class="block text-sm font-medium text-gray-700">Telefon</label>
-                                                <input type="tel" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                            </div>
-                                            
-                                            <div>
-                                                <label for="message" class="block text-sm font-medium text-gray-700">Zpráva</label>
-                                                <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                                            </div>
-                                            
-                                            <div class="pt-2">
-                                                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                                    Odeslat poptávku
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Popup kontaktního formuláře je nyní globální a řízený vanilla JS (viz konec souboru) -->
                             </div>
                         </div>
                     </div>
@@ -437,54 +372,103 @@
         </div>
     </div>
     <script>
-        document.addEventListener('alpine:init', () => {
-            // Definice globálního store pro správu popupu
-            Alpine.store('popup', {
-                isOpen: false,
-                open() {
-                    this.isOpen = true;
-                    document.body.style.overflow = 'hidden'; // Zakázání scrollování
-                },
-                close() {
-                    this.isOpen = false;
-                    document.body.style.overflow = ''; // Povolení scrollování
-                }
-            });
+        // Vanilla JS popup controller for kalkulator.html
+        (function() {
+          const backdrop = document.createElement('div');
+          backdrop.id = 'popup-backdrop';
+          backdrop.className = 'fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 hidden';
 
-        // Delegovaný listener pro sjednocené CTA (data-open-popup)
-        // Otevře popup přes Alpine store, pokud je dostupný
-        document.addEventListener('click', (e) => {
-            const trigger = e.target.closest('[data-open-popup]');
-            if (trigger) {
-                e.preventDefault();
-                if (window.Alpine && Alpine.store && Alpine.store('popup')) {
-                    Alpine.store('popup').open();
-                }
+          const modal = document.createElement('div');
+          modal.id = 'popup-modal';
+          modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 hidden';
+          modal.innerHTML = `
+            <div class="bg-white rounded-lg max-w-xl w-full mx-auto relative shadow-2xl overflow-hidden" role="dialog" aria-modal="true">
+              <button data-close-popup class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 z-10" aria-label="Zavřít">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+              <div class="text-center pt-10 pb-4 px-6">
+                <img src="images/logo.png" alt="Vzorný nájemce" class="h-8 mx-auto mb-3">
+                <h2 class="text-2xl font-bold text-gray-900">Bezstarostný pronájem na dosah</h2>
+                <p class="text-gray-600 mt-2">Stačí vyplnit formulář a my vám ukážeme, jak vaši nemovitost pronajmout bezpečně, výhodně a s maximální jistotou.</p>
+              </div>
+              <div class="w-full px-6 pb-8" style="min-height: 480px;">
+                <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                  <div id="f-24-68ad80a8296783256b609ecdeff8aa3e" class="w-full h-full contact-embed"></div>
+                </div>
+              </div>
+            </div>
+          `;
+
+          document.body.appendChild(backdrop);
+          document.body.appendChild(modal);
+
+          function ensureWidgetLoaded(cb) {
+            const EXISTING = document.getElementById('24-68ad80a8296783256b609ecdeff8aa3e');
+            if (window.ecmwidget) { if (cb) cb(); return; }
+            if (EXISTING) { // script tag exists but widget may not be ready yet
+              let tries = 0; const t = setInterval(() => { if (window.ecmwidget) { clearInterval(t); if (cb) cb(); } if (++tries > 50) clearInterval(t); }, 100);
+              return;
             }
-        });
+            const js = document.createElement('script');
+            js.id = '24-68ad80a8296783256b609ecdeff8aa3e';
+            js.dataset.a = 'ptf';
+            js.src = 'https://d70shl7vidtft.cloudfront.net/widget.js';
+            js.async = true;
+            js.onload = () => { if (cb) cb(); };
+            document.head.appendChild(js);
+          }
 
-            // Definice komponenty pop-up formuláře
-            Alpine.data('popupFormController', () => ({
-                open: false,
-                init() {
-                    // Sledování změn v globálním store
-                    this.$watch('$store.popup.isOpen', value => {
-                        this.open = value;
-                    });
-                    
-                    // Sledování změn v lokální proměnné
-                    this.$watch('open', value => {
-                        Alpine.store('popup').isOpen = value;
-                        document.body.style.overflow = value ? 'hidden' : '';
-                    });
-                },
-                close() {
-                    this.open = false;
-                    Alpine.store('popup').close();
-                }
-            }));
-        });
+          function openPopup() {
+            backdrop.classList.remove('hidden');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            ensureWidgetLoaded(() => {
+              try { if (typeof window.ecmwidget === 'function') window.ecmwidget('init'); } catch(_){}
+            });
+          }
+          function closePopup() {
+            backdrop.classList.add('hidden');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+          }
 
+          document.addEventListener('click', (e) => {
+            const openBtn = e.target.closest('[data-open-popup]');
+            if (openBtn) { e.preventDefault(); openPopup(); return; }
+            const closeBtn = e.target.closest('[data-close-popup]');
+            if (closeBtn) { e.preventDefault(); closePopup(); return; }
+          });
+
+          backdrop.addEventListener('click', closePopup);
+          document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+
+          // Handle embedded widget "Zpět na stránku" similarly to index
+          function resetContactWidget() {
+            const old = document.getElementById('f-24-68ad80a8296783256b609ecdeff8aa3e');
+            if (!old) return;
+            const parent = old.parentElement;
+            old.remove();
+            const fresh = document.createElement('div');
+            fresh.id = 'f-24-68ad80a8296783256b609ecdeff8aa3e';
+            fresh.className = 'w-full h-full contact-embed';
+            parent.appendChild(fresh);
+            try { if (typeof window.ecmwidget === 'function') window.ecmwidget('init'); } catch(_){}
+          }
+          document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.contact-embed button, .contact-embed a');
+            if (!btn) return;
+            const label = (btn.textContent || '').trim();
+            if (label.startsWith('Zpět na stránku')) {
+              e.preventDefault();
+              closePopup();
+              setTimeout(resetContactWidget, 50);
+            }
+          });
+        })();
+    </script>
+    <script>
         function calculator() {
             return {
                 // Vstupní hodnoty
@@ -508,6 +492,12 @@
                 },
                 
                 calculateCosts() {
+                    // Převod vstupů na čísla (x-model vrací řetězce)
+                    this.monthlyRent = Number(this.monthlyRent) || 0;
+                    this.hourlyRate = Number(this.hourlyRate) || 0;
+                    this.hoursPerMonth = Number(this.hoursPerMonth) || 0;
+                    this.problematicTenantRisk = Number(this.problematicTenantRisk) || 0;
+                    this.vacancyMonths = Number(this.vacancyMonths) || 0;
                     // Časové náklady (měsíční hodiny * hodinová sazba * 12)
                     this.timeCosts = this.hoursPerMonth * this.hourlyRate * 12;
                     
@@ -538,14 +528,68 @@
                 },
                 
                 formatCurrency(value) {
-                    return new Intl.NumberFormat('cs-CZ', { 
-                        style: 'currency', 
+                    return new Intl.NumberFormat('cs-CZ', {
+                        style: 'currency',
                         currency: 'CZK',
                         maximumFractionDigits: 0
                     }).format(value);
                 }
-            };
+            }
         }
     </script>
-</body>
+
+    <!-- Scoped styles for embedded contact form (copied from index for consistency) -->
+    <style>
+      .contact-embed input,
+      .contact-embed textarea,
+      .contact-embed select {
+        width: 100% !important;
+        padding: 12px 14px !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 12px !important;
+        background-color: #f9fafb !important;
+        color: #111827 !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        box-shadow: none !important;
+        outline: none !important;
+        transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease !important;
+      }
+      .contact-embed input::placeholder,
+      .contact-embed textarea::placeholder { color: #9ca3af !important; }
+      .contact-embed textarea { min-height: 160px !important; resize: vertical !important; }
+      .contact-embed input:focus,
+      .contact-embed textarea:focus,
+      .contact-embed select:focus {
+        border-color: #0D28F2 !important;
+        background-color: #ffffff !important;
+        box-shadow: 0 0 0 4px rgba(13, 40, 242, 0.12) !important;
+      }
+      .contact-embed label { color: #374151 !important; font-weight: 600 !important; margin-bottom: 6px !important; display: block !important; }
+      .contact-embed button,
+      .contact-embed [type="submit"],
+      .contact-embed .btn,
+      .contact-embed .button {
+        background-color: #0D28F2 !important;
+        color: #ffffff !important;
+        border-radius: 9999px !important;
+        padding: 12px 18px !important;
+        font-weight: 700 !important;
+        border: none !important;
+        box-shadow: 0 10px 15px -3px rgba(13, 40, 242, 0.25), 0 4px 6px -4px rgba(13, 40, 242, 0.25) !important;
+        transition: transform .15s ease, background-color .2s ease !important;
+      }
+      .contact-embed button:hover,
+      .contact-embed [type="submit"]:hover,
+      .contact-embed .btn:hover,
+      .contact-embed .button:hover { background-color: rgba(13, 40, 242, 0.9) !important; transform: translateY(-1px) !important; }
+      .contact-embed button:active,
+      .contact-embed [type="submit"]:active,
+      .contact-embed .btn:active,
+      .contact-embed .button:active { transform: translateY(0) !important; }
+      .contact-embed input, .contact-embed textarea, .contact-embed select { margin-bottom: 10px !important; }
+      .contact-embed .form-group { margin-bottom: 12px !important; }
+      .contact-embed small, .contact-embed .hint, .contact-embed .consent { color: #6b7280 !important; font-size: 12px !important; }
+    </style>
+  </body>
 </html>

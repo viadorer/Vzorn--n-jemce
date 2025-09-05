@@ -40,7 +40,7 @@
                         <a href="../../index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium">O službě</a>
                         <a href="../index.html" class="text-[#0D28F2] font-medium px-3 py-2 text-sm">Blog</a>
                         <a href="../../index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium">FAQ</a>
-                        <button @click="Alpine.store('popup').open()" class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</button>
+                        <button data-open-popup class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</button>
                     </div>
                     <!-- Mobile menu button -->
                     <div class="md:hidden flex items-center">
@@ -265,7 +265,7 @@
                     <div class="bg-[#0D28F2]/5 rounded-2xl p-6 mt-8">
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">Získejte garanci nájmu</h3>
                         <p class="text-gray-600 mb-6">Pronajímejte BEZ STAROSTÍ a s MAXIMÁLNÍM ZISKEM! Vyplňte formulář a ozveme se vám.</p>
-                        <button @click="Alpine.store('popup').open()" class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105">
+                        <button data-open-popup class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105">
                             ZÍSKAT GARANCI NÁJMU →
                         </button>
                     </div>
@@ -273,6 +273,27 @@
             </div>
         </div>
     </main>
+    
+    <!-- CTA Banner: Získejte garanci nájmu (high-contrast, unified style) -->
+    <section class="bg-gray-900 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 class="text-3xl font-bold sm:text-4xl mb-6" style="color:#ffffff">Získejte garanci nájmu již dnes</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto" style="color:#d1d5db">Bez prázdných měsíců, bez stresu a s plným servisem. Zajišťujeme 100% platbu nájemného a vrácení nemovitosti v perfektním stavu.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button data-open-popup class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-gray-900 bg-white hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    ZÍSKAT GARANCI NÁJMU →
+                </button>
+                <button data-open-popup class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-full text-white hover:text-gray-900 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 no-underline">
+                    Spočítat úsporu
+                </button>
+            </div>
+            <div class="mt-6">
+                <a href="../index.html" class="inline-flex items-center underline decoration-gray-500/60" style="color:#d1d5db">
+                    ← Zpět na blog
+                </a>
+            </div>
+        </div>
+    </section>
     
     <!-- Footer -->
     <footer class="bg-gray-900 text-white border-t border-gray-800">
@@ -364,6 +385,22 @@
                     document.body.classList.remove('overflow-hidden');
                 }
             });
+        });
+    </script>
+    <script>
+        // Delegated listener for unified CTA triggers (vanilla JS)
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-open-popup]');
+            if (!trigger) return;
+            e.preventDefault();
+            try {
+                if (window.Alpine && typeof Alpine.store === 'function' && Alpine.store('popup')) {
+                    Alpine.store('popup').open();
+                }
+            } catch (_) {}
+            // Fallback event and body lock
+            window.dispatchEvent(new CustomEvent('open-contact-popup'));
+            document.body.classList.add('overflow-hidden');
         });
     </script>
 </body>
