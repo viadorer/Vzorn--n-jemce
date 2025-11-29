@@ -4,6 +4,28 @@ let _marked = null;
 // Blog post data structure (with newest first)
 const blogPosts = [
   {
+    id: 12,
+    title: 'Fond oprav a nájemní vztahy: co je dobré vědět',
+    slug: 'fond-oprav-a-najemni-vztahy-co-je-dobre-vedet',
+    date: '2025-09-25',
+    readTime: '5 min čtení',
+    category: 'Právní rady',
+    image: '../images/blog/clanek53.png',
+    excerpt: 'Kdo platí fond oprav, proč nepatří do záloh na služby a jak ho správně zohlednit v nájemném podle § 1180 OZ.',
+    content: 'posts/fond-oprav-a-najemni-vztahy-co-je-dobre-vedet.md'
+  },
+  {
+    id: 11,
+    title: 'Zálohy na služby při pronájmu bytu: co musí pronajímatel vědět',
+    slug: 'zalohy-na-sluzby-pri-pronajmu-bytu-co-musi-pronajimatel-vedet',
+    date: '2025-09-12',
+    readTime: '6 min čtení',
+    category: 'Právní rady',
+    image: '../images/blog/clanek52.png',
+    excerpt: 'Jak správně nastavit zálohy, vyúčtování a rozúčtování služeb podle zákona č. 67/2013 Sb. a vyhlášky č. 269/2015 Sb.',
+    content: 'posts/zalohy-na-sluzby-pri-pronajmu-bytu-co-musi-pronajimatel-vedet.md'
+  },
+  {
     id: 10,
     title: 'Jak správně nastavit kauci a zálohy na služby: klíč k bezproblémovému pronájmu',
     slug: 'jak-spravne-nastavit-kauci-a-zalohy-na-sluzby',
