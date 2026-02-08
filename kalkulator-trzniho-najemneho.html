@@ -21,56 +21,9 @@
     <script src="https://cemap.cz/beta2/inc/js/widget.js" async></script>
 </head>
 <body class="bg-white">
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300" x-data="{ isScrolled: false, isOpen: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20" :class="{ 'h-16': isScrolled }">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="/" class="flex items-center space-x-3">
-                        <img class="h-12 w-12 rounded-full shadow-lg transform transition-transform duration-300" :class="{ 'scale-90': isScrolled }" src="images/logo.png" alt="Vzorný nájemce">
-                        <span class="text-xl font-semibold text-[#0D28F2]">Vzorný nájemce</span>
-                    </a>
-                </div>
-
-                <!-- Desktop menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
-                    <a href="index.html#jak-to-funguje" class="text-gray-600 hover:text-gray-900 transition-colors">Jak to funguje</a>
-                    <a href="kalkulator-trzniho-najemneho.html" class="text-gray-900 font-medium hover:text-[#0D28F2] transition-colors">Spočítat nájemné</a>
-                    <a href="index.html#o-sluzbe" class="text-gray-600 hover:text-gray-900 transition-colors">O službě</a>
-                    <a href="blog/index.html" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
-                    <a href="index.html#faq" class="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
-                    <a href="index.html#klientska-zona" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                        Klientská zóna
-                    </a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button @click="isOpen = !isOpen" class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path x-show="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            <path x-show="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile menu -->
-        <div x-show="isOpen" class="md:hidden bg-white border-t border-gray-100">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Domů</a>
-                <a href="index.html#jak-to-funguje" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Jak to funguje</a>
-                <a href="kalkulator-trzniho-najemneho.html" class="block px-3 py-2 text-gray-900 font-medium hover:text-[#0D28F2] transition-colors">Spočítat nájemné</a>
-                <a href="index.html#o-sluzbe" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">O službě</a>
-                <a href="blog/index.html" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
-                <a href="index.html#faq" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">FAQ</a>
-                <a href="index.html#klientska-zona" class="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors">Klientská zóna</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Sdílený header -->
+    <div id="header-placeholder"></div>
+    <script src="js/load-header.js"></script>
 
     <main>
         <!-- Hero sekce -->
@@ -182,16 +135,14 @@
 <script src="js/load-footer.js"></script>
 
 <script>
-// Delegovaný listener pro sjednocené CTA (data-open-popup)
-// Otevře popup přes Alpine store, pokud je dostupný na stránce
-document.addEventListener('click', (e) => {
-  const trigger = e.target.closest('[data-open-popup]');
-  if (trigger) {
-    e.preventDefault();
-    if (window.Alpine && Alpine.store && Alpine.store('popup')) {
-      Alpine.store('popup').open();
-    }
-  }
+// Popup: připojit CTA tlačítka (vanilla JS)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-open-popup]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.ContactPopup) ContactPopup.open();
+        });
+    });
 });
 </script>
 </body>

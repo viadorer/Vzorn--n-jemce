@@ -8,6 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Brand font to match index -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Alpine.js pro sdílený header -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <!-- EmailJS SDK pro odesílání výsledků na email -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Project CSS -->
     <link rel="stylesheet" href="css/cookies.css">
     <style>
@@ -16,12 +20,13 @@
             padding: 0;
             box-sizing: border-box;
         }
+        [x-cloak] { display: none !important; }
 
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(to bottom, #ffffff 0%, #eff6ff 100%); /* from white to blue-50 */
+            background: #f8fafc;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
 
         .container {
@@ -352,13 +357,13 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-400 to-purple-600 min-h-screen p-5">
-    <!-- Top bar with unlock button -->
-    <div class="max-w-6xl mx-auto mb-4 flex items-center justify-between">
-        <a href="index.html" class="inline-flex items-center text-sm font-medium text-gray-800/90 bg-white/70 backdrop-blur px-3 py-1.5 rounded-full shadow hover:bg-white transition">
-            <span class="mr-1">←</span> Hlavní menu
-        </a>
-    </div>
+<body class="bg-slate-50 min-h-screen">
+    <!-- Sdílený header -->
+    <div id="header-placeholder"></div>
+    <script src="js/load-header.js"></script>
+
+    <!-- Spacer pro fixed header -->
+    <div class="pt-24"></div>
 
     <!-- CTA Modal (branding) -->
     <div id="ctaModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
@@ -528,7 +533,7 @@
         </div>
     </div>
 
-    <div id="calculatorContainer" class="container locked">
+    <div id="calculatorContainer" class="container locked mx-auto mt-6" style="max-width:1200px;">
         <div class="header">
             <img src="images/logo.png" alt="Vzorný nájemce" class="mx-auto mb-2" style="height:40px; width:auto;" />
             <h1>Vzorný nájemce Kalkulačka bonity</h1>
@@ -540,7 +545,7 @@
             <div id="lockedNotice" class="mb-4">
                 <div class="rounded-xl border border-yellow-200 bg-yellow-50 text-yellow-800 px-4 py-3 text-sm">
                     <strong>Přístup je uzamčen.</strong> Pro výpočty je potřeba zadat heslo. 
-                    <button id="reopenGate" class="inline-flex items-center gap-1 ml-2 px-2 py-1 rounded-full bg-yellow-600 text-white hover:bg-yellow-700">🔒 Odemknout kalkulačku</button>
+                    <button id="reopenGate" class="inline-flex items-center gap-1 ml-2 px-2 py-1 rounded-full bg-yellow-600 text-white hover:bg-yellow-700">Odemknout kalkulačku</button>
                 </div>
             </div>
             <div class="tabs">
@@ -823,15 +828,29 @@
                     <h4>Rizikové faktory</h4>
                     <div id="riskFactorsList"></div>
                 </div>
+
+                <!-- Odeslání výsledků na email -->
+                <div id="emailSection" class="section mt-6" style="display: none;">
+                    <h3>Odeslat výsledky na email</h3>
+                    <p class="text-sm text-gray-600 mb-4">Výsledky vyhodnocení bonity budou odeslány jako přehledná zpráva na zadaný email.</p>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="recipientEmail">Email příjemce</label>
+                            <input type="email" id="recipientEmail" placeholder="vas@email.cz" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tenantName">Jméno nájemníka (volitelné)</label>
+                            <input type="text" id="tenantName" placeholder="Jan Novák">
+                        </div>
+                    </div>
+                    <button type="button" id="sendEmailBtn" onclick="sendBonitaEmail()" class="calculate-btn" style="margin-top:10px;">
+                        Odeslat výsledky na email
+                    </button>
+                    <p id="emailStatus" class="text-sm mt-3 hidden"></p>
+                </div>
             </div>
 
-            <!-- Shrnutí (umístěno pod kalkulačkou v rámci stejného kontejneru) -->
-            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 p-4">
-                <div class="font-semibold mb-1">Shrnutí</div>
-                <p class="text-sm">Kalkulačka pomáhá rychle prověřit zájemce. Sledujte <strong>poměr nájmu k příjmu</strong>, <strong>disponibilní příjem</strong> a <strong>rejstříky</strong>. Výsledek berte jako doporučení – stoprocentní klid přináší <strong>Garantovaný nájem</strong>.</p>
-                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-2 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit více →</button>
-            </div>
-            <!-- Promo CTA (vylepšený vizuál) -->
+            <!-- Promo CTA -->
             <section class="mb-6">
               <div class="relative overflow-hidden rounded-3xl text-white p-8 md:p-10 text-center ring-1 ring-white/10" style="background:#0b1020;">
                 <div class="pointer-events-none absolute inset-0 opacity-[0.22]" style="background: radial-gradient(60% 60% at 50% 0%, #1f2a64 0%, rgba(27,33,56,0) 60%), radial-gradient(40% 40% at 100% 100%, #0D28F2 0%, rgba(13,40,242,0) 60%);"></div>
@@ -845,16 +864,11 @@
                 </div>
               </div>
             </section>
-            <!-- Info banner (umístěno pod kalkulačkou) -->
-            <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-4 py-3 text-sm flex items-start gap-2">
-                <img src="images/logo.png" alt="Vzorný nájemce" class="h-5 w-auto mt-0.5"/>
-                <p><strong>Upozornění:</strong> Výpočty jsou pouze orientační a slouží pro vaši informaci. Údaje se nikam <strong>neukládají</strong> ani dále nezpracovávají bez vašeho souhlasu.</p>
-            </div>
-            <!-- GDPR notice (duplicitně i uvnitř kalkulačkového kontejneru) -->
+            <!-- Upozornění a GDPR -->
             <div class="mb-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-900 px-5 py-4 text-sm leading-6">
-                <strong>Ochrana osobních údajů:</strong> Údaje zadané do kalkulačky slouží výhradně pro orientační vyhodnocení bonity a nejsou ukládány bez vašeho souhlasu. 
-                Před uzavřením smlouvy doporučujeme provést samostatné ověření v registru ISIR a CEE. Podrobnosti o zpracování údajů naleznete v dokumentu 
-                <a href="gdpr.html" class="underline font-medium hover:opacity-80">Zásady ochrany osobních údajů</a>.
+                <p class="mb-2"><strong>Upozornění:</strong> Výpočty jsou pouze orientační. Údaje se nikam neukládají ani dále nezpracovávají bez vašeho souhlasu.</p>
+                <p>Před uzavřením smlouvy doporučujeme provést samostatné ověření v registru ISIR a CEE. Podrobnosti naleznete v dokumentu 
+                <a href="gdpr.html" class="underline font-medium hover:opacity-80">Zásady ochrany osobních údajů</a>.</p>
             </div>
             </div>
         </div>
@@ -875,7 +889,7 @@
                 <li>finanční rezervu,</li>
                 <li>případné záznamy v rejstřících (insolvence – ISIR, exekuce – CEE).</li>
             </ul>
-            <p class="text-sm text-gray-700 mb-3">💡 Smyslem je odhalit rizika ještě před podpisem smlouvy.</p>
+            <p class="text-sm text-gray-700 mb-3">Smyslem je odhalit rizika ještě před podpisem smlouvy.</p>
             <div>
                 <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Ověřit zájemce s Vzorným nájemcem →</button>
             </div>
@@ -887,9 +901,6 @@
                 <li><strong>30–49 bodů:</strong> Nízká bonita – vyšší riziko. Vhodné je podrobnější prověření, maximální zákonná kauce (3× nájemné) a zvážení ručitele.</li>
                 <li><strong>0–29 bodů:</strong> Kritické riziko – příjem nestačí na pokrytí nájemného nebo jsou zjištěny problémy v rejstřících. Zde doporučujeme maximální opatrnost.</li>
             </ul>
-            <div>
-                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Chci garantované nájemné →</button>
-            </div>
 
             <h3 class="font-semibold mt-4 mb-2">3. Důležité ukazatele</h3>
             <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
@@ -898,10 +909,7 @@
                 <li><strong>Finanční rezerva</strong> – 3–6 měsíců je dobrý základ, méně než 1 měsíc znamená zvýšené riziko.</li>
                 <li><strong>Rejstříky (ISIR, CEE)</strong> – aktivní insolvence nebo exekuce jsou signálem k větší opatrnosti.</li>
             </ul>
-            <p class="text-sm text-gray-700 mb-2">👉 Naše kalkulačka vám ukáže skóre, ale skutečný klid přináší až Vzorný nájemce.</p>
-            <div>
-                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Zjistit, jak funguje Vzorný nájemce →</button>
-            </div>
+            <p class="text-sm text-gray-700 mb-3">Naše kalkulačka vám ukáže skóre, ale skutečný klid přináší až Vzorný nájemce.</p>
 
             <h3 class="font-semibold mt-4 mb-2">4. Jak s výsledky pracovat</h3>
             <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1 mb-3">
@@ -910,10 +918,7 @@
                 <li>Ptejte se na souvislosti – krátká doba v zaměstnání nemusí být problém, pokud jde o obor s vysokou poptávkou.</li>
                 <li>Nepodceňujte <strong>nájemní smlouvu a předávací protokol</strong> – ty jsou pro ochranu majitele i nájemníka klíčové.</li>
             </ul>
-            <p class="text-sm text-gray-700 mb-2">👉 Chcete mít smlouvy, kontroly i nájemníky pod dohledem? S Vzorným nájemcem se o vše postaráme za vás.</p>
-            <div>
-                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Spolehnout se na Vzorný nájemce →</button>
-            </div>
+            <p class="text-sm text-gray-700 mb-3">Chcete mít smlouvy, kontroly i nájemníky pod dohledem? S Vzorným nájemcem se o vše postaráme za vás.</p>
 
             <h3 class="font-semibold mt-4 mb-2">5. Jak mít úplnou jistotu</h3>
             <p class="text-sm text-gray-700 mb-2">Ani pečlivě vybraný nájemník není zárukou, že se jeho situace v budoucnu nezmění. Proto je tu služba <strong>Vzorný nájemce</strong>:</p>
@@ -923,9 +928,6 @@
                 <li>smlouvy, kontroly i správa jsou v našich rukou,</li>
                 <li>vy máte klid a jistotu, že byt vydělává.</li>
             </ul>
-            <div>
-                <button type="button" class="js-open-cta inline-flex items-center gap-2 mt-1 px-3 py-2 rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 text-sm font-medium">Mít jistotu s Vzorným nájemcem →</button>
-            </div>
 
             <div class="rounded-lg bg-indigo-50 border border-indigo-100 p-4 mt-4">
                 <div class="font-semibold text-indigo-900">Shrnutí</div>
@@ -1067,12 +1069,13 @@
                     break;
             }
 
-            // Employment length evaluation
-            if (employmentLength < 6) {
+            // Employment length evaluation (only if user actually entered a value)
+            const employmentLengthRaw = document.getElementById('employmentLength').value;
+            if (employmentLengthRaw !== '' && employmentLength < 6) {
                 bonitaScore -= 15;
                 riskFactors.push('Krátká doba zaměstnání (méně než 6 měsíců)');
                 recommendations.push('Požadovat ručitele nebo vyšší kauci');
-            } else if (employmentLength < 12) {
+            } else if (employmentLengthRaw !== '' && employmentLength < 12) {
                 bonitaScore -= 8;
                 riskFactors.push('Relativně krátká doba zaměstnání');
             }
@@ -1223,15 +1226,18 @@
                 recommendations.push(`Ručitel přináší ${guarantorBonus} bodů - ověřit jeho bonitu`);
             }
 
-            if (reserveMonths >= 6) {
-                bonitaScore += 15;
-                recommendations.push('Výborná finanční rezerva - nízké riziko');
-            } else if (reserveMonths >= 3) {
-                bonitaScore += 10;
-            } else if (reserveMonths < 1) {
-                bonitaScore -= 15;
-                riskFactors.push('Nedostatečná finanční rezerva');
-                recommendations.push('Zvážit vyšší kauci (až 3× nájemné) kvůli nízké finanční rezervě');
+            // Financial reserve evaluation (only if rent is entered so reserveMonths is meaningful)
+            if (monthlyRent > 0) {
+                if (reserveMonths >= 6) {
+                    bonitaScore += 15;
+                    recommendations.push('Výborná finanční rezerva - nízké riziko');
+                } else if (reserveMonths >= 3) {
+                    bonitaScore += 10;
+                } else if (reserveMonths < 1) {
+                    bonitaScore -= 15;
+                    riskFactors.push('Nedostatečná finanční rezerva');
+                    recommendations.push('Zvážit vyšší kauci (až 3× nájemné) kvůli nízké finanční rezervě');
+                }
             }
 
             // Advanced risk combinations
@@ -1244,26 +1250,27 @@
                 recommendations.push('Doporučujeme důkladnou kontrolu všech dokumentů a vyšší kauci (až 3× nájemné)');
             }
 
-            // Age-related recommendations
-            const age = parseFloat(document.getElementById('age').value) || 0;
-            if (age < 25 && employmentLength < 12) {
+            // Age-related recommendations (only if age was actually entered)
+            const ageRaw = document.getElementById('age').value;
+            const age = parseFloat(ageRaw) || 0;
+            if (ageRaw !== '' && age < 25 && employmentLengthRaw !== '' && employmentLength < 12) {
                 riskFactors.push('Mladý věk s krátkou pracovní historií');
                 recommendations.push('Zvážit požadavek na ručitele nebo rodiče jako spolupodepsané');
             }
             
-            if (age > 65 && employmentType === 'pensioner' && totalIncome < 18000) {
+            if (ageRaw !== '' && age > 65 && employmentType === 'pensioner' && totalIncome < 18000) {
                 riskFactors.push('Senior s nízkým důchodem');
                 recommendations.push('Ověřit stabilitu důchodu a případné příjmy z investic');
             }
 
-            // Income vs expenses validation
-            if (disposableIncome < monthlyRent) {
+            // Income vs expenses validation (only when both income and rent are entered)
+            if (monthlyRent > 0 && totalIncome > 0 && disposableIncome < monthlyRent) {
                 riskFactors.push('Kritické: Disponibilní příjem je nižší než nájemné');
                 recommendations.push('Kritické: nedostatečné prostředky na nájem – doporučujeme silné zajištění (vyšší kauce, ručitel) a individuální posouzení');
                 bonitaScore = Math.min(bonitaScore, 20); // Cap at very low score
             }
 
-            // Multiple income sources validation
+            // Multiple income sources validation (only if some income was entered)
             const incomeSourcesCount = [mainIncome, additionalIncome, partnerIncome, socialBenefits, otherResidentsIncome].filter(income => income > 0).length;
             
             // Residents solidarity evaluation
@@ -1275,7 +1282,7 @@
                 bonitaScore += 5;
                 recommendations.push('Všichni spolubydlící podepíší jako solidární dlužníci - snížené riziko');
             }
-            if (incomeSourcesCount === 1 && mainIncome < 30000) {
+            if (incomeSourcesCount === 1 && mainIncome > 0 && mainIncome < 30000) {
                 riskFactors.push('Závislost na jediném zdroji příjmu');
                 recommendations.push('Zvážit diverzifikaci příjmů nebo požadovat ručitele');
             }
@@ -1404,6 +1411,10 @@
             
             // Update risk factors
             updateRiskFactors(riskFactors);
+
+            // Zobrazit sekci pro odeslání na email
+            var emailSection = document.getElementById('emailSection');
+            if (emailSection) emailSection.style.display = 'block';
         }
 
         function updateResultCard(id, value, status) {
@@ -1459,6 +1470,109 @@
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             }).format(amount);
+        }
+
+        // =============================================
+        // EmailJS – odeslání výsledků bonity na email
+        // =============================================
+        // NASTAVENÍ: Vyplňte tyto 3 hodnoty po registraci na https://www.emailjs.com
+        var EMAILJS_PUBLIC_KEY = 'VASE_PUBLIC_KEY';   // Account > API Keys > Public Key
+        var EMAILJS_SERVICE_ID = 'VASE_SERVICE_ID';   // Email Services > Service ID
+        var EMAILJS_TEMPLATE_ID = 'VASE_TEMPLATE_ID'; // Email Templates > Template ID
+
+        // Inicializace EmailJS
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        }
+
+        function sendBonitaEmail() {
+            var statusEl = document.getElementById('emailStatus');
+            var sendBtn = document.getElementById('sendEmailBtn');
+            var recipientEmail = (document.getElementById('recipientEmail').value || '').trim();
+            var tenantName = (document.getElementById('tenantName').value || '').trim() || 'Neuvedeno';
+
+            // Validace
+            if (!recipientEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipientEmail)) {
+                statusEl.textContent = 'Zadejte platnou emailovou adresu.';
+                statusEl.className = 'text-sm mt-3 text-red-600';
+                statusEl.classList.remove('hidden');
+                return;
+            }
+
+            // Kontrola zda je EmailJS nakonfigurován
+            if (EMAILJS_PUBLIC_KEY === 'VASE_PUBLIC_KEY') {
+                statusEl.textContent = 'EmailJS zatim neni nakonfigurovan. Vyplnte EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID a EMAILJS_TEMPLATE_ID.';
+                statusEl.className = 'text-sm mt-3 text-red-600';
+                statusEl.classList.remove('hidden');
+                return;
+            }
+
+            // Sběr dat z kalkulačky
+            var scoreEl = document.querySelector('.score-number');
+            var scoreTextEl = document.querySelector('.score-text');
+            var score = scoreEl ? scoreEl.textContent : '0';
+            var scoreText = scoreTextEl ? scoreTextEl.textContent : 'Nevyhodnoceno';
+
+            var rentToIncome = document.getElementById('rentToIncomeRatio').textContent;
+            var disposable = document.getElementById('disposableIncome').textContent;
+            var reserve = document.getElementById('reserveMonths').textContent;
+            var risk = document.getElementById('riskScore').textContent;
+            var registry = document.getElementById('registryStatus').textContent;
+
+            // Doporučení a rizika
+            var recItems = document.querySelectorAll('#recommendationsList .recommendation-item');
+            var riskItems = document.querySelectorAll('#riskFactorsList .risk-item');
+            var recommendations = [];
+            var riskFactors = [];
+            recItems.forEach(function(el) { recommendations.push('- ' + el.textContent.trim()); });
+            riskItems.forEach(function(el) { riskFactors.push('- ' + el.textContent.trim()); });
+
+            // Vstupní data
+            var monthlyRent = document.getElementById('monthlyRent').value || '-';
+            var mainIncome = document.getElementById('mainIncome').value || '-';
+            var employmentType = document.getElementById('employmentType');
+            var employmentText = employmentType.options[employmentType.selectedIndex] ? employmentType.options[employmentType.selectedIndex].text : '-';
+
+            // Sestavení parametrů pro EmailJS šablonu
+            var templateParams = {
+                to_email: recipientEmail,
+                tenant_name: tenantName,
+                score: score,
+                score_text: scoreText,
+                rent_to_income: rentToIncome,
+                disposable_income: disposable,
+                reserve_months: reserve,
+                risk_score: risk,
+                registry_status: registry,
+                monthly_rent: monthlyRent + ' Kc',
+                main_income: mainIncome + ' Kc',
+                employment_type: employmentText,
+                recommendations: recommendations.length > 0 ? recommendations.join('\n') : 'Zadne',
+                risk_factors: riskFactors.length > 0 ? riskFactors.join('\n') : 'Zadne',
+                date: new Date().toLocaleDateString('cs-CZ')
+            };
+
+            // Odeslání
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Odesílám...';
+            statusEl.classList.add('hidden');
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function() {
+                    statusEl.textContent = 'Výsledky byly úspěšně odeslány na ' + recipientEmail;
+                    statusEl.className = 'text-sm mt-3 text-green-600';
+                    statusEl.classList.remove('hidden');
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Odeslat výsledky na email';
+                })
+                .catch(function(err) {
+                    statusEl.textContent = 'Chyba při odesílání: ' + (err.text || err.message || 'Zkuste to znovu.');
+                    statusEl.className = 'text-sm mt-3 text-red-600';
+                    statusEl.classList.remove('hidden');
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = 'Odeslat výsledky na email';
+                    console.error('EmailJS error:', err);
+                });
         }
     </script>
     <script>
@@ -1575,5 +1689,9 @@
             openModal();
         })();
     </script>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script src="js/load-footer.js"></script>
 </body>
 </html>

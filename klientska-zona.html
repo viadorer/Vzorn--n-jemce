@@ -26,46 +26,9 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md w-full z-50 transition-all duration-300 shadow-sm" x-data="{ mobileMenuOpen: false }">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex-shrink-0 flex items-center space-x-3">
-                        <img class="h-12 w-12 transition-all duration-300 rounded-full shadow-md object-cover" src="images/logo.png" alt="Vzorný nájemce Logo">
-                        <span class="text-xl font-bold text-[#0D28F2]">Vzorný nájemce</span>
-                    </a>
-                </div>
-                <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <div class="flex space-x-8">
-                        <a href="index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">O službě</a>
-                        <a href="blog/index.html" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
-                        <a href="index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
-                        <a href="klientska-zona.html" class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex items-center sm:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
-                        <span class="sr-only">Otevřít hlavní menu</span>
-                        <svg class="h-6 w-6" x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="h-6 w-6" x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" style="display: none;">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div x-show="mobileMenuOpen" class="sm:hidden absolute top-full left-0 w-full bg-white shadow-lg py-2" id="mobile-menu" style="display: none;">
-            <div class="px-4 pt-2 pb-3 space-y-1">
-                <a href="index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">O službě</a>
-                <a href="blog/index.html" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Blog</a>
-                <a href="index.html#faq" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">FAQ</a>
-                <a href="klientska-zona.html" class="mt-4 mx-3 block text-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-200 transform hover:scale-105 shadow-lg">Klientská zóna</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Sdílený header -->
+    <div id="header-placeholder"></div>
+    <script src="js/load-header.js"></script>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

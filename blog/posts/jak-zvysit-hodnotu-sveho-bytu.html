@@ -73,37 +73,9 @@
     </style>
 </head>
 <body class="bg-white">
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300" x-data="{ isScrolled: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20" :class="{ 'h-16': isScrolled }">
-                <div class="flex items-center">
-                    <a href="../../index.html" class="flex-shrink-0 flex items-center space-x-3">
-                        <img class="h-12 w-12 transition-all duration-300 rounded-full shadow-md object-cover" :class="{ 'h-8 w-8': isScrolled }" src="../../images/logo.png" alt="Vzorný nájemce">
-                        <span class="text-xl font-bold text-[#0D28F2]">Vzorný nájemce</span>
-                    </a>
-                </div>
-                <div class="flex items-center">
-                    <div class="hidden md:flex md:space-x-8">
-                        <a href="../../index.html#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Jak to funguje</a>
-                        <a href="../../index.html#odhad-ceny" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Odhad ceny nájmu</a>
-                        <a href="../../index.html#o-sluzbe" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">O službě</a>
-                        <a href="../index.html" class="text-[#0D28F2] font-medium px-3 py-2 text-sm transition-colors duration-200">Blog</a>
-                        <a href="../../index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
-                        <button data-open-popup class="ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-gray-900 hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Klientská zóna</button>
-                    </div>
-                    <!-- Mobile menu button -->
-                    <div class="md:hidden flex items-center">
-                        <button class="p-2 rounded-md text-gray-600 hover:text-gray-900 focus:outline-none">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Sdílený header -->
+    <div id="header-placeholder"></div>
+    <script src="../../js/load-header.js"></script>
 
     <!-- Article Header -->
     <header class="pt-32 pb-10 bg-gray-50">

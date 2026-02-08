@@ -1,0 +1,64 @@
+<!-- Top Bar -->
+<div id="top-bar" class="bg-gray-900 text-white text-sm hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-9">
+        <div class="flex items-center space-x-4">
+            <a href="tel:+420603834921" class="flex items-center hover:text-blue-300 transition-colors">
+                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                +420 603 834 921
+            </a>
+            <span class="text-gray-500">|</span>
+            <span class="text-gray-400">Po–Pá 8:00–17:00</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span class="text-gray-400">Plzeň – Radyňská 33</span>
+            <span class="text-gray-600">|</span>
+            <span class="text-gray-400">Praha – Pod Turnovskou tratí 18</span>
+            <span class="text-gray-600">|</span>
+            <a href="https://www.housemaster.cz/login" class="text-gray-300 hover:text-white transition-colors">Klientská zóna &rarr;</a>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300 top-0" x-data="{ isScrolled: false, isOpen: false }" @scroll.window="isScrolled = window.pageYOffset > 20" :class="{ 'shadow-md': isScrolled }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-[72px]" :class="{ 'h-14': isScrolled }">
+            <div class="flex items-center">
+                <a href="/" class="flex-shrink-0 flex items-center space-x-3">
+                    <img class="h-10 w-10 transition-all duration-300 rounded-full shadow-md object-cover" :class="{ 'h-8 w-8': isScrolled }" src="images/logo.png" alt="Vzorný nájemce">
+                    <span class="text-xl font-bold text-[#0D28F2]">Vzorný nájemce</span>
+                </a>
+            </div>
+            <div class="flex items-center">
+                <!-- Mobile menu button -->
+                <button type="button" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500" @click="isOpen = !isOpen" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Otevřít menu</span>
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+
+                <!-- Mobile menu -->
+                <div x-show="isOpen" class="lg:hidden absolute top-full left-0 w-full bg-white shadow-lg py-2">
+                    <div class="px-4 pt-2 pb-3 space-y-1">
+                        <a href="index.html#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Jak to funguje</a>
+                        <a href="index.html#sluzby" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Ceník</a>
+                        <a href="index.html#tym" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Tým</a>
+                        <a href="index.html#calculator" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Kalkulačka</a>
+                        <a href="index.html#faq" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">FAQ</a>
+                        <a href="blog/index.html" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Blog</a>
+                        <button data-open-popup class="w-full text-left text-[#0D28F2] font-semibold block px-3 py-2 text-base transition-colors duration-200">Nezávazná konzultace</button>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex lg:items-center lg:space-x-6">
+                    <a href="index.html#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] px-2 py-2 text-sm font-medium transition-colors duration-200">Jak to funguje</a>
+                    <a href="index.html#sluzby" class="text-gray-900 hover:text-[#0D28F2] px-2 py-2 text-sm font-medium transition-colors duration-200">Ceník</a>
+                    <a href="index.html#tym" class="text-gray-900 hover:text-[#0D28F2] px-2 py-2 text-sm font-medium transition-colors duration-200">Tým</a>
+                    <a href="index.html#calculator" class="text-gray-900 hover:text-[#0D28F2] px-2 py-2 text-sm font-medium transition-colors duration-200">Kalkulačka</a>
+                    <a href="index.html#faq" class="text-gray-900 hover:text-[#0D28F2] px-2 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
+                    <a href="blog/index.html" class="text-gray-900 hover:text-[#0D28F2] px-2 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
+                    <button data-open-popup class="ml-4 inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Nezávazná konzultace</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

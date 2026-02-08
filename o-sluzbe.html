@@ -113,21 +113,14 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
     </style>
+    <!-- Popup – vanilla JS -->
     <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('popup', {
-                isOpen: false,
-                open() {
-                    this.isOpen = true;
-                },
-                close() {
-                    this.isOpen = false;
-                },
-                toggle() {
-                    this.isOpen = !this.isOpen;
-                }
-            });
-        });
+        window.ContactPopup = {
+            _dialog: null,
+            get dialog() { if (!this._dialog) this._dialog = document.getElementById('contact-dialog'); return this._dialog; },
+            open() { var d = this.dialog; if (!d) return; d.showModal(); document.body.classList.add('overflow-hidden'); },
+            close() { var d = this.dialog; if (!d) return; d.close(); document.body.classList.remove('overflow-hidden'); }
+        };
     </script>
     <!-- JSON-LD strukturovaná data -->
     <script type="application/ld+json">
@@ -166,52 +159,9 @@
     <script src="cookie-consent.js" defer></script>
 </head>
 <body class="bg-white">
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 transition-all duration-300" x-data="{ isScrolled: false, isOpen: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20" :class="{ 'h-16': isScrolled }">
-                <div class="flex items-center">
-                    <a href="/" class="flex-shrink-0 flex items-center space-x-3">
-                        <img class="h-12 w-12 transition-all duration-300 rounded-full shadow-md object-cover" :class="{ 'h-8 w-8': isScrolled }" src="images/logo.png" alt="Problémový nájemník">
-                        <span class="text-xl font-bold text-[#0D28F2]">Vzorný nájemce</span>
-                    </a>
-                </div>
-                <div class="flex items-center">
-                    <!-- Mobile menu button -->
-                    <button type="button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500" @click="isOpen = !isOpen" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Otevřít menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-
-                    <!-- Mobile menu -->
-                    <div x-show="isOpen" class="md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-2">
-                        <div class="px-4 pt-2 pb-3 space-y-1">
-                            <a href="/" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Domů</a>
-                            <a href="/#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Jak to funguje</a>
-                            <a href="kalkulator-trzniho-najemneho.html" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Spočítat nájemné</a>
-                            <a href="o-sluzbe.html" class="text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">O službě</a>
-                            <a href="/#faq" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">FAQ</a>
-                            <a href="blog/index.html" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Blog</a>
-                            <a href="https://www.housemaster.cz/login" class="text-gray-900 hover:text-[#0D28F2] block px-3 py-2 text-base font-medium transition-colors duration-200">Klientská zóna</a>
-                        </div>
-                    </div>
-
-                    <div class="hidden md:flex md:space-x-8">
-                        <a href="/" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Domů</a>
-                        <a href="/#jak-to-funguje" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Jak to funguje</a>
-                        <a href="kalkulator-trzniho-najemneho.html" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Spočítat nájemné</a>
-                        <a href="o-sluzbe.html" class="text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">O službě</a>
-                        <a href="/#faq" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">FAQ</a>
-                        <a href="blog/index.html" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
-                        <a href="https://www.housemaster.cz/login" class="text-gray-900 hover:text-[#0D28F2] px-3 py-2 text-sm font-medium transition-colors duration-200">Klientská zóna</a>
-                        <a @click="Alpine.store('popup').open()" class="cursor-pointer ml-8 inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Kontaktovat</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Sdílený header -->
+    <div id="header-placeholder"></div>
+    <script src="js/load-header.js"></script>
 
     <!-- Horní sekce -->
     <section class="py-32 bg-gradient-to-b from-white to-blue-50">
@@ -576,21 +526,14 @@ if (_ebookForm) _ebookForm.addEventListener('submit', async function(e) {
 </script>
 
 <script>
-// Globální listener na CTA s data-open-popup (sjednocení s ostatními stránkami)
-document.addEventListener('DOMContentLoaded', () => {
-  try {
-    const openers = document.querySelectorAll('[data-open-popup]');
-    openers.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (window.Alpine && typeof Alpine.store === 'function') {
-          try { Alpine.store('popup').open(); } catch (_) {}
-        }
-        window.dispatchEvent(new CustomEvent('open-contact-popup'));
-        document.body.classList.add('overflow-hidden');
-      }, { once: false });
+// Popup: připojit CTA tlačítka (vanilla JS)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-open-popup]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.ContactPopup) ContactPopup.open();
+        });
     });
-  } catch (_) {}
 });
 </script>
 
