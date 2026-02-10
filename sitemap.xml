@@ -2,97 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.vzornynajemce.cz/</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/o-sluzbe.html</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.vzornynajemce.cz/kalkulator.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/kalkulator-trzniho-najemneho.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/kalkulator-skrytych-nakladu.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/kalkulator-skrytych-nakladu.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <loc>https://www.vzornynajemce.cz/kalkulator.html</loc>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/problemovy-najemnik.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.vzornynajemce.cz/bonita_najemnika.html</loc>
+    <lastmod>2026-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.vzornynajemce.cz/blog/</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/blog/posts/jak-resit-problemy-s-najemnikem.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/blog/posts/jak-zvysit-hodnotu-sveho-bytu.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/blog/posts/moderni-pronajem-2025.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/blog/posts/neplaceni-najmu.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/blog/posts/pravni-aspekty-najemni-smlouvy.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/blog/posts/vyvoj-cen-najmu-2025.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/gdpr.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/cookies.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/obchodni-podminky.html</loc>
-    <lastmod>2025-03-23</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
