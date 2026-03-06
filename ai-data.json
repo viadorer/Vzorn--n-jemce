@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "generatedAt": "2026-03-06T20:41:06.555Z",
+  "generatedBy": "Hugo Orchestrator AIO Engine",
+  "projectType": "html",
+  "schemas": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vzorný nájemce",
+      "description": "Vzorný nájemce"
+    },
+    "faq": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Co je Vzorný nájemce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vzorný nájemce je služba, která se specializuje na správu nemovitostí s garancí nájmu. Umožňuje pronajmout byt bez starostí."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kde Vzorný nájemce působí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vzorný nájemce působí v Plzni a Praze."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Od kdy Vzorný nájemce funguje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vzorný nájemce funguje od roku 1999."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co Vzorný nájemce garantuje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vzorný nájemce garantuje platbu nájmu každý měsíc, stará se o údržbu a vrací byt v perfektním stavu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak mohu kontaktovat Vzorného nájemce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vzorného nájemce lze kontaktovat telefonicky na čísle +420603834921 nebo e-mailem na vzornynajemce@ptf.cz."
+          }
+        }
+      ]
+    }
+  }
+}
