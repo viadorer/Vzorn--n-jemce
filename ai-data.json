@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generatedAt": "2026-03-06T20:41:06.555Z",
+  "generatedAt": "2026-03-06T21:03:13.531Z",
   "generatedBy": "Hugo Orchestrator AIO Engine",
   "projectType": "html",
   "schemas": {
@@ -19,15 +19,7 @@
           "name": "Co je Vzorný nájemce?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vzorný nájemce je služba, která se specializuje na správu nemovitostí s garancí nájmu. Umožňuje pronajmout byt bez starostí."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Kde Vzorný nájemce působí?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Vzorný nájemce působí v Plzni a Praze."
+            "text": "Vzorný nájemce je služba, která se specializuje na správu nemovitostí s garancí nájmu. Umožňuje majitelům pronajmout byt bez starostí."
           }
         },
         {
@@ -40,10 +32,18 @@
         },
         {
           "@type": "Question",
-          "name": "Co Vzorný nájemce garantuje?",
+          "name": "V jakých lokalitách Vzorný nájemce působí?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vzorný nájemce garantuje platbu nájmu každý měsíc, stará se o údržbu a vrací byt v perfektním stavu."
+            "text": "Vzorný nájemce působí v Plzni, Praze a Berouně."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jaké služby Vzorný nájemce nabízí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vzorný nájemce garantuje platbu nájmu každý měsíc, stará se o údržbu nemovitosti a vrací byt v perfektním stavu."
           }
         },
         {
