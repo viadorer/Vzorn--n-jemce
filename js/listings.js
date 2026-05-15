@@ -225,7 +225,7 @@
     cta.setAttribute('data-open-popup', '');
     cta.className =
       'inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all shadow-sm hover:shadow-md';
-    cta.textContent = 'Máte takovou nemovitost? Získat garanci nájmu';
+    cta.textContent = 'Máte takovou nemovitost? Získejte garanci nájmu';
     actions.appendChild(cta);
 
     body.appendChild(actions);
