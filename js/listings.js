@@ -1,11 +1,20 @@
-// Aktuální pronájmy — načítá z ptf-reality API (Railway)
-// Vyžaduje na backendu: CORS_ORIGINS obsahuje https://www.vzornynajemce.cz
+// Aktuální pronájmy — načítá přes Vercel proxy /api/properties → PTF backend
+// Lokální dev bez proxy: window.LISTINGS_API_BASE = 'https://api.ptf.cz' (CORS musí být povolen)
 (function () {
   'use strict';
 
-  const API_BASE = 'https://ptf-production.up.railway.app';
-  const TENANT_SLUG = 'ptf-reality';
-  const DETAIL_BASE = 'https://www.ptf.cz/nabidky'; // detail otevíráme na ptf-reality
+  // Same-origin proxy (Vercel serverless function api/properties.js).
+  // Pokud běžíme bez proxy (statický GitHub Pages), `window.LISTINGS_FALLBACK_DIRECT = true`
+  // přepne na přímé volání PTF backendu.
+  const USE_DIRECT = !!window.LISTINGS_FALLBACK_DIRECT;
+  const API_BASE = USE_DIRECT
+    ? (window.LISTINGS_API_BASE || 'https://api.ptf.cz')
+    : '';
+  const PROXY_PATH = USE_DIRECT ? '/api/properties' : '/api/properties';
+  const TENANT_SLUG = 'ptf-reality'; // používá se jen při USE_DIRECT
+  // Detail otevíráme na vzornynajemce.cz/pronajmy/:slug (Vercel rewrite → pronajmy-detail.html).
+  // Při USE_DIRECT (např. GitHub Pages bez rewrite) fallback na ptf.cz.
+  const DETAIL_BASE = USE_DIRECT ? 'https://www.ptf.cz/nabidky' : '/pronajmy';
   const PER_PAGE = 12;
   const PLACEHOLDER_IMG = 'images/og-image.png';
 
@@ -89,6 +98,12 @@
   }
 
   // ---- API -----------------------------------------------------------------
+  function apiHeaders() {
+    const h = { 'Accept': 'application/json' };
+    if (USE_DIRECT) h['X-Tenant-Slug'] = TENANT_SLUG;
+    return h;
+  }
+
   async function fetchListings() {
     const params = new URLSearchParams({
       offer_type: 'pronajem',
@@ -99,8 +114,8 @@
     if (state.filters.disposition) params.set('disposition', state.filters.disposition);
     if (state.filters.price_max) params.set('price_max', state.filters.price_max);
 
-    const res = await fetch(`${API_BASE}/api/properties?${params}`, {
-      headers: { 'X-Tenant-Slug': TENANT_SLUG, 'Accept': 'application/json' },
+    const res = await fetch(`${API_BASE}${PROXY_PATH}?${params}`, {
+      headers: apiHeaders(),
       cache: 'no-cache',
     });
     if (!res.ok) throw new Error('API ' + res.status);
@@ -109,10 +124,10 @@
 
   async function fetchFilters() {
     try {
-      const res = await fetch(
-        `${API_BASE}/api/properties/filters?offer_type=pronajem`,
-        { headers: { 'X-Tenant-Slug': TENANT_SLUG, 'Accept': 'application/json' } }
-      );
+      const url = USE_DIRECT
+        ? `${API_BASE}/api/properties/filters?offer_type=pronajem`
+        : `/api/filters?offer_type=pronajem`;
+      const res = await fetch(url, { headers: apiHeaders() });
       if (!res.ok) return null;
       return res.json();
     } catch (_) {
@@ -196,8 +211,10 @@
 
     const detail = document.createElement('a');
     detail.href = `${DETAIL_BASE}/${encodeURIComponent(item.slug || '')}`;
-    detail.target = '_blank';
-    detail.rel = 'noopener';
+    if (USE_DIRECT) {
+      detail.target = '_blank';
+      detail.rel = 'noopener';
+    }
     detail.className =
       'inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-full text-gray-900 border border-gray-300 hover:bg-gray-50 transition-all';
     detail.textContent = 'Zobrazit detail nabídky';

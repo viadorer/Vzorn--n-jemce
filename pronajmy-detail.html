@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <!-- base href zaručí, že relativní cesty fungují i pro URL /pronajmy/<slug> -->
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail nabídky | Vzorný nájemce</title>
+    <meta name="description" content="Detail nabídky pronájmu nemovitosti spravované službou Vzorný nájemce.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.vzornynajemce.cz/pronajmy.html">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="Vzorný nájemce">
+    <meta property="og:locale" content="cs_CZ">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #0D28F2; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .description p { margin-bottom: 1rem; }
+        .description p:last-child { margin-bottom: 0; }
+        .description strong { color: #111; }
+        .lightbox {
+            position: fixed; inset: 0; background: rgba(0,0,0,.92);
+            display: none; align-items: center; justify-content: center;
+            z-index: 100; padding: 1rem;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; }
+        .lightbox .lb-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,.12); color: white; border: 0;
+            width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+            font-size: 1.5rem; transition: background .2s;
+        }
+        .lightbox .lb-btn:hover { background: rgba(255,255,255,.25); }
+        .lightbox .lb-prev { left: 1rem; }
+        .lightbox .lb-next { right: 1rem; }
+        .lightbox .lb-close { top: 1rem; right: 1rem; transform: none; }
+    </style>
+</head>
+<body class="bg-white">
+    <div id="header-placeholder"></div>
+    <script src="js/load-header.js"></script>
+
+    <main class="pt-24">
+        <!-- Breadcrumb -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-gray-500">
+            <a href="/" class="hover:text-[#0D28F2]">Domů</a>
+            <span class="mx-2">›</span>
+            <a href="pronajmy.html" class="hover:text-[#0D28F2]">Aktuální nabídky</a>
+            <span class="mx-2">›</span>
+            <span id="bc-title" class="text-gray-700">Detail nabídky</span>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="text-center py-24">
+            <div class="inline-block animate-spin h-10 w-10 border-4 border-[#0D28F2] border-t-transparent rounded-full"></div>
+            <p class="mt-4 text-gray-500 text-sm">Načítáme detail nemovitosti…</p>
+        </div>
+
+        <!-- Error -->
+        <div id="error" class="hidden max-w-2xl mx-auto px-4 py-16 text-center">
+            <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M4.93 19h14.14c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.2 16c-.77 1.33.19 3 1.73 3z"/></svg>
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Nabídka nenalezena</h1>
+            <p class="text-gray-600 mb-6">Detail této nemovitosti se nepodařilo načíst — nabídka mohla být právě stažena.</p>
+            <a href="pronajmy.html" class="inline-flex items-center justify-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all">
+                ← Zpět na všechny nabídky
+            </a>
+        </div>
+
+        <!-- Content -->
+        <article id="content" class="hidden">
+            <!-- Hero / Title -->
+            <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+                <h1 id="title" class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2"></h1>
+                <p id="location" class="text-gray-600"></p>
+            </header>
+
+            <!-- Gallery -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+                <div id="gallery-main" class="aspect-[16/9] bg-gray-100 rounded-2xl overflow-hidden mb-3 cursor-pointer"></div>
+                <div id="gallery-thumbs" class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-2"></div>
+            </section>
+
+            <!-- Body grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-10 pb-16">
+                <!-- Main column -->
+                <div class="lg:col-span-2 space-y-10">
+                    <!-- Specs -->
+                    <section>
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Základní informace</h2>
+                        <dl id="specs" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></dl>
+                    </section>
+
+                    <!-- Description -->
+                    <section id="description-section" class="hidden">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Popis nemovitosti</h2>
+                        <div id="description" class="description text-gray-700 leading-relaxed"></div>
+                    </section>
+
+                    <!-- Features -->
+                    <section id="features-section" class="hidden">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Vybavení a parametry</h2>
+                        <ul id="features" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700"></ul>
+                    </section>
+
+                    <!-- Map link -->
+                    <section id="map-section" class="hidden">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Lokalita</h2>
+                        <a id="map-link" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 border border-gray-200 rounded-xl hover:border-[#0D28F2] hover:text-[#0D28F2] transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <span>Zobrazit na Mapy.cz</span>
+                        </a>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="lg:col-span-1">
+                    <div class="sticky top-24 space-y-6">
+                        <!-- Price card -->
+                        <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                            <p class="text-sm text-gray-500 mb-1">Měsíční nájemné</p>
+                            <p id="price" class="text-3xl font-bold text-gray-900 mb-1"></p>
+                            <p id="price-note" class="text-sm text-gray-500 mb-5 hidden"></p>
+                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-[#0D28F2] text-white font-semibold rounded-full hover:bg-[#0D28F2]/90 transition-all shadow-md">
+                                Mám zájem o tuto nabídku
+                            </button>
+                            <a id="external-link" href="#" target="_blank" rel="noopener" class="mt-3 w-full inline-flex items-center justify-center px-5 py-2.5 border border-gray-200 text-gray-700 font-medium rounded-full hover:bg-gray-50 transition-all text-sm">
+                                Otevřít na ptf.cz
+                            </a>
+                        </div>
+
+                        <!-- Garance CTA -->
+                        <div class="bg-gradient-to-br from-[#0D28F2] to-[#0a1fc5] text-white rounded-2xl p-6 shadow-md">
+                            <h3 class="text-lg font-bold mb-2">Máte podobnou nemovitost?</h3>
+                            <p class="text-sm text-blue-100 mb-4">Pronajměte ji s garancí měsíčního nájmu — nájem dostanete každý měsíc, i kdyby byl byt prázdný.</p>
+                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-blue-50 transition-all">
+                                Získat garanci nájmu
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </article>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <button class="lb-btn lb-close" onclick="closeLightbox(event, true)" aria-label="Zavřít">✕</button>
+        <button class="lb-btn lb-prev" onclick="navLightbox(-1, event)" aria-label="Předchozí">‹</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-btn lb-next" onclick="navLightbox(1, event)" aria-label="Další">›</button>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/load-footer.js"></script>
+
+    <script>
+    (function () {
+        'use strict';
+
+        const USE_DIRECT = !!window.LISTINGS_FALLBACK_DIRECT;
+        const API = USE_DIRECT
+            ? `${window.LISTINGS_API_BASE || 'https://api.ptf.cz'}/api/properties/`
+            : '/api/property?slug=';
+        const TENANT = 'ptf-reality';
+        const PLACEHOLDER = '/images/og-image.png';
+
+        const PROPERTY_TYPE_LABELS = {
+            byt: 'Byt', dum: 'Dům', pozemek: 'Pozemek', komercni: 'Komerční prostor', ostatni: 'Nemovitost',
+        };
+        const CONDITION_LABELS = {
+            novostavba: 'Novostavba', velmi_dobry: 'Velmi dobrý', dobry: 'Dobrý',
+            po_rekonstrukci: 'Po rekonstrukci', spatny: 'Špatný', k_demolici: 'K demolici',
+        };
+        const BUILDING_LABELS = { cihla: 'Cihlová', panel: 'Panelová', drevo: 'Dřevěná', kamen: 'Kamenná' };
+
+        let images = [];
+        let lbIdx = 0;
+
+        function getSlug() {
+            const m = window.location.pathname.match(/\/pronajmy\/([^\/?#]+)/);
+            if (m) return decodeURIComponent(m[1]);
+            return new URLSearchParams(window.location.search).get('slug');
+        }
+
+        function fmtPrice(p) {
+            if (p == null) return 'Cena na vyžádání';
+            return new Intl.NumberFormat('cs-CZ').format(p) + ' Kč';
+        }
+
+        function pickImage(arr) {
+            if (!Array.isArray(arr) || !arr.length) return null;
+            return arr.find(i => i.is_main) || arr[0];
+        }
+
+        function locationLine(p) {
+            const parts = [p.address_district, p.address_city, p.address_region].filter(Boolean);
+            return parts.join(', ');
+        }
+
+        // --- Render --------------------------------------------------------
+        function renderGallery(imgs) {
+            const main = document.getElementById('gallery-main');
+            const thumbs = document.getElementById('gallery-thumbs');
+            main.innerHTML = '';
+            thumbs.innerHTML = '';
+
+            if (!imgs || !imgs.length) {
+                const img = document.createElement('img');
+                img.src = PLACEHOLDER;
+                img.alt = 'Bez fotografie';
+                img.className = 'w-full h-full object-cover';
+                main.appendChild(img);
+                return;
+            }
+            // Order: main first
+            const mainIdx = imgs.findIndex(i => i.is_main);
+            const sorted = mainIdx > 0
+                ? [imgs[mainIdx], ...imgs.slice(0, mainIdx), ...imgs.slice(mainIdx + 1)]
+                : imgs.slice();
+            images = sorted;
+
+            const big = document.createElement('img');
+            big.src = sorted[0].url || sorted[0].url_thumbnail || PLACEHOLDER;
+            big.alt = '';
+            big.loading = 'eager';
+            big.decoding = 'async';
+            big.className = 'w-full h-full object-cover';
+            big.onerror = () => { big.src = PLACEHOLDER; };
+            main.appendChild(big);
+            main.addEventListener('click', () => openLightbox(0));
+
+            sorted.slice(0, 16).forEach((img, idx) => {
+                const wrap = document.createElement('div');
+                wrap.className = 'aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition-opacity';
+                const t = document.createElement('img');
+                t.src = img.url_thumbnail || img.url || PLACEHOLDER;
+                t.alt = '';
+                t.loading = 'lazy';
+                t.decoding = 'async';
+                t.className = 'w-full h-full object-cover';
+                t.onerror = () => { t.src = PLACEHOLDER; };
+                wrap.appendChild(t);
+                wrap.addEventListener('click', () => openLightbox(idx));
+                thumbs.appendChild(wrap);
+            });
+        }
+
+        function renderSpec(label, value) {
+            if (value == null || value === '' || value === false) return null;
+            const dt = document.createElement('div');
+            dt.className = 'bg-gray-50 rounded-xl p-3';
+            const k = document.createElement('div');
+            k.className = 'text-xs text-gray-500 uppercase tracking-wider mb-1';
+            k.textContent = label;
+            const v = document.createElement('div');
+            v.className = 'text-sm font-semibold text-gray-900';
+            v.textContent = String(value);
+            dt.appendChild(k);
+            dt.appendChild(v);
+            return dt;
+        }
+
+        function renderSpecs(p) {
+            const wrap = document.getElementById('specs');
+            const specs = [
+                ['Dispozice', p.disposition || p.property_subtype || PROPERTY_TYPE_LABELS[p.property_type]],
+                ['Užitná plocha', (p.area_usable || p.area_total) ? `${p.area_usable || p.area_total} m²` : null],
+                ['Plocha pozemku', p.area_land ? `${p.area_land} m²` : null],
+                ['Patro', p.floor != null ? (p.floors_total ? `${p.floor}. z ${p.floors_total}` : `${p.floor}.`) : null],
+                ['Stav', CONDITION_LABELS[p.building_condition || p.condition]],
+                ['Konstrukce', BUILDING_LABELS[p.building_type]],
+                ['Energetická třída', p.energy_class],
+                ['Rok stavby', p.year_built],
+                ['Vybavení', p.furnishing === 'zarizeny' ? 'Zařízený' : p.furnishing === 'castecne_zarizeny' ? 'Částečně' : p.furnishing === 'nezarizeny' ? 'Nezařízený' : null],
+            ];
+            specs.forEach(([l, v]) => {
+                const el = renderSpec(l, v);
+                if (el) wrap.appendChild(el);
+            });
+        }
+
+        function renderDescription(p) {
+            const sec = document.getElementById('description-section');
+            const out = document.getElementById('description');
+            const text = p.description || p.description_short || '';
+            if (!text.trim()) return;
+            // Split into paragraphs by blank lines or single newlines fallback
+            const parts = text.replace(/\r/g, '').split(/\n\s*\n|\n/).map(s => s.trim()).filter(Boolean);
+            out.innerHTML = '';
+            parts.forEach(par => {
+                const p = document.createElement('p');
+                p.textContent = par;
+                out.appendChild(p);
+            });
+            sec.classList.remove('hidden');
+        }
+
+        const FEATURE_LABELS = {
+            heating: 'Vytápění', heating_source: 'Zdroj tepla', heating_element: 'Topná tělesa',
+            water: 'Voda', gully: 'Kanalizace', electricity: 'Elektřina',
+            transport: 'Doprava', road_type: 'Cesta', telecommunication: 'Telekomunikace',
+        };
+        const VALUE_LABELS = {
+            ustredni_dalkove: 'Dálkové', ustredni_plyn: 'Plynové', radiatory: 'Radiátory',
+            verejna_kanalizace: 'Veřejná kanalizace', vodovod: 'Vodovod',
+            dlazdena: 'Dlážděná', '230V': '230 V', vlak: 'Vlak', silnice: 'Silnice', mhd: 'MHD', autobus: 'Autobus',
+        };
+        function renderFeatures(p) {
+            const sec = document.getElementById('features-section');
+            const out = document.getElementById('features');
+            const features = p.features || {};
+            const keys = Object.keys(features || {}).filter(k => Array.isArray(features[k]) && features[k].length);
+            if (!keys.length) return;
+            keys.forEach(k => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2';
+                const dot = document.createElement('span');
+                dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-[#0D28F2] mt-2 flex-shrink-0';
+                li.appendChild(dot);
+                const txt = document.createElement('span');
+                const label = FEATURE_LABELS[k] || k;
+                const vals = features[k].map(v => VALUE_LABELS[v] || v).join(', ');
+                txt.innerHTML = `<strong>${label}:</strong> `;
+                txt.appendChild(document.createTextNode(vals));
+                li.appendChild(txt);
+                out.appendChild(li);
+            });
+            sec.classList.remove('hidden');
+        }
+
+        function renderMap(p) {
+            const sec = document.getElementById('map-section');
+            const link = document.getElementById('map-link');
+            if (p.gps_lat && p.gps_lng && !p.hide_exact_address) {
+                link.href = `https://mapy.cz/zakladni?source=coor&id=${p.gps_lng},${p.gps_lat}&x=${p.gps_lng}&y=${p.gps_lat}&z=16`;
+                sec.classList.remove('hidden');
+            } else if (p.address_city) {
+                link.href = `https://mapy.cz/zakladni?q=${encodeURIComponent([p.address_district, p.address_city].filter(Boolean).join(' '))}`;
+                sec.classList.remove('hidden');
+            }
+        }
+
+        function updateMeta(p) {
+            const title = `${p.title} | Vzorný nájemce`;
+            const desc = p.description_short || p.meta_description ||
+                `Pronájem ${PROPERTY_TYPE_LABELS[p.property_type] || ''} ${p.disposition || ''} v lokalitě ${locationLine(p)}. ${fmtPrice(p.price)} / měsíc.`;
+            const img = pickImage(p.images)?.url || pickImage(p.images)?.url_thumbnail || PLACEHOLDER;
+            const url = `https://www.vzornynajemce.cz/pronajmy/${p.slug}`;
+
+            document.title = title;
+            document.getElementById('bc-title').textContent = p.title;
+            setMeta('name', 'description', desc);
+            setMeta('property', 'og:title', title);
+            setMeta('property', 'og:description', desc);
+            setMeta('property', 'og:image', img);
+            setMeta('property', 'og:url', url);
+            setMeta('name', 'twitter:card', 'summary_large_image');
+            setLink('canonical', url);
+
+            // JSON-LD
+            const schema = {
+                "@context": "https://schema.org",
+                "@type": ["Product", "Residence"],
+                "name": p.title,
+                "description": desc,
+                "image": (p.images || []).slice(0, 6).map(i => i.url || i.url_thumbnail).filter(Boolean),
+                "url": url,
+                "offers": p.price ? {
+                    "@type": "Offer",
+                    "price": p.price,
+                    "priceCurrency": "CZK",
+                    "availability": "https://schema.org/InStock"
+                } : undefined,
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": p.address_city,
+                    "addressRegion": p.address_region,
+                    "addressCountry": "CZ"
+                },
+                "numberOfRooms": p.disposition,
+                "floorSize": (p.area_usable || p.area_total) ? {
+                    "@type": "QuantitativeValue",
+                    "value": p.area_usable || p.area_total,
+                    "unitCode": "MTK"
+                } : undefined,
+            };
+            const s = document.createElement('script');
+            s.type = 'application/ld+json';
+            s.textContent = JSON.stringify(schema);
+            document.head.appendChild(s);
+        }
+
+        function setMeta(attr, name, content) {
+            if (!content) return;
+            let el = document.querySelector(`meta[${attr}="${name}"]`);
+            if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+            el.setAttribute('content', content);
+        }
+        function setLink(rel, href) {
+            let el = document.querySelector(`link[rel="${rel}"]`);
+            if (!el) { el = document.createElement('link'); el.setAttribute('rel', rel); document.head.appendChild(el); }
+            el.setAttribute('href', href);
+        }
+
+        function renderProperty(p) {
+            document.getElementById('title').textContent = p.title;
+            document.getElementById('location').textContent = locationLine(p);
+            const priceEl = document.getElementById('price');
+            priceEl.textContent = fmtPrice(p.price);
+            if (p.price_note) {
+                const pn = document.getElementById('price-note');
+                pn.textContent = p.price_note;
+                pn.classList.remove('hidden');
+            }
+            const ext = document.getElementById('external-link');
+            ext.href = `https://www.ptf.cz/nabidky/${encodeURIComponent(p.slug || '')}`;
+
+            renderGallery(p.images || []);
+            renderSpecs(p);
+            renderDescription(p);
+            renderFeatures(p);
+            renderMap(p);
+            updateMeta(p);
+
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('content').classList.remove('hidden');
+
+            // Bind popup CTAs in newly rendered content
+            document.querySelectorAll('[data-open-popup]').forEach(btn => {
+                if (btn._popupBound) return;
+                btn._popupBound = true;
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (window.ContactPopup && typeof window.ContactPopup.open === 'function') {
+                        window.ContactPopup.open();
+                        return;
+                    }
+                    window.dispatchEvent(new CustomEvent('open-contact-popup'));
+                });
+            });
+        }
+
+        async function load() {
+            const slug = getSlug();
+            if (!slug) {
+                showError();
+                return;
+            }
+            try {
+                const url = USE_DIRECT ? `${API}${encodeURIComponent(slug)}` : `${API}${encodeURIComponent(slug)}`;
+                const headers = { 'Accept': 'application/json' };
+                if (USE_DIRECT) headers['X-Tenant-Slug'] = TENANT;
+                const res = await fetch(url, { headers });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                renderProperty(data);
+            } catch (err) {
+                console.error('Property load error:', err);
+                showError();
+            }
+        }
+
+        function showError() {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error').classList.remove('hidden');
+        }
+
+        // Lightbox
+        window.openLightbox = function (idx) {
+            if (!images.length) return;
+            lbIdx = idx;
+            document.getElementById('lb-img').src = images[idx].url || images[idx].url_thumbnail;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeLightbox = function (e, force) {
+            if (force || e.target.id === 'lightbox' || e.target.classList.contains('lb-close')) {
+                document.getElementById('lightbox').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        };
+        window.navLightbox = function (dir, e) {
+            e && e.stopPropagation();
+            lbIdx = (lbIdx + dir + images.length) % images.length;
+            document.getElementById('lb-img').src = images[lbIdx].url || images[lbIdx].url_thumbnail;
+        };
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('open')) return;
+            if (e.key === 'Escape') window.closeLightbox(null, true);
+            if (e.key === 'ArrowLeft') window.navLightbox(-1, e);
+            if (e.key === 'ArrowRight') window.navLightbox(1, e);
+        });
+
+        document.addEventListener('DOMContentLoaded', load);
+    })();
+    </script>
+</body>
+</html>
