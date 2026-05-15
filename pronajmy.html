@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktuální nabídky pronájmů | Vzorný nájemce</title>
+    <meta name="description" content="Aktuální nabídky pronájmů bytů a komerčních prostor v Plzni, Praze, Berouně a okolí. Prověřené nemovitosti s možností garance nájmu od Vzorného nájemce.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.vzornynajemce.cz/pronajmy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aktuální nabídky pronájmů | Vzorný nájemce">
+    <meta property="og:description" content="Aktuální nabídky pronájmů bytů a komerčních prostor. Prověřené nemovitosti s možností garance nájmu od Vzorného nájemce.">
+    <meta property="og:url" content="https://www.vzornynajemce.cz/pronajmy.html">
+    <meta property="og:image" content="https://www.vzornynajemce.cz/images/og-image.png">
+    <meta property="og:site_name" content="Vzorný nájemce">
+    <meta property="og:locale" content="cs_CZ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aktuální nabídky pronájmů | Vzorný nájemce">
+    <meta name="twitter:description" content="Aktuální nabídky pronájmů bytů a komerčních prostor. Prověřené nemovitosti s garancí nájmu.">
+    <meta name="twitter:image" content="https://www.vzornynajemce.cz/images/og-image.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #0D28F2; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Aktuální nabídky pronájmů",
+      "description": "Aktuální nabídky pronájmů bytů a komerčních prostor v Plzni, Praze a okolí.",
+      "url": "https://www.vzornynajemce.cz/pronajmy.html",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Vzorný nájemce",
+        "url": "https://www.vzornynajemce.cz"
+      }
+    }
+    </script>
+</head>
+<body class="bg-white">
+    <!-- Sdílený header -->
+    <div id="header-placeholder"></div>
+    <script src="js/load-header.js"></script>
+
+    <main>
+        <!-- Hero -->
+        <section class="pt-32 pb-12 bg-gradient-to-b from-blue-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <p class="text-sm font-semibold text-[#0D28F2] uppercase tracking-wider mb-3">Aktuální nabídky</p>
+                    <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Pronájmy nemovitostí</h1>
+                    <p class="text-lg text-gray-600">
+                        Vybrané nabídky pronájmů, které pro vás aktuálně máme ve správě. Pronajímáte vlastní byt
+                        a chcete místo starostí jistotu? <a href="o-sluzbe.html" class="text-[#0D28F2] font-medium hover:underline">Zjistěte, jak funguje garance nájmu</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtry -->
+        <section class="border-b border-gray-100 bg-white sticky top-[72px] z-30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <form id="listings-filter-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
+                    <div>
+                        <label for="f-city" class="block text-xs font-medium text-gray-600 mb-1">Město</label>
+                        <select id="f-city" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
+                            <option value="">Všechna města</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="f-disposition" class="block text-xs font-medium text-gray-600 mb-1">Dispozice</label>
+                        <select id="f-disposition" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
+                            <option value="">Vše</option>
+                            <option value="1+kk">1+kk</option>
+                            <option value="1+1">1+1</option>
+                            <option value="2+kk">2+kk</option>
+                            <option value="2+1">2+1</option>
+                            <option value="3+kk">3+kk</option>
+                            <option value="3+1">3+1</option>
+                            <option value="4+kk">4+kk</option>
+                            <option value="4+1">4+1</option>
+                            <option value="5+kk">5+kk</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="f-price-max" class="block text-xs font-medium text-gray-600 mb-1">Max. nájemné (Kč)</label>
+                        <input type="number" id="f-price-max" min="0" step="500" placeholder="např. 20 000" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm">
+                    </div>
+                    <div class="flex gap-2">
+                        <button type="submit" class="flex-1 inline-flex items-center justify-center px-4 py-2 bg-[#0D28F2] text-white text-sm font-medium rounded-lg hover:bg-[#0D28F2]/90 transition-colors">
+                            Filtrovat
+                        </button>
+                        <button type="button" id="f-reset" class="inline-flex items-center justify-center px-3 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors" title="Resetovat filtry">
+                            ✕
+                        </button>
+                    </div>
+                    <div class="text-sm text-gray-500 text-right">
+                        Nalezeno: <span id="listings-count" class="font-semibold text-gray-900">…</span>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Listings -->
+        <section class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Loading -->
+                <div id="listings-loading" class="text-center py-20">
+                    <div class="inline-block animate-spin h-10 w-10 border-4 border-[#0D28F2] border-t-transparent rounded-full"></div>
+                    <p class="mt-4 text-gray-500 text-sm">Načítáme aktuální nabídky…</p>
+                </div>
+
+                <!-- Empty state -->
+                <div id="listings-empty" class="hidden text-center py-20 bg-white rounded-2xl border border-gray-100">
+                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Žádné nabídky neodpovídají filtru</h3>
+                    <p class="text-gray-600 mb-6 max-w-md mx-auto">Zkuste upravit filtry nebo se ozvěte – často máme nemovitosti k pronájmu ještě před zveřejněním.</p>
+                    <button type="button" data-open-popup class="inline-flex items-center justify-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all">
+                        Chci být informován o nových nabídkách
+                    </button>
+                </div>
+
+                <!-- Error state -->
+                <div id="listings-error" class="hidden text-center py-20 bg-white rounded-2xl border border-red-100">
+                    <svg class="w-16 h-16 mx-auto text-red-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M4.93 19h14.14c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.2 16c-.77 1.33.19 3 1.73 3z"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Nabídky se zatím nepodařilo načíst</h3>
+                    <p class="text-gray-600 mb-6 max-w-md mx-auto">Zkuste obnovit stránku. Pokud problém přetrvává, kontaktujte nás přímo – rádi vám pošleme aktuální seznam.</p>
+                    <a href="tel:+420603834921" class="inline-flex items-center justify-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all">
+                        Zavolat: +420 603 834 921
+                    </a>
+                </div>
+
+                <!-- Grid -->
+                <div id="listings-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+                <!-- Pagination -->
+                <div id="listings-pagination" class="hidden flex flex-wrap justify-center items-center gap-2 mt-10"></div>
+            </div>
+        </section>
+
+        <!-- CTA banner -->
+        <section class="py-16 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-[#0D28F2] to-[#0a1fc5] rounded-3xl p-10 lg:p-14 text-center text-white shadow-xl">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Pronajímáte vlastní byt?</h2>
+                    <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+                        Místo inzerátů, prohlídek a starostí s neplatiči vám garantujeme nájem každý měsíc.
+                        Postaráme se o vše: prověření nájemníka, smlouvy, předávací protokol i servis.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button type="button" data-open-popup class="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-blue-50 transition-all shadow-lg">
+                            Získat nezávaznou nabídku
+                        </button>
+                        <a href="kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/50 text-white font-medium rounded-full hover:bg-white/10 transition-all">
+                            Spočítat tržní nájem
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script src="js/load-footer.js"></script>
+
+    <!-- Listings logic -->
+    <script src="js/listings.js"></script>
+
+    <!-- CTA popup wiring (fallback when ContactPopup not yet defined) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-open-popup]').forEach(function(btn) {
+                if (btn._popupBound) return;
+                btn._popupBound = true;
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (window.ContactPopup && typeof window.ContactPopup.open === 'function') {
+                        window.ContactPopup.open();
+                        return;
+                    }
+                    window.dispatchEvent(new CustomEvent('open-contact-popup'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>

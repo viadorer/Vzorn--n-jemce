@@ -31,6 +31,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.vzornynajemce.cz/pronajmy.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.vzornynajemce.cz/problemovy-najemnik.html</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
