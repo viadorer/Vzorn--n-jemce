@@ -77,13 +77,13 @@
                 <form id="listings-filter-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
                     <div>
                         <label for="f-city" class="block text-xs font-medium text-gray-600 mb-1">Město</label>
-                        <select id="f-city" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
+                        <select id="f-city" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
                             <option value="">Všechna města</option>
                         </select>
                     </div>
                     <div>
                         <label for="f-disposition" class="block text-xs font-medium text-gray-600 mb-1">Dispozice</label>
-                        <select id="f-disposition" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
+                        <select id="f-disposition" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
                             <option value="">Vše</option>
                             <option value="1+kk">1+kk</option>
                             <option value="1+1">1+1</option>
@@ -98,17 +98,17 @@
                     </div>
                     <div>
                         <label for="f-price-max" class="block text-xs font-medium text-gray-600 mb-1">Max. nájemné (Kč)</label>
-                        <input type="number" id="f-price-max" min="0" step="500" placeholder="např. 20 000" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm">
+                        <input type="number" id="f-price-max" min="0" step="500" placeholder="např. 20 000" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm">
                     </div>
                     <div class="flex gap-2">
-                        <button type="submit" class="flex-1 inline-flex items-center justify-center px-4 py-2 bg-[#0D28F2] text-white text-sm font-medium rounded-lg hover:bg-[#0D28F2]/90 transition-colors">
+                        <button type="submit" class="flex-1 inline-flex items-center justify-center h-11 px-4 bg-[#0D28F2] text-white text-sm font-medium rounded-lg hover:bg-[#0D28F2]/90 transition-colors">
                             Filtrovat
                         </button>
-                        <button type="button" id="f-reset" class="inline-flex items-center justify-center px-3 py-2 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors" title="Resetovat filtry">
+                        <button type="button" id="f-reset" class="inline-flex items-center justify-center h-11 w-11 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors" title="Resetovat filtry" aria-label="Resetovat filtry">
                             ✕
                         </button>
                     </div>
-                    <div class="text-sm text-gray-500 text-right">
+                    <div class="text-sm text-gray-500 text-right self-center pb-1">
                         Nalezeno: <span id="listings-count" class="font-semibold text-gray-900">…</span>
                     </div>
                 </form>
