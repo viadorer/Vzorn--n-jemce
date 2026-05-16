@@ -5,7 +5,12 @@
         border: 0;
         background: transparent;
         max-width: 36rem;
-        width: 100%;
+        width: calc(100% - 2rem);
+        /* Native <dialog> centering — explicit, ať to nepřebije Tailwindův m-0 */
+        margin: auto;
+        position: fixed;
+        inset: 0;
+        max-height: calc(100dvh - 2rem);
     }
     dialog#contact-dialog::backdrop {
         background: rgba(0, 0, 0, 0.5);
