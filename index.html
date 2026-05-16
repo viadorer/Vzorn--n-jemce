@@ -717,20 +717,20 @@
         </div>
     </section>
 
-    <!-- Case study – reálné spravované nemovitosti z ptf-reality DB -->
+    <!-- Aktuální nabídky, na kterých pracujeme — z ptf-reality DB -->
     <section id="spravujeme" class="py-24 bg-ivory relative overflow-hidden">
-        <!-- Vzorný nájemce postava jako brand accent -->
+        <!-- Vzorný nájemce postava jako brand accent (plně viditelná) -->
         <img src="images/Vzorný nájemce happy.png"
              alt=""
              aria-hidden="true"
-             class="hidden lg:block absolute -bottom-6 -right-8 w-64 xl:w-72 opacity-90 pointer-events-none select-none z-0"
+             class="hidden xl:block absolute bottom-4 right-6 2xl:right-12 w-48 2xl:w-56 opacity-90 pointer-events-none select-none z-0"
              loading="lazy">
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12 max-w-3xl mx-auto">
-                <span class="inline-block px-4 py-1.5 bg-blue-50 text-[#0D28F2] text-xs font-semibold uppercase tracking-wider rounded-full mb-4">Reálné nemovitosti, reálná čísla</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nemovitosti, které pro majitele aktuálně spravujeme</h2>
-                <p class="text-lg text-gray-600">Najděte podobnou té vaší. Pošlete 3 detaily — do konce dne vám zavoláme s konkrétní cenou, kterou byste od nás dostával.</p>
+                <span class="inline-block px-4 py-1.5 bg-blue-50 text-[#0D28F2] text-xs font-semibold uppercase tracking-wider rounded-full mb-4">Co aktuálně řešíme pro majitele</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nabídky, do kterých teď hledáme nájemce</h2>
+                <p class="text-lg text-gray-600">Reálné nemovitosti, na kterých zrovna pracujeme. Najděte podobnou té vaší — spočítáme, kolik byste s námi mohli dostávat.</p>
             </div>
 
             <!-- Grid (3 karty) — skeleton loader, JS vymění -->
@@ -765,7 +765,7 @@
             </div>
 
             <div class="mt-12 text-center">
-                <p id="case-study-count" class="text-sm text-gray-500 mb-6">Spravujeme nemovitosti v&nbsp;Plzni, Praze a&nbsp;Berouně.</p>
+                <p id="case-study-count" class="text-sm text-gray-500 mb-6">Aktivní nabídky v&nbsp;Plzni, Praze a&nbsp;okolí.</p>
                 <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                     Chci vědět, kolik vydělá můj byt →
                 </button>
@@ -831,7 +831,7 @@
 
             const badge = document.createElement('span');
             badge.className = 'absolute top-3 left-3 px-3 py-1 bg-[#0D28F2] text-white text-xs font-semibold uppercase tracking-wider rounded-full shadow-md';
-            badge.textContent = 'Spravujeme';
+            badge.textContent = 'V nabídce';
             imgWrap.appendChild(badge);
 
             card.appendChild(imgWrap);
@@ -853,7 +853,7 @@
 
             const priceLabel = document.createElement('p');
             priceLabel.className = 'text-xs text-gray-500 mb-1';
-            priceLabel.textContent = 'Majitel dostává každý měsíc';
+            priceLabel.textContent = 'Nabízíme za';
             body.appendChild(priceLabel);
 
             const price = document.createElement('p');
@@ -919,8 +919,8 @@
 
             const total = (result.pagination && result.pagination.total) || valid.length;
             if (countEl && total) {
-                const word = total === 1 ? 'nemovitost' : (total >= 2 && total <= 4 ? 'nemovitosti' : 'nemovitostí');
-                countEl.textContent = 'Spravujeme ' + total + ' ' + word + ' v Plzni, Praze a Berouně.';
+                const word = total === 1 ? 'aktivní nabídka' : (total >= 2 && total <= 4 ? 'aktivní nabídky' : 'aktivních nabídek');
+                countEl.textContent = total + ' ' + word + ' v Plzni, Praze a okolí.';
             }
         }
 
