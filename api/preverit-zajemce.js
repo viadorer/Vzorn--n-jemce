@@ -70,6 +70,8 @@ export default async function handler(req, res) {
 
   const requesterName = String(data.requester_name || '').trim().slice(0, 120);
   const requesterPhone = String(data.requester_phone || '').trim().slice(0, 40);
+  const phoneDigits = requesterPhone.replace(/\D/g, '');
+  if (phoneDigits.length < 9) errors.push('Telefon povinný (alespoň 9 číslic)');
   const propertyLocation = String(data.property_location || '').trim().slice(0, 200);
   const candidateAddress = String(data.candidate_address || '').trim().slice(0, 200);
   const candidateIc = String(data.candidate_ic || '').replace(/\s/g, '').slice(0, 12);
@@ -106,9 +108,9 @@ export default async function handler(req, res) {
     candidateAddress ? `  Adresa:        ${candidateAddress}` : '',
     '',
     'ÚDAJE ŽADATELE (MAJITEL)',
+    `  Telefon:       ${requesterPhone}`,
     `  E-mail:        ${requesterEmail}`,
     requesterName ? `  Jméno:         ${requesterName}` : '',
-    requesterPhone ? `  Telefon:       ${requesterPhone}` : '',
     propertyLocation ? `  Lokace bytu:   ${propertyLocation}` : '',
     '',
     'SOUHLASY (deklarované majitelem)',

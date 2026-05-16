@@ -207,11 +207,12 @@
                                         </div>
                                         <div>
                                             <label for="requester_phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                                Telefon <span class="text-gray-400 font-normal">(volitelně)</span>
+                                                Telefon <span class="text-red-500">*</span>
                                             </label>
-                                            <input type="tel" id="requester_phone" name="requester_phone" maxlength="40" autocomplete="tel"
+                                            <input type="tel" id="requester_phone" name="requester_phone" required maxlength="40" minlength="9" autocomplete="tel"
                                                    class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
                                                    placeholder="+420 ...">
+                                            <p class="text-xs text-gray-500 mt-2">Voláme jen pokud report najde nejednoznačný záznam k&nbsp;diskuzi.</p>
                                         </div>
                                     </div>
 
@@ -451,6 +452,10 @@
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.requester_email || '')) {
                 return showError('Zadejte platný e-mail.');
+            }
+            const phoneDigits = (data.requester_phone || '').replace(/\D/g, '');
+            if (phoneDigits.length < 9) {
+                return showError('Zadejte telefon (alespoň 9 číslic) — voláme jen pokud najdeme nejednoznačný záznam.');
             }
             if (!data.consent_obtained || !data.consent_gdpr) return showError('Musíte potvrdit oba souhlasy.');
 
