@@ -178,25 +178,11 @@
     <div id="footer-placeholder"></div>
     <script src="js/load-footer.js"></script>
 
+    <!-- Sdílený kontaktní popup -->
+    <div id="popup-placeholder"></div>
+    <script src="js/load-popup.js"></script>
+
     <!-- Listings logic -->
     <script src="js/listings.js"></script>
-
-    <!-- CTA popup wiring (fallback when ContactPopup not yet defined) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('[data-open-popup]').forEach(function(btn) {
-                if (btn._popupBound) return;
-                btn._popupBound = true;
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    if (window.ContactPopup && typeof window.ContactPopup.open === 'function') {
-                        window.ContactPopup.open();
-                        return;
-                    }
-                    window.dispatchEvent(new CustomEvent('open-contact-popup'));
-                });
-            });
-        });
-    </script>
 </body>
 </html>

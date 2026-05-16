@@ -152,16 +152,8 @@
 <!-- Skript pro načítání footeru -->
 <script src="js/load-footer.js"></script>
 
-<script>
-// Popup: připojit CTA tlačítka (vanilla JS)
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('[data-open-popup]').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (window.ContactPopup) ContactPopup.open();
-        });
-    });
-});
-</script>
+<!-- Sdílený kontaktní popup -->
+<div id="popup-placeholder"></div>
+<script src="js/load-popup.js"></script>
 </body>
 </html>
