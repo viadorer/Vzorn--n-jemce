@@ -45,7 +45,7 @@ Rizikové faktory:
 
 ---
 Tento report byl vygenerován kalkulačkou bonity na vzornynajemce.cz
-Výpočty jsou pouze orientační. Pro garantovaný nájem kontaktujte Vzorný nájemce.
+Výpočty jsou pouze orientační. Pro jistý nájem kontaktujte Vzorný nájemce.
 ```
 
 5. Uložte šablonu a zapamatujte si **Template ID** (např. `template_xyz789`)

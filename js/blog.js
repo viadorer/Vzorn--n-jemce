@@ -127,14 +127,14 @@ const blogPosts = [
   ,
   {
     id: 7,
-    title: 'Pronájem bez starostí: 5 důvodů, proč majitelé v roce 2025 přecházejí na garantovaný nájem',
-    slug: 'pronajem-bez-starosti-5-duvodu-garantovany-najem-2025',
+    title: 'Pronájem bez starostí: 5 důvodů, proč majitelé v roce 2025 přecházejí na jistý nájem',
+    slug: 'pronajem-bez-starosti-5-duvodu-jisty-najem-2025',
     date: '2025-07-29',
     readTime: '7 min čtení',
     category: 'Trendy',
     image: '../images/blog/clanek3.png',
-    excerpt: 'Proč v roce 2025 stále více majitelů volí garantovaný nájem? Shrnutí hlavních důvodů a přínosů.',
-    content: 'posts/pronajem-bez-starosti-5-duvodu-garantovany-najem-2025.md'
+    excerpt: 'Proč v roce 2025 stále více majitelů volí jistý nájem? Shrnutí hlavních důvodů a přínosů.',
+    content: 'posts/pronajem-bez-starosti-5-duvodu-jisty-najem-2025.md'
   }
 ];
 
@@ -221,7 +221,7 @@ async function loadBlogPosts(category = 'all', page = 1) {
 // Function to load and render a single blog post
 function decoratePostContent(slug, html) {
   // Vloží speciální prvky pro konkrétní články (Náš tip, CTA bannery)
-  if (slug === 'pronajem-bez-starosti-5-duvodu-garantovany-najem-2025') {
+  if (slug === 'pronajem-bez-starosti-5-duvodu-jisty-najem-2025') {
     const ctaBannerMiddle = `
       <section class="not-prose my-10">
         <div class="rounded-2xl p-6 md:p-8 border border-gray-200 bg-gradient-to-r from-white to-blue-50">
@@ -241,7 +241,7 @@ function decoratePostContent(slug, html) {
     const ctaBannerBottom = `
       <section class="not-prose mt-12">
         <div class="bg-gray-900 rounded-2xl text-white p-8 text-center">
-          <h3 class="text-2xl font-semibold mb-3">Získejte garanci nájmu již dnes</h3>
+          <h3 class="text-2xl font-semibold mb-3">Získejte jistotu nájmu již dnes</h3>
           <p class="text-gray-300 mb-6">Bez prázdných měsíců, bez stresu a s plným servisem.</p>
           <div class="flex flex-col sm:flex-row justify-center gap-3">
             <button type="button" data-open-popup class="px-6 py-3 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition">ZÍSKAT GARANCI NÁJMU →</button>

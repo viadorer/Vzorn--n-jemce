@@ -47,7 +47,7 @@ To, že fond oprav hradí vlastník, neznamená, že by ho nemohl promítnout do
 - Pronajímatel jej může **zohlednit při stanovení výše nájemného**.
 - Nejasné nebo nesprávné ujednání může vést k soudnímu sporu a povinnosti peníze vrátit.
 
-> Chcete mít jistotu, že smlouvy i rozdělení plateb budou správně nastavené? Využijte službu **Garantovaný nájem** – všechny platby budou jasně definované a bez rizika chyb.
+> Chcete mít jistotu, že smlouvy i rozdělení plateb budou správně nastavené? Využijte službu **Jistý nájem** – všechny platby budou jasně definované a bez rizika chyb.
 
 ---
 

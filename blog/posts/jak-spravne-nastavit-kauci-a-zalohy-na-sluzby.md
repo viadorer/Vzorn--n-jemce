@@ -70,7 +70,7 @@ Podle § 2254 odst. 2 OZ musí pronajímatel kauci vrátit po skončení nájmu 
 - Zálohy na služby musí odpovídat skutečným nákladům a být každoročně vyúčtovány (zákon č. 67/2013 Sb., zejména § 7 a § 13).
 - Jasné a oddělené vymezení nájemného, kauce a záloh ve smlouvě je základ prevence sporů.
 
-> Nechcete řešit kauce, zálohy ani vyúčtování? Využijte službu **Garantovaný nájem**. Garantujeme pravidelný příjem bez starostí – a všechny právní i praktické detaily vyřešíme za vás.
+> Nechcete řešit kauce, zálohy ani vyúčtování? Využijte službu **Jistý nájem**. Garantujeme pravidelný příjem bez starostí – a všechny právní i praktické detaily vyřešíme za vás.
 
 ---
 

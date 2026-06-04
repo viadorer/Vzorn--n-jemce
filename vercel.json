@@ -48,5 +48,20 @@
   ],
   "rewrites": [
     { "source": "/pronajmy/:slug", "destination": "/pronajmy-detail" }
+  ],
+  "redirects": [
+    {
+      "source": "/blog/posts/pronajem-bez-starosti-5-duvodu-garantovany-najem-2025(.*)",
+      "destination": "/blog/posts/pronajem-bez-starosti-5-duvodu-jisty-najem-2025$1",
+      "permanent": true
+    },
+    {
+      "source": "/blog/post.html",
+      "has": [
+        { "type": "query", "key": "slug", "value": "pronajem-bez-starosti-5-duvodu-garantovany-najem-2025" }
+      ],
+      "destination": "/blog/post.html?slug=pronajem-bez-starosti-5-duvodu-jisty-najem-2025",
+      "permanent": true
+    }
   ]
 }

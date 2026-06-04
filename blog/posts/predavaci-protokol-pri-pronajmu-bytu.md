@@ -92,13 +92,13 @@ Papírové protokoly už dnes nejsou nutností. Existují aplikace a online form
 Majitel předal byt bez protokolu. Po roce nájemník odchází a tvrdí, že oděrky na dveřích nebo škrábance na parketách tam byly už při nastěhování. Bez důkazů majitel nemá šanci obstát. Výsledkem je spor, zbytečné náklady a zklamání na obou stranách. Přitom stačilo 20 minut na vyplnění protokolu a pár fotek.
 
 ## Tip od Vzorného nájemce
-Chcete mít klid? Udělejte z předávacího protokolu **pevnou součást nájemní smlouvy** a ukládejte jej v digitální podobě. Nebo ještě lépe – využijte službu **garantovaného nájmu**, kde se o všechno včetně protokolů, fotodokumentace a následné správy postaráme za vás. Díky tomu máte jistotu, že váš byt zůstane v pořádku a vy dostanete nájem vždy včas.
+Chcete mít klid? Udělejte z předávacího protokolu **pevnou součást nájemní smlouvy** a ukládejte jej v digitální podobě. Nebo ještě lépe – využijte službu **jistého nájmu**, kde se o všechno včetně protokolů, fotodokumentace a následné správy postaráme za vás. Díky tomu máte jistotu, že váš byt zůstane v pořádku a vy dostanete nájem vždy včas.
 
 <section class="not-prose mt-10">
   <div class="relative overflow-hidden rounded-2xl text-white p-8 md:p-10 text-center ring-1 ring-white/10" style="background:#0b1020;">
     <div class="pointer-events-none absolute inset-0 opacity-[0.35]" style="background: radial-gradient(60% 60% at 50% 0%, #1f2a64 0%, rgba(27,33,56,0) 60%), radial-gradient(40% 40% at 100% 100%, #0D28F2 0%, rgba(13,40,242,0) 60%);"></div>
     <div class="relative">
-      <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3" style="color:#ffffff">Získejte garanci nájmu již dnes</h3>
+      <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3" style="color:#ffffff">Získejte jistotu nájmu již dnes</h3>
       <p class="mb-7 text-base md:text-lg text-white/80">Bez prázdných měsíců, bez stresu a s plným servisem – včetně předávacích protokolů a kontrol.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-3">
         <a href="#kontakt" class="px-6 py-3 rounded-full bg-white text-gray-900 font-semibold shadow-sm hover:bg-gray-100 transition" style="color:#111827">Mám zájem →</a>

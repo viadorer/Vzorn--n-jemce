@@ -73,7 +73,7 @@ Chytré nastavení procesů zkracuje dobu, kdy je byt prázdný:
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
       <div>
         <h3 class="text-xl md:text-2xl font-semibold text-gray-900">Nečekejte, až bude byt prázdný</h3>
-        <p class="text-gray-800/90">Získejte garanci nájmu – fixní příjem každý měsíc a kompletní správa bez starostí.</p>
+        <p class="text-gray-800/90">Získejte jistotu nájmu – fixní příjem každý měsíc a kompletní správa bez starostí.</p>
       </div>
       <div class="flex flex-col sm:flex-row gap-3">
         <button type="button" data-open-popup class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#0D28F2] text-white hover:bg-[#0a1fc5] transition">Zjistit více →</button>
@@ -84,9 +84,9 @@ Chytré nastavení procesů zkracuje dobu, kdy je byt prázdný:
   
 </section>
 
-## 6. Garantovaný nájem – stoprocentní jistota
+## 6. Jistý nájem – stoprocentní jistota
 
-I když uděláte maximum, vždy hrozí, že byt zůstane určitou dobu prázdný. Řešením je **garantovaný nájem**.
+I když uděláte maximum, vždy hrozí, že byt zůstane určitou dobu prázdný. Řešením je **jistý nájem**.
 
 Jak funguje:
 
@@ -103,7 +103,7 @@ Prázdný byt = ztráta příjmu a zbytečné náklady. Riziko se dá výrazně 
 - profesionálních fotografií,
 - správně nastavené ceny,
 - prověřeného nájemníka,
-- a služeb jako **garantovaný nájem**.
+- a služeb jako **jistý nájem**.
 
 Díky tomu můžete svůj pronájem proměnit v stabilní zdroj příjmu bez starostí.
 
@@ -113,7 +113,7 @@ Díky tomu můžete svůj pronájem proměnit v stabilní zdroj příjmu bez sta
     <h3 class="text-2xl md:text-3xl font-semibold mb-3">Vzorný nájemce – jistota pro váš pronájem</h3>
     <p class="text-white/90 mb-6">100% nájem každý měsíc a nemovitost v perfektním stavu.</p>
     <div class="flex flex-col sm:flex-row justify-center gap-3">
-      <button type="button" data-open-popup class="px-6 py-3 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition">Získat garanci nájmu →</button>
+      <button type="button" data-open-popup class="px-6 py-3 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition">Získat jistotu nájmu →</button>
       <a href="../kalkulator.html" class="px-6 py-3 rounded-full border border-white text-white hover:text-gray-900 hover:bg-white transition">Spočítat úsporu</a>
     </div>
   </div>

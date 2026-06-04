@@ -64,7 +64,7 @@ Většina neplatičů se dá odhalit ještě před podpisem smlouvy. Jen je pot�
 
 Ani nejlepší prevence nezajistí, že se nikdy neobjeví problém. Životní situace nájemníka se může změnit a majitel se rázem ocitne bez příjmu.
 
-Proto existuje <strong>garantovaný nájem</strong>:
+Proto existuje <strong>jistý nájem</strong>:
 
 - nájem dostáváte pravidelně každý měsíc,
 - komunikaci a řešení problémů s nájemníky necháte na nás,
@@ -77,12 +77,12 @@ Proto existuje <strong>garantovaný nájem</strong>:
 - Dokumentace a slušná, důsledná komunikace jsou klíč.
 - Právní postup má přijít až jako poslední varianta.
 - Nejlepší řešení je prevence – důkladné prověření a jasná pravidla.
-- A pokud chcete mít stoprocentní jistotu – řešením je <strong>garantovaný nájem</strong>.
+- A pokud chcete mít stoprocentní jistotu – řešením je <strong>jistý nájem</strong>.
 
 <section class="not-prose my-10">
   <div class="rounded-2xl p-6 md:p-8 border border-gray-200 bg-gradient-to-r from-white to-blue-50 text-center">
     <h3 class="text-xl font-semibold text-gray-900 mb-2">Chcete mít klid a jistotu pravidelných plateb?</h3>
-    <p class="text-gray-600 mb-4">Napište nám – dáme vám k dispozici naši kalkulačku bonity a vysvětlíme, jak funguje garantovaný nájem.</p>
+    <p class="text-gray-600 mb-4">Napište nám – dáme vám k dispozici naši kalkulačku bonity a vysvětlíme, jak funguje jistý nájem.</p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <button data-open-popup class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0D28F2] text-white hover:bg-[#0a1fc5] transition">ZÍSKAT GARANCI NÁJMU →</button>
       <button data-open-popup class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-50 transition">CHCI KALKULAČKU BONITY</button>
