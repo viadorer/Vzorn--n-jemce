@@ -5,11 +5,13 @@
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail nabídky | Vzorný nájemce</title>
-    <meta name="description" content="Detail nabídky pronájmu nemovitosti spravované službou Vzorný nájemce.">
+    <title>Detail nabídky pronájmu | Vzorný nájemce</title>
+    <meta name="description" content="Detail nabídky pronájmu nemovitosti od Vzorného nájemce a PTF reality.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.vzornynajemce.cz/pronajmy.html">
-    <meta property="og:type" content="product">
+    <!-- Canonical se nastavuje dynamicky v JS na /pronajmy/{slug}.
+         Static canonical na /pronajmy.html byl chybný — Google WRS ho četl
+         před JS a považoval detail za duplicitu výpisu. -->
+    <meta property="og:type" content="website">
     <meta property="og:site_name" content="Vzorný nájemce">
     <meta property="og:locale" content="cs_CZ">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
