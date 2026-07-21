@@ -370,20 +370,54 @@
             setMeta('name', 'twitter:card', 'summary_large_image');
             setLink('canonical', url);
 
-            // JSON-LD
+            // JSON-LD — typ podle druhu nemovitosti (ne Product/Offer, aby Google
+            // nechtěl merchant listing pole jako hasMerchantReturnPolicy, shippingDetails)
+            const TYPE_MAP = {
+                byt: 'Apartment',
+                dum: 'House',
+                komercni: 'Place',
+                pozemek: 'Place',
+            };
+            const schemaType = TYPE_MAP[p.property_type] || 'Accommodation';
+
+            const additionalProps = [];
+            if (p.price) {
+                additionalProps.push({
+                    "@type": "PropertyValue",
+                    "name": "Měsíční nájemné",
+                    "value": p.price,
+                    "unitCode": "CZK"
+                });
+            }
+            if (p.property_type) {
+                additionalProps.push({
+                    "@type": "PropertyValue",
+                    "name": "Typ nabídky",
+                    "value": "Pronájem"
+                });
+            }
+            if (p.building_type) {
+                additionalProps.push({
+                    "@type": "PropertyValue",
+                    "name": "Konstrukce",
+                    "value": p.building_type
+                });
+            }
+            if (p.floor != null) {
+                additionalProps.push({
+                    "@type": "PropertyValue",
+                    "name": "Patro",
+                    "value": p.floor
+                });
+            }
+
             const schema = {
                 "@context": "https://schema.org",
-                "@type": ["Product", "Residence"],
+                "@type": schemaType,
                 "name": p.title,
                 "description": desc,
                 "image": (p.images || []).slice(0, 6).map(i => i.url || i.url_thumbnail).filter(Boolean),
                 "url": url,
-                "offers": p.price ? {
-                    "@type": "Offer",
-                    "price": p.price,
-                    "priceCurrency": "CZK",
-                    "availability": "https://schema.org/InStock"
-                } : undefined,
                 "address": {
                     "@type": "PostalAddress",
                     "addressLocality": p.address_city,
@@ -396,6 +430,7 @@
                     "value": p.area_usable || p.area_total,
                     "unitCode": "MTK"
                 } : undefined,
+                "additionalProperty": additionalProps.length ? additionalProps : undefined,
             };
             const s = document.createElement('script');
             s.type = 'application/ld+json';
