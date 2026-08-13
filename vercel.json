@@ -5,49 +5,91 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-        { "key": "X-DNS-Prefetch-Control", "value": "on" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        },
+        {
+          "key": "X-DNS-Prefetch-Control",
+          "value": "on"
+        }
       ]
     },
     {
       "source": "/images/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/:all*(css|js|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/:all*(html)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     }
   ],
   "rewrites": [
-    { "source": "/pronajmy/:slug", "destination": "/pronajmy-detail" }
+    {
+      "source": "/pronajmy/:slug",
+      "destination": "/pronajmy-detail"
+    }
   ],
   "redirects": [
     {
@@ -58,9 +100,73 @@
     {
       "source": "/blog/post.html",
       "has": [
-        { "type": "query", "key": "slug", "value": "pronajem-bez-starosti-5-duvodu-garantovany-najem-2025" }
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "pronajem-bez-starosti-5-duvodu-garantovany-najem-2025"
+        }
       ],
       "destination": "/blog/post.html?slug=pronajem-bez-starosti-5-duvodu-jisty-najem-2025",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/pravni-aspekty-najemni-smlouvy",
+      "destination": "/blog/post.html?slug=pravni-aspekty-najemni-smlouvy-pronajimatele",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/pravni-aspekty-najemni-smlouvy.html",
+      "destination": "/blog/post.html?slug=pravni-aspekty-najemni-smlouvy-pronajimatele",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/jak-resit-problemy-s-najemnikem",
+      "destination": "/blog/post.html?slug=jak-resit-problemy-s-najemnikem",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/jak-resit-problemy-s-najemnikem.html",
+      "destination": "/blog/post.html?slug=jak-resit-problemy-s-najemnikem",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/jak-zvysit-hodnotu-sveho-bytu",
+      "destination": "/blog/post.html?slug=jak-zvysit-hodnotu-sveho-bytu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/jak-zvysit-hodnotu-sveho-bytu.html",
+      "destination": "/blog/post.html?slug=jak-zvysit-hodnotu-sveho-bytu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/moderni-pronajem-2025",
+      "destination": "/blog/post.html?slug=moderni-pronajem-2025",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/moderni-pronajem-2025.html",
+      "destination": "/blog/post.html?slug=moderni-pronajem-2025",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/neplaceni-najmu",
+      "destination": "/blog/post.html?slug=neplaceni-najmu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/neplaceni-najmu.html",
+      "destination": "/blog/post.html?slug=neplaceni-najmu",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/vyvoj-cen-najmu-2025",
+      "destination": "/blog/post.html?slug=vyvoj-cen-najmu-2025",
+      "permanent": true
+    },
+    {
+      "source": "/blog/posts/vyvoj-cen-najmu-2025.html",
+      "destination": "/blog/post.html?slug=vyvoj-cen-najmu-2025",
       "permanent": true
     }
   ]

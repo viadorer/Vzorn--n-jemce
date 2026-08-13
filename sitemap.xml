@@ -67,40 +67,76 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/blog/posts/jak-resit-problemy-s-najemnikem.html</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=fond-oprav-a-najemni-vztahy-co-je-dobre-vedet</loc>
+    <lastmod>2025-09-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/blog/posts/jak-zvysit-hodnotu-sveho-bytu.html</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=zalohy-na-sluzby-pri-pronajmu-bytu-co-musi-pronajimatel-vedet</loc>
+    <lastmod>2025-09-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/blog/posts/moderni-pronajem-2025.html</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=jak-spravne-nastavit-kauci-a-zalohy-na-sluzby</loc>
+    <lastmod>2025-09-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/blog/posts/neplaceni-najmu.html</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=jak-snizit-riziko-prazdneho-bytu</loc>
+    <lastmod>2025-09-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/blog/posts/pravni-aspekty-najemni-smlouvy.html</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=predavaci-protokol-pri-pronajmu-bytu</loc>
+    <lastmod>2025-08-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/blog/posts/vyvoj-cen-najmu-2025.html</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=neplaceni-najmu</loc>
+    <lastmod>2025-08-06</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=pronajem-bez-starosti-5-duvodu-garantovany-najem-2025</loc>
+    <lastmod>2025-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=vyvoj-cen-najmu-2025</loc>
+    <lastmod>2025-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=pravni-aspekty-najemni-smlouvy-pronajimatele</loc>
+    <lastmod>2025-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=jak-zvysit-hodnotu-sveho-bytu</loc>
+    <lastmod>2025-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=moderni-pronajem-2025</loc>
+    <lastmod>2025-02-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.vzornynajemce.cz/blog/post.html?slug=jak-resit-problemy-s-najemnikem</loc>
+    <lastmod>2025-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/gdpr.html</loc>

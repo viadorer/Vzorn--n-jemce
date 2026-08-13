@@ -2,141 +2,21 @@
 let _marked = null;
 
 // Blog post data structure (with newest first)
-const blogPosts = [
-  {
-    id: 12,
-    title: 'Fond oprav a nájemní vztahy: co je dobré vědět',
-    slug: 'fond-oprav-a-najemni-vztahy-co-je-dobre-vedet',
-    date: '2025-09-25',
-    readTime: '5 min čtení',
-    category: 'Právní rady',
-    image: '../images/blog/clanek53.png',
-    excerpt: 'Kdo platí fond oprav, proč nepatří do záloh na služby a jak ho správně zohlednit v nájemném podle § 1180 OZ.',
-    content: 'posts/fond-oprav-a-najemni-vztahy-co-je-dobre-vedet.md'
-  },
-  {
-    id: 11,
-    title: 'Zálohy na služby při pronájmu bytu: co musí pronajímatel vědět',
-    slug: 'zalohy-na-sluzby-pri-pronajmu-bytu-co-musi-pronajimatel-vedet',
-    date: '2025-09-12',
-    readTime: '6 min čtení',
-    category: 'Právní rady',
-    image: '../images/blog/clanek52.png',
-    excerpt: 'Jak správně nastavit zálohy, vyúčtování a rozúčtování služeb podle zákona č. 67/2013 Sb. a vyhlášky č. 269/2015 Sb.',
-    content: 'posts/zalohy-na-sluzby-pri-pronajmu-bytu-co-musi-pronajimatel-vedet.md'
-  },
-  {
-    id: 10,
-    title: 'Jak správně nastavit kauci a zálohy na služby: klíč k bezproblémovému pronájmu',
-    slug: 'jak-spravne-nastavit-kauci-a-zalohy-na-sluzby',
-    date: '2025-09-07',
-    readTime: '7 min čtení',
-    category: 'Právní rady',
-    image: '../images/blog/clanek104.png',
-    excerpt: 'Kauce, zálohy a vyúčtování bez chyb: praktický návod s odkazy na § 2254 OZ a zákon č. 67/2013 Sb., abyste předešli sporům a nastavili vše správně.',
-    content: 'posts/jak-spravne-nastavit-kauci-a-zalohy-na-sluzby.md'
-  },
-  {
-    id: 9,
-    title: 'Jak snížit riziko prázdného bytu: kompletní průvodce pro pronajímatele',
-    slug: 'jak-snizit-riziko-prazdneho-bytu',
-    date: '2025-09-05',
-    readTime: '7 min čtení',
-    category: 'Praktické tipy',
-    image: '../images/blog/clanek42.png',
-    excerpt: 'Prázdný byt je nejdražší. Jak správně nastavit inzerci, cenu i procesy, aby byt nezůstával bez nájemníka a výnos byl stabilní?',
-    content: 'posts/jak-snizit-riziko-prazdneho-bytu.md'
-  },
-  {
-    id: 8,
-    title: 'Předávací protokol: Nejdůležitější dokument při pronájmu bytu',
-    slug: 'predavaci-protokol-pri-pronajmu-bytu',
-    date: '2025-08-25',
-    readTime: '7 min čtení',
-    category: 'Praktické tipy',
-    image: '../images/blog/clanek9.png',
-    excerpt: 'Proč je předávací protokol klíčovým dokumentem při pronájmu a co musí obsahovat, aby vás chránil.',
-    content: 'posts/predavaci-protokol-pri-pronajmu-bytu.md'
-  },
-  {
-    id: 1,
-    title: 'Jak zvýšit hodnotu svého bytu pro pronájem',
-    slug: 'jak-zvysit-hodnotu-sveho-bytu',
-    date: '2025-03-15',
-    readTime: '5 min čtení',
-    category: 'Praktické tipy',
-    image: '../images/blog/clanek1.png',
-    excerpt: 'Maximalizujte výnos z pronájmu svého bytu pomocí chytrých a cenově dostupných vylepšení...',
-    content: 'posts/jak-zvysit-hodnotu-sveho-bytu.md'
-  },
-  {
-    id: 2,
-    title: 'Nájemní smlouva bez starostí: Jak se vyhnout zbytečným problémům?',
-    slug: 'pravni-aspekty-najemni-smlouvy',
-    date: '2025-04-22',
-    readTime: '7 min čtení',
-    category: 'Právní rady',
-    image: '../images/blog/clanek2.png',
-    excerpt: 'Nájemní smlouva je klíčovým dokumentem, který definuje vztah mezi pronajímatelem a nájemcem...',
-    content: 'posts/pravni-aspekty-najemni-smlouvy.md'
-  },
-  {
-    id: 3,
-    title: 'Analýza trhu s nájemním bydlením v roce 2025: Co je potřeba vědět?',
-    slug: 'vyvoj-cen-najmu-2025',
-    date: '2025-06-27',
-    readTime: '6 min čtení',
-    category: 'Vývoj cen',
-    image: '../images/blog/clanek3.png',
-    excerpt: 'Sledujeme aktuální trendy v cenách nájemného a přinášíme vám podrobnou analýzu vývoje trhu...',
-    content: 'posts/vyvoj-cen-najmu-2025.md'
-  },
-  {
-    id: 4,
-    title: 'Jak řešit problémy s nájemníkem: Praktický průvodce',
-    slug: 'jak-resit-problemy-s-najemnikem',
-    date: '2025-02-01',
-    readTime: '8 min čtení',
-    category: 'Praktické tipy',
-    image: '../images/blog/clanek4.png',
-    excerpt: 'Problémy s nájemníky patří mezi největší obavy majitelů. V tomto článku vám poradíme...',
-    content: 'posts/jak-resit-problemy-s-najemnikem.md'
-  },
-  {
-    id: 5,
-    title: 'Moderní pronájem v roce 2025: Jak na to?',
-    slug: 'moderni-pronajem-2025',
-    date: '2025-02-28',
-    readTime: '6 min čtení',
-    category: 'Trendy',
-    image: '../images/blog/clanek5.png',
-    excerpt: 'Pronajímání nemovitostí prochází významnou transformací. Představíme vám nejnovější trendy...',
-    content: 'posts/moderni-pronajem-2025.md'
-  },
-  {
-    id: 6,
-    title: 'Co dělat, když nájemník neplatí nájem',
-    slug: 'neplaceni-najmu',
-    date: '2025-08-06',
-    readTime: '5 min čtení',
-    category: 'Právní rady',
-    image: '../images/blog/clanek6.png',
-    excerpt: 'Neplacení nájmu patří mezi nejčastější problémy pronajímatelů. Poradíme vám, jak postupovat...',
-    content: 'posts/neplaceni-najmu.md'
+// Články žijí v PTF (administrace ptf.cz) a čtou se přes /api/blog —
+// proxy vrací PŘESNĚ tvar původního pole, takže render níž zůstal beze
+// změny. Úprava článku v PTF se tu projeví do ~5 minut, bez nasazování.
+let blogPosts = [];
+let _blogPostsPromise = null;
+async function zajistiClanky() {
+  if (blogPosts.length) return blogPosts;
+  if (!_blogPostsPromise) {
+    _blogPostsPromise = fetch('/api/blog')
+      .then((r) => { if (!r.ok) throw new Error('API ' + r.status); return r.json(); })
+      .then((d) => { blogPosts = d.posts || []; return blogPosts; })
+      .catch((e) => { console.error('Načtení článků selhalo:', e); _blogPostsPromise = null; return []; });
   }
-  ,
-  {
-    id: 7,
-    title: 'Pronájem bez starostí: 5 důvodů, proč majitelé v roce 2025 přecházejí na jistý nájem',
-    slug: 'pronajem-bez-starosti-5-duvodu-jisty-najem-2025',
-    date: '2025-07-29',
-    readTime: '7 min čtení',
-    category: 'Trendy',
-    image: '../images/blog/clanek3.png',
-    excerpt: 'Proč v roce 2025 stále více majitelů volí jistý nájem? Shrnutí hlavních důvodů a přínosů.',
-    content: 'posts/pronajem-bez-starosti-5-duvodu-jisty-najem-2025.md'
-  }
-];
+  return _blogPostsPromise;
+}
 
 // Utility
 function formatDate(dateStr) {
@@ -152,6 +32,7 @@ const POSTS_PER_PAGE = 9;
 
 // Function to load and render blog posts (with optional category filter and pagination)
 async function loadBlogPosts(category = 'all', page = 1) {
+  await zajistiClanky();
   const blogContainer = document.getElementById('blog-posts');
   if (!blogContainer) return;
 
@@ -274,19 +155,20 @@ async function loadBlogPost(slug) {
   if (!postContainer) return;
 
   try {
-    const response = await fetch(post.content);
-    const markdown = await response.text();
-    // Lazy-load markdown parser only when needed
-    if (!_marked) {
-      try {
-        const mod = await import('https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js');
-        _marked = mod.marked || mod.default || mod;
-      } catch (e) {
-        console.error('Nepodařilo se načíst parser Markdownu:', e);
-        _marked = (x) => x; // graceful fallback: render raw markdown
-      }
-    }
-    let content = (_marked.parse ? _marked.parse(markdown) : _marked(markdown));
+    // Obsah přijde z PTF jako hotové HTML — Markdown parser už není
+    // potřeba (zdrojové .md soubory jsou archivované, žijí v PTF).
+    const response = await fetch('/api/blog-post?slug=' + encodeURIComponent(slug));
+    if (!response.ok) throw new Error('API ' + response.status);
+    const detail = await response.json();
+
+    document.title = (detail.metaTitle || detail.title) + ' | Vzorný nájemce';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', detail.metaDescription || detail.excerpt || '');
+    let canon = document.querySelector('link[rel="canonical"]');
+    if (!canon) { canon = document.createElement('link'); canon.setAttribute('rel','canonical'); document.head.appendChild(canon); }
+    canon.setAttribute('href', detail.canonicalUrl || ('https://www.vzornynajemce.cz/blog/post.html?slug=' + detail.slug));
+
+    let content = detail.content || '';
     content = decoratePostContent(slug, content);
 
     postContainer.innerHTML = `
