@@ -7,34 +7,28 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/o-sluzbe.html</loc>
+    <loc>https://www.vzornynajemce.cz/o-sluzbe</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/kalkulator-trzniho-najemneho.html</loc>
+    <loc>https://www.vzornynajemce.cz/kalkulator-trzniho-najemneho</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/kalkulator-skrytych-nakladu.html</loc>
+    <loc>https://www.vzornynajemce.cz/kalkulator-skrytych-nakladu</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/kalkulator.html</loc>
+    <loc>https://www.vzornynajemce.cz/kalkulator</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.vzornynajemce.cz/pronajmy.html</loc>
-    <lastmod>2026-05-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.vzornynajemce.cz/pronajmy</loc>
@@ -43,19 +37,19 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/problemovy-najemnik.html</loc>
+    <loc>https://www.vzornynajemce.cz/problemovy-najemnik</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/bonita_najemnika.html</loc>
+    <loc>https://www.vzornynajemce.cz/bonita_najemnika</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/preverit-zajemce.html</loc>
+    <loc>https://www.vzornynajemce.cz/preverit-zajemce</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -139,19 +133,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/gdpr.html</loc>
+    <loc>https://www.vzornynajemce.cz/gdpr</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/cookies.html</loc>
+    <loc>https://www.vzornynajemce.cz/cookies</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.vzornynajemce.cz/obchodni-podminky.html</loc>
+    <loc>https://www.vzornynajemce.cz/obchodni-podminky</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
