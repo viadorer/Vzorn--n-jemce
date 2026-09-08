@@ -7,7 +7,7 @@
 ## 2. Propojení emailu (Email Service)
 1. Dashboard > **Email Services** > Add New Service
 2. Vyberte **Gmail** (nebo jiný provider)
-3. Přihlaste se svým emailem (např. vzornynajemce@ptf.cz)
+3. Přihlaste se svým emailem (např. kontakt@vzornynajemnik.cz)
 4. Zapamatujte si **Service ID** (např. `service_abc123`)
 
 ## 3. Vytvoření šablony (Email Template)

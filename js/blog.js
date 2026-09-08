@@ -125,8 +125,8 @@ function decoratePostContent(slug, html) {
           <h3 class="text-2xl font-semibold mb-3">Získejte jistotu nájmu již dnes</h3>
           <p class="text-gray-300 mb-6">Bez prázdných měsíců, bez stresu a s plným servisem.</p>
           <div class="flex flex-col sm:flex-row justify-center gap-3">
-            <button type="button" data-open-popup class="px-6 py-3 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition">ZÍSKAT GARANCI NÁJMU →</button>
-            <a href="../kalkulator.html" class="px-6 py-3 rounded-full border border-white text-white hover:text-gray-900 hover:bg-white transition">Spočítat úsporu</a>
+            <button type="button" data-open-popup class="px-6 py-3 rounded-full bg-white text-gray-900 hover:bg-gray-100 transition">Získejte jistý nájem →</button>
+            <a href="../kalkulator-skrytych-nakladu.html" class="px-6 py-3 rounded-full border border-white text-white hover:text-gray-900 hover:bg-white transition">Spočítat úsporu</a>
           </div>
         </div>
       </section>`;
@@ -189,7 +189,7 @@ async function loadBlogPost(slug) {
 
         <div class="not-prose mb-8 flex flex-col sm:flex-row gap-4">
           <button type="button" data-open-popup class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md">
-            ZÍSKAT GARANCI NÁJMU →
+            Získejte jistý nájem →
           </button>
           <a href="../kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300">
             Spočítat nájemné

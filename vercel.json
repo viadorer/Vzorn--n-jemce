@@ -93,6 +93,26 @@
   ],
   "redirects": [
     {
+      "source": "/klientska-zona.html",
+      "destination": "https://www.housemaster.cz/login",
+      "permanent": true
+    },
+    {
+      "source": "/klientska-zona",
+      "destination": "https://www.housemaster.cz/login",
+      "permanent": true
+    },
+    {
+      "source": "/kalkulator.html",
+      "destination": "/kalkulator-skrytych-nakladu",
+      "permanent": true
+    },
+    {
+      "source": "/kalkulator",
+      "destination": "/kalkulator-skrytych-nakladu",
+      "permanent": true
+    },
+    {
       "source": "/blog/posts/pronajem-bez-starosti-5-duvodu-garantovany-najem-2025(.*)",
       "destination": "/blog/posts/pronajem-bez-starosti-5-duvodu-jisty-najem-2025$1",
       "permanent": true

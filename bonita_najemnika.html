@@ -1642,7 +1642,7 @@
                     ctaModal.classList.remove('hidden');
                     ctaModal.classList.add('flex');
                 } else {
-                    window.location.href = 'klientska-zona.html';
+                    if (window.ContactPopup && typeof window.ContactPopup.open === 'function') { window.ContactPopup.open(); }
                 }
             }
             function closeCta() {
