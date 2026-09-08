@@ -82,6 +82,33 @@
         .g-border { border-color: #1F2937; }
         .g-border-tint { border-color: #E5E7EB; }
 
+        /* Varianta H — Sotheby's Signature (luxury real estate) */
+        .h-primary { background: #1B2C4E; }
+        .h-primary-hover:hover { background: #10192F; }
+        .h-accent { background: #C8A85D; }
+        .h-bg-tint { background: #F4EFE6; }
+        .h-text { color: #1B2C4E; }
+        .h-text-accent { color: #A28640; }
+        .h-border { border-color: #1B2C4E; }
+
+        /* Varianta I — ČSOB Trust (pure CZ bank feel) */
+        .i-primary { background: #003D82; }
+        .i-primary-hover:hover { background: #002B5C; }
+        .i-accent { background: #FFC72C; }
+        .i-bg-tint { background: #EBF2FA; }
+        .i-text { color: #003D82; }
+        .i-border { border-color: #003D82; }
+        .i-border-tint { border-color: #B3D2F0; }
+
+        /* Varianta J — Wise Modern (dark green + bright green) */
+        .j-primary { background: #163300; }
+        .j-primary-hover:hover { background: #0E2200; }
+        .j-accent { background: #9FE870; }
+        .j-bg-tint { background: #F8FCE8; }
+        .j-text { color: #163300; }
+        .j-text-accent { color: #557A2E; }
+        .j-border { border-color: #163300; }
+
         .card-hover:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
         .card-hover { transition: all 0.2s; }
 
@@ -434,6 +461,132 @@
                 <div class="mt-3 flex flex-wrap gap-2">
                     <span class="demo-badge g-accent text-gray-900">98 % obnovení</span>
                     <span class="demo-badge g-primary text-white">Zdarma prověření</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================ VARIANTA H — Sotheby's Signature ============================ -->
+        <div class="bg-white rounded-2xl shadow-md border-2 overflow-hidden ring-4 ring-amber-100" style="border-color: #1B2C4E">
+            <div class="p-4 h-bg-tint border-b" style="border-color: #E9DCC0">
+                <div class="text-xs font-bold h-text-accent uppercase tracking-wider mb-1">Luxury real estate</div>
+                <h2 class="text-lg font-bold text-gray-900">H — Sotheby's Signature</h2>
+                <p class="text-xs text-gray-500 mt-1">Navy + champagne gold · Sotheby's, Bentley, Christie's</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch h-primary mb-2">#1B2C4E primary</div>
+                <div class="swatch h-accent mb-2" style="color: #4A3C1E">#C8A85D accent (champagne)</div>
+                <div class="swatch h-bg-tint mb-4" style="color: #1B2C4E">#F4EFE6 cream tint</div>
+
+                <div class="border-t pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <button class="w-full h-accent hover:opacity-90 font-bold py-3 rounded-full shadow-lg transition text-white" style="text-shadow: 0 1px 2px rgba(0,0,0,0.15)">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <button class="w-full mt-2 h-primary h-primary-hover text-white font-semibold py-3 rounded-full transition">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="h-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold h-text">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="h-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold h-text">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="demo-badge h-accent text-white">Zdarma prověření</span>
+                    <span class="demo-badge h-primary text-white">98 % obnovení</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================ VARIANTA I — ČSOB Trust ============================ -->
+        <div class="bg-white rounded-2xl shadow-md border-2 overflow-hidden ring-4 ring-blue-100" style="border-color: #003D82">
+            <div class="p-4 i-bg-tint border-b" style="border-color: #B3D2F0">
+                <div class="text-xs font-bold i-text uppercase tracking-wider mb-1">🇨🇿 CZ bank feel · max trust</div>
+                <h2 class="text-lg font-bold text-gray-900">I — ČSOB Trust</h2>
+                <p class="text-xs text-gray-500 mt-1">Deep royal blue + yellow · ČSOB, Allianz, JPM feel</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch i-primary mb-2">#003D82 primary (bank navy)</div>
+                <div class="swatch i-accent mb-2" style="color: #78350F">#FFC72C accent (signal yellow)</div>
+                <div class="swatch i-bg-tint mb-4" style="color: #003D82">#EBF2FA tint</div>
+
+                <div class="border-t pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <button class="w-full i-primary i-primary-hover text-white font-bold py-3 rounded-full shadow-lg transition">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <button class="w-full mt-2 border-2 i-text font-semibold py-3 rounded-full transition hover:bg-blue-50" style="border-color: #003D82">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="i-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold i-text">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="i-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold i-text">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="demo-badge i-accent text-gray-900">98 % obnovení</span>
+                    <span class="demo-badge i-bg-tint i-text">Zdarma prověření</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================ VARIANTA J — Wise Modern ============================ -->
+        <div class="bg-white rounded-2xl shadow-md border-2 overflow-hidden ring-4 ring-lime-100" style="border-color: #163300">
+            <div class="p-4 j-bg-tint border-b" style="border-color: #D9F0AF">
+                <div class="text-xs font-bold j-text-accent uppercase tracking-wider mb-1">Modern fintech</div>
+                <h2 class="text-lg font-bold text-gray-900">J — Wise Modern</h2>
+                <p class="text-xs text-gray-500 mt-1">Dark forest + bright lime · Wise, Robinhood feel</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch j-primary mb-2">#163300 primary (dark forest)</div>
+                <div class="swatch j-accent mb-2" style="color: #163300">#9FE870 accent (Wise lime)</div>
+                <div class="swatch j-bg-tint mb-4" style="color: #163300">#F8FCE8 tint</div>
+
+                <div class="border-t pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <button class="w-full j-accent hover:opacity-90 font-bold py-3 rounded-full shadow-lg transition text-gray-900">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <button class="w-full mt-2 j-primary j-primary-hover text-white font-semibold py-3 rounded-full transition">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="j-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold j-text">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="j-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold j-text">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="demo-badge j-accent text-gray-900">98 % obnovení</span>
+                    <span class="demo-badge j-primary text-white">Zdarma prověření</span>
                 </div>
             </div>
         </div>
