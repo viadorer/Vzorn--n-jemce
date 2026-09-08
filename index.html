@@ -185,48 +185,6 @@
         }
     </style>
 
-    <!-- Realvisor widget – rent-only mini kalkulačka (hero)
-         Sdílí PTF backend/formCode 'valuo-main' přes __mockFormConfig,
-         které přepíše server config na rent-only + skryté selectory. -->
-    <script>
-      window.__mockFormConfig = {
-        variant: "minimal",
-        propertyTypes: ["flat"],
-        kindTypes: ["lease"],
-        theme: {
-          primaryColor: "#E63946",
-          borderRadius: "12px",
-          maxWidth: "100%"
-        },
-        labels: {
-          title: "Odhad tržního nájmu",
-          subtitle: "Zjistěte za 60 vteřin, kolik můžete dostat"
-        },
-        fields: {
-          kind:         { visible: false, default: "lease",    required: true },
-          propertyType: { visible: false, default: "flat",     required: true },
-          address:      { visible: true,  required: true },
-          localType:    { visible: true,  required: true },
-          floorArea:    { visible: true,  required: true },
-          rating:       { visible: true,  required: true },
-          lotArea:      { visible: false, required: false },
-          ownership:    { visible: false, required: false },
-          houseType:    { visible: false, required: false },
-          landType:     { visible: false, required: false },
-          floor:        { visible: false, required: false },
-          floors:       { visible: false, required: false },
-          orientation:  { visible: false, required: false },
-          construction: { visible: false, required: false },
-          balcony:      { visible: false, required: false },
-          cellar:       { visible: false, required: false },
-          parking:      { visible: false, required: false },
-          elevator:     { visible: false, required: false },
-          furnished:    { visible: false, required: false }
-        }
-      };
-    </script>
-    <script src="https://realvisor-com-widget.vercel.app/widget.iife.js"></script>
-
     <!-- Popup – vanilla JS -->
     <script>
         window.ContactPopup = {
@@ -256,22 +214,55 @@
     <script src="js/load-header.js"></script>
 
     <!-- Hero Section -->
-    <section class="bg-white pt-28 pb-20 lg:pt-32 lg:pb-28">
+    <section class="bg-white pt-28 pb-20 lg:pt-32 lg:pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
                 <!-- LEFT: Copy -->
-                <div class="lg:col-span-6">
+                <div class="lg:col-span-7">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.08] mb-6">
-                        Váš nájemník <span class="text-[#E63946]">jsme my.</span><br>
-                        <span class="serif italic font-medium text-slate-800">Nájemné platíme vždy.</span>
+                        Nájem každý měsíc.<br>
+                        <span class="serif italic font-medium text-[#E63946]">Ať se děje cokoliv.</span>
                     </h1>
-                    <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
-                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze na účet každý měsíc &mdash; i&nbsp;když nájemník nezaplatí.
+                    <p class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
+                        Pronajmeme váš byt spolehlivým lidem a postaráme se o všechno. Vy jen dostáváte peníze na účet.
                     </p>
 
+                    <!-- 3 klíčové sliby -->
+                    <ul class="space-y-3 mb-10 max-w-xl">
+                        <li class="flex items-start gap-3">
+                            <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#E63946]/10 flex items-center justify-center mt-0.5">
+                                <svg class="w-3 h-3 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </span>
+                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Nájem na účet každý měsíc</strong> — i když nájemník nezaplatí</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#E63946]/10 flex items-center justify-center mt-0.5">
+                                <svg class="w-3 h-3 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </span>
+                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Údržbu a problémy</strong> vyřídíme za vás</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#E63946]/10 flex items-center justify-center mt-0.5">
+                                <svg class="w-3 h-3 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                            </span>
+                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Byt vrátíme v původním stavu</strong> — vždy</span>
+                        </li>
+                    </ul>
+
+                    <!-- CTA -->
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <a href="kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
+                            Spočítat můj nájem
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#jak-to-funguje" class="inline-flex items-center gap-2 text-base font-medium py-3.5 px-4 text-slate-700 hover:text-slate-900 transition-colors">
+                            Jak to funguje &rarr;
+                        </a>
+                    </div>
+
                     <!-- Trust row -->
-                    <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg">
+                    <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg pt-6 border-t border-slate-200/70">
                         <div>
                             <div class="text-2xl md:text-3xl font-semibold text-slate-900 serif leading-none">25+</div>
                             <div class="text-[11px] uppercase tracking-[0.15em] text-slate-500 mt-2">Let na trhu</div>
@@ -287,31 +278,9 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: Kalkulačka nájmu -->
-                <div class="lg:col-span-6">
-                    <div id="realvisor-rent-form" class="max-w-none"></div>
-                    <script>
-                      (function initRentWidget() {
-                        if (!window.RealVisor || !window.RealVisor.createValuoForm) {
-                          return setTimeout(initRentWidget, 100);
-                        }
-                        const el = document.getElementById("realvisor-rent-form");
-                        if (!el) return;
-                        window.RealVisor.createValuoForm(el, {
-                          apiUrl: "https://api-production-88cf.up.railway.app/api/v1",
-                          formCode: "valuo-main",
-                          primaryColor: "#E63946",
-                          primaryColorLight: "#FDE7E9",
-                          borderRadius: "16px",
-                          maxWidth: "100%",
-                          shadow: "none"
-                        });
-                      })();
-                    </script>
-                    <p class="text-xs text-slate-500 mt-3 flex items-center gap-2 pl-1">
-                        <svg class="w-3.5 h-3.5 flex-shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                        Bez závazku &middot; data použijeme jen k odhadu nájmu
-                    </p>
+                <!-- RIGHT: Postava -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end relative">
+                    <img src="images/Vzorný nájemce supermann.png" alt="Vzorný nájemce" class="w-[70%] max-w-sm lg:max-w-none lg:w-[440px] object-contain">
                 </div>
             </div>
         </div>
