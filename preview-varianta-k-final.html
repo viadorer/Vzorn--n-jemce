@@ -13,17 +13,17 @@
 
         /* Palette K v2 — Airbnb Warmth refined */
         :root {
-            --coral: #FF5A5F;
-            --coral-hover: #E14448;
-            --coral-light: #FFEEEC;
-            --teal: #00A699;
-            --teal-hover: #008A80;
-            --teal-light: #E6F7F5;
+            --coral: #D9535A;         /* méně křiklavá coral */
+            --coral-hover: #C4444B;
+            --coral-light: #F9E6E5;
+            --teal: #2F7871;          /* tlumenější teal */
+            --teal-hover: #245F59;
+            --teal-light: #E4EFED;
             --navy: #2C3E50;
             --navy-hover: #1F2D3D;
-            --cream: #FFF9F5;
-            --warm-white: #FFFEFB;
-            --sand: #FAEDE5;
+            --cream: #FBF7F2;         /* teplejší paper */
+            --warm-white: #FDFCFA;
+            --sand: #F2EBE1;
         }
 
         .coral { background: var(--coral); }
@@ -45,25 +45,20 @@
         .blob { position: absolute; border-radius: 50%; filter: blur(90px); }
 
         /* Animated counters */
+        /* subtle float — jen postava */
         @keyframes floatY {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-4px); }
         }
-        .float-slow { animation: floatY 6s ease-in-out infinite; }
-        .float-slow-delay { animation: floatY 6s ease-in-out infinite; animation-delay: 3s; }
+        .float-slow { animation: floatY 8s ease-in-out infinite; }
+        .float-slow-delay { }
 
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.05); }
-        }
-        .pulse-blob { animation: pulse-soft 8s ease-in-out infinite; }
+        /* pulse-blob vypnut pro decent look */
+        .pulse-blob { }
 
         /* Ticker */
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .ticker-content { animation: marquee 40s linear infinite; }
+        /* ticker marquee vypnut */
+        .ticker-content { }
 
         /* Card hover lift */
         .lift { transition: transform .3s ease; }
@@ -73,21 +68,22 @@
         .btn-primary {
             background: var(--coral);
             color: white;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: 999px;
-            font-weight: 700;
-            transition: all .2s;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background .2s;
         }
-        .btn-primary:hover { background: var(--coral-hover); transform: translateY(-2px); }
+        .btn-primary:hover { background: var(--coral-hover); }
         .btn-secondary {
-            background: var(--navy);
-            color: white;
-            padding: 16px 28px;
-            border-radius: 999px;
-            font-weight: 600;
-            transition: all .2s;
+            background: transparent;
+            color: var(--navy);
+            padding: 14px 28px;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            transition: border-color .2s;
         }
-        .btn-secondary:hover { background: var(--navy-hover); transform: translateY(-1px); }
+        .btn-secondary:hover { border-color: var(--navy); }
 
         /* Sticky mobile CTA */
         .sticky-mobile-cta {
@@ -147,9 +143,9 @@
 
 <!-- ============ STICKY NAV ============ -->
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 coral rounded-2xl flex items-center justify-center transform -rotate-3">
+            <div class="w-10 h-10 coral rounded-2xl flex items-center justify-center">
                 <span class="text-white font-black text-xl">V</span>
             </div>
             <div>
@@ -168,26 +164,25 @@
             <a href="tel:+420603834921" class="hidden md:block text-sm font-semibold navy-t">
                 <span class="teal-t">☎</span> +420 603 834 921
             </a>
-            <button class="btn-primary text-sm !py-2.5 !px-5">Konzultace zdarma</button>
+            <a href="#kontakt" class="text-sm font-medium navy-t border-b border-navy pb-0.5 hover:coral-t hover:coral-b transition">Konzultace zdarma</a>
         </div>
     </div>
 </nav>
 
 <!-- ============ HERO ============ -->
 <section class="cream section-y relative overflow-hidden" style="padding-top: 60px">
-    <div class="blob coral pulse-blob" style="width: 500px; height: 500px; top: -100px; right: -150px; opacity: 0.15"></div>
-    <div class="blob teal pulse-blob" style="width: 400px; height: 400px; bottom: -100px; left: -100px; opacity: 0.12; animation-delay: 4s"></div>
+    <div class="blob coral" style="width: 400px; height: 400px; top: -150px; right: -200px; opacity: 0.06"></div>
+    <div class="blob teal" style="width: 350px; height: 350px; bottom: -150px; left: -150px; opacity: 0.05"></div>
 
     <!-- Vzorný nájemce postava — plovoucí decorativně vlevo dole -->
     <img src="images/Vzorný nájemce happy.png"
          alt="Vzorný nájemce"
-         class="hidden xl:block absolute bottom-0 left-0 w-64 float-slow z-10 pointer-events-none"
-         style=""
+         class="hidden xl:block absolute bottom-0 left-4 w-48 float-slow z-10 pointer-events-none opacity-95"
          loading="lazy">
     <!-- Ochranná bublina pod postavou (jako "mluví") -->
-    <div class="hidden xl:block absolute bottom-6 left-64 z-10 bg-white rounded-2xl p-4 max-w-xs float-slow" style="animation-delay: 1s">
-        <div class="text-xs font-black coral-t uppercase tracking-widest mb-1">Vzorný nájemce říká:</div>
-        <div class="text-sm font-semibold navy-t leading-snug">"Zaplatím vám nájem 1. den v měsíci. I&nbsp;když bude byt prázdný."</div>
+    <div class="hidden xl:block absolute bottom-16 left-52 z-10 bg-white rounded-2xl p-5 max-w-xs border border-slate-200/60" style="max-width: 240px">
+        <div class="text-[10px] font-medium text-slate-500 uppercase tracking-[0.15em] mb-2">Vzorný nájemce</div>
+        <div class="text-sm navy-t leading-relaxed serif italic">Zaplatím vám nájem 1. den v měsíci. I&nbsp;když bude byt prázdný.</div>
         <!-- Špička bubliny -->
         <div class="absolute -bottom-2 left-8 w-4 h-4 bg-white transform rotate-45"></div>
     </div>
@@ -195,30 +190,27 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16 items-center relative z-10">
         <div class="lg:col-span-3">
             <!-- Trust chip -->
-            <div class="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full mb-8">
-                <div class="w-2 h-2 teal rounded-full animate-pulse"></div>
-                <span class="navy-t uppercase tracking-widest text-xs font-black">Fungujeme 25+ let · Od 1999</span>
+            <div class="inline-flex items-center gap-2 mb-6 pb-1 border-b border-slate-300/50">
+                <span class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium">Rodinná realitka od roku 1999</span>
             </div>
 
-            <h1 class="text-6xl lg:text-7xl font-black navy-t mb-6 leading-[1.02] tracking-tight">
-                Ať váš byt <span class="coral-t">pracuje.</span><br>
-                <span class="serif italic font-semibold teal-t" style="font-weight: 600">Vy dělejte jiné věci.</span>
+            <h1 class="text-5xl lg:text-6xl font-semibold navy-t mb-6 leading-[1.1] tracking-tight">
+                Ať váš byt pracuje.<br>
+                <span class="serif italic teal-t font-medium">Vy dělejte jiné věci.</span>
             </h1>
 
-            <p class="text-xl text-slate-700 mb-10 max-w-xl leading-relaxed">
-                My jsme váš nájemník. Nájemné vám platíme <strong class="navy-t">každý měsíc</strong>,
-                bez ohledu na to, jestli náš podnájemník zaplatil. Vy netelefonujete v neděli kvůli bojleru,
-                nehádáte se o kauci, nehledáte nájemníky.
+            <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed font-light">
+                Jsme váš nájemník. Nájemné vám platíme každý měsíc — bez ohledu na to, jestli náš podnájemník zaplatil.
+                Vy netelefonujete v neděli, nehádáte se o kauci, nehledáte nikoho.
             </p>
 
             <div class="flex flex-wrap gap-3 mb-10">
-                <button class="btn-primary text-lg inline-flex items-center gap-2">
-                    Spočítat můj jistý nájem
-                    <span>→</span>
+                <button class="btn-primary text-base inline-flex items-center gap-2">
+                    Spočítat můj nájem
                 </button>
-                <button class="btn-secondary text-base">
-                    Jak to funguje →
-                </button>
+                <a href="#jak-to-funguje" class="inline-flex items-center gap-2 text-navy font-medium text-base py-4 px-6 border-b border-slate-300 hover:border-slate-900 navy-t transition">
+                    Jak to funguje
+                </a>
             </div>
 
             <!-- Trust bar mini -->
@@ -241,17 +233,10 @@
 
         <!-- Kalkulator -->
         <div class="lg:col-span-2 relative">
-            <!-- Floating badges -->
-            <div class="absolute -top-4 -right-4 z-10 coral text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full float-slow">
-                ⚡ Za 60 sekund
-            </div>
-            <div class="absolute -bottom-6 -left-4 z-10 teal text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full float-slow-delay">
-                ✓ Zdarma · Bez telefonátu
-            </div>
 
             <div class="bg-white rounded-3xl p-8 relative border border-gray-100">
                 <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-2xl font-black navy-t">Kolik dostanu?</h3>
+                    <h3 class="text-2xl font-semibold navy-t serif">Kolik dostanu?</h3>
                     <div class="text-xs text-slate-500">Krok 2 / 3</div>
                 </div>
                 <p class="text-sm text-slate-500 mb-6">3 klepnutí, výsledek okamžitě</p>
@@ -297,24 +282,24 @@
     </div>
 </section>
 
-<!-- ============ KINETIC TICKER ============ -->
-<section class="coral text-white py-4 overflow-hidden border-t-2 border-b-2 border-white/20">
-    <div class="flex whitespace-nowrap ticker-content">
-        <div class="flex items-center gap-12 pr-12 text-sm font-black uppercase tracking-widest">
-            <span>25+ let na trhu</span><span class="opacity-40">✦</span>
-            <span>2 750+ pronajatých bytů</span><span class="opacity-40">✦</span>
-            <span>98 % obnovených smluv</span><span class="opacity-40">✦</span>
-            <span>0 Kč dluhu za 25 let</span><span class="opacity-40">✦</span>
-            <span>Plzeň · Praha · Beroun</span><span class="opacity-40">✦</span>
-            <span>4.8 ★ z 120 recenzí</span><span class="opacity-40">✦</span>
+<!-- ============ STATIC TRUST BAR — decent ============ -->
+<section class="cream py-10 border-y border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center md:text-left">
+            <div class="text-3xl font-semibold navy-t serif">25+</div>
+            <div class="text-xs uppercase tracking-widest text-slate-500 mt-1">Let zkušeností</div>
         </div>
-        <div class="flex items-center gap-12 pr-12 text-sm font-black uppercase tracking-widest" aria-hidden="true">
-            <span>25+ let na trhu</span><span class="opacity-40">✦</span>
-            <span>2 750+ pronajatých bytů</span><span class="opacity-40">✦</span>
-            <span>98 % obnovených smluv</span><span class="opacity-40">✦</span>
-            <span>0 Kč dluhu za 25 let</span><span class="opacity-40">✦</span>
-            <span>Plzeň · Praha · Beroun</span><span class="opacity-40">✦</span>
-            <span>4.8 ★ z 120 recenzí</span><span class="opacity-40">✦</span>
+        <div class="text-center md:text-left">
+            <div class="text-3xl font-semibold navy-t serif">2 750+</div>
+            <div class="text-xs uppercase tracking-widest text-slate-500 mt-1">Pronajatých bytů</div>
+        </div>
+        <div class="text-center md:text-left">
+            <div class="text-3xl font-semibold navy-t serif">98 %</div>
+            <div class="text-xs uppercase tracking-widest text-slate-500 mt-1">Obnovení smluv</div>
+        </div>
+        <div class="text-center md:text-left">
+            <div class="text-3xl font-semibold navy-t serif">4,8 ★</div>
+            <div class="text-xs uppercase tracking-widest text-slate-500 mt-1">120+ recenzí</div>
         </div>
     </div>
 </section>
@@ -323,8 +308,8 @@
 <section class="section-y warm-white">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block coral-light-bg coral-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Rizika bez nás</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Rizika bez nás</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 Jeden nájemník <span class="coral-t">může stát</span><br>
                 <span class="serif italic teal-t">víc, než celý rok příjmu.</span>
             </h2>
@@ -332,38 +317,38 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="cream p-10 rounded-3xl lift">
                 <div class="flex items-center justify-between mb-6">
-                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl">01</div>
-                    <div class="teal-light-bg teal-t text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">S námi: 0 %</div>
+                    <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center coral-t font-semibold text-lg serif">01</div>
+                    <div class="text-xs uppercase tracking-[0.15em] text-slate-500 font-medium">S námi: 0 %</div>
                 </div>
                 <h3 class="text-2xl font-black navy-t mb-3">Neplatič</h3>
                 <p class="text-slate-700 mb-6 leading-relaxed">
                     Nájemník přestane platit. Vystěhování přes soud trvá 11 měsíců. Právní zástupce, exekutor, ztracené energie.
                 </p>
-                <div class="text-4xl font-black coral-t serif">165 000 Kč</div>
+                <div class="text-3xl font-semibold coral-t serif">165 000 Kč</div>
                 <div class="text-xs uppercase tracking-widest text-slate-500 mt-1 font-bold">Průměrná ztráta / případ</div>
             </div>
             <div class="cream p-10 rounded-3xl lift">
                 <div class="flex items-center justify-between mb-6">
-                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl">02</div>
-                    <div class="teal-light-bg teal-t text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">S námi: 0 %</div>
+                    <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center coral-t font-semibold text-lg serif">02</div>
+                    <div class="text-xs uppercase tracking-[0.15em] text-slate-500 font-medium">S námi: 0 %</div>
                 </div>
                 <h3 class="text-2xl font-black navy-t mb-3">Zdevastovaný byt</h3>
                 <p class="text-slate-700 mb-6 leading-relaxed">
                     48 % pronajímatelů má škody, které přesahují kauci. Vandalismus, kouření v bytě, zvířata bez povolení.
                 </p>
-                <div class="text-4xl font-black coral-t serif">43 000 Kč</div>
+                <div class="text-3xl font-semibold coral-t serif">43 000 Kč</div>
                 <div class="text-xs uppercase tracking-widest text-slate-500 mt-1 font-bold">Průměr nad rámec kauce</div>
             </div>
             <div class="cream p-10 rounded-3xl lift">
                 <div class="flex items-center justify-between mb-6">
-                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl">03</div>
-                    <div class="teal-light-bg teal-t text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">S námi: 0 h</div>
+                    <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center coral-t font-semibold text-lg serif">03</div>
+                    <div class="text-xs uppercase tracking-[0.15em] text-slate-500 font-medium">S námi: 0 h</div>
                 </div>
                 <h3 class="text-2xl font-black navy-t mb-3">Ukradený čas</h3>
                 <p class="text-slate-700 mb-6 leading-relaxed">
                     Telefony v neděli. Prohlídky ve víkend. Vyúčtování v pondělí ráno. Průměr 7,2 hodiny měsíčně.
                 </p>
-                <div class="text-4xl font-black coral-t serif">86 hodin</div>
+                <div class="text-3xl font-semibold coral-t serif">86 hodin</div>
                 <div class="text-xs uppercase tracking-widest text-slate-500 mt-1 font-bold">Ročně = 11 víkendů</div>
             </div>
         </div>
@@ -372,11 +357,11 @@
 
 <!-- ============ JAK TO FUNGUJE ============ -->
 <section id="jak-to-funguje" class="section-y sand relative overflow-hidden">
-    <div class="blob teal" style="width: 500px; height: 500px; top: 20%; right: -200px; opacity: 0.1"></div>
+    <div class="blob teal" style="width: 500px; height: 500px; top: 20%; right: -250px; opacity: 0.05"></div>
     <div class="max-w-7xl mx-auto relative">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block teal-light-bg teal-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Jak to funguje</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Jak to funguje</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 <span class="serif italic teal-t">4 kroky</span> k příjmu, o kterém<br>si nemusíte myslet
             </h2>
         </div>
@@ -386,25 +371,25 @@
             <div class="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed coral-b opacity-30"></div>
 
             <div class="text-center relative bg-white rounded-3xl p-8 lift">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">1</div>
-                <div class="text-xs uppercase tracking-widest teal-t font-black mb-2">15 minut</div>
+                <div class="w-14 h-14 rounded-full border-2 coral-b flex items-center justify-center coral-t font-semibold text-xl mx-auto mb-4 bg-white">1</div>
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium mb-2">15 minut</div>
                 <h3 class="text-xl font-black navy-t mb-3">Kontakt</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">Vyplníte formulář nebo zavoláte. Domluvíme si nezávaznou schůzku ve vašem bytě.</p>
             </div>
             <div class="text-center relative bg-white rounded-3xl p-8 lift">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">2</div>
-                <div class="text-xs uppercase tracking-widest teal-t font-black mb-2">60 minut</div>
+                <div class="w-14 h-14 rounded-full border-2 coral-b flex items-center justify-center coral-t font-semibold text-xl mx-auto mb-4 bg-white">2</div>
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium mb-2">60 minut</div>
                 <h3 class="text-xl font-black navy-t mb-3">Prohlídka</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">Přijedeme se podívat, spočítáme reálný jistý nájem, řekneme co by pomohlo.</p>
             </div>
             <div class="text-center relative bg-white rounded-3xl p-8 lift">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">3</div>
-                <div class="text-xs uppercase tracking-widest teal-t font-black mb-2">30 minut</div>
+                <div class="w-14 h-14 rounded-full border-2 coral-b flex items-center justify-center coral-t font-semibold text-xl mx-auto mb-4 bg-white">3</div>
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium mb-2">30 minut</div>
                 <h3 class="text-xl font-black navy-t mb-3">Smlouva</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">Podepíšeme nájemní smlouvu na 3–5 let. Máte 14 dní na rozmyšlenou.</p>
             </div>
             <div class="text-center relative bg-white rounded-3xl p-8 lift border-2 coral-b">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">4</div>
+                <div class="w-14 h-14 rounded-full border-2 coral-b flex items-center justify-center coral-t font-semibold text-xl mx-auto mb-4 bg-white">4</div>
                 <div class="text-xs uppercase tracking-widest coral-t font-black mb-2">Každý měsíc</div>
                 <h3 class="text-xl font-black navy-t mb-3">Nájem na účtu</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">1. den v měsíci máte peníze. Bez ohledu na to, co dělá náš podnájemník.</p>
@@ -417,8 +402,8 @@
 <section class="section-y warm-white">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block coral-light-bg coral-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Srovnání</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Srovnání</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 Váš byt, <span class="serif italic teal-t">tři cesty.</span><br>
                 Jen jedna z nich vás nechá spát.
             </h2>
@@ -428,10 +413,10 @@
             <table class="w-full min-w-[720px]">
                 <thead>
                     <tr>
-                        <th class="text-left p-4 text-sm font-black uppercase tracking-widest text-slate-500">Kritérium</th>
-                        <th class="text-center p-4 text-sm font-black uppercase tracking-widest text-slate-500">Sám</th>
-                        <th class="text-center p-4 text-sm font-black uppercase tracking-widest text-slate-500">Realitka</th>
-                        <th class="text-center p-4 text-sm font-black uppercase tracking-widest text-white coral rounded-t-xl">Vzorný nájemce</th>
+                        <th class="text-left p-4 text-sm font-medium uppercase tracking-widest text-slate-500">Kritérium</th>
+                        <th class="text-center p-4 text-sm font-medium uppercase tracking-widest text-slate-500">Sám</th>
+                        <th class="text-center p-4 text-sm font-medium uppercase tracking-widest text-slate-500">Realitka</th>
+                        <th class="text-center p-4 text-sm font-medium uppercase tracking-widest text-white coral rounded-t-xl">Vzorný nájemce</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -494,8 +479,8 @@
 <section id="cenik" class="section-y cream">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block coral-light-bg coral-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Ceník</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Ceník</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 Dva modely. <span class="serif italic teal-t">Vy si vyberete.</span>
             </h2>
         </div>
@@ -503,7 +488,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <!-- Správa -->
             <div class="bg-white rounded-3xl p-10 lift">
-                <div class="teal-light-bg teal-t font-black uppercase tracking-widest text-xs px-4 py-2 rounded-full inline-block mb-4">Správa</div>
+                <div class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50 inline-block mb-4">Správa</div>
                 <h3 class="text-3xl font-black navy-t mb-2">Chci mít klid</h3>
                 <p class="text-slate-600 mb-6">Najdeme, prověříme, spravujeme. Menší riziko na naší straně, větší výnos pro vás.</p>
                 <ul class="space-y-3 mb-8">
@@ -515,8 +500,8 @@
                 </ul>
                 <div class="border-t border-slate-100 pt-6">
                     <div class="text-slate-500 text-sm">Průměrný výnos</div>
-                    <div class="text-3xl font-black navy-t serif">až 85 % nájmu</div>
-                    <div class="text-xs teal-t font-black uppercase tracking-widest mt-1">Nižší cena, malé riziko</div>
+                    <div class="text-2xl font-semibold navy-t serif">až 85 % nájmu</div>
+                    <div class="text-xs teal-t font-medium uppercase tracking-widest mt-1">Nižší cena, malé riziko</div>
                 </div>
             </div>
 
@@ -524,7 +509,7 @@
             <div class="navy text-white rounded-3xl p-10 lift relative overflow-hidden">
                 <div class="absolute -top-8 -right-8 w-40 h-40 coral rounded-full opacity-20 blur-2xl"></div>
                 <div class="relative">
-                    <div class="coral text-white font-black uppercase tracking-widest text-xs px-4 py-2 rounded-full inline-block mb-4">⭐ Nejoblíbenější · Jistý nájem</div>
+                    <div class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-400/60 inline-block mb-4">Doporučujeme · Jistý nájem</div>
                     <h3 class="text-3xl font-black mb-2">Chci mít jistotu</h3>
                     <p class="text-white/70 mb-6">My jsme váš nájemník. Nájem platíme každý měsíc, bez ohledu na cokoliv.</p>
                     <ul class="space-y-3 mb-8">
@@ -535,9 +520,9 @@
                         <li class="flex items-center gap-3"><span class="teal-t">✓</span> Byt vrátíme v původním stavu</li>
                     </ul>
                     <div class="border-t border-white/20 pt-6">
-                        <div class="text-white/70 text-sm">Průměrný výnos</div>
-                        <div class="text-3xl font-black serif" style="color: #FFB1B4">až 78 % nájmu</div>
-                        <div class="text-xs coral-t font-black uppercase tracking-widest mt-1">Vyšší jistota, nižší cena</div>
+                        <div class="text-white/60 text-sm">Průměrný výnos</div>
+                        <div class="text-2xl font-semibold serif" style="color: #F4C0BF">až 78 % nájmu</div>
+                        <div class="text-xs coral-t font-medium uppercase tracking-widest mt-1">Vyšší jistota, nižší cena</div>
                     </div>
                 </div>
             </div>
@@ -553,8 +538,8 @@
 <section id="reference" class="section-y warm-white">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block coral-light-bg coral-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Reference</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Reference</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 Co jsme <span class="serif italic teal-t">reálně vyřešili.</span>
             </h2>
             <p class="text-slate-600 mt-6">Lokace a data jsou reálné. Jména klientů z respektu k soukromí neuvádíme.</p>
@@ -572,8 +557,8 @@
                     Vlastnice zdědila byt. Přestěhovala se do Itálie. Za 3 roky ani jednou nezavolala.
                 </p>
                 <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-200">
-                    <div><div class="text-2xl font-black navy-t serif">3 roky</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Bez telefonátu</div></div>
-                    <div><div class="text-2xl font-black teal-t serif">0 dní</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Prázdno</div></div>
+                    <div><div class="text-2xl font-semibold navy-t serif">3 roky</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Bez telefonátu</div></div>
+                    <div><div class="text-2xl font-semibold teal-t serif">0 dní</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Prázdno</div></div>
                 </div>
             </div>
 
@@ -588,8 +573,8 @@
                     Nájemník dal výpověď s 3měs. lhůtou. Majitel se bál dlouhého prázdna.
                 </p>
                 <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-200">
-                    <div><div class="text-2xl font-black navy-t serif">11 dní</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Nový nájemník</div></div>
-                    <div><div class="text-2xl font-black teal-t serif">~50 tis.</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Ušetřeno</div></div>
+                    <div><div class="text-2xl font-semibold navy-t serif">11 dní</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Nový nájemník</div></div>
+                    <div><div class="text-2xl font-semibold teal-t serif">~50 tis.</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Ušetřeno</div></div>
                 </div>
             </div>
 
@@ -604,8 +589,8 @@
                     Majitel psychicky vyčerpaný, 60 000 Kč dluhu. Převzali jsme právně i finančně.
                 </p>
                 <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-200">
-                    <div><div class="text-2xl font-black navy-t serif">4 měs.</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Vyklizeno</div></div>
-                    <div><div class="text-2xl font-black teal-t serif">Do 6 týd.</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Nový nájem</div></div>
+                    <div><div class="text-2xl font-semibold navy-t serif">4 měs.</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Vyklizeno</div></div>
+                    <div><div class="text-2xl font-semibold teal-t serif">Do 6 týd.</div><div class="text-xs text-slate-500 uppercase tracking-widest font-bold">Nový nájem</div></div>
                 </div>
             </div>
         </div>
@@ -616,8 +601,8 @@
 <section class="section-y cream">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block coral-light-bg coral-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Reálné byty ve správě</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Reálné byty ve správě</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 Podívejte se na <span class="serif italic teal-t">skutečné byty</span>,<br>
                 které pro majitele spravujeme.
             </h2>
@@ -669,8 +654,8 @@
 <section id="tym" class="section-y sand">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <span class="inline-block teal-light-bg teal-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Tým</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Tým</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 <span class="serif italic teal-t">Lidé</span>, kteří budou pečovat<br>o váš byt.
             </h2>
         </div>
@@ -719,23 +704,20 @@
 </section>
 
 <!-- ============ TESTIMONIAL BIG ============ -->
-<section class="section-y coral text-white relative overflow-hidden">
-    <div class="blob bg-white" style="width: 500px; height: 500px; top: -200px; right: -100px; opacity: 0.1"></div>
-    <div class="blob bg-white" style="width: 400px; height: 400px; bottom: -200px; left: -100px; opacity: 0.08"></div>
+<section class="section-y sand relative overflow-hidden">
     <div class="max-w-4xl mx-auto text-center relative">
-        <div class="text-6xl mb-4">"</div>
-        <p class="text-3xl lg:text-4xl serif italic font-semibold leading-tight mb-8">
+        <div class="text-4xl navy-t opacity-30 mb-4 serif">"</div>
+        <p class="text-2xl lg:text-3xl serif italic font-medium leading-[1.4] mb-8 navy-t">
             Za 4 roky nám ani jednou nezavolali s tím, že něco nefunguje.
             Peníze chodí každý 1. den v měsíci. Můžu si dovolit cestovat.
         </p>
         <div class="flex items-center justify-center gap-4">
-            <div class="w-16 h-16 rounded-full border-2 border-dashed border-white/40 flex flex-col items-center justify-center text-white/50">
-                <div class="text-xs">Foto</div>
+            <div class="w-14 h-14 rounded-full border border-dashed border-slate-400 flex flex-col items-center justify-center text-slate-400">
+                <div class="text-[10px] uppercase tracking-widest">Foto</div>
             </div>
             <div class="text-left">
-                <div class="font-black">P. Kolářová</div>
-                <div class="text-sm text-white/70">Praha 3 · byt 2+1 · klientka od 2021</div>
-                <div class="text-[10px] uppercase tracking-widest text-white/40 mt-0.5 font-black">Placeholder — nahradit reálným foto</div>
+                <div class="font-semibold navy-t">P. Kolářová</div>
+                <div class="text-sm text-slate-600">Praha 3 · byt 2+1 · klientka od 2021</div>
             </div>
         </div>
     </div>
@@ -745,52 +727,52 @@
 <section id="faq" class="section-y warm-white">
     <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
-            <span class="inline-block coral-light-bg coral-t uppercase tracking-widest text-xs px-4 py-2 rounded-full font-black">Časté otázky</span>
-            <h2 class="text-5xl lg:text-6xl font-black navy-t mt-5 tracking-tight leading-[1.05]">
+            <span class="inline-block text-xs uppercase tracking-[0.2em] text-slate-500 font-medium pb-1 border-b border-slate-300/50">Časté otázky</span>
+            <h2 class="text-4xl lg:text-5xl font-semibold navy-t mt-4 tracking-tight leading-[1.15]">
                 Co se <span class="serif italic teal-t">nejčastěji</span> ptají.
             </h2>
         </div>
 
         <div class="space-y-4">
             <details class="bg-white rounded-2xl border border-slate-100 p-6 lift">
-                <summary class="flex items-center justify-between font-black navy-t text-lg">
+                <summary class="flex items-center justify-between font-medium navy-t text-base">
                     Kdy dostanu první peníze?
-                    <span class="chevron w-6 h-6 coral-light-bg rounded-full flex items-center justify-center coral-t">▾</span>
+                    <span class="chevron text-slate-400">▾</span>
                 </summary>
                 <p class="mt-4 text-slate-700 leading-relaxed">Nájem chodí <strong>od 2. měsíce od převzetí</strong>. První měsíc řešíme drobné úpravy, focení a nábor nájemníka. Od 2. měsíce každý 1. den v měsíci máte peníze na účtu.</p>
             </details>
             <details class="bg-white rounded-2xl border border-slate-100 p-6 lift">
-                <summary class="flex items-center justify-between font-black navy-t text-lg">
+                <summary class="flex items-center justify-between font-medium navy-t text-base">
                     Kolik z tržního nájmu si necháte?
-                    <span class="chevron w-6 h-6 coral-light-bg rounded-full flex items-center justify-center coral-t">▾</span>
+                    <span class="chevron text-slate-400">▾</span>
                 </summary>
                 <p class="mt-4 text-slate-700 leading-relaxed">Naše marže tvoří <strong>rozdíl mezi tržním a jistým nájmem</strong>. Ten pokrývá naši práci, riziko výpadku, opravy a rezervu. Konkrétní procento vám řekneme po prohlídce — liší se podle bytu.</p>
             </details>
             <details class="bg-white rounded-2xl border border-slate-100 p-6 lift">
-                <summary class="flex items-center justify-between font-black navy-t text-lg">
+                <summary class="flex items-center justify-between font-medium navy-t text-base">
                     Co když nájemník nezaplatí?
-                    <span class="chevron w-6 h-6 coral-light-bg rounded-full flex items-center justify-center coral-t">▾</span>
+                    <span class="chevron text-slate-400">▾</span>
                 </summary>
                 <p class="mt-4 text-slate-700 leading-relaxed">To je <strong>náš problém, ne váš</strong>. Vy dostáváte nájem od nás, ne od nájemníka. Vymáhání, právní kroky, vystěhování — vše řešíme na naše náklady.</p>
             </details>
             <details class="bg-white rounded-2xl border border-slate-100 p-6 lift">
-                <summary class="flex items-center justify-between font-black navy-t text-lg">
+                <summary class="flex items-center justify-between font-medium navy-t text-base">
                     Na jak dlouho podepisujeme smlouvu?
-                    <span class="chevron w-6 h-6 coral-light-bg rounded-full flex items-center justify-center coral-t">▾</span>
+                    <span class="chevron text-slate-400">▾</span>
                 </summary>
                 <p class="mt-4 text-slate-700 leading-relaxed"><strong>3 až 5 let</strong>, podle vaší preference. Máte 14 dní na rozmyšlenou po podpisu. Výpovědní lhůta 3 měsíce, bez sankce.</p>
             </details>
             <details class="bg-white rounded-2xl border border-slate-100 p-6 lift">
-                <summary class="flex items-center justify-between font-black navy-t text-lg">
+                <summary class="flex items-center justify-between font-medium navy-t text-base">
                     Co když chci byt zpět?
-                    <span class="chevron w-6 h-6 coral-light-bg rounded-full flex items-center justify-center coral-t">▾</span>
+                    <span class="chevron text-slate-400">▾</span>
                 </summary>
                 <p class="mt-4 text-slate-700 leading-relaxed">3měsíční výpovědní lhůta, byt vám vrátíme <strong>v původním stavu</strong> (nebo lepším). Case studies ukazují, že 98 % klientů smlouvu naopak prodlužuje.</p>
             </details>
             <details class="bg-white rounded-2xl border border-slate-100 p-6 lift">
-                <summary class="flex items-center justify-between font-black navy-t text-lg">
+                <summary class="flex items-center justify-between font-medium navy-t text-base">
                     Máte pojištění?
-                    <span class="chevron w-6 h-6 coral-light-bg rounded-full flex items-center justify-center coral-t">▾</span>
+                    <span class="chevron text-slate-400">▾</span>
                 </summary>
                 <p class="mt-4 text-slate-700 leading-relaxed">Ano, jsme pojištěni proti škodám i insolvenci. <strong>Za 25 let 0 Kč dluhu vůči majitelům.</strong></p>
             </details>
@@ -800,13 +782,13 @@
 
 <!-- ============ BIG CTA ============ -->
 <section class="section-y navy text-white relative overflow-hidden">
-    <div class="blob coral" style="width: 500px; height: 500px; top: -200px; right: -100px; opacity: 0.3"></div>
-    <div class="blob teal" style="width: 400px; height: 400px; bottom: -100px; left: -50px; opacity: 0.2"></div>
+    <div class="blob coral" style="width: 400px; height: 400px; top: -200px; right: -100px; opacity: 0.08"></div>
+    <div class="blob teal" style="width: 350px; height: 350px; bottom: -100px; left: -50px; opacity: 0.06"></div>
     <div class="max-w-5xl mx-auto text-center relative">
-        <div class="inline-block coral text-white font-black uppercase tracking-widest text-xs px-4 py-2 rounded-full mb-6">Zdarma · Nezávazně · 60 sekund</div>
-        <h2 class="text-6xl lg:text-7xl font-black mb-6 tracking-tight leading-[1.02]">
+        <div class="inline-block text-xs uppercase tracking-[0.2em] text-white/70 font-medium pb-1 border-b border-white/20 mb-6">Zdarma · Nezávazně · 60 sekund</div>
+        <h2 class="text-5xl lg:text-6xl font-semibold mb-6 tracking-tight leading-[1.05]">
             Kolik dostanete<br>
-            <span class="serif italic" style="color: #FFB1B4">každý měsíc?</span>
+            <span class="serif italic text-white/90">každý měsíc?</span>
         </h2>
         <p class="text-xl text-white/70 mb-10 max-w-2xl mx-auto">
             3 detaily o bytu. Do konce dne konkrétní částka na e-mail. Bez telefonátu.
@@ -827,7 +809,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
         <div class="md:col-span-2">
             <div class="flex items-center gap-3 mb-4">
-                <div class="w-11 h-11 coral rounded-2xl flex items-center justify-center transform -rotate-3">
+                <div class="w-11 h-11 coral rounded-2xl flex items-center justify-center">
                     <span class="text-white font-black text-xl">V</span>
                 </div>
                 <div>
