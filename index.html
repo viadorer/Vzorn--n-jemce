@@ -185,6 +185,48 @@
         }
     </style>
 
+    <!-- Realvisor widget – rent-only mini kalkulačka (hero)
+         Sdílí PTF backend/formCode 'valuo-main' přes __mockFormConfig,
+         které přepíše server config na rent-only + skryté selectory. -->
+    <script>
+      window.__mockFormConfig = {
+        variant: "minimal",
+        propertyTypes: ["flat"],
+        kindTypes: ["lease"],
+        theme: {
+          primaryColor: "#E63946",
+          borderRadius: "12px",
+          maxWidth: "100%"
+        },
+        labels: {
+          title: "Odhad tržního nájmu",
+          subtitle: "Zjistěte za 60 vteřin, kolik můžete dostat"
+        },
+        fields: {
+          kind:         { visible: false, default: "lease",    required: true },
+          propertyType: { visible: false, default: "flat",     required: true },
+          address:      { visible: true,  required: true },
+          localType:    { visible: true,  required: true },
+          floorArea:    { visible: true,  required: true },
+          rating:       { visible: true,  required: true },
+          lotArea:      { visible: false, required: false },
+          ownership:    { visible: false, required: false },
+          houseType:    { visible: false, required: false },
+          landType:     { visible: false, required: false },
+          floor:        { visible: false, required: false },
+          floors:       { visible: false, required: false },
+          orientation:  { visible: false, required: false },
+          construction: { visible: false, required: false },
+          balcony:      { visible: false, required: false },
+          cellar:       { visible: false, required: false },
+          parking:      { visible: false, required: false },
+          elevator:     { visible: false, required: false },
+          furnished:    { visible: false, required: false }
+        }
+      };
+    </script>
+    <script src="https://realvisor-com-widget.vercel.app/widget.iife.js"></script>
+
     <!-- Popup – vanilla JS -->
     <script>
         window.ContactPopup = {
@@ -214,50 +256,62 @@
     <script src="js/load-header.js"></script>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden bg-ivory pt-32 pb-16 lg:pt-40 lg:pb-24">
-        <div class="absolute w-[500px] h-[500px] rounded-full opacity-[0.05] blur-[100px] -top-40 -right-40 pointer-events-none" style="background: #2F7871"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section class="bg-white pt-28 pb-20 lg:pt-32 lg:pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
                 <!-- LEFT: Copy -->
-                <div class="lg:col-span-7">
-                    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight text-slate-900 mb-6 leading-[1.05]">
+                <div class="lg:col-span-6">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.08] mb-6">
                         Váš nájemník <span class="text-[#E63946]">jsme my.</span><br>
-                        <span class="serif italic font-medium" style="color: #2F7871">Nájemné platíme vždy.</span>
+                        <span class="serif italic font-medium text-slate-800">Nájemné platíme vždy.</span>
                     </h1>
-                    <p class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed font-light">
+                    <p class="text-lg text-slate-600 mb-10 max-w-xl leading-relaxed">
                         Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze na účet každý měsíc &mdash; i&nbsp;když nájemník nezaplatí.
                     </p>
-                    <div class="flex flex-wrap gap-3 mb-10">
-                        <a href="kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
-                            Spočítat můj nájem
-                        </a>
-                        <a href="#jak-to-funguje" class="inline-flex items-center gap-2 text-base font-medium py-3.5 px-6 border-b border-slate-300 hover:border-slate-900 text-slate-700 transition-colors">
-                            Jak to funguje &rarr;
-                        </a>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-200/70">
+
+                    <!-- Trust row -->
+                    <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg">
                         <div>
-                            <div class="text-2xl font-semibold text-slate-900 serif">25+</div>
-                            <div class="text-[11px] uppercase tracking-widest text-slate-500 mt-0.5">Let zkušeností</div>
+                            <div class="text-2xl md:text-3xl font-semibold text-slate-900 serif leading-none">25+</div>
+                            <div class="text-[11px] uppercase tracking-[0.15em] text-slate-500 mt-2">Let na trhu</div>
                         </div>
-                        <div class="w-px h-10 bg-slate-200"></div>
                         <div>
-                            <div class="text-2xl font-semibold text-slate-900 serif">2 750+</div>
-                            <div class="text-[11px] uppercase tracking-widest text-slate-500 mt-0.5">Pronajatých bytů</div>
+                            <div class="text-2xl md:text-3xl font-semibold text-slate-900 serif leading-none">2 750+</div>
+                            <div class="text-[11px] uppercase tracking-[0.15em] text-slate-500 mt-2">Pronajatých bytů</div>
                         </div>
-                        <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
-                        <div class="hidden sm:block">
-                            <div class="text-2xl font-semibold serif" style="color: #2F7871">98 %</div>
-                            <div class="text-[11px] uppercase tracking-widest text-slate-500 mt-0.5">Obnovení smluv</div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-semibold text-slate-900 serif leading-none">98 %</div>
+                            <div class="text-[11px] uppercase tracking-[0.15em] text-slate-500 mt-2">Obnovení smluv</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT: Postava Vzorný nájemce -->
-                <div class="lg:col-span-5 flex justify-center lg:justify-end relative">
-                    <img src="images/Vzorný nájemce supermann.png" alt="Vzorný nájemce" class="w-[80%] max-w-md lg:max-w-none lg:w-[500px] object-contain">
+                <!-- RIGHT: Kalkulačka nájmu -->
+                <div class="lg:col-span-6">
+                    <div id="realvisor-rent-form" class="max-w-none"></div>
+                    <script>
+                      (function initRentWidget() {
+                        if (!window.RealVisor || !window.RealVisor.createValuoForm) {
+                          return setTimeout(initRentWidget, 100);
+                        }
+                        const el = document.getElementById("realvisor-rent-form");
+                        if (!el) return;
+                        window.RealVisor.createValuoForm(el, {
+                          apiUrl: "https://api-production-88cf.up.railway.app/api/v1",
+                          formCode: "valuo-main",
+                          primaryColor: "#E63946",
+                          primaryColorLight: "#FDE7E9",
+                          borderRadius: "16px",
+                          maxWidth: "100%",
+                          shadow: "none"
+                        });
+                      })();
+                    </script>
+                    <p class="text-xs text-slate-500 mt-3 flex items-center gap-2 pl-1">
+                        <svg class="w-3.5 h-3.5 flex-shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        Bez závazku &middot; data použijeme jen k odhadu nájmu
+                    </p>
                 </div>
             </div>
         </div>
@@ -1339,31 +1393,6 @@
         </section>
 
 
-
-<script type="module">
-    import calculator from './js/calculator.js';
-
-    // Inicializace kalkulačky
-    function initCalculator() {
-        const hourlyRateInput = document.querySelector('input[x-model="hourlyRate"]');
-        const monthlyRentInput = document.querySelector('input[x-model="monthlyRent"]');
-
-        function updateCalculations() {
-            calculator.baseParams.hourlyRate = parseFloat(hourlyRateInput.value) || 0;
-            calculator.baseParams.monthlyRent = parseFloat(monthlyRentInput.value) || 0;
-            calculator.updateUI();
-        }
-
-        hourlyRateInput.addEventListener('input', updateCalculations);
-        monthlyRentInput.addEventListener('input', updateCalculations);
-
-        // Inicializace s výchozími hodnotami
-        updateCalculations();
-    }
-
-    // Spuštění po načtení stránky
-    document.addEventListener('DOMContentLoaded', initCalculator);
-</script>
 
 <!-- Footer -->
 <div id="footer-placeholder"></div>
