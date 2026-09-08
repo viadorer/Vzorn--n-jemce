@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview barev — Vzorný nájemce</title>
+    <meta name="robots" content="noindex, nofollow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .swatch { width: 100%; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 12px; }
+
+        /* Varianta A — Refined Indigo (Stripe-style) */
+        .a-primary { background: #4F46E5; }
+        .a-primary-hover:hover { background: #4338CA; }
+        .a-accent { background: #F59E0B; }
+        .a-bg-tint { background: #EEF2FF; }
+        .a-text { color: #4F46E5; }
+        .a-border { border-color: #4F46E5; }
+        .a-border-tint { border-color: #C7D2FE; }
+
+        /* Varianta B — True Blue (Fintech) */
+        .b-primary { background: #2563EB; }
+        .b-primary-hover:hover { background: #1D4ED8; }
+        .b-accent { background: #10B981; }
+        .b-bg-tint { background: #EFF6FF; }
+        .b-text { color: #2563EB; }
+        .b-border { border-color: #2563EB; }
+        .b-border-tint { border-color: #BFDBFE; }
+
+        /* Varianta C — Deep Navy + Electric */
+        .c-primary { background: #0A2540; }
+        .c-primary-hover:hover { background: #051A2E; }
+        .c-accent { background: #3B82F6; }
+        .c-highlight { background: #EAB308; }
+        .c-bg-tint { background: #F1F5F9; }
+        .c-text { color: #0A2540; }
+        .c-text-accent { color: #3B82F6; }
+        .c-border { border-color: #0A2540; }
+
+        /* Současný stav */
+        .curr-primary { background: #0D28F2; }
+        .curr-primary-hover:hover { background: #0a1fc5; }
+        .curr-bg-tint { background: #EFF6FF; }
+        .curr-text { color: #0D28F2; }
+
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .card-hover { transition: all 0.2s; }
+
+        .demo-badge { display: inline-block; padding: 6px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 999px; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <div class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-[1600px] mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-gray-900">Preview barev — Vzorný nájemce</h1>
+                <p class="text-sm text-gray-500 mt-0.5">Srovnání 3 variant proti současnému stavu. Klikněte na tlačítka pro test hover.</p>
+            </div>
+            <div class="text-xs text-gray-500">
+                <div>Vyberte: <strong>A / B / C</strong> a řekněte, projdu tím celý web.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison grid -->
+    <div class="max-w-[1600px] mx-auto px-6 py-8 grid grid-cols-1 xl:grid-cols-4 gap-6">
+
+        <!-- ============================ SOUČASNÝ STAV ============================ -->
+        <div class="bg-white rounded-2xl shadow-sm border-2 border-gray-300 overflow-hidden">
+            <div class="p-4 bg-gray-100 border-b border-gray-200">
+                <div class="text-xs font-bold text-gray-600 uppercase tracking-wider mb-1">Dnes (baseline)</div>
+                <h2 class="text-lg font-bold text-gray-900">Current — #0D28F2</h2>
+                <p class="text-xs text-gray-500 mt-1">Hue 233° (blízko violet) · saturace 92% · agresivní</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch curr-primary mb-2">#0D28F2 primary</div>
+                <div class="swatch curr-bg-tint mb-4" style="color: #0D28F2">#EFF6FF tint</div>
+
+                <div class="border-t pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <button class="w-full curr-primary curr-primary-hover text-white font-semibold py-3 rounded-full shadow transition">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <button class="w-full mt-2 border-2 curr-text font-semibold py-3 rounded-full transition" style="border-color: #0D28F2">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="curr-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold" style="color: #0D28F2">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="curr-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold" style="color: #0D28F2">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================ VARIANTA A ============================ -->
+        <div class="bg-white rounded-2xl shadow-md border-2 border-indigo-500 overflow-hidden ring-4 ring-indigo-100">
+            <div class="p-4 a-bg-tint border-b border-indigo-100">
+                <div class="text-xs font-bold a-text uppercase tracking-wider mb-1">⭐ Doporučeno</div>
+                <h2 class="text-lg font-bold text-gray-900">A — Refined Indigo</h2>
+                <p class="text-xs text-gray-500 mt-1">Stripe-style · sofistikované · fialový nádech intencionální</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch a-primary mb-2">#4F46E5 primary</div>
+                <div class="swatch a-accent mb-2" style="color: #78350F">#F59E0B accent (CTA)</div>
+                <div class="swatch a-bg-tint mb-4" style="color: #4F46E5">#EEF2FF tint</div>
+
+                <div class="border-t pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <!-- Amber CTA — accent barva pro maximalní attention -->
+                    <button class="w-full a-accent hover:bg-amber-600 text-white font-semibold py-3 rounded-full shadow-lg transition" style="text-shadow: 0 1px 2px rgba(0,0,0,0.15)">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <!-- Sekundární — indigo -->
+                    <button class="w-full mt-2 a-primary a-primary-hover text-white font-semibold py-3 rounded-full transition">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="a-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold a-text">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="a-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold a-text">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="demo-badge a-accent text-white">Zdarma prověření</span>
+                    <span class="demo-badge a-bg-tint a-text">98 % obnovení</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================ VARIANTA B ============================ -->
+        <div class="bg-white rounded-2xl shadow-sm border-2 border-blue-500 overflow-hidden">
+            <div class="p-4 b-bg-tint border-b border-blue-100">
+                <div class="text-xs font-bold b-text uppercase tracking-wider mb-1">Fintech</div>
+                <h2 class="text-lg font-bold text-gray-900">B — True Blue</h2>
+                <p class="text-xs text-gray-500 mt-1">Bank-grade · konzervativní · Revolut/ČSOB feel</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch b-primary mb-2">#2563EB primary</div>
+                <div class="swatch b-accent mb-2">#10B981 accent (success)</div>
+                <div class="swatch b-bg-tint mb-4" style="color: #2563EB">#EFF6FF tint</div>
+
+                <div class="border-t pt-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <button class="w-full b-primary b-primary-hover text-white font-semibold py-3 rounded-full shadow transition">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <button class="w-full mt-2 border-2 b-text font-semibold py-3 rounded-full transition" style="border-color: #2563EB">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="b-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold b-text">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="b-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold b-text">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="demo-badge b-accent text-white">98 % obnovení</span>
+                    <span class="demo-badge b-bg-tint b-text">Zdarma prověření</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================ VARIANTA C ============================ -->
+        <div class="bg-white rounded-2xl shadow-sm border-2 overflow-hidden" style="border-color: #0A2540">
+            <div class="p-4 c-bg-tint border-b" style="border-color: #E2E8F0">
+                <div class="text-xs font-bold c-text uppercase tracking-wider mb-1">Premium</div>
+                <h2 class="text-lg font-bold text-gray-900">C — Deep Navy + Electric</h2>
+                <p class="text-xs text-gray-500 mt-1">Prémiový · luxus + akce · higher-tier feel</p>
+            </div>
+
+            <div class="p-4">
+                <div class="swatch c-primary mb-2">#0A2540 primary (bg/headings)</div>
+                <div class="swatch c-accent mb-2">#3B82F6 accent (CTAs)</div>
+                <div class="swatch c-highlight mb-2" style="color: #78350F">#EAB308 highlight (badges)</div>
+                <div class="swatch c-bg-tint mb-4" style="color: #0A2540">#F1F5F9 tint</div>
+
+                <div class="border-t pt-4" style="border-color: #0A2540">
+                    <h3 class="text-2xl font-bold mb-2" style="color: #0A2540">Nájemné každý měsíc</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platíme i když nájemník nezaplatí. Vyzkoušejte kalkulátor.</p>
+                    <button class="w-full c-accent hover:bg-blue-700 text-white font-semibold py-3 rounded-full shadow-lg transition">
+                        Chci pronajímat bez starostí
+                    </button>
+                    <button class="w-full mt-2 c-primary c-primary-hover text-white font-semibold py-3 rounded-full transition">
+                        Kolik bych dostával?
+                    </button>
+                </div>
+
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <div class="c-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold c-text">25+</div>
+                        <div class="text-xs text-gray-600">let</div>
+                    </div>
+                    <div class="c-bg-tint p-3 rounded-lg text-center">
+                        <div class="text-2xl font-bold c-text">2 750+</div>
+                        <div class="text-xs text-gray-600">bytů</div>
+                    </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="demo-badge c-highlight" style="color: #78350F">98 % obnovení</span>
+                    <span class="demo-badge c-primary text-white">Zdarma prověření</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real hero preview — full-width, one at a time -->
+    <div class="max-w-[1600px] mx-auto px-6 pb-16">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 mt-8">Full hero preview — jak by vypadal index.html</h2>
+
+        <!-- A hero -->
+        <div class="rounded-3xl overflow-hidden shadow-xl mb-8 ring-4 ring-indigo-100" style="background: linear-gradient(135deg, #EEF2FF 0%, #FFFFFF 100%)">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-12">
+                <div>
+                    <span class="demo-badge a-bg-tint a-text mb-4">⭐ Varianta A · Refined Indigo</span>
+                    <h1 class="text-5xl font-extrabold text-gray-900 mt-4 mb-4 leading-tight">
+                        Váš nájemník <span class="a-text">jsme my.</span><br>
+                        Nájemné platíme <span class="a-text">vždy.</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze
+                        na účet každý měsíc — i když nájemník nezaplatí. Fungujeme od roku 1999.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="a-accent hover:bg-amber-600 text-white font-bold px-8 py-4 rounded-full shadow-lg text-lg transition">
+                            Spočítat můj jistý nájem →
+                        </button>
+                        <button class="a-primary a-primary-hover text-white font-semibold px-6 py-4 rounded-full shadow transition">
+                            Jak to funguje
+                        </button>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-6">
+                        <div>
+                            <div class="text-3xl font-bold a-text">25+</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-wider">let na trhu</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold a-text">2 750+</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-wider">bytů</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold a-text">98 %</div>
+                            <div class="text-xs text-gray-600 uppercase tracking-wider">obnovení smlouvy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full border a-border-tint">
+                        <div class="a-bg-tint a-text px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">Kalkulátor</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Kolik dostanu jistě?</h3>
+                        <div class="space-y-3">
+                            <input type="text" placeholder="PSČ" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:a-border">
+                            <div class="grid grid-cols-4 gap-2">
+                                <button class="a-bg-tint a-text py-2 rounded-lg text-sm font-semibold">1+kk</button>
+                                <button class="a-primary text-white py-2 rounded-lg text-sm font-semibold">2+kk</button>
+                                <button class="a-bg-tint a-text py-2 rounded-lg text-sm font-semibold">3+kk</button>
+                                <button class="a-bg-tint a-text py-2 rounded-lg text-sm font-semibold">3+1</button>
+                            </div>
+                            <input type="text" placeholder="Plocha v m²" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:a-border">
+                            <button class="w-full a-accent hover:bg-amber-600 text-white font-bold py-3 rounded-full transition">
+                                Zjistit můj jistý nájem →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- B hero -->
+        <div class="rounded-3xl overflow-hidden shadow-lg mb-8" style="background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%)">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-12">
+                <div>
+                    <span class="demo-badge b-bg-tint b-text mb-4">Varianta B · True Blue</span>
+                    <h1 class="text-5xl font-extrabold text-gray-900 mt-4 mb-4 leading-tight">
+                        Váš nájemník <span class="b-text">jsme my.</span><br>
+                        Nájemné platíme <span class="b-text">vždy.</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze
+                        na účet každý měsíc — i když nájemník nezaplatí. Fungujeme od roku 1999.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="b-primary b-primary-hover text-white font-bold px-8 py-4 rounded-full shadow-lg text-lg transition">
+                            Spočítat můj jistý nájem →
+                        </button>
+                        <button class="border-2 b-text font-semibold px-6 py-4 rounded-full transition hover:bg-blue-50" style="border-color: #2563EB">
+                            Jak to funguje
+                        </button>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-6">
+                        <div><div class="text-3xl font-bold b-text">25+</div><div class="text-xs text-gray-600 uppercase tracking-wider">let na trhu</div></div>
+                        <div><div class="text-3xl font-bold b-text">2 750+</div><div class="text-xs text-gray-600 uppercase tracking-wider">bytů</div></div>
+                        <div><div class="text-3xl font-bold" style="color: #10B981">98 %</div><div class="text-xs text-gray-600 uppercase tracking-wider">obnovení smlouvy</div></div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full border" style="border-color: #BFDBFE">
+                        <div class="b-bg-tint b-text px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">Kalkulátor</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Kolik dostanu jistě?</h3>
+                        <div class="space-y-3">
+                            <input type="text" placeholder="PSČ" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl">
+                            <div class="grid grid-cols-4 gap-2">
+                                <button class="b-bg-tint b-text py-2 rounded-lg text-sm font-semibold">1+kk</button>
+                                <button class="b-primary text-white py-2 rounded-lg text-sm font-semibold">2+kk</button>
+                                <button class="b-bg-tint b-text py-2 rounded-lg text-sm font-semibold">3+kk</button>
+                                <button class="b-bg-tint b-text py-2 rounded-lg text-sm font-semibold">3+1</button>
+                            </div>
+                            <input type="text" placeholder="Plocha v m²" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl">
+                            <button class="w-full b-primary b-primary-hover text-white font-bold py-3 rounded-full transition">
+                                Zjistit můj jistý nájem →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- C hero -->
+        <div class="rounded-3xl overflow-hidden shadow-lg" style="background: linear-gradient(135deg, #F1F5F9 0%, #FFFFFF 100%)">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-12">
+                <div>
+                    <span class="demo-badge c-primary text-white mb-4">Varianta C · Deep Navy + Electric</span>
+                    <h1 class="text-5xl font-extrabold mt-4 mb-4 leading-tight" style="color: #0A2540">
+                        Váš nájemník <span class="c-text-accent">jsme my.</span><br>
+                        Nájemné platíme <span class="c-text-accent">vždy.</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze
+                        na účet každý měsíc — i když nájemník nezaplatí. Fungujeme od roku 1999.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="c-accent hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-full shadow-lg text-lg transition">
+                            Spočítat můj jistý nájem →
+                        </button>
+                        <button class="c-primary c-primary-hover text-white font-semibold px-6 py-4 rounded-full transition">
+                            Jak to funguje
+                        </button>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-6">
+                        <div><div class="text-3xl font-bold c-text">25+</div><div class="text-xs text-gray-600 uppercase tracking-wider">let na trhu</div></div>
+                        <div><div class="text-3xl font-bold c-text">2 750+</div><div class="text-xs text-gray-600 uppercase tracking-wider">bytů</div></div>
+                        <div><div class="text-3xl font-bold" style="color: #EAB308">98 %</div><div class="text-xs text-gray-600 uppercase tracking-wider">obnovení smlouvy</div></div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center">
+                    <div class="c-primary rounded-2xl shadow-2xl p-8 max-w-md w-full text-white">
+                        <div class="c-highlight text-gray-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider inline-block mb-3">Kalkulátor</div>
+                        <h3 class="text-xl font-bold text-white mb-4">Kolik dostanu jistě?</h3>
+                        <div class="space-y-3">
+                            <input type="text" placeholder="PSČ" class="w-full px-4 py-3 border border-white/20 bg-white/10 text-white placeholder-white/50 rounded-xl">
+                            <div class="grid grid-cols-4 gap-2">
+                                <button class="bg-white/10 text-white py-2 rounded-lg text-sm font-semibold">1+kk</button>
+                                <button class="c-accent text-white py-2 rounded-lg text-sm font-semibold">2+kk</button>
+                                <button class="bg-white/10 text-white py-2 rounded-lg text-sm font-semibold">3+kk</button>
+                                <button class="bg-white/10 text-white py-2 rounded-lg text-sm font-semibold">3+1</button>
+                            </div>
+                            <input type="text" placeholder="Plocha v m²" class="w-full px-4 py-3 border border-white/20 bg-white/10 text-white placeholder-white/50 rounded-xl">
+                            <button class="w-full c-accent hover:bg-blue-700 text-white font-bold py-3 rounded-full transition">
+                                Zjistit můj jistý nájem →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decision panel -->
+    <div class="max-w-[1600px] mx-auto px-6 pb-16">
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Rozhodovací matice</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-4">Kritérium</th>
+                            <th class="text-center py-3 px-4">Dnes</th>
+                            <th class="text-center py-3 px-4 bg-indigo-50">A · Indigo</th>
+                            <th class="text-center py-3 px-4">B · Blue</th>
+                            <th class="text-center py-3 px-4">C · Navy</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="py-3 px-4 font-semibold text-gray-700">Odlišení od konkurence (GN, Stálý nájem)</td>
+                            <td class="text-center">🟡</td>
+                            <td class="text-center bg-indigo-50">🟢 vysoké</td>
+                            <td class="text-center">🔴 podobná modrá</td>
+                            <td class="text-center">🟢 vysoké</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-semibold text-gray-700">Modernost / trend 2026</td>
+                            <td class="text-center">🟡</td>
+                            <td class="text-center bg-indigo-50">🟢 top (Stripe, Linear)</td>
+                            <td class="text-center">🟡</td>
+                            <td class="text-center">🟢 premium</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-semibold text-gray-700">Trust / důvěryhodnost pro landlord 40+</td>
+                            <td class="text-center">🟡</td>
+                            <td class="text-center bg-indigo-50">🟢</td>
+                            <td class="text-center">🟢 bank-like</td>
+                            <td class="text-center">🟢 premium</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-semibold text-gray-700">Kontrast CTA (amber/emerald/blue)</td>
+                            <td class="text-center">🔴 monotónní</td>
+                            <td class="text-center bg-indigo-50">🟢 amber vyniká</td>
+                            <td class="text-center">🟡 stejná rodina</td>
+                            <td class="text-center">🟢 electric vyniká</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-semibold text-gray-700">Accessibility WCAG AA</td>
+                            <td class="text-center">🟢</td>
+                            <td class="text-center bg-indigo-50">🟢</td>
+                            <td class="text-center">🟢</td>
+                            <td class="text-center">🟢 AAA</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 font-semibold text-gray-700">Náročnost migrace</td>
+                            <td class="text-center">-</td>
+                            <td class="text-center bg-indigo-50">🟢 nízká (find/replace)</td>
+                            <td class="text-center">🟢 nízká</td>
+                            <td class="text-center">🟡 střední (2. barva)</td>
+                        </tr>
+                        <tr class="border-t-2 border-gray-300">
+                            <td class="py-4 px-4 font-bold text-gray-900">Doporučení</td>
+                            <td class="text-center py-4">—</td>
+                            <td class="text-center py-4 bg-indigo-50 font-bold text-indigo-700">⭐ Varianta A</td>
+                            <td class="text-center py-4 text-gray-500">druhá</td>
+                            <td class="text-center py-4 text-gray-500">třetí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                <div>
+                    <div class="text-sm font-bold text-gray-900">Vyberte variantu (A / B / C) a řekněte.</div>
+                    <div class="text-xs text-gray-500 mt-1">Odpovídám podle vaší volby: nasazuju barvu napříč webem (najdu &amp; nahradím ~80 výskytů), pak Fáze 1.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

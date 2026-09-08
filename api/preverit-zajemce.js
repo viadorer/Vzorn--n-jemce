@@ -1,15 +1,15 @@
 // Vercel serverless function — příjem žádostí o bezplatné prověření zájemce o nájem
 // ENV vars:
 //   BREVO_API_KEY — pro odesílání transactional e-mailů
-//   SCREENING_RECIPIENT_EMAIL — kam chodí interní notifikace (default: kontakt@vzornynajemnik.cz)
-//   SCREENING_FROM_EMAIL — adresa odesílatele (default: noreply@vzornynajemnik.cz)
+//   SCREENING_RECIPIENT_EMAIL — kam chodí interní notifikace (default: kontakt@vzornynajemce.cz)
+//   SCREENING_FROM_EMAIL — adresa odesílatele (default: noreply@vzornynajemce.cz)
 //
 // Pokud BREVO_API_KEY není nastaven, funkce se nezhroutí — submise se zaloguje do Vercel logs
 // a vrátí se success. Tím se forms na frontu neblokuje při nedokončeném setupu.
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const RECIPIENT = process.env.SCREENING_RECIPIENT_EMAIL || 'kontakt@vzornynajemnik.cz';
-const SENDER_EMAIL = process.env.SCREENING_FROM_EMAIL || 'noreply@vzornynajemnik.cz';
+const RECIPIENT = process.env.SCREENING_RECIPIENT_EMAIL || 'kontakt@vzornynajemce.cz';
+const SENDER_EMAIL = process.env.SCREENING_FROM_EMAIL || 'noreply@vzornynajemce.cz';
 const SENDER_NAME = 'Vzorný nájemce — Prověření zájemce';
 
 function cors(req, res) {
@@ -160,7 +160,7 @@ export default async function handler(req, res) {
     '  prověření a doručení reportu. Po této době je trvale mažeme.',
     '',
     '  Můžete kdykoli odvolat souhlas a nechat údaje smazat ihned',
-    '  na adrese kontakt@vzornynajemnik.cz.',
+    '  na adrese kontakt@vzornynajemce.cz.',
     '',
     '  Další informace o zpracování:',
     '  https://www.vzornynajemce.cz/gdpr.html',
