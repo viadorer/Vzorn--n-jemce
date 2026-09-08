@@ -1,9 +1,9 @@
 .toggle-checkbox:checked {
     right: 0;
-    border-color: #0D28F2;
+    border-color: #E63946;
 }
 .toggle-checkbox:checked + .toggle-label {
-    background-color: #0D28F2;
+    background-color: #E63946;
 }
 .toggle-checkbox:disabled + .toggle-label {
     opacity: 0.7;

@@ -46,7 +46,7 @@ class SavingsCalculator {
                             type="number" 
                             id="hourlyRate" 
                             value="${this.data.hourlyRate}"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent text-lg font-semibold"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-transparent text-lg font-semibold"
                             min="100" 
                             max="2000" 
                             step="50"
@@ -62,7 +62,7 @@ class SavingsCalculator {
                             type="number" 
                             id="monthlyRent" 
                             value="${this.data.monthlyRent}"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-transparent text-lg font-semibold"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-transparent text-lg font-semibold"
                             min="5000" 
                             max="50000" 
                             step="1000"
@@ -72,7 +72,7 @@ class SavingsCalculator {
                 </div>
 
                 <!-- Výsledky -->
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 mb-6">
+                <div class="bg-gradient-to-br from-[#FDE7E9] to-blue-100 rounded-2xl p-6 mb-6">
                     <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">Porovnání nákladů za rok</h3>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -184,35 +184,35 @@ class SavingsCalculator {
                         </div>
 
                         <!-- Vzorný nájemce -->
-                        <div class="bg-white rounded-xl p-6 border-2 border-[#0D28F2]">
+                        <div class="bg-white rounded-xl p-6 border-2 border-[#E63946]">
                             <div class="text-center mb-4">
                                 <div class="flex items-center justify-center gap-2 mb-2">
                                     <img src="images/logo.png" alt="Vzorný nájemce" class="w-6 h-6 object-contain" loading="lazy">
-                                    <h4 class="text-lg font-bold text-[#0D28F2]">Vzorný nájemce</h4>
+                                    <h4 class="text-lg font-bold text-[#E63946]">Vzorný nájemce</h4>
                                 </div>
-                                <div class="text-2xl font-bold text-[#0D28F2]" id="professionalTotal">0 Kč</div>
+                                <div class="text-2xl font-bold text-[#E63946]" id="professionalTotal">0 Kč</div>
                             </div>
                             
                             <div class="space-y-3 text-sm">
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Služba Vzorný nájemce:</span>
-                                    <span class="font-semibold text-[#0D28F2]" id="professionalCommission">0 Kč</span>
+                                    <span class="font-semibold text-[#E63946]" id="professionalCommission">0 Kč</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Čas strávený správou:</span>
-                                    <span class="font-semibold text-[#0D28F2]">0 Kč</span>
+                                    <span class="font-semibold text-[#E63946]">0 Kč</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Ušlý příjem:</span>
-                                    <span class="font-semibold text-[#0D28F2]">0 Kč</span>
+                                    <span class="font-semibold text-[#E63946]">0 Kč</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Problémový nájemník:</span>
-                                    <span class="font-semibold text-[#0D28F2]">0 Kč</span>
+                                    <span class="font-semibold text-[#E63946]">0 Kč</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Právní náklady:</span>
-                                    <span class="font-semibold text-[#0D28F2]">0 Kč</span>
+                                    <span class="font-semibold text-[#E63946]">0 Kč</span>
                                 </div>
                             </div>
                         </div>
@@ -220,15 +220,15 @@ class SavingsCalculator {
                 </div>
 
                 <!-- Úspora -->
-                <div class="bg-gradient-to-r from-[#0D28F2] to-[#0D28F2]/80 rounded-2xl p-6 text-white text-center">
+                <div class="bg-gradient-to-r from-[#E63946] to-[#E63946]/80 rounded-2xl p-6 text-white text-center">
                     <h3 class="text-xl font-bold mb-2">Vaše roční úspora</h3>
                     <div class="text-4xl font-bold mb-2" id="totalSavings">0 Kč</div>
-                    <p class="text-blue-100" id="savingsDescription">Ušetříte čas, nervy i peníze</p>
+                    <p class="text-white/80" id="savingsDescription">Ušetříte čas, nervy i peníze</p>
                 </div>
 
                 <!-- CTA -->
                 <div class="text-center mt-8">
-                    <button onclick="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <button onclick="Alpine.store('popup').open()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                         Chci ušetřit tyto peníze →
                     </button>
                 </div>

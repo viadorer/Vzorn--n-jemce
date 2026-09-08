@@ -156,7 +156,7 @@
     // Badge — price overlay
     const badge = document.createElement('div');
     badge.className =
-      'absolute bottom-3 left-3 bg-[#0D28F2] text-white text-sm font-semibold px-3 py-1.5 rounded-full shadow-md';
+      'absolute bottom-3 left-3 bg-[#E63946] text-white text-sm font-semibold px-3 py-1.5 rounded-full shadow-md';
     badge.textContent = formatPrice(item.price) + priceLabel(item);
     imgWrap.appendChild(badge);
 
@@ -224,7 +224,7 @@
     cta.type = 'button';
     cta.setAttribute('data-open-popup', '');
     cta.className =
-      'inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 transition-all shadow-sm hover:shadow-md';
+      'inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all shadow-sm hover:shadow-md';
     cta.textContent = 'Máte takovou nemovitost? Získejte jistotu nájmu';
     actions.appendChild(cta);
 
@@ -245,8 +245,8 @@
       b.className = [
         'px-3 py-2 text-sm rounded-lg border transition-colors',
         opts.active
-          ? 'bg-[#0D28F2] text-white border-[#0D28F2]'
-          : 'bg-white text-gray-700 border-gray-200 hover:border-[#0D28F2] hover:text-[#0D28F2]',
+          ? 'bg-[#E63946] text-white border-[#E63946]'
+          : 'bg-white text-gray-700 border-gray-200 hover:border-[#E63946] hover:text-[#E63946]',
         opts.disabled ? 'opacity-40 cursor-not-allowed' : '',
       ].join(' ');
       if (opts.disabled) b.disabled = true;

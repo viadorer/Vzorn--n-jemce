@@ -27,7 +27,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-color: #0D28F2; }
+        :root { --primary-color: #E63946; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .line-clamp-2 {
             display: -webkit-box;
@@ -58,14 +58,14 @@
 
     <main>
         <!-- Hero -->
-        <section class="pt-32 pb-12 bg-gradient-to-b from-blue-50 to-white">
+        <section class="pt-32 pb-12 bg-gradient-to-b from-[#FDE7E9] to-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl">
-                    <p class="text-sm font-semibold text-[#0D28F2] uppercase tracking-wider mb-3">Aktuální nabídky</p>
+                    <p class="text-sm font-semibold text-[#E63946] uppercase tracking-wider mb-3">Aktuální nabídky</p>
                     <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Pronájmy nemovitostí</h1>
                     <p class="text-lg text-gray-600">
                         Vybrané nabídky pronájmů, které pro vás aktuálně máme ve správě. Pronajímáte vlastní byt
-                        a chcete místo starostí jistotu? <a href="o-sluzbe.html" class="text-[#0D28F2] font-medium hover:underline">Zjistěte, jak funguje jistota nájmu</a>.
+                        a chcete místo starostí jistotu? <a href="o-sluzbe.html" class="text-[#E63946] font-medium hover:underline">Zjistěte, jak funguje jistota nájmu</a>.
                     </p>
                 </div>
             </div>
@@ -77,13 +77,13 @@
                 <form id="listings-filter-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
                     <div>
                         <label for="f-city" class="block text-xs font-medium text-gray-600 mb-1">Město</label>
-                        <select id="f-city" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
+                        <select id="f-city" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-[#E63946] text-sm bg-white">
                             <option value="">Všechna města</option>
                         </select>
                     </div>
                     <div>
                         <label for="f-disposition" class="block text-xs font-medium text-gray-600 mb-1">Dispozice</label>
-                        <select id="f-disposition" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm bg-white">
+                        <select id="f-disposition" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-[#E63946] text-sm bg-white">
                             <option value="">Vše</option>
                             <option value="1+kk">1+kk</option>
                             <option value="1+1">1+1</option>
@@ -98,10 +98,10 @@
                     </div>
                     <div>
                         <label for="f-price-max" class="block text-xs font-medium text-gray-600 mb-1">Max. nájemné (Kč)</label>
-                        <input type="number" id="f-price-max" min="0" step="500" placeholder="např. 20 000" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#0D28F2] focus:border-[#0D28F2] text-sm">
+                        <input type="number" id="f-price-max" min="0" step="500" placeholder="např. 20 000" class="w-full h-11 px-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-[#E63946] text-sm">
                     </div>
                     <div class="flex gap-2">
-                        <button type="submit" class="flex-1 inline-flex items-center justify-center h-11 px-4 bg-[#0D28F2] text-white text-sm font-medium rounded-lg hover:bg-[#0D28F2]/90 transition-colors">
+                        <button type="submit" class="flex-1 inline-flex items-center justify-center h-11 px-4 bg-[#E63946] text-white text-sm font-medium rounded-lg hover:bg-[#E63946]/90 transition-colors">
                             Filtrovat
                         </button>
                         <button type="button" id="f-reset" class="inline-flex items-center justify-center h-11 w-11 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors" title="Resetovat filtry" aria-label="Resetovat filtry">
@@ -120,7 +120,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Loading -->
                 <div id="listings-loading" class="text-center py-20">
-                    <div class="inline-block animate-spin h-10 w-10 border-4 border-[#0D28F2] border-t-transparent rounded-full"></div>
+                    <div class="inline-block animate-spin h-10 w-10 border-4 border-[#E63946] border-t-transparent rounded-full"></div>
                     <p class="mt-4 text-gray-500 text-sm">Načítáme aktuální nabídky…</p>
                 </div>
 
@@ -129,7 +129,7 @@
                     <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Žádné nabídky neodpovídají filtru</h3>
                     <p class="text-gray-600 mb-6 max-w-md mx-auto">Zkuste upravit filtry nebo se ozvěte – často máme nemovitosti k pronájmu ještě před zveřejněním.</p>
-                    <button type="button" data-open-popup class="inline-flex items-center justify-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all">
+                    <button type="button" data-open-popup class="inline-flex items-center justify-center px-6 py-3 bg-[#E63946] text-white font-medium rounded-full hover:bg-[#E63946]/90 transition-all">
                         Chci být informován o nových nabídkách
                     </button>
                 </div>
@@ -139,7 +139,7 @@
                     <svg class="w-16 h-16 mx-auto text-red-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M4.93 19h14.14c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.2 16c-.77 1.33.19 3 1.73 3z"/></svg>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Nabídky se zatím nepodařilo načíst</h3>
                     <p class="text-gray-600 mb-6 max-w-md mx-auto">Zkuste obnovit stránku. Pokud problém přetrvává, kontaktujte nás přímo – rádi vám pošleme aktuální seznam.</p>
-                    <a href="tel:+420603834921" class="inline-flex items-center justify-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all">
+                    <a href="tel:+420603834921" class="inline-flex items-center justify-center px-6 py-3 bg-[#E63946] text-white font-medium rounded-full hover:bg-[#E63946]/90 transition-all">
                         Zavolat: +420 603 834 921
                     </a>
                 </div>
@@ -155,14 +155,14 @@
         <!-- CTA banner -->
         <section class="py-16 bg-white">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-gradient-to-br from-[#0D28F2] to-[#0a1fc5] rounded-3xl p-10 lg:p-14 text-center text-white shadow-xl">
+                <div class="bg-gradient-to-br from-[#E63946] to-[#C82F3B] rounded-3xl p-10 lg:p-14 text-center text-white shadow-xl">
                     <h2 class="text-3xl lg:text-4xl font-bold mb-4">Pronajímáte vlastní byt?</h2>
-                    <p class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+                    <p class="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
                         Místo inzerátů, prohlídek a starostí s neplatiči vám nájem dostáváte každý měsíc.
                         Postaráme se o vše: prověření nájemníka, smlouvy, předávací protokol i servis.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button type="button" data-open-popup class="inline-flex items-center justify-center px-8 py-4 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-blue-50 transition-all shadow-lg">
+                        <button type="button" data-open-popup class="inline-flex items-center justify-center px-8 py-4 bg-white text-[#E63946] font-semibold rounded-full hover:bg-[#FDE7E9] transition-all shadow-lg">
                             Získat nezávaznou nabídku
                         </button>
                         <a href="kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/50 text-white font-medium rounded-full hover:bg-white/10 transition-all">

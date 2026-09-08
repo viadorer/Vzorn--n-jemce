@@ -30,11 +30,11 @@ function showCookieConsent() {
             <div class="mb-4 md:mb-0 text-center md:text-left">
                 <p class="text-sm md:text-base">
                     Tento web používá cookies pro zlepšení vaší uživatelské zkušenosti, analytiku návštěvnosti a marketingové účely (Google Analytics, Meta Pixel). 
-                    <a href="/cookies.html" class="text-blue-400 hover:text-blue-300 underline">Více informací</a>
+                    <a href="/cookies.html" class="text-[#E63946] hover:text-[#FDE7E9] underline">Více informací</a>
                 </p>
             </div>
             <div class="flex space-x-4">
-                <button id="cookie-accept" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition-colors text-sm md:text-base">
+                <button id="cookie-accept" class="bg-[#E63946] hover:bg-[#C82F3B] text-white py-2 px-4 rounded transition-colors text-sm md:text-base">
                     Souhlasím
                 </button>
                 <button id="cookie-decline" class="bg-transparent border border-gray-500 hover:border-white text-white py-2 px-4 rounded transition-colors text-sm md:text-base">

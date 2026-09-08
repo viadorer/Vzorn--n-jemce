@@ -60,7 +60,7 @@ async function loadBlogPosts(category = 'all', page = 1) {
               <p class="text-gray-600 mb-4">${post.excerpt}</p>
               <div class="flex justify-between items-center">
                 <span class="text-sm text-gray-400">${formatDate(post.date)}</span>
-                <span class="text-[#0D28F2] font-medium">Číst více</span>
+                <span class="text-[#E63946] font-medium">Číst více</span>
               </div>
             </div>
           </a>
@@ -88,7 +88,7 @@ async function loadBlogPosts(category = 'all', page = 1) {
       // Numbers
       for (let i = 1; i <= totalPages; i++) {
         const active = i === safePage;
-        html += `<button data-page="${i}" class="px-3 py-2 rounded-md border text-sm ${active ? 'bg-[#0D28F2] text-white border-[#0D28F2]' : 'hover:bg-gray-50'}">${i}</button>`;
+        html += `<button data-page="${i}" class="px-3 py-2 rounded-md border text-sm ${active ? 'bg-[#E63946] text-white border-[#E63946]' : 'hover:bg-gray-50'}">${i}</button>`;
       }
       // Next
       html += `<button data-page="next" class="px-3 py-2 rounded-md border text-sm ${safePage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}">Další</button>`;
@@ -112,7 +112,7 @@ function decoratePostContent(slug, html) {
               <p class="text-gray-600">Fixní nájem, právní ochrana, prověření nájemníci a kompletní správa.</p>
             </div>
             <div class="flex gap-3">
-              <button type="button" data-open-popup class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#0D28F2] text-white hover:bg-[#0a1fc5] transition">Mám zájem →</button>
+              <button type="button" data-open-popup class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#E63946] text-white hover:bg-[#C82F3B] transition">Mám zájem →</button>
               <a href="../kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-50 transition">Spočítat nájemné</a>
             </div>
           </div>
@@ -188,7 +188,7 @@ async function loadBlogPost(slug) {
         </figure>
 
         <div class="not-prose mb-8 flex flex-col sm:flex-row gap-4">
-          <button type="button" data-open-popup class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#0D28F2] hover:bg-[#0a1fc5] transition-all duration-300 shadow-sm hover:shadow-md">
+          <button type="button" data-open-popup class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-all duration-300 shadow-sm hover:shadow-md">
             Získejte jistý nájem →
           </button>
           <a href="../kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300">
@@ -253,9 +253,9 @@ function initBlog() {
       const buttons = Array.from(catContainer.querySelectorAll('button[data-category]'));
       buttons.forEach(btn => {
         const isActive = btn.getAttribute('data-category') === category;
-        btn.classList.toggle('bg-[#0D28F2]', isActive);
+        btn.classList.toggle('bg-[#E63946]', isActive);
         btn.classList.toggle('text-white', isActive);
-        btn.classList.toggle('hover:bg-[#0a1fc5]', isActive);
+        btn.classList.toggle('hover:bg-[#C82F3B]', isActive);
 
         btn.classList.toggle('bg-gray-100', !isActive);
         btn.classList.toggle('text-gray-700', !isActive);

@@ -27,7 +27,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-color: #0D28F2; }
+        :root { --primary-color: #E63946; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .form-input:focus { box-shadow: 0 0 0 4px rgba(13, 40, 242, 0.12); }
     </style>
@@ -54,7 +54,7 @@
     }
     </script>
 </head>
-<body class="bg-ivory" style="background-color:#FFFDF6">
+<body class="bg-ivory" style="background-color:#FBF7F2">
     <!-- Sdílený header -->
     <div id="header-placeholder"></div>
     <script src="js/load-header.js"></script>
@@ -71,10 +71,10 @@
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="max-w-3xl">
-                    <span class="inline-block px-4 py-1.5 bg-blue-50 text-[#0D28F2] text-xs font-semibold uppercase tracking-wider rounded-full mb-5">Jednou zdarma · do 1 hodiny v pracovní době</span>
+                    <span class="inline-block px-4 py-1.5 bg-[#FDE7E9] text-[#E63946] text-xs font-semibold uppercase tracking-wider rounded-full mb-5">Jednou zdarma · do 1 hodiny v pracovní době</span>
                     <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-5 leading-tight">
                         Než někomu předáte klíče,<br>
-                        <span class="text-[#0D28F2]">prověřte si ho.</span>
+                        <span class="text-[#E63946]">prověřte si ho.</span>
                     </h1>
                     <p class="text-lg text-gray-700 mb-8">
                         Pošlete jméno a datum narození zájemce o nájem. Do hodiny vám pošleme PDF report z&nbsp;<strong>4 oficiálních rejstříků</strong> a&nbsp;jasné vyhodnocení.
@@ -115,7 +115,7 @@
 
                             <!-- ÚDAJE ZÁJEMCE -->
                             <fieldset>
-                                <legend class="text-sm font-bold text-[#0D28F2] uppercase tracking-wider mb-1">1. Údaje zájemce o nájem</legend>
+                                <legend class="text-sm font-bold text-[#E63946] uppercase tracking-wider mb-1">1. Údaje zájemce o nájem</legend>
                                 <p class="text-sm text-gray-500 mb-5">Koho chcete prověřit. Údaje musíte mít od něj se souhlasem.</p>
 
                                 <div class="space-y-5">
@@ -124,19 +124,19 @@
                                         <div class="grid grid-cols-3 gap-2">
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="candidate_type" value="fyzicka" class="peer sr-only" checked>
-                                                <div class="text-center px-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 peer-checked:border-[#0D28F2] peer-checked:bg-blue-50 peer-checked:text-[#0D28F2] transition-colors">
+                                                <div class="text-center px-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 peer-checked:border-[#E63946] peer-checked:bg-[#FDE7E9] peer-checked:text-[#E63946] transition-colors">
                                                     Fyzická osoba
                                                 </div>
                                             </label>
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="candidate_type" value="osvc" class="peer sr-only">
-                                                <div class="text-center px-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 peer-checked:border-[#0D28F2] peer-checked:bg-blue-50 peer-checked:text-[#0D28F2] transition-colors">
+                                                <div class="text-center px-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 peer-checked:border-[#E63946] peer-checked:bg-[#FDE7E9] peer-checked:text-[#E63946] transition-colors">
                                                     OSVČ
                                                 </div>
                                             </label>
                                             <label class="cursor-pointer">
                                                 <input type="radio" name="candidate_type" value="firma" class="peer sr-only">
-                                                <div class="text-center px-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 peer-checked:border-[#0D28F2] peer-checked:bg-blue-50 peer-checked:text-[#0D28F2] transition-colors">
+                                                <div class="text-center px-3 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 peer-checked:border-[#E63946] peer-checked:bg-[#FDE7E9] peer-checked:text-[#E63946] transition-colors">
                                                     Firma (s.r.o.)
                                                 </div>
                                             </label>
@@ -148,7 +148,7 @@
                                             <span id="candidate-name-label">Jméno a příjmení</span> <span class="text-red-500">*</span>
                                         </label>
                                         <input type="text" id="candidate_name" name="candidate_name" required maxlength="120" autocomplete="off"
-                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
+                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors"
                                                placeholder="např. Jan Novák">
                                     </div>
 
@@ -157,7 +157,7 @@
                                             Datum narození <span class="text-red-500">*</span>
                                         </label>
                                         <input type="date" id="candidate_dob" name="candidate_dob" max="2010-01-01"
-                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors">
+                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors">
                                         <p class="text-xs text-gray-500 mt-2">Potřebné pro vyhledávání v insolvenčním rejstříku a evidenci exekucí.</p>
                                     </div>
 
@@ -166,7 +166,7 @@
                                             IČ <span class="text-red-500">*</span>
                                         </label>
                                         <input type="text" id="candidate_ic" name="candidate_ic" inputmode="numeric" pattern="[0-9]{6,10}" maxlength="10"
-                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
+                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors"
                                                placeholder="např. 12345678">
                                         <p class="text-xs text-gray-500 mt-2">Pro firmy/OSVČ. Najdeme přes ARES a veřejný rejstřík.</p>
                                     </div>
@@ -176,7 +176,7 @@
                                             Adresa trvalého bydliště / sídla <span class="text-gray-400 font-normal">(volitelně)</span>
                                         </label>
                                         <input type="text" id="candidate_address" name="candidate_address" maxlength="200" autocomplete="off"
-                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
+                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors"
                                                placeholder="např. Plzeň, Klatovská 12">
                                         <p class="text-xs text-gray-500 mt-2">Pomáhá rozlišit osoby se stejným jménem.</p>
                                     </div>
@@ -187,7 +187,7 @@
 
                             <!-- ÚDAJE MAJITELE -->
                             <fieldset>
-                                <legend class="text-sm font-bold text-[#0D28F2] uppercase tracking-wider mb-1">2. Váš kontakt</legend>
+                                <legend class="text-sm font-bold text-[#E63946] uppercase tracking-wider mb-1">2. Váš kontakt</legend>
                                 <p class="text-sm text-gray-500 mb-5">Kam pošleme PDF report.</p>
 
                                 <div class="space-y-5">
@@ -196,7 +196,7 @@
                                             E-mail <span class="text-red-500">*</span>
                                         </label>
                                         <input type="email" id="requester_email" name="requester_email" required maxlength="200" autocomplete="email"
-                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
+                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors"
                                                placeholder="vas@email.cz">
                                     </div>
 
@@ -206,14 +206,14 @@
                                                 Vaše jméno <span class="text-gray-400 font-normal">(volitelně)</span>
                                             </label>
                                             <input type="text" id="requester_name" name="requester_name" maxlength="120" autocomplete="name"
-                                                   class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors">
+                                                   class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors">
                                         </div>
                                         <div>
                                             <label for="requester_phone" class="block text-sm font-semibold text-gray-700 mb-2">
                                                 Telefon <span class="text-red-500">*</span>
                                             </label>
                                             <input type="tel" id="requester_phone" name="requester_phone" required maxlength="40" minlength="9" autocomplete="tel"
-                                                   class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
+                                                   class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors"
                                                    placeholder="+420 ...">
                                             <p class="text-xs text-gray-500 mt-2">Voláme jen pokud report najde nejednoznačný záznam k&nbsp;diskuzi.</p>
                                         </div>
@@ -224,7 +224,7 @@
                                             Lokace pronajímaného bytu <span class="text-gray-400 font-normal">(volitelně)</span>
                                         </label>
                                         <input type="text" id="property_location" name="property_location" maxlength="200"
-                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#0D28F2] focus:outline-none transition-colors"
+                                               class="form-input w-full h-12 px-4 border border-gray-200 rounded-xl focus:border-[#E63946] focus:outline-none transition-colors"
                                                placeholder="např. Plzeň – Bory">
                                     </div>
                                 </div>
@@ -234,21 +234,21 @@
 
                             <!-- SOUHLASY -->
                             <fieldset>
-                                <legend class="text-sm font-bold text-[#0D28F2] uppercase tracking-wider mb-1">3. Souhlasy (povinné)</legend>
+                                <legend class="text-sm font-bold text-[#E63946] uppercase tracking-wider mb-1">3. Souhlasy (povinné)</legend>
                                 <p class="text-sm text-gray-500 mb-5">Bez nich prověření nemůžeme zpracovat.</p>
 
                                 <div class="space-y-4">
                                     <label class="flex items-start gap-3 cursor-pointer group">
-                                        <input type="checkbox" name="consent_obtained" required class="mt-1 h-5 w-5 rounded border-gray-300 text-[#0D28F2] focus:ring-[#0D28F2] cursor-pointer">
+                                        <input type="checkbox" name="consent_obtained" required class="mt-1 h-5 w-5 rounded border-gray-300 text-[#E63946] focus:ring-[#E63946] cursor-pointer">
                                         <span class="text-sm text-gray-700">
                                             <strong>Mám písemný souhlas zájemce</strong> s prověřením jeho údajů v insolvenčním rejstříku, evidenci exekucí, ARES a Justice.cz. Pokud o tom vznikne spor, mohu souhlas doložit.
                                         </span>
                                     </label>
 
                                     <label class="flex items-start gap-3 cursor-pointer group">
-                                        <input type="checkbox" name="consent_gdpr" required class="mt-1 h-5 w-5 rounded border-gray-300 text-[#0D28F2] focus:ring-[#0D28F2] cursor-pointer">
+                                        <input type="checkbox" name="consent_gdpr" required class="mt-1 h-5 w-5 rounded border-gray-300 text-[#E63946] focus:ring-[#E63946] cursor-pointer">
                                         <span class="text-sm text-gray-700">
-                                            Souhlasím se zpracováním osobních údajů (zájemce i mých) v rozsahu nezbytném pro provedení prověření. Údaje budou uchovávány <strong>30 dní</strong>, poté trvale smazány. Veškeré informace jsou v <a href="gdpr.html" class="text-[#0D28F2] underline hover:text-[#0a1fc5]" target="_blank" rel="noopener">Zásadách ochrany osobních údajů</a>.
+                                            Souhlasím se zpracováním osobních údajů (zájemce i mých) v rozsahu nezbytném pro provedení prověření. Údaje budou uchovávány <strong>30 dní</strong>, poté trvale smazány. Veškeré informace jsou v <a href="gdpr.html" class="text-[#E63946] underline hover:text-[#C82F3B]" target="_blank" rel="noopener">Zásadách ochrany osobních údajů</a>.
                                         </span>
                                     </label>
                                 </div>
@@ -257,7 +257,7 @@
                             <!-- Submit -->
                             <div>
                                 <button type="submit" id="submit-btn"
-                                        class="w-full inline-flex justify-center items-center px-8 py-4 text-base font-semibold rounded-full text-white bg-[#0D28F2] hover:bg-[#0D28F2]/90 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                        class="w-full inline-flex justify-center items-center px-8 py-4 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                                     <span id="submit-label">Odeslat — do hodiny obdržíte PDF report</span>
                                     <svg id="submit-spinner" class="hidden ml-3 h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -273,8 +273,8 @@
 
                         <!-- Success state -->
                         <div id="form-success" class="hidden bg-white rounded-2xl shadow-xl border border-gray-100 p-10 text-center">
-                            <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg class="w-8 h-8 text-[#0D28F2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-16 h-16 bg-[#FDE7E9] rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg class="w-8 h-8 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
@@ -284,8 +284,8 @@
                                 (Po-Pá 9:00–17:00). Mimo pracovní dobu vás kontaktujeme následující pracovní den ráno.
                             </p>
                             <p class="text-sm text-gray-500">
-                                Mezitím se podívejte na <a href="o-sluzbe.html" class="text-[#0D28F2] underline hover:text-[#0a1fc5]">jak funguje naše jistota nájmu</a> &nbsp;|&nbsp;
-                                <a href="/" class="text-[#0D28F2] underline hover:text-[#0a1fc5]">na úvodní stranu</a>
+                                Mezitím se podívejte na <a href="o-sluzbe.html" class="text-[#E63946] underline hover:text-[#C82F3B]">jak funguje naše jistota nájmu</a> &nbsp;|&nbsp;
+                                <a href="/" class="text-[#E63946] underline hover:text-[#C82F3B]">na úvodní stranu</a>
                             </p>
                         </div>
                     </div>
@@ -298,19 +298,19 @@
                                 <h3 class="text-base font-bold text-gray-900 mb-4">Co dostanete v PDF reportu</h3>
                                 <ul class="space-y-3 text-sm text-gray-700">
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-[#0D28F2] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <svg class="w-5 h-5 text-[#E63946] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                         <span><strong>Insolvenční rejstřík</strong> — probíhající insolvence, oddlužení</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-[#0D28F2] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <svg class="w-5 h-5 text-[#E63946] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                         <span><strong>Centrální evidence exekucí</strong> — počet, výše, status</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-[#0D28F2] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <svg class="w-5 h-5 text-[#E63946] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                         <span><strong>ARES</strong> — ověření OSVČ / firmy</span>
                                     </li>
                                     <li class="flex items-start gap-2">
-                                        <svg class="w-5 h-5 text-[#0D28F2] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <svg class="w-5 h-5 text-[#E63946] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                         <span><strong>Justice.cz</strong> — záznamy ve veřejném rejstříku</span>
                                     </li>
                                     <li class="flex items-start gap-2 pt-3 border-t border-gray-100">
@@ -321,23 +321,23 @@
                             </div>
 
                             <!-- GDPR mini -->
-                            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6">
+                            <div class="bg-[#FDE7E9] border border-[#FDE7E9] rounded-2xl p-6">
                                 <h3 class="text-base font-bold text-gray-900 mb-3">Jak nakládáme s údaji</h3>
                                 <ul class="space-y-2 text-sm text-gray-700">
                                     <li>• Údaje použijeme <strong>pouze pro toto prověření</strong>.</li>
                                     <li>• <strong>30 dnů</strong> uchování, poté trvale mažeme.</li>
                                     <li>• Nepředáváme třetím stranám.</li>
-                                    <li>• Můžete kdykoli žádat o smazání: <a href="mailto:kontakt@vzornynajemce.cz" class="text-[#0D28F2] underline">kontakt@vzornynajemce.cz</a></li>
+                                    <li>• Můžete kdykoli žádat o smazání: <a href="mailto:kontakt@vzornynajemce.cz" class="text-[#E63946] underline">kontakt@vzornynajemce.cz</a></li>
                                 </ul>
                                 <p class="text-xs text-gray-500 mt-4">Správce údajů: PTF reality, s.r.o.</p>
                             </div>
 
                             <!-- Nabídka navíc -->
-                            <div class="bg-gradient-to-br from-[#0D28F2] to-[#0a1fc5] text-white rounded-2xl p-6 shadow-md">
-                                <p class="text-sm text-blue-100 mb-2">Nechcete tohle řešit pokaždé znovu?</p>
+                            <div class="bg-gradient-to-br from-[#E63946] to-[#C82F3B] text-white rounded-2xl p-6 shadow-md">
+                                <p class="text-sm text-white/80 mb-2">Nechcete tohle řešit pokaždé znovu?</p>
                                 <h3 class="text-lg font-bold mb-3">Pronajměte byt s garancí nájmu</h3>
-                                <p class="text-sm text-blue-100 mb-4">Prověření zájemce, smlouvu, předání, kontroly, řešení oprav i případné spory — to vše převezmeme. Vy dostáváte nájem na účet každý měsíc.</p>
-                                <a href="o-sluzbe.html" class="inline-flex items-center text-sm font-semibold text-white hover:text-blue-200">
+                                <p class="text-sm text-white/80 mb-4">Prověření zájemce, smlouvu, předání, kontroly, řešení oprav i případné spory — to vše převezmeme. Vy dostáváte nájem na účet každý měsíc.</p>
+                                <a href="o-sluzbe.html" class="inline-flex items-center text-sm font-semibold text-white hover:text-white/70">
                                     Jak funguje jistota nájmu →
                                 </a>
                             </div>
@@ -356,28 +356,28 @@
                     <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
                             <span>Je to opravdu zdarma?</span>
-                            <span class="text-[#0D28F2] transition-transform group-open:rotate-180">▾</span>
+                            <span class="text-[#E63946] transition-transform group-open:rotate-180">▾</span>
                         </summary>
                         <p class="mt-3 text-sm text-gray-700">Ano. Jedno prověření zájemce na jeden e-mail je zdarma. Pokud potřebujete prověřovat opakovaně, zařídíme to v rámci naší kompletní správy nájmu.</p>
                     </details>
                     <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
                             <span>Co kdyby zájemce neměl souhlas k prověření?</span>
-                            <span class="text-[#0D28F2] transition-transform group-open:rotate-180">▾</span>
+                            <span class="text-[#E63946] transition-transform group-open:rotate-180">▾</span>
                         </summary>
                         <p class="mt-3 text-sm text-gray-700">Souhlas si musíte zajistit předem (mailem, smskou nebo písemně). Stačí věta typu: „Souhlasím s prověřením v rejstřících za účelem uzavření nájemní smlouvy." Ručíte za to při odeslání formuláře — proto je tam první checkbox.</p>
                     </details>
                     <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
                             <span>Jak dlouho uchováváte údaje?</span>
-                            <span class="text-[#0D28F2] transition-transform group-open:rotate-180">▾</span>
+                            <span class="text-[#E63946] transition-transform group-open:rotate-180">▾</span>
                         </summary>
-                        <p class="mt-3 text-sm text-gray-700">30 dní pro reference (kdyby přišly otázky). Poté všechna data — vaše i zájemce — trvale mažeme. Pokud chcete smazat ihned, napište na <a href="mailto:kontakt@vzornynajemce.cz" class="text-[#0D28F2] underline">kontakt@vzornynajemce.cz</a>.</p>
+                        <p class="mt-3 text-sm text-gray-700">30 dní pro reference (kdyby přišly otázky). Poté všechna data — vaše i zájemce — trvale mažeme. Pokud chcete smazat ihned, napište na <a href="mailto:kontakt@vzornynajemce.cz" class="text-[#E63946] underline">kontakt@vzornynajemce.cz</a>.</p>
                     </details>
                     <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
                             <span>Co když zájemce nesouhlasí?</span>
-                            <span class="text-[#0D28F2] transition-transform group-open:rotate-180">▾</span>
+                            <span class="text-[#E63946] transition-transform group-open:rotate-180">▾</span>
                         </summary>
                         <p class="mt-3 text-sm text-gray-700">To už je samo o sobě signál. Slušný zájemce s čistým štítem nemá důvod prověření odmítnout.</p>
                     </details>

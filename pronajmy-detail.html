@@ -23,7 +23,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-color: #0D28F2; }
+        :root { --primary-color: #E63946; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .description p { margin-bottom: 1rem; }
         .description p:last-child { margin-bottom: 0; }
@@ -54,16 +54,16 @@
     <main class="pt-24">
         <!-- Breadcrumb -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-gray-500">
-            <a href="/" class="hover:text-[#0D28F2]">Domů</a>
+            <a href="/" class="hover:text-[#E63946]">Domů</a>
             <span class="mx-2">›</span>
-            <a href="pronajmy.html" class="hover:text-[#0D28F2]">Aktuální nabídky</a>
+            <a href="pronajmy.html" class="hover:text-[#E63946]">Aktuální nabídky</a>
             <span class="mx-2">›</span>
             <span id="bc-title" class="text-gray-700">Detail nabídky</span>
         </div>
 
         <!-- Loading -->
         <div id="loading" class="text-center py-24">
-            <div class="inline-block animate-spin h-10 w-10 border-4 border-[#0D28F2] border-t-transparent rounded-full"></div>
+            <div class="inline-block animate-spin h-10 w-10 border-4 border-[#E63946] border-t-transparent rounded-full"></div>
             <p class="mt-4 text-gray-500 text-sm">Načítáme detail nemovitosti…</p>
         </div>
 
@@ -72,7 +72,7 @@
             <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M4.93 19h14.14c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.2 16c-.77 1.33.19 3 1.73 3z"/></svg>
             <h1 class="text-2xl font-bold text-gray-900 mb-2">Nabídka nenalezena</h1>
             <p class="text-gray-600 mb-6">Detail této nemovitosti se nepodařilo načíst — nabídka mohla být právě stažena.</p>
-            <a href="pronajmy.html" class="inline-flex items-center justify-center px-6 py-3 bg-[#0D28F2] text-white font-medium rounded-full hover:bg-[#0D28F2]/90 transition-all">
+            <a href="pronajmy.html" class="inline-flex items-center justify-center px-6 py-3 bg-[#E63946] text-white font-medium rounded-full hover:bg-[#E63946]/90 transition-all">
                 ← Zpět na všechny nabídky
             </a>
         </div>
@@ -116,7 +116,7 @@
                     <!-- Map link -->
                     <section id="map-section" class="hidden">
                         <h2 class="text-xl font-bold text-gray-900 mb-4">Lokalita</h2>
-                        <a id="map-link" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 border border-gray-200 rounded-xl hover:border-[#0D28F2] hover:text-[#0D28F2] transition-colors">
+                        <a id="map-link" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 border border-gray-200 rounded-xl hover:border-[#E63946] hover:text-[#E63946] transition-colors">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             <span>Zobrazit na Mapy.cz</span>
                         </a>
@@ -131,7 +131,7 @@
                             <p class="text-sm text-gray-500 mb-1">Měsíční nájemné</p>
                             <p id="price" class="text-3xl font-bold text-gray-900 mb-1"></p>
                             <p id="price-note" class="text-sm text-gray-500 mb-5 hidden"></p>
-                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-[#0D28F2] text-white font-semibold rounded-full hover:bg-[#0D28F2]/90 transition-all shadow-md">
+                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-[#E63946] text-white font-semibold rounded-full hover:bg-[#E63946]/90 transition-all shadow-md">
                                 Mám zájem o tuto nabídku
                             </button>
                             <a id="external-link" href="#" target="_blank" rel="noopener" class="mt-3 w-full inline-flex items-center justify-center px-5 py-2.5 border border-gray-200 text-gray-700 font-medium rounded-full hover:bg-gray-50 transition-all text-sm">
@@ -140,10 +140,10 @@
                         </div>
 
                         <!-- Garance CTA -->
-                        <div class="bg-gradient-to-br from-[#0D28F2] to-[#0a1fc5] text-white rounded-2xl p-6 shadow-md">
+                        <div class="bg-gradient-to-br from-[#E63946] to-[#C82F3B] text-white rounded-2xl p-6 shadow-md">
                             <h3 class="text-lg font-bold mb-2">Máte takovou nemovitost?</h3>
-                            <p class="text-sm text-blue-100 mb-4">Pronajměte ji s garancí měsíčního nájmu — nájem dostanete každý měsíc, i kdyby byl byt prázdný.</p>
-                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-white text-[#0D28F2] font-semibold rounded-full hover:bg-blue-50 transition-all">
+                            <p class="text-sm text-white/80 mb-4">Pronajměte ji s garancí měsíčního nájmu — nájem dostanete každý měsíc, i kdyby byl byt prázdný.</p>
+                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-white text-[#E63946] font-semibold rounded-full hover:bg-[#FDE7E9] transition-all">
                                 Získejte jistotu nájmu
                             </button>
                         </div>
@@ -330,7 +330,7 @@
                 const li = document.createElement('li');
                 li.className = 'flex items-start gap-2';
                 const dot = document.createElement('span');
-                dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-[#0D28F2] mt-2 flex-shrink-0';
+                dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-[#E63946] mt-2 flex-shrink-0';
                 li.appendChild(dot);
                 const txt = document.createElement('span');
                 const label = FEATURE_LABELS[k] || k;
