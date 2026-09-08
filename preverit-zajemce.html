@@ -110,7 +110,47 @@
 
                     <!-- Formulář -->
                     <div class="lg:col-span-2">
-                        <form id="screening-form" class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 lg:p-10 space-y-8" novalidate>
+                        <!-- EMAIL GATE — zobrazí se bez platného tokenu -->
+                        <div id="access-gate" class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 lg:p-10">
+                            <div class="max-w-lg">
+                                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-[#FDE7E9] text-[#E63946] text-xs font-semibold uppercase tracking-wider">
+                                    Krok 1 z 2 &middot; e-mail
+                                </div>
+                                <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 leading-tight mb-3">
+                                    Pošleme vám bezpečný přístupový odkaz.
+                                </h2>
+                                <p class="text-slate-600 leading-relaxed mb-6">
+                                    Zadejte svůj e-mail — pošleme vám jednorázový odkaz na formulář, kam bezpečně vyplníte údaje zájemce. Do 5 minut ho máte v e-mailu.
+                                </p>
+                                <form id="access-request-form" class="flex flex-col sm:flex-row gap-3 mb-4">
+                                    <input type="email" name="email" required maxlength="200" autocomplete="email"
+                                           placeholder="váš e-mail" aria-label="Váš e-mail"
+                                           class="flex-1 h-12 px-4 border border-gray-200 rounded-full focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 focus:outline-none transition-colors">
+                                    <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors whitespace-nowrap">
+                                        Poslat odkaz
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                                    </button>
+                                </form>
+                                <div id="access-request-status" class="text-sm min-h-[24px]"></div>
+                                <div class="mt-8 pt-6 border-t border-slate-200 space-y-3 text-sm text-slate-600">
+                                    <div class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Odkaz je platný <strong>48 hodin</strong> a otevře jen z vaší e-mailové schránky</span>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <span><strong>PDF report do 60 minut</strong> v pracovní době (Po–Pá 8–17)</span>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                        <span>Data zájemce po ověření mažeme, GDPR</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FORM — zobrazí se s platným tokenem -->
+                        <form id="screening-form" class="hidden bg-white rounded-2xl shadow-xl border border-gray-100 p-6 lg:p-10 space-y-8" novalidate>
                             <!-- Honeypot anti-spam -->
                             <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
 
@@ -396,6 +436,108 @@
     <script src="js/load-popup.js"></script>
 
     <script>
+    // Access gate — ověření tokenu z URL, přepnutí mezi email-gate a formulářem
+    (function() {
+        'use strict';
+        const gate = document.getElementById('access-gate');
+        const gateForm = document.getElementById('access-request-form');
+        const gateStatus = document.getElementById('access-request-status');
+        const screeningForm = document.getElementById('screening-form');
+
+        const params = new URLSearchParams(window.location.search);
+        const emailParam = params.get('email');
+        const tokenParam = params.get('token');
+        let accessGranted = false;
+        let accessEmail = '';
+        let accessToken = '';
+
+        async function verifyToken() {
+            if (!emailParam || !tokenParam) return;
+            try {
+                const r = await fetch('/api/preverit-verify-access?email=' + encodeURIComponent(emailParam) + '&token=' + encodeURIComponent(tokenParam));
+                if (r.ok) {
+                    const data = await r.json();
+                    if (data.ok) {
+                        accessGranted = true;
+                        accessEmail = emailParam;
+                        accessToken = tokenParam;
+                        // předvyplnit e-mail v hlavním formuláři, pokud tam pole existuje
+                        const reqEmailInput = screeningForm.querySelector('input[name="requester_email"]');
+                        if (reqEmailInput) reqEmailInput.value = emailParam;
+                    }
+                }
+            } catch (e) { /* silent */ }
+            renderState();
+        }
+
+        function renderState() {
+            if (accessGranted) {
+                gate.classList.add('hidden');
+                screeningForm.classList.remove('hidden');
+            } else {
+                gate.classList.remove('hidden');
+                screeningForm.classList.add('hidden');
+                if (emailParam && tokenParam) {
+                    gateStatus.className = 'text-sm min-h-[24px] text-red-600';
+                    gateStatus.textContent = 'Odkaz už není platný nebo byl použit. Zadejte e-mail znovu a pošleme vám nový.';
+                }
+            }
+        }
+
+        // Handler pro email gate formulář
+        if (gateForm) {
+            gateForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = gateForm.email.value.trim();
+                if (!email) return;
+                const btn = gateForm.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                const orig = btn.innerHTML;
+                btn.innerHTML = 'Posílám…';
+                gateStatus.className = 'text-sm min-h-[24px] text-slate-500';
+                gateStatus.textContent = '';
+                try {
+                    const r = await fetch('/api/preverit-request-access', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+                    const data = await r.json().catch(() => ({}));
+                    if (r.ok) {
+                        gateStatus.className = 'text-sm min-h-[24px] text-emerald-600';
+                        gateStatus.innerHTML = '&#10003; Odkaz jsme poslali na <strong>' + email + '</strong>. Zkontrolujte i spam.';
+                        gateForm.reset();
+                    } else {
+                        gateStatus.className = 'text-sm min-h-[24px] text-red-600';
+                        gateStatus.textContent = data.message || 'Něco se pokazilo. Zavolejte +420 603 834 921.';
+                    }
+                } catch (err) {
+                    gateStatus.className = 'text-sm min-h-[24px] text-red-600';
+                    gateStatus.textContent = 'Nepodařilo se odeslat. Zkontrolujte internet.';
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = orig;
+                }
+            });
+        }
+
+        // Expose token do inner scope hlavního submitu
+        window.__PREVERIT_ACCESS__ = {
+            get email() { return accessEmail; },
+            get token() { return accessToken; },
+            get granted() { return accessGranted; }
+        };
+
+        // Spustit ověření tokenu
+        if (emailParam && tokenParam) {
+            verifyToken();
+        } else {
+            renderState();
+        }
+    })();
+    </script>
+
+    <script>
     (function() {
         'use strict';
         const form = document.getElementById('screening-form');
@@ -462,6 +604,13 @@
                 return showError('Zadejte telefon (alespoň 9 číslic) — voláme jen pokud najdeme nejednoznačný záznam.');
             }
             if (!data.consent_obtained || !data.consent_gdpr) return showError('Musíte potvrdit oba souhlasy.');
+
+            // Připoj access token, pokud existuje
+            const access = window.__PREVERIT_ACCESS__;
+            if (access && access.granted) {
+                data.access_email = access.email;
+                data.access_token = access.token;
+            }
 
             setLoading(true);
             try {

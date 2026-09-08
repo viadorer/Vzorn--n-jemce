@@ -12,6 +12,27 @@ const RECIPIENT = process.env.SCREENING_RECIPIENT_EMAIL || 'kontakt@vzornynajemc
 const SENDER_EMAIL = process.env.SCREENING_FROM_EMAIL || 'noreply@vzornynajemce.cz';
 const SENDER_NAME = 'Vzorný nájemce — Prověření zájemce';
 
+// Verifikace přístupového tokenu (magic link z /api/preverit-request-access)
+import crypto from 'crypto';
+const ACCESS_LINK_SECRET = process.env.ACCESS_LINK_SECRET || 'dev-only-secret-please-set-in-vercel-env';
+
+function verifyAccessToken(email, token) {
+  if (typeof email !== 'string' || !email || typeof token !== 'string' || !token) return { ok: false, reason: 'missing' };
+  const parts = token.split('.');
+  if (parts.length !== 2) return { ok: false, reason: 'malformed' };
+  const [expStr, sig] = parts;
+  const exp = parseInt(expStr, 10);
+  if (!Number.isFinite(exp)) return { ok: false, reason: 'malformed' };
+  if (exp * 1000 < Date.now()) return { ok: false, reason: 'expired' };
+  const payload = `${email.toLowerCase()}:${exp}`;
+  const expected = crypto.createHmac('sha256', ACCESS_LINK_SECRET).update(payload).digest('hex').slice(0, 32);
+  const a = Buffer.from(sig, 'utf-8');
+  const b = Buffer.from(expected, 'utf-8');
+  if (a.length !== b.length) return { ok: false, reason: 'invalid' };
+  if (!crypto.timingSafeEqual(a, b)) return { ok: false, reason: 'invalid' };
+  return { ok: true, expiresAt: exp };
+}
+
 function cors(req, res) {
   const origin = req.headers.origin || '';
   const allowed = [
@@ -84,6 +105,28 @@ export default async function handler(req, res) {
   if (data.website && String(data.website).trim() !== '') {
     // pretend success but ignore
     return res.status(200).json({ success: true });
+  }
+
+  // Ověření přístupového tokenu (pokud byl poslán z email-gate flow)
+  const accessEmail = String(data.access_email || '').trim().toLowerCase();
+  const accessToken = String(data.access_token || '').trim();
+  let accessVerified = false;
+  if (accessEmail || accessToken) {
+    const v = verifyAccessToken(accessEmail, accessToken);
+    if (!v.ok) {
+      return res.status(401).json({
+        error: 'Přístupový odkaz vypršel nebo je neplatný',
+        details: ['Vyžádejte si nový přístupový odkaz na /preverit-zajemce.']
+      });
+    }
+    // e-mail majitele musí odpovídat tokenu (chrání proti recyklaci)
+    if (accessEmail && accessEmail !== requesterEmail) {
+      return res.status(401).json({
+        error: 'E-mail v odkazu se neshoduje s e-mailem majitele',
+        details: ['Použijte e-mail, na který jsme poslali přístupový odkaz.']
+      });
+    }
+    accessVerified = true;
   }
 
   if (errors.length) {
