@@ -220,12 +220,16 @@
 
                 <!-- LEFT: Copy -->
                 <div class="lg:col-span-7">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.08] mb-6">
-                        Nájem každý měsíc.<br>
+                    <div class="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-medium">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#E63946]"></span>
+                        Skupina PTF reality &middot; nájem majitelům chodí od roku 1999
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-[3.75rem] font-semibold tracking-tight text-slate-900 leading-[1.05] mb-6">
+                        Nájem na účtu 5.&nbsp;dne v&nbsp;měsíci.<br>
                         <span class="serif italic font-medium text-[#E63946]">Ať se děje cokoliv.</span>
                     </h1>
                     <p class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-                        Pronajmeme váš byt spolehlivým lidem a postaráme se o všechno. Vy jen dostáváte peníze na účet.
+                        Neplatič, prázdný byt, poškození, soudy — všechno neseme my. Vy dostáváte peníze na účet, každý měsíc, jako 2&nbsp;750 majitelů před vámi.
                     </p>
 
                     <!-- 3 klíčové sliby -->
@@ -234,19 +238,19 @@
                             <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#E63946]/10 flex items-center justify-center mt-0.5">
                                 <svg class="w-3 h-3 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
-                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Nájem na účet každý měsíc</strong> — i když nájemník nezaplatí</span>
+                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Fixní nájem 5.&nbsp;dne v měsíci</strong> — smluvně, i když je byt prázdný, i když nájemník nezaplatí</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#E63946]/10 flex items-center justify-center mt-0.5">
                                 <svg class="w-3 h-3 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
-                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Údržbu a problémy</strong> vyřídíme za vás</span>
+                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Právník, soud, exekutor</strong> — pokud dojde na nejhorší, jde to na naše náklady, ne na vaše</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="flex-shrink-0 w-5 h-5 rounded-full bg-[#E63946]/10 flex items-center justify-center mt-0.5">
                                 <svg class="w-3 h-3 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
-                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Byt vrátíme v původním stavu</strong> — vždy</span>
+                            <span class="text-slate-700"><strong class="font-semibold text-slate-900">Byt vrátíme v protokolárním stavu</strong> — škody nad běžné opotřebení hradíme z vlastního</span>
                         </li>
                     </ul>
 
@@ -286,245 +290,117 @@
         </div>
     </section>
 
-    <!-- Trust Bar -->
-    <section class="py-12 bg-ivory border-b border-gray-100">
+    <!-- Pain sekce s reálnými čísly -->
+    <section id="pain" class="py-24 lg:py-28 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-4xl md:text-5xl font-bold text-[#E63946]">25+</div>
-                    <p class="mt-2 text-sm text-gray-600 font-medium">let na trhu</p>
+            <div class="max-w-3xl mb-14">
+                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-medium uppercase tracking-wider">Realita českého pronájmu</div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 leading-[1.1] mb-4 tracking-tight">
+                    Neplatič v bytě není nehoda.<br>
+                    <span class="serif italic font-medium text-[#E63946]">Je to statistika — a účet, který dorazí.</span>
+                </h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Zhruba <strong>každý třetí soukromý pronajímatel</strong> v ČR má zkušenost s nájemníkem, který přestal platit.<sup class="text-xs text-slate-400 ml-0.5"><a href="#pain-zdroje" class="hover:text-[#E63946]">1</a></sup> Když to potká vás, tohle je faktura, která dorazí:
+                </p>
+            </div>
+
+            <!-- 6 pain karet -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="text-3xl font-semibold serif text-[#E63946] leading-none mb-3">540 dní</div>
+                    <div class="text-sm font-semibold text-slate-900 mb-1.5">Soudní vystěhování neplatiče</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Průměr starým řízením 12–18 měsíců. Nový „rozkaz k vyklizení" od 7/2025 zkrátí bez odporu na 6–8 týdnů — s odporem stále 6–12 měsíců.<sup class="text-xs text-slate-400"><a href="#pain-zdroje" class="hover:text-[#E63946]">2,3</a></sup></p>
                 </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-bold text-[#E63946]">2 750+</div>
-                    <p class="mt-2 text-sm text-gray-600 font-medium">pronajatých nemovitostí</p>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="text-3xl font-semibold serif text-[#E63946] leading-none mb-3">35–90 tis. Kč</div>
+                    <div class="text-sm font-semibold text-slate-900 mb-1.5">Právník + soud + exekutor</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Přímé právní náklady, které platíte sami. Advokát na paušál dalších ~24 000 Kč ročně, když chcete být na to připraven.<sup class="text-xs text-slate-400"><a href="#pain-zdroje" class="hover:text-[#E63946]">1</a></sup></p>
                 </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-bold text-[#E63946]">98 %</div>
-                    <p class="mt-2 text-sm text-gray-600 font-medium">klientů prodlužuje smlouvu</p>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="text-3xl font-semibold serif text-[#E63946] leading-none mb-3">od 40 tis. Kč</div>
+                    <div class="text-sm font-semibold text-slate-900 mb-1.5">Fyzické vystěhování + zámky + úklid</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Za kompletní servis vystěhovací firmy včetně likvidace věcí, výměny zámků a hloubkového úklidu.<sup class="text-xs text-slate-400"><a href="#pain-zdroje" class="hover:text-[#E63946]">4</a></sup></p>
                 </div>
-                <div>
-                    <div class="text-4xl md:text-5xl font-bold text-[#E63946]">0 Kč</div>
-                    <p class="mt-2 text-sm text-gray-600 font-medium">dlužného nájemného pro majitele</p>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="text-3xl font-semibold serif text-[#E63946] leading-none mb-3">~423 tis. Kč</div>
+                    <div class="text-sm font-semibold text-slate-900 mb-1.5">Ušlé nájemné za 18 měsíců</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Modelový 2+kk v Praze za 23 500 Kč měsíčně × 18 měsíců, kdy neplatič sedí v bytě, který je právně váš, ale finančně jeho.<sup class="text-xs text-slate-400"><a href="#pain-zdroje" class="hover:text-[#E63946]">5,6</a></sup></p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="text-3xl font-semibold serif text-[#E63946] leading-none mb-3">15–30 tis. Kč</div>
+                    <div class="text-sm font-semibold text-slate-900 mb-1.5">Nová výmalba + úklid po odchodu</div>
+                    <p class="text-sm text-slate-600 leading-relaxed">Kauce často padne už na dlužné nájemné. Náklady na uvedení bytu do pronajímatelného stavu jdou z vaší kapsy.<sup class="text-xs text-slate-400"><a href="#pain-zdroje" class="hover:text-[#E63946]">7</a></sup></p>
+                </div>
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-900 text-white">
+                    <div class="text-3xl font-semibold serif text-white leading-none mb-3">~500 tis. Kč</div>
+                    <div class="text-sm font-semibold text-white mb-1.5">Součet nejhoršího scénáře</div>
+                    <p class="text-sm text-slate-300 leading-relaxed">Půl milionu korun a rok a půl vašeho času. Kauce dvou nájmů to nezachrání ani zdaleka. <strong class="text-white">Toto neseme my za vás.</strong></p>
                 </div>
             </div>
+
+            <!-- Interaktivní kalkulačka ztráty -->
+            <div id="loss-calc" x-data="{ rent: 20000, months: 6, format(n){ return new Intl.NumberFormat('cs-CZ').format(Math.round(n)) } }" class="bg-white rounded-3xl border border-slate-200 p-8 md:p-10 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-2">Spočítejte si vlastní ztrátu</div>
+                        <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 leading-tight mb-4">Kolik vás stojí <span class="text-[#E63946]">půl roku</span> prázdného bytu?</h3>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Váš měsíční nájem (Kč)</label>
+                        <div class="relative">
+                            <input type="number" x-model.number="rent" min="5000" max="80000" step="500" class="w-full h-14 px-4 pr-14 text-lg font-semibold border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#E63946] focus:border-transparent">
+                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-500 font-medium">Kč</div>
+                        </div>
+                        <div class="mt-4 grid grid-cols-3 gap-2">
+                            <button @click="months = 3" :class="months === 3 ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-300'" class="py-2 text-sm font-medium rounded-lg border transition-colors">3 měsíce</button>
+                            <button @click="months = 6" :class="months === 6 ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-300'" class="py-2 text-sm font-medium rounded-lg border transition-colors">6 měsíců</button>
+                            <button @click="months = 12" :class="months === 12 ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-700 border-slate-300'" class="py-2 text-sm font-medium rounded-lg border transition-colors">12 měsíců</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 rounded-2xl p-6">
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between text-slate-700">
+                                <span>Ušlé nájemné (<span x-text="months"></span> měs.)</span>
+                                <span class="font-semibold text-slate-900" x-text="format(rent * months) + ' Kč'"></span>
+                            </div>
+                            <div class="flex justify-between text-slate-700">
+                                <span>Právní služby (medián)</span>
+                                <span class="font-semibold text-slate-900">60 000 Kč</span>
+                            </div>
+                            <div class="flex justify-between text-slate-700">
+                                <span>Fyzické vystěhování</span>
+                                <span class="font-semibold text-slate-900">40 000 Kč</span>
+                            </div>
+                            <div class="flex justify-between text-slate-700">
+                                <span>Uvedení bytu do stavu</span>
+                                <span class="font-semibold text-slate-900">22 000 Kč</span>
+                            </div>
+                            <div class="border-t border-slate-300 pt-3 mt-3 flex justify-between items-baseline">
+                                <span class="text-sm font-semibold text-slate-900 uppercase tracking-wide">Vaše ztráta</span>
+                                <span class="text-2xl md:text-3xl font-bold serif text-[#E63946]" x-text="format(rent * months + 122000) + ' Kč'"></span>
+                            </div>
+                        </div>
+                        <a href="kalkulator-trzniho-najemneho.html" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
+                            Zjistit, kolik místo toho dostanu od nás
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zdroje (fold) -->
+            <details id="pain-zdroje" class="mt-8 max-w-4xl mx-auto">
+                <summary class="cursor-pointer text-sm text-slate-500 hover:text-slate-900 font-medium">Zdroje čísel &rarr;</summary>
+                <ol class="mt-4 text-xs text-slate-500 space-y-1 pl-4 list-decimal">
+                    <li>Explicitní nájemník — <em>Neplatiči v nájmu: Kompletní průvodce (2026)</em>. Konkrétní částky a "každý třetí pronajímatel". <a href="https://www.explicitninajemnik.cz/blog/neplatici-v-najmu-kompletni-pruvodce-pro-pronajimatele-2026" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                    <li>Modernipravnik.cz — <em>Rozkaz k vyklizení</em> (2025/2026). Nový institut od 1. 7. 2025, průběh řízení. <a href="https://modernipravnik.cz/nemovitosti/rozkaz-k-vyklizeni-jak-bleskove-vystehovat-neplatice/" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                    <li>Česká justice (11/2024) — průměr 540 dní starým řízením. <a href="https://www.ceska-justice.cz/2024/11/rozkaz-k-vyklizeni-bytu-hrozi-kolobeh-soudnich-stani-varuji-odbornici/" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                    <li>Kopemezavas.cz — ceník vystěhování od 40 000 Kč. <a href="http://www.kopemezavas.cz/Vystehovani-neplaticu.html" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                    <li>Bohemianestates — <em>Cenová mapa nájemného Praha 2026</em>. <a href="https://www.bohemianestates.com/pronajem-nemovitosti/cenove-mapy/cenova-mapa-najemneho/cenova-mapa-praha" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                    <li>Bohemianestates — <em>Cenová mapa Plzeň 2026</em>. <a href="https://www.bohemianestates.com/pronajem-nemovitosti/cenova-mapa-najemneho/plzen" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                    <li>Bezrealitky — <em>Kolik stojí špatný nájemník</em>. <a href="https://www.bezrealitky.cz/blog/rizika-pronajmu-bytu" class="text-[#E63946] hover:underline" target="_blank" rel="noopener">Odkaz</a></li>
+                </ol>
+            </details>
         </div>
     </section>
-
-<!-- 3 hlavní bolesti majitelů -->
-<section id="problemy" class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Pronajímáte na vlastní pěst? Tohle vás pravděpodobně stojí peníze.</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <!-- Karta 1: Nájemník neplatí -->
-            <div class="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
-                <div class="bg-rose-50 p-6">
-                    <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Nájemník neplatí</h3>
-                    <p class="text-gray-600 text-sm">V ČR trvá soudní vystěhování neplatícího nájemníka průměrně 11 měsíců. Při nájmu 15 000 Kč to je ztráta 165 000 Kč – a to nepočítáme právníka a nervy.</p>
-                </div>
-                <div class="bg-[#FBF7F2] p-6">
-                    <div class="flex items-center mb-2">
-                        <svg class="w-5 h-5 text-[#E63946] mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        <span class="font-semibold text-[#E63946]">Naše řešení</span>
-                    </div>
-                    <p class="text-[#E63946] text-sm">Nájemní smlouvu uzavíráte s námi. My platíme vždy, i když podnájemník selže. Vaše ztráta = 0 Kč.</p>
-                </div>
-            </div>
-
-            <!-- Karta 2: Poničený byt -->
-            <div class="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
-                <div class="bg-rose-50 p-6">
-                    <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Poničený byt</h3>
-                    <p class="text-gray-600 text-sm">48 % pronajímatelů řeší ročně poškození bytu nad rámec kauce. Průměrné náklady na opravy: 43 000 Kč + 2 měsíce bez nájmu při hledání nového nájemníka.</p>
-                </div>
-                <div class="bg-[#FBF7F2] p-6">
-                    <div class="flex items-center mb-2">
-                        <svg class="w-5 h-5 text-[#E63946] mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        <span class="font-semibold text-[#E63946]">Naše řešení</span>
-                    </div>
-                    <p class="text-[#E63946] text-sm">Byt pravidelně kontrolujeme, zajišťujeme pojištění a na konci spolupráce jej vracíme v původním stavu.</p>
-                </div>
-            </div>
-
-            <!-- Karta 3: Hodiny práce navíc -->
-            <div class="rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
-                <div class="bg-rose-50 p-6">
-                    <div class="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Hodiny práce navíc</h3>
-                    <p class="text-gray-600 text-sm">Správa jednoho bytu zabere průměrně 7,2 hodiny měsíčně – komunikace s nájemníkem, opravy, administrativa, daně. To je 86 hodin ročně.</p>
-                </div>
-                <div class="bg-[#FBF7F2] p-6">
-                    <div class="flex items-center mb-2">
-                        <svg class="w-5 h-5 text-[#E63946] mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                        <span class="font-semibold text-[#E63946]">Naše řešení</span>
-                    </div>
-                    <p class="text-[#E63946] text-sm">Přebíráme 100 % správy. Vy neděláte nic. Jediné, co vidíte, je pravidelná platba na účtu.</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mt-12 text-center">
-            <a href="#calculator-landlord" class="inline-flex items-center text-[#E63946] font-semibold hover:underline text-lg">
-                Kolik vás pronájem na vlastní pěst skutečně stojí? &rarr; Spočítejte si to
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Kalkulačka sekce pronajímatele --> 
-<section id="calculator-landlord" class="py-24 bg-gradient-to-b from-rose-50 to-ivory" x-data="{ 
-    hourlyRate: 300, 
-    monthlyRent: 15000,
-    timeSpentHours: 30,
-    fixedCostsValue: 30000,
-    lostRentMonths: 3,
-    showDetailedAnalysis: false,
-
-    get timeCostsValue() {
-        return this.timeSpentHours * this.hourlyRate;
-    },
-    get lostRentValue() {
-        return this.lostRentMonths * this.monthlyRent;
-    },
-    get totalCostsValue() {
-        return this.timeCostsValue + this.fixedCostsValue + this.lostRentValue;
-    },
-    formatNumber(num) {
-        return new Intl.NumberFormat('cs-CZ').format(num);
-    },
-    toggleDetailedAnalysis() {
-        this.showDetailedAnalysis = !this.showDetailedAnalysis;
-    }
-}">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-center justify-center mb-12 gap-6">
-            <div class="md:w-1/4 flex-shrink-0">
-                <img src="images/problem.png" alt="Problémový nájemník" class="rounded-full w-40 h-40 object-cover mx-auto border-4 border-white">
-            </div>
-            <div class="md:w-3/4 text-left">
-                <h2 class="text-4xl font-bold text-gray-900 mb-3">Kolik vás může stát problémový nájemník?</h2>
-                <p class="text-lg text-gray-600 max-w-3xl">Vypočítejte si potenciální náklady a čas, který strávíte řešením problémů s nájemníkem. Všechny částky jsou založené na reálných případech.</p>
-            </div>
-        </div>
-
-            
-            <!-- Vstupní parametry -->
-            <div class="p-8 border-b border-gray-200">
-                <div class="mb-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Výše nájemného bez záloh</h3>
-                    <p class="text-gray-600 mb-4">Zadejte částku, kterou dostáváte měsíčně od nájemníka (bez záloh na energie). Na základě této částky vypočítáme skutečný zisk po odečtení všech nákladů.</p>
-                    <div class="mt-3 relative rounded-lg shadow-sm">
-                        <input type="number" 
-                               x-model="monthlyRent"
-                               class="block w-full h-14 px-4 text-lg border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-transparent transition duration-150 ease-in-out shadow-sm"
-                               placeholder="20000">
-                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                            <span class="text-gray-500 text-lg">Kč</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Na kolik si ceníte hodinu svého času?</h3>
-                    <p class="text-gray-600 mb-4">Tato hodnota nám umožní vypočítat, kolik vás skutečně stojí čas strávený správou nemovitosti, komunikací s nájemníky, řešením oprav a administrativou.</p>
-                    <div class="mt-3 relative rounded-lg shadow-sm">
-                        <input type="number" 
-                               x-model="hourlyRate"
-                               class="block w-full h-14 px-4 text-lg border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E63946] focus:border-transparent transition duration-150 ease-in-out shadow-sm"
-                               placeholder="300">
-                        <div class="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                            <span class="text-gray-500 text-lg">Kč</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Výsledky -->
-            <div class="p-8 text-center">
-                <p class="text-gray-600 mb-6">Po kliknutí vám ukážeme komplexní analýzu nákladů a potenciálních úspor při využití našich služeb.</p>
-                
-                <button @click="toggleDetailedAnalysis()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90  transition-all duration-200">
-                    Spočítat a zobrazit detailní náklady
-                </button>
-                
-                <!-- Rozšířená analýza, která se zobrazí po kliknutí na tlačítko -->
-                <div x-show="showDetailedAnalysis" x-transition class="mt-12">
-                    <div class="grid gap-6 md:grid-cols-2 mb-8">
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Celkové náklady</h3>
-                            <p class="text-3xl font-bold text-gray-900" x-text="formatNumber(totalCostsValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Odhadované celkové náklady včetně vašeho času</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Strávený čas</h3>
-                            <p class="text-3xl font-bold text-gray-900" x-text="timeSpentHours + ' hodin'">0 hodin</p>
-                            <p class="text-sm text-gray-500 mt-1">Celkový čas strávený řešením problémů</p>
-                        </div>
-                    </div>
-
-                    <div class="grid gap-6 md:grid-cols-3">
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Náklady na váš čas</h3>
-                            <p class="text-2xl font-bold text-gray-900" x-text="formatNumber(timeCostsValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Hodnota vašeho času</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Přímé náklady</h3>
-                            <p class="text-2xl font-bold text-gray-900" x-text="formatNumber(fixedCostsValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Právní služby, opravy, atd.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Ušlý zisk</h3>
-                            <p class="text-2xl font-bold text-gray-900" x-text="formatNumber(lostRentValue) + ' Kč'">0 Kč</p>
-                            <p class="text-sm text-gray-500 mt-1">Nezaplacené nájemné</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Detail nákladů, zobrazí se po rozkliknutí -->
-            <div class="p-8 border-t border-gray-200" x-show="showDetailedAnalysis">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Co vše je zahrnuto v kalkulaci:</h3>
-                <div class="grid gap-6 md:grid-cols-2">
-                    <div>
-                        <h4 class="font-medium text-gray-900 mb-2">Časové náklady:</h4>
-                        <ul class="space-y-2 text-sm text-gray-600">
-                            <li>• Telefonická a osobní komunikace (2-3h měsíčně)</li>
-                            <li>• Návštěvy nemovitosti (4-5h měsíčně)</li>
-                            <li>• Administrativa a dokumentace (3-4h)</li>
-                            <li>• Jednání s právníky (2-3h)</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-medium text-gray-900 mb-2">Přímé náklady:</h4>
-                        <ul class="space-y-2 text-sm text-gray-600">
-                            <li>• Právní služby (8-13 000 Kč)</li>
-                            <li>• Opravy, úklid, výmalba (15-35 000 Kč)</li>
-                            <li>• Soudní poplatky (5-10 000 Kč)</li>
-                            <li>• Nové zámky a zabezpečení (2-3 500 Kč)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12 text-center">
-            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/80  transition-all duration-200">
-                Chci mít klid a pravidelný příjem
-            </button>
-        </div>
-    </div>
-</section>
 
     <!-- Jak to funguje sekce – 4 kroky -->
     <section id="jak-to-funguje" class="py-24 bg-gradient-to-b from-ivory to-blue-50">
