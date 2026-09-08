@@ -376,79 +376,65 @@
         </div>
     </section>
 
-    <!-- Jak to funguje sekce – 4 kroky -->
+    <!-- Jak to funguje sekce – 3 kroky s časovými sliby -->
     <section id="jak-to-funguje" class="py-24 lg:py-28 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Od prvního telefonátu k pravidelnému příjmu za 4 kroky</h2>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-14">
+                <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium uppercase tracking-wider">Jak to funguje</div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 leading-[1.1] mb-4 tracking-tight">
+                    Tři kroky.<br>
+                    <span class="serif italic font-medium text-[#E63946]">Od telefonu k prvnímu nájmu za 30 dní.</span>
+                </h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Bez inzerátů, bez prohlídek, bez prověřování. Vy podepíšete jednu smlouvu, my zařídíme zbytek.
+                </p>
             </div>
 
-            <div class="relative">
-                <!-- Vertikální linka (desktop) -->
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#E63946]/20 transform -translate-x-1/2"></div>
-
-                <div class="space-y-12 md:space-y-16">
-                    <!-- Krok 1 -->
-                    <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">1</div>
-                        <div class="md:w-1/2 md:text-right md:pr-16">
-                            <div class="flex items-center md:justify-end mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">1</div>
-                                <h3 class="text-xl font-bold text-gray-900">Zavoláme si</h3>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Zavoláme si</h3>
-                            <p class="text-gray-600">Ozvěte se nám a domluvíme si nezávaznou schůzku u vás v bytě. Prohlédneme nemovitost, zhodnotíme potenciál a navrhneme výši jistého nájmu.</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-16"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Krok 1 -->
+                <div class="relative bg-white rounded-2xl border border-slate-200 p-8">
+                    <div class="text-[11px] uppercase tracking-widest text-slate-500 font-semibold mb-2">Den 1</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#E63946]/10 flex items-center justify-center text-[#E63946] font-semibold serif text-lg">1</div>
+                        <h3 class="text-xl font-semibold text-slate-900">15 min hovor</h3>
                     </div>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Zavoláme si, projdeme byt a lokalitu. Do 24 hodin vám pošleme <strong class="text-slate-900">konkrétní částku, kterou vám budeme každý měsíc posílat</strong>. Bez závazku.
+                    </p>
+                </div>
 
-                    <!-- Krok 2 -->
-                    <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">2</div>
-                        <div class="md:w-1/2 md:pr-16"></div>
-                        <div class="md:w-1/2 md:pl-16">
-                            <div class="flex items-center mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">2</div>
-                                <h3 class="text-xl font-bold text-gray-900">Dohodneme podmínky</h3>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Dohodneme podmínky</h3>
-                            <p class="text-gray-600">Vyberete si variantu, která vám sedí – od základní jistoty po 100% garanci fixního příjmu. Podepíšeme smlouvu, osobně nebo online.</p>
-                        </div>
+                <!-- Krok 2 -->
+                <div class="relative bg-white rounded-2xl border border-slate-200 p-8">
+                    <div class="text-[11px] uppercase tracking-widest text-slate-500 font-semibold mb-2">Do 7 dní</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#E63946]/10 flex items-center justify-center text-[#E63946] font-semibold serif text-lg">2</div>
+                        <h3 class="text-xl font-semibold text-slate-900">Prohlídka + smlouva</h3>
                     </div>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Náš technik nafotí byt a sepíše protokol. Podepíšeme <strong class="text-slate-900">nájemní smlouvu Vzorný nájemce → vy</strong>, kde stojí přesná částka a termín platby. Osobně nebo online.
+                    </p>
+                </div>
 
-                    <!-- Krok 3 -->
-                    <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">3</div>
-                        <div class="md:w-1/2 md:text-right md:pr-16">
-                            <div class="flex items-center md:justify-end mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">3</div>
-                                <h3 class="text-xl font-bold text-gray-900">Převezmeme byt</h3>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Převezmeme byt</h3>
-                            <p class="text-gray-600">Připravíme byt k pronájmu, profesionálně ho nafotíme, prověříme zájemce a nasadíme spolehlivého podnájemníka. Vy neděláte nic.</p>
-                        </div>
-                        <div class="md:w-1/2 md:pl-16"></div>
+                <!-- Krok 3 -->
+                <div class="relative bg-white rounded-2xl border border-slate-200 p-8 ring-2 ring-[#E63946]/20">
+                    <div class="text-[11px] uppercase tracking-widest text-[#E63946] font-semibold mb-2">Od 2. měsíce</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-[#E63946] flex items-center justify-center text-white font-semibold serif text-lg">3</div>
+                        <h3 class="text-xl font-semibold text-slate-900">Nájem na účtu</h3>
                     </div>
-
-                    <!-- Krok 4 -->
-                    <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">4</div>
-                        <div class="md:w-1/2 md:pr-16"></div>
-                        <div class="md:w-1/2 md:pl-16">
-                            <div class="flex items-center mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">4</div>
-                                <h3 class="text-xl font-bold text-gray-900">Dostáváte peníze</h3>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Dostáváte peníze</h3>
-                            <p class="text-gray-600">Nejpozději od 2. měsíce vám chodí nájemné na účet. My se staráme o správu, kontroly, opravy i vyúčtování. Vy žijete svůj život.</p>
-                        </div>
-                    </div>
+                    <p class="text-slate-600 leading-relaxed text-sm">
+                        Peníze chodí <strong class="text-slate-900">5. dne každého měsíce</strong>. Ať je byt obsazený nebo prázdný, ať nájemník platí nebo ne. To už není váš problém.
+                    </p>
                 </div>
             </div>
 
-            <div class="mt-16 text-center">
-                <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 ">
-                    Chci pronajímat takhle →
+            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
+                    Spočítat můj nájem
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+                <button data-open-popup class="inline-flex items-center gap-2 text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                    Domluvit 15 min hovor &rarr;
                 </button>
             </div>
         </div>
@@ -605,7 +591,7 @@
     </section>
 
     <!-- Aktuální nabídky, na kterých pracujeme — z ptf-reality DB -->
-    <section id="spravujeme" class="py-24 bg-ivory relative overflow-hidden">
+    <section id="spravujeme" class="py-24 lg:py-28 bg-white relative overflow-hidden">
         <!-- Vzorný nájemce postava jako brand accent (plně viditelná) -->
         <img src="images/Vzorný nájemce happy.png"
              alt=""
@@ -826,7 +812,7 @@
           - 1 konkrétní situace, kterou jste vyřešili (1-2 věty)
           - Bez konkrétního měsíčního nájmu (vyhne se nedůvěře)
     -->
-    <section id="realizovane" class="py-24 bg-white">
+    <section id="realizovane" class="py-24 lg:py-28 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 max-w-3xl mx-auto">
                 <span class="inline-block px-4 py-1.5 bg-[#FBF7F2] text-[#E63946] text-xs font-semibold uppercase tracking-wider rounded-full mb-4">Realizované spolupráce</span>
@@ -901,7 +887,7 @@
         </div>
     </section>
 
-<section id="tym" class="py-24 bg-ivory">
+<section id="tym" class="py-24 lg:py-28 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Poznejte profesionály, kteří se postarají o váš byt</h2>
@@ -1075,7 +1061,7 @@
 </section>
 
         <!-- Kontaktní formulář -->
-        <section id="konzultace" class="py-16 bg-gray-50">
+        <section id="konzultace" class="py-20 lg:py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div class="p-8 sm:p-12">
@@ -1127,6 +1113,36 @@
         </section>
 
 
+
+<!-- Sticky mobile CTA — jen na mobilu, viditelné po odscrollování z hero -->
+<div id="sticky-cta" class="lg:hidden fixed bottom-4 left-4 right-4 z-40 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-white rounded-full shadow-xl border border-slate-200 flex items-center gap-2 p-2">
+        <a href="tel:+420603834921" class="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" aria-label="Zavolat">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        </a>
+        <a href="kalkulator-trzniho-najemneho.html" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
+            Spočítat můj nájem
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+    </div>
+</div>
+<script>
+    (function() {
+        const el = document.getElementById('sticky-cta');
+        if (!el) return;
+        function toggle() {
+            if (window.scrollY > 600) {
+                el.style.opacity = '1';
+                el.style.pointerEvents = 'auto';
+            } else {
+                el.style.opacity = '0';
+                el.style.pointerEvents = 'none';
+            }
+        }
+        window.addEventListener('scroll', toggle, { passive: true });
+        toggle();
+    })();
+</script>
 
 <!-- Footer -->
 <div id="footer-placeholder"></div>
