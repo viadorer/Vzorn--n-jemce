@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview reálného webu — H, I, J varianty</title>
+    <meta name="robots" content="noindex, nofollow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F3F4F6; }
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* H — Sotheby's Signature */
+        .h-primary-bg { background: #1B2C4E; }
+        .h-primary-text { color: #1B2C4E; }
+        .h-primary-border { border-color: #1B2C4E; }
+        .h-primary-hover:hover { background: #10192F; }
+        .h-accent-bg { background: #C8A85D; }
+        .h-accent-text { color: #C8A85D; }
+        .h-accent-hover:hover { background: #B08E45; }
+        .h-cream-bg { background: #F4EFE6; }
+        .h-cream-tint { background: #FAF7F0; }
+        .h-gold-underline { border-bottom: 2px solid #C8A85D; padding-bottom: 4px; display: inline-block; }
+
+        /* I — ČSOB Trust */
+        .i-primary-bg { background: #003D82; }
+        .i-primary-text { color: #003D82; }
+        .i-primary-border { border-color: #003D82; }
+        .i-primary-hover:hover { background: #002B5C; }
+        .i-accent-bg { background: #FFC72C; }
+        .i-accent-text { color: #FFC72C; }
+        .i-accent-hover:hover { background: #E5B120; }
+        .i-tint { background: #EBF2FA; }
+        .i-tint-2 { background: #F5F9FD; }
+        .i-yellow-underline { border-bottom: 3px solid #FFC72C; padding-bottom: 2px; display: inline-block; }
+
+        /* J — Wise Modern */
+        .j-primary-bg { background: #163300; }
+        .j-primary-text { color: #163300; }
+        .j-primary-border { border-color: #163300; }
+        .j-primary-hover:hover { background: #0E2200; }
+        .j-accent-bg { background: #9FE870; }
+        .j-accent-text { color: #9FE870; }
+        .j-lime-text { color: #557A2E; }
+        .j-accent-hover:hover { background: #7BC94E; }
+        .j-tint { background: #F8FCE8; }
+        .j-tint-2 { background: #EFF7DD; }
+        .j-tint-cream { background: #FEFDF6; }
+
+        .variant-badge { position: sticky; top: 0; z-index: 100; padding: 12px 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 12px; text-align: center; }
+        .section-divider { border-top: 4px dashed #D1D5DB; margin: 4rem 0 0; padding: 1.5rem; text-align: center; color: #6B7280; font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; background: #F3F4F6; }
+    </style>
+</head>
+<body>
+
+<div class="max-w-[1400px] mx-auto bg-white shadow-2xl">
+    <!-- Sticky navigation for jumping between variants -->
+    <nav class="sticky top-0 z-[200] bg-gray-900 text-white p-3 flex gap-2 justify-center text-xs font-semibold">
+        <span class="mr-2">Skok:</span>
+        <a href="#var-h" class="px-3 py-1 rounded bg-white text-gray-900 hover:bg-gray-200">H · Sotheby's</a>
+        <a href="#var-i" class="px-3 py-1 rounded bg-white text-gray-900 hover:bg-gray-200">I · ČSOB</a>
+        <a href="#var-j" class="px-3 py-1 rounded bg-white text-gray-900 hover:bg-gray-200">J · Wise</a>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- ============ VARIANTA H — SOTHEBY'S SIGNATURE ============= -->
+    <!-- ============================================================ -->
+    <section id="var-h">
+        <div class="h-accent-bg variant-badge" style="color: #1B2C4E">Varianta H · Sotheby's Signature · Navy #1B2C4E + Champagne #C8A85D</div>
+
+        <!-- Top bar -->
+        <div class="h-primary-bg text-white text-xs">
+            <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center opacity-90">
+                <div class="flex gap-4">
+                    <span>+420 603 834 921</span>
+                    <span>|</span>
+                    <span>Po–Pá 8:00–17:00</span>
+                </div>
+                <div class="flex gap-4">
+                    <span>Plzeň – Radyňská 33</span>
+                    <span>|</span>
+                    <span>Praha – Pod Turnovskou tratí 18</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 h-primary-bg rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg serif">V</span>
+                    </div>
+                    <span class="text-xl font-bold h-primary-text">Vzorný nájemce</span>
+                </div>
+                <div class="hidden lg:flex gap-6 text-sm font-medium text-gray-700">
+                    <a href="#" class="hover:h-accent-text transition-colors">Jak to funguje</a>
+                    <a href="#" class="hover:h-accent-text transition-colors">Ceník</a>
+                    <a href="#" class="hover:h-accent-text transition-colors">Tým</a>
+                    <a href="#" class="hover:h-accent-text transition-colors">Aktuální nabídky</a>
+                    <a href="#" class="hover:h-accent-text transition-colors">Blog</a>
+                </div>
+                <button class="h-accent-bg h-accent-hover text-white font-semibold px-6 py-2.5 rounded-full transition shadow-lg" style="text-shadow: 0 1px 2px rgba(0,0,0,0.15)">Nezávazná konzultace</button>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <section class="h-cream-bg py-20 px-6 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-6">
+                        <div class="w-8 h-px h-accent-bg"></div>
+                        <span class="h-accent-text uppercase tracking-[0.2em] text-xs font-semibold">Prémiová správa · od 1999</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-extrabold h-primary-text mb-6 leading-[1.1]">
+                        Váš nájemník <span class="h-gold-underline">jsme my.</span><br>
+                        Nájemné platíme <em class="serif italic h-accent-text" style="font-weight: 600">vždy.</em>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl leading-relaxed">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze
+                        na účet každý měsíc — i&nbsp;když nájemník nezaplatí. Fungujeme <strong class="h-primary-text">od roku 1999</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="h-accent-bg h-accent-hover text-white font-bold px-8 py-4 rounded-full shadow-lg text-lg transition">
+                            Chci pronajímat bez starostí
+                        </button>
+                        <button class="h-primary-bg h-primary-hover text-white font-semibold px-6 py-4 rounded-full transition">
+                            Kolik bych dostával?
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kalkulátor mockup -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8 border-t-4 h-accent-bg" style="border-top-color: #C8A85D">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="uppercase tracking-widest text-xs font-bold h-accent-text">Kalkulátor</span>
+                        <div class="flex-1 border-t border-gray-200"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold h-primary-text mb-1 serif">Kolik dostanu jistě?</h3>
+                    <p class="text-sm text-gray-500 mb-6">3 údaje o bytě · výsledek za 5 sekund</p>
+                    <div class="space-y-3">
+                        <input type="text" placeholder="PSČ (např. 32600 Plzeň)" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:h-primary-border focus:border-2">
+                        <div class="grid grid-cols-4 gap-2">
+                            <button class="h-cream-bg py-2 rounded-lg text-sm font-semibold h-primary-text hover:h-accent-bg hover:text-white transition">1+kk</button>
+                            <button class="h-primary-bg text-white py-2 rounded-lg text-sm font-semibold">2+kk</button>
+                            <button class="h-cream-bg py-2 rounded-lg text-sm font-semibold h-primary-text hover:h-accent-bg hover:text-white transition">3+kk</button>
+                            <button class="h-cream-bg py-2 rounded-lg text-sm font-semibold h-primary-text hover:h-accent-bg hover:text-white transition">3+1</button>
+                        </div>
+                        <input type="text" placeholder="Plocha v m²" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:h-primary-border focus:border-2">
+                        <button class="w-full h-accent-bg h-accent-hover text-white font-bold py-3 rounded-full shadow transition">
+                            Zjistit můj jistý nájem &nbsp;→
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust bar -->
+        <section class="h-primary-bg text-white py-12">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-4xl font-extrabold h-accent-text serif">25+</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Let na trhu</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-extrabold h-accent-text serif">2 750+</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Pronajatých bytů</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-extrabold h-accent-text serif">98 %</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Obnovení smlouvy</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-extrabold h-accent-text serif">0 Kč</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Dluhu za 25 let</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bolesti karty -->
+        <section class="h-cream-tint py-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="h-accent-text uppercase tracking-[0.2em] text-xs font-semibold">Proč to bez nás nezvládnete</span>
+                    <h2 class="text-4xl font-bold h-primary-text mt-3 serif">3 rizika, která vás mohou stát 200 000 Kč</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 hover:shadow-xl transition" style="border-top-color: #C8A85D">
+                        <div class="w-12 h-12 h-cream-bg rounded-full flex items-center justify-center mb-4 h-primary-text font-bold text-xl">1</div>
+                        <h3 class="text-xl font-bold h-primary-text mb-3">Neplatič</h3>
+                        <p class="text-gray-600">Nájemník přestane platit. Vystěhování trvá 11 měsíců. <strong class="h-primary-text">Ztráta 165 000 Kč.</strong></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 hover:shadow-xl transition" style="border-top-color: #C8A85D">
+                        <div class="w-12 h-12 h-cream-bg rounded-full flex items-center justify-center mb-4 h-primary-text font-bold text-xl">2</div>
+                        <h3 class="text-xl font-bold h-primary-text mb-3">Škody nad kauci</h3>
+                        <p class="text-gray-600">48 % pronajímatelů má škodu, která přesahuje kauci. <strong class="h-primary-text">Průměrně 43 000 Kč.</strong></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-md border-t-4 hover:shadow-xl transition" style="border-top-color: #C8A85D">
+                        <div class="w-12 h-12 h-cream-bg rounded-full flex items-center justify-center mb-4 h-primary-text font-bold text-xl">3</div>
+                        <h3 class="text-xl font-bold h-primary-text mb-3">Ztracený čas</h3>
+                        <p class="text-gray-600">7,2 hodiny měsíčně strávíte správou. <strong class="h-primary-text">86 hodin ročně</strong> — víkendů.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case study card -->
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="h-accent-text uppercase tracking-[0.2em] text-xs font-semibold">Realizované spolupráce</span>
+                    <h2 class="text-4xl font-bold h-primary-text mt-3 serif">Co jsme reálně vyřešili</h2>
+                </div>
+                <div class="h-cream-bg rounded-2xl p-10 border border-gray-200">
+                    <div class="flex items-start gap-6">
+                        <div class="hidden md:block flex-shrink-0">
+                            <div class="w-16 h-16 h-accent-bg rounded-full flex items-center justify-center text-white text-2xl font-bold serif">P</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm uppercase tracking-widest h-accent-text font-semibold mb-2">Plzeň-Bory · 2+kk · 48 m²</div>
+                            <h3 class="text-2xl font-bold h-primary-text mb-4 serif">"Neměla jsem čas, byla jsem v Itálii. Nájem chodí každý měsíc."</h3>
+                            <p class="text-gray-700 mb-4">
+                                Vlastnice zdědila byt v Plzni a přestěhovala se do Itálie. Přebrali jsme kompletní správu:
+                                výběr nájemníka, smlouvu, korespondenci, vyúčtování energií, drobné opravy.
+                            </p>
+                            <div class="flex flex-wrap gap-6 pt-4 border-t border-gray-300">
+                                <div>
+                                    <div class="text-2xl font-bold h-primary-text serif">3 roky</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-500 mt-1">Ve správě</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold h-primary-text serif">0 dní</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-500 mt-1">Bez nájemníka</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold h-accent-text serif">98 h</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-500 mt-1">Ušetřeno ročně</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big CTA -->
+        <section class="h-primary-bg py-20 px-6 text-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="h-accent-text uppercase tracking-[0.2em] text-xs font-semibold">Nezávazně · zdarma</span>
+                <h2 class="text-4xl lg:text-5xl font-bold mt-4 mb-6 serif">Kolik dostanete každý měsíc?</h2>
+                <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                    Pošlete 3 detaily o svém bytu a do konce dne vám zavoláme s konkrétní částkou.
+                </p>
+                <button class="h-accent-bg h-accent-hover text-white font-bold px-10 py-5 rounded-full text-lg shadow-2xl transition">
+                    Chci znát svůj jistý nájem &nbsp;→
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer preview -->
+        <footer class="bg-gray-900 text-white py-12 px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold h-accent-text serif mb-3">Vzorný nájemce</div>
+                    <p class="text-sm text-white/70">Prémiová správa nemovitostí od roku 1999.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest h-accent-text mb-3">Kontakt</h4>
+                    <p class="text-sm text-white/70">+420 603 834 921</p>
+                    <p class="text-sm text-white/70">kontakt@vzornynajemce.cz</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest h-accent-text mb-3">Plzeň</h4>
+                    <p class="text-sm text-white/70">Radyňská 33<br>326 00 Plzeň</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest h-accent-text mb-3">Praha</h4>
+                    <p class="text-sm text-white/70">Pod Turnovskou tratí 18<br>198 00 Praha</p>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <div class="section-divider">↓ Přejděte na variantu I ↓</div>
+
+    <!-- ============================================================ -->
+    <!-- ==================== VARIANTA I — ČSOB TRUST ================ -->
+    <!-- ============================================================ -->
+    <section id="var-i">
+        <div class="i-accent-bg variant-badge" style="color: #003D82">Varianta I · ČSOB Trust · Deep Royal Blue #003D82 + Signal Yellow #FFC72C</div>
+
+        <!-- Top bar -->
+        <div class="i-primary-bg text-white text-xs">
+            <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+                <div class="flex gap-4">
+                    <span>+420 603 834 921</span>
+                    <span class="opacity-50">|</span>
+                    <span>Po–Pá 8:00–17:00</span>
+                </div>
+                <div class="flex gap-4">
+                    <span>Plzeň – Radyňská 33</span>
+                    <span class="opacity-50">|</span>
+                    <span>Praha – Pod Turnovskou tratí 18</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="bg-white border-b border-gray-200 shadow-sm">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 i-primary-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-black text-lg">V</span>
+                    </div>
+                    <span class="text-xl font-black i-primary-text">Vzorný nájemce</span>
+                </div>
+                <div class="hidden lg:flex gap-6 text-sm font-semibold text-gray-700">
+                    <a href="#" class="hover:i-primary-text transition-colors">Jak to funguje</a>
+                    <a href="#" class="hover:i-primary-text transition-colors">Ceník</a>
+                    <a href="#" class="hover:i-primary-text transition-colors">Tým</a>
+                    <a href="#" class="hover:i-primary-text transition-colors">Aktuální nabídky</a>
+                    <a href="#" class="hover:i-primary-text transition-colors">Blog</a>
+                </div>
+                <button class="i-primary-bg i-primary-hover text-white font-bold px-6 py-2.5 rounded-lg transition shadow-md">Nezávazná konzultace</button>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <section class="i-tint py-20 px-6 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block i-accent-bg text-gray-900 font-bold uppercase tracking-widest text-xs px-3 py-1.5 rounded mb-5">
+                        ⚡ Od 1999 · 25+ let jistoty
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-black i-primary-text mb-6 leading-[1.05]">
+                        Váš nájemník <span class="i-yellow-underline">jsme my.</span><br>
+                        Nájemné platíme <span style="color: #FFC72C">vždy.</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl leading-relaxed">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze
+                        na účet každý měsíc — i&nbsp;když nájemník nezaplatí. Fungujeme <strong class="i-primary-text">od roku 1999</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="i-primary-bg i-primary-hover text-white font-bold px-8 py-4 rounded-lg shadow-xl text-lg transition">
+                            Chci pronajímat bez starostí
+                        </button>
+                        <button class="bg-white border-2 i-primary-border i-primary-text font-bold px-6 py-4 rounded-lg hover:bg-blue-50 transition">
+                            Kolik bych dostával?
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kalkulátor mockup -->
+                <div class="bg-white rounded-xl shadow-2xl p-8 border-t-4 i-primary-border">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="i-accent-bg text-gray-900 font-bold uppercase tracking-widest text-xs px-2 py-1 rounded">Kalkulátor</span>
+                        <div class="flex-1 border-t border-gray-200"></div>
+                    </div>
+                    <h3 class="text-2xl font-black i-primary-text mb-1">Kolik dostanu jistě?</h3>
+                    <p class="text-sm text-gray-500 mb-6">3 údaje o bytě · výsledek za 5 sekund</p>
+                    <div class="space-y-3">
+                        <input type="text" placeholder="PSČ (např. 32600 Plzeň)" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:i-primary-border">
+                        <div class="grid grid-cols-4 gap-2">
+                            <button class="i-tint py-2 rounded-lg text-sm font-bold i-primary-text hover:i-primary-bg hover:text-white transition">1+kk</button>
+                            <button class="i-primary-bg text-white py-2 rounded-lg text-sm font-bold">2+kk</button>
+                            <button class="i-tint py-2 rounded-lg text-sm font-bold i-primary-text hover:i-primary-bg hover:text-white transition">3+kk</button>
+                            <button class="i-tint py-2 rounded-lg text-sm font-bold i-primary-text hover:i-primary-bg hover:text-white transition">3+1</button>
+                        </div>
+                        <input type="text" placeholder="Plocha v m²" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:i-primary-border">
+                        <button class="w-full i-accent-bg i-accent-hover font-black py-3 rounded-lg shadow transition text-gray-900">
+                            Zjistit můj jistý nájem &nbsp;→
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust bar -->
+        <section class="i-primary-bg text-white py-12">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-4xl font-black" style="color: #FFC72C">25+</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-90 font-semibold">Let na trhu</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black" style="color: #FFC72C">2 750+</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-90 font-semibold">Pronajatých bytů</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black" style="color: #FFC72C">98 %</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-90 font-semibold">Obnovení smlouvy</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black" style="color: #FFC72C">0 Kč</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-90 font-semibold">Dluhu za 25 let</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bolesti karty -->
+        <section class="i-tint-2 py-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="inline-block i-accent-bg text-gray-900 uppercase tracking-widest text-xs px-3 py-1 rounded font-bold">Proč to bez nás nezvládnete</span>
+                    <h2 class="text-4xl font-black i-primary-text mt-4">3 rizika, která vás mohou stát 200 000 Kč</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-8 rounded-xl shadow-md border-l-4 i-primary-border hover:shadow-xl transition">
+                        <div class="w-12 h-12 i-primary-bg rounded-lg flex items-center justify-center mb-4 text-white font-black text-xl">1</div>
+                        <h3 class="text-xl font-black i-primary-text mb-3">Neplatič</h3>
+                        <p class="text-gray-700">Nájemník přestane platit. Vystěhování trvá 11 měsíců. <strong class="i-primary-text">Ztráta 165 000 Kč.</strong></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md border-l-4 i-primary-border hover:shadow-xl transition">
+                        <div class="w-12 h-12 i-primary-bg rounded-lg flex items-center justify-center mb-4 text-white font-black text-xl">2</div>
+                        <h3 class="text-xl font-black i-primary-text mb-3">Škody nad kauci</h3>
+                        <p class="text-gray-700">48 % pronajímatelů má škodu, která přesahuje kauci. <strong class="i-primary-text">Průměrně 43 000 Kč.</strong></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md border-l-4 i-primary-border hover:shadow-xl transition">
+                        <div class="w-12 h-12 i-primary-bg rounded-lg flex items-center justify-center mb-4 text-white font-black text-xl">3</div>
+                        <h3 class="text-xl font-black i-primary-text mb-3">Ztracený čas</h3>
+                        <p class="text-gray-700">7,2 hodiny měsíčně strávíte správou. <strong class="i-primary-text">86 hodin ročně</strong> — víkendů.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case study -->
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="inline-block i-accent-bg text-gray-900 uppercase tracking-widest text-xs px-3 py-1 rounded font-bold">Realizované spolupráce</span>
+                    <h2 class="text-4xl font-black i-primary-text mt-4">Co jsme reálně vyřešili</h2>
+                </div>
+                <div class="i-tint rounded-xl p-10 border-2 i-primary-border">
+                    <div class="flex items-start gap-6">
+                        <div class="hidden md:block flex-shrink-0">
+                            <div class="w-16 h-16 i-primary-bg rounded-lg flex items-center justify-center text-white text-2xl font-black">P</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm uppercase tracking-widest i-primary-text font-bold mb-2">Plzeň-Bory · 2+kk · 48 m²</div>
+                            <h3 class="text-2xl font-black i-primary-text mb-4">„Neměla jsem čas, byla jsem v Itálii. Nájem chodí každý měsíc."</h3>
+                            <p class="text-gray-700 mb-4">
+                                Vlastnice zdědila byt v Plzni a přestěhovala se do Itálie. Přebrali jsme kompletní správu:
+                                výběr nájemníka, smlouvu, korespondenci, vyúčtování energií, drobné opravy.
+                            </p>
+                            <div class="flex flex-wrap gap-6 pt-4 border-t border-blue-200">
+                                <div>
+                                    <div class="text-2xl font-black i-primary-text">3 roky</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-600 mt-1 font-semibold">Ve správě</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black i-primary-text">0 dní</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-600 mt-1 font-semibold">Bez nájemníka</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black" style="color: #FFC72C">98 h</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-600 mt-1 font-semibold">Ušetřeno ročně</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big CTA -->
+        <section class="i-primary-bg py-20 px-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 i-accent-bg rounded-full opacity-10 -translate-y-1/2 translate-x-1/2"></div>
+            <div class="max-w-4xl mx-auto text-center relative">
+                <span class="inline-block i-accent-bg text-gray-900 uppercase tracking-widest text-xs px-3 py-1 rounded font-bold">Nezávazně · zdarma</span>
+                <h2 class="text-4xl lg:text-5xl font-black mt-4 mb-6">Kolik dostanete každý měsíc?</h2>
+                <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                    Pošlete 3 detaily o svém bytu a do konce dne vám zavoláme s konkrétní částkou.
+                </p>
+                <button class="i-accent-bg i-accent-hover font-black px-10 py-5 rounded-lg text-lg shadow-2xl transition text-gray-900">
+                    Chci znát svůj jistý nájem &nbsp;→
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12 px-6 border-t-4 i-accent-bg">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-black mb-3" style="color: #FFC72C">Vzorný nájemce</div>
+                    <p class="text-sm text-white/70">Jistý nájem od roku 1999.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #FFC72C">Kontakt</h4>
+                    <p class="text-sm text-white/70">+420 603 834 921</p>
+                    <p class="text-sm text-white/70">kontakt@vzornynajemce.cz</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #FFC72C">Plzeň</h4>
+                    <p class="text-sm text-white/70">Radyňská 33<br>326 00 Plzeň</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #FFC72C">Praha</h4>
+                    <p class="text-sm text-white/70">Pod Turnovskou tratí 18<br>198 00 Praha</p>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <div class="section-divider">↓ Přejděte na variantu J ↓</div>
+
+    <!-- ============================================================ -->
+    <!-- =================== VARIANTA J — WISE MODERN ================ -->
+    <!-- ============================================================ -->
+    <section id="var-j">
+        <div class="j-accent-bg variant-badge" style="color: #163300">Varianta J · Wise Modern · Dark Forest #163300 + Lime #9FE870</div>
+
+        <!-- Top bar -->
+        <div class="j-primary-bg text-white text-xs">
+            <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+                <div class="flex gap-4">
+                    <span>+420 603 834 921</span>
+                    <span class="opacity-50">|</span>
+                    <span>Po–Pá 8:00–17:00</span>
+                </div>
+                <div class="flex gap-4">
+                    <span>Plzeň – Radyňská 33</span>
+                    <span class="opacity-50">|</span>
+                    <span>Praha – Pod Turnovskou tratí 18</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 j-primary-bg rounded-xl flex items-center justify-center">
+                        <span class="text-white font-black text-lg">V</span>
+                    </div>
+                    <span class="text-xl font-black j-primary-text">Vzorný nájemce</span>
+                </div>
+                <div class="hidden lg:flex gap-6 text-sm font-semibold text-gray-800">
+                    <a href="#" class="hover:j-primary-text transition-colors">Jak to funguje</a>
+                    <a href="#" class="hover:j-primary-text transition-colors">Ceník</a>
+                    <a href="#" class="hover:j-primary-text transition-colors">Tým</a>
+                    <a href="#" class="hover:j-primary-text transition-colors">Aktuální nabídky</a>
+                    <a href="#" class="hover:j-primary-text transition-colors">Blog</a>
+                </div>
+                <button class="j-accent-bg j-accent-hover font-bold px-6 py-2.5 rounded-full transition text-gray-900 shadow">Nezávazná konzultace</button>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <section class="j-tint-cream py-20 px-6 relative overflow-hidden">
+            <!-- Dekorativní lime kruh -->
+            <div class="absolute top-10 right-10 w-72 h-72 j-accent-bg rounded-full opacity-30 blur-3xl"></div>
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
+                <div>
+                    <div class="inline-flex items-center gap-2 j-accent-bg px-4 py-2 rounded-full mb-6">
+                        <span class="j-primary-text font-bold uppercase tracking-widest text-xs">🌱 Fungujeme od 1999</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-black j-primary-text mb-6 leading-[1.05]">
+                        Váš nájemník <span class="j-primary-bg text-white px-3 rounded-lg">jsme my.</span><br>
+                        Nájemné platíme <span class="j-lime-text">vždy.</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-8 max-w-xl leading-relaxed">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze
+                        na účet každý měsíc — i&nbsp;když nájemník nezaplatí. Fungujeme <strong class="j-primary-text">od roku 1999</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button class="j-accent-bg j-accent-hover font-bold px-8 py-4 rounded-full shadow-lg text-lg transition text-gray-900">
+                            Chci pronajímat bez starostí &nbsp;→
+                        </button>
+                        <button class="j-primary-bg j-primary-hover text-white font-semibold px-6 py-4 rounded-full transition">
+                            Kolik bych dostával?
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kalkulátor mockup -->
+                <div class="bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 j-accent-bg rounded-full opacity-40 blur-2xl"></div>
+                    <div class="relative">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="j-accent-bg text-gray-900 font-bold uppercase tracking-widest text-xs px-3 py-1 rounded-full">Kalkulátor</span>
+                            <div class="flex-1 border-t border-gray-200"></div>
+                        </div>
+                        <h3 class="text-2xl font-black j-primary-text mb-1">Kolik dostanu jistě?</h3>
+                        <p class="text-sm text-gray-500 mb-6">3 údaje o bytě · výsledek za 5 sekund</p>
+                        <div class="space-y-3">
+                            <input type="text" placeholder="PSČ (např. 32600 Plzeň)" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:j-primary-border">
+                            <div class="grid grid-cols-4 gap-2">
+                                <button class="j-tint py-2 rounded-xl text-sm font-bold j-primary-text hover:j-accent-bg transition">1+kk</button>
+                                <button class="j-primary-bg text-white py-2 rounded-xl text-sm font-bold">2+kk</button>
+                                <button class="j-tint py-2 rounded-xl text-sm font-bold j-primary-text hover:j-accent-bg transition">3+kk</button>
+                                <button class="j-tint py-2 rounded-xl text-sm font-bold j-primary-text hover:j-accent-bg transition">3+1</button>
+                            </div>
+                            <input type="text" placeholder="Plocha v m²" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:j-primary-border">
+                            <button class="w-full j-accent-bg j-accent-hover font-black py-3 rounded-full shadow-lg transition text-gray-900">
+                                Zjistit můj jistý nájem &nbsp;→
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust bar -->
+        <section class="j-primary-bg text-white py-12">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-4xl font-black j-accent-text">25+</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Let na trhu</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black j-accent-text">2 750+</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Pronajatých bytů</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black j-accent-text">98 %</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Obnovení smlouvy</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black j-accent-text">0 Kč</div>
+                    <div class="uppercase tracking-widest text-xs mt-2 opacity-80">Dluhu za 25 let</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bolesti karty -->
+        <section class="j-tint-2 py-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="inline-block j-primary-bg text-white uppercase tracking-widest text-xs px-3 py-1 rounded-full font-bold">Proč to bez nás nezvládnete</span>
+                    <h2 class="text-4xl font-black j-primary-text mt-4">3 rizika, která vás mohou stát 200 000 Kč</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition">
+                        <div class="w-12 h-12 j-accent-bg rounded-2xl flex items-center justify-center mb-4 j-primary-text font-black text-xl">1</div>
+                        <h3 class="text-xl font-black j-primary-text mb-3">Neplatič</h3>
+                        <p class="text-gray-700">Nájemník přestane platit. Vystěhování trvá 11 měsíců. <strong class="j-primary-text">Ztráta 165 000 Kč.</strong></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition">
+                        <div class="w-12 h-12 j-accent-bg rounded-2xl flex items-center justify-center mb-4 j-primary-text font-black text-xl">2</div>
+                        <h3 class="text-xl font-black j-primary-text mb-3">Škody nad kauci</h3>
+                        <p class="text-gray-700">48 % pronajímatelů má škodu, která přesahuje kauci. <strong class="j-primary-text">Průměrně 43 000 Kč.</strong></p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-md hover:shadow-xl transition">
+                        <div class="w-12 h-12 j-accent-bg rounded-2xl flex items-center justify-center mb-4 j-primary-text font-black text-xl">3</div>
+                        <h3 class="text-xl font-black j-primary-text mb-3">Ztracený čas</h3>
+                        <p class="text-gray-700">7,2 hodiny měsíčně strávíte správou. <strong class="j-primary-text">86 hodin ročně</strong> — víkendů.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case study -->
+        <section class="py-20 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="inline-block j-primary-bg text-white uppercase tracking-widest text-xs px-3 py-1 rounded-full font-bold">Realizované spolupráce</span>
+                    <h2 class="text-4xl font-black j-primary-text mt-4">Co jsme reálně vyřešili</h2>
+                </div>
+                <div class="j-tint rounded-3xl p-10 relative overflow-hidden">
+                    <div class="absolute -top-8 -right-8 w-40 h-40 j-accent-bg rounded-full opacity-30 blur-2xl"></div>
+                    <div class="flex items-start gap-6 relative">
+                        <div class="hidden md:block flex-shrink-0">
+                            <div class="w-16 h-16 j-accent-bg rounded-2xl flex items-center justify-center j-primary-text text-2xl font-black">P</div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm uppercase tracking-widest j-primary-text font-bold mb-2">Plzeň-Bory · 2+kk · 48 m²</div>
+                            <h3 class="text-2xl font-black j-primary-text mb-4">„Neměla jsem čas, byla jsem v Itálii. Nájem chodí každý měsíc."</h3>
+                            <p class="text-gray-700 mb-4">
+                                Vlastnice zdědila byt v Plzni a přestěhovala se do Itálie. Přebrali jsme kompletní správu:
+                                výběr nájemníka, smlouvu, korespondenci, vyúčtování energií, drobné opravy.
+                            </p>
+                            <div class="flex flex-wrap gap-6 pt-4 border-t border-green-200">
+                                <div>
+                                    <div class="text-2xl font-black j-primary-text">3 roky</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-600 mt-1 font-semibold">Ve správě</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black j-primary-text">0 dní</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-600 mt-1 font-semibold">Bez nájemníka</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-black j-lime-text">98 h</div>
+                                    <div class="text-xs uppercase tracking-widest text-gray-600 mt-1 font-semibold">Ušetřeno ročně</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big CTA -->
+        <section class="j-primary-bg py-20 px-6 text-white relative overflow-hidden">
+            <div class="absolute -top-32 -left-32 w-96 h-96 j-accent-bg rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute -bottom-32 -right-32 w-96 h-96 j-accent-bg rounded-full opacity-20 blur-3xl"></div>
+            <div class="max-w-4xl mx-auto text-center relative">
+                <span class="inline-block j-accent-bg j-primary-text uppercase tracking-widest text-xs px-3 py-1 rounded-full font-bold">Nezávazně · zdarma</span>
+                <h2 class="text-4xl lg:text-5xl font-black mt-4 mb-6">Kolik dostanete každý měsíc?</h2>
+                <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                    Pošlete 3 detaily o svém bytu a do konce dne vám zavoláme s konkrétní částkou.
+                </p>
+                <button class="j-accent-bg j-accent-hover font-black px-10 py-5 rounded-full text-lg shadow-2xl transition text-gray-900">
+                    Chci znát svůj jistý nájem &nbsp;→
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="j-primary-bg text-white py-12 px-6 border-t-4 j-accent-bg">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-black mb-3 j-accent-text">Vzorný nájemce</div>
+                    <p class="text-sm text-white/70">Jistý nájem od roku 1999.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-3 j-accent-text">Kontakt</h4>
+                    <p class="text-sm text-white/70">+420 603 834 921</p>
+                    <p class="text-sm text-white/70">kontakt@vzornynajemce.cz</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-3 j-accent-text">Plzeň</h4>
+                    <p class="text-sm text-white/70">Radyňská 33<br>326 00 Plzeň</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest mb-3 j-accent-text">Praha</h4>
+                    <p class="text-sm text-white/70">Pod Turnovskou tratí 18<br>198 00 Praha</p>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Decision panel -->
+    <div class="bg-gray-100 p-12 text-center">
+        <h2 class="text-3xl font-black text-gray-900 mb-6">Vaše rozhodnutí</h2>
+        <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            Prohlédli jste 3 varianty jako plný web. Řekněte
+            <strong class="text-gray-900">H</strong> · <strong class="text-gray-900">I</strong> · <strong class="text-gray-900">J</strong>
+            a nasazuji napříč vzornynajemce.cz.
+        </p>
+        <div class="inline-block bg-white rounded-2xl shadow-xl p-6 border border-gray-200 text-left max-w-3xl">
+            <p class="text-sm text-gray-700 mb-2"><strong>H · Sotheby's:</strong> pro premium tier, majitel s vícero byty, prestige feel</p>
+            <p class="text-sm text-gray-700 mb-2"><strong>I · ČSOB:</strong> pro širokou landlord 40+ cílovku, „bank instituce" pocit</p>
+            <p class="text-sm text-gray-700"><strong>J · Wise:</strong> pro modernější landlord (Wise/Revolut user), fresh growth feel</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
