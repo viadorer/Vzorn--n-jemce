@@ -78,7 +78,7 @@
     <!-- Spolehlivé CDN odkazy pro GitHub Pages -->
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Důležité: zajišťuje že obsah s x-cloak se nezobrazí dokud Alpine.js nenačte */
         [x-cloak] { display: none !important; }
@@ -109,7 +109,8 @@
             --primary-color: #E63946;
         }
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+        .serif { font-family: 'Playfair Display', Georgia, serif;
             overflow-x: hidden;
         }
         /* Odstranění šipek u number inputů */
@@ -213,75 +214,120 @@
     <script src="js/load-header.js"></script>
 
     <!-- Hero Section -->
-    <div class="relative h-screen flex flex-col justify-center overflow-hidden bg-ivory" style="height: 100vh; height: 100dvh; max-height: 100vh;">
+    <section class="relative overflow-hidden bg-ivory pt-32 pb-20 lg:pt-40 lg:pb-32">
+        <!-- Subtle background orbs -->
+        <div class="absolute w-[450px] h-[450px] rounded-full bg-[#E63946] opacity-[0.08] blur-[90px] -top-32 -right-40 pointer-events-none"></div>
+        <div class="absolute w-[350px] h-[350px] rounded-full bg-[#2F7871] opacity-[0.06] blur-[90px] -bottom-32 -left-32 pointer-events-none"></div>
 
-        <!-- Content -->
-        <div class="relative z-10 flex flex-col justify-center h-full px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto w-full">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-                    <div class="sm:text-center lg:text-left lg:col-span-7">
-                        <p class="text-sm font-semibold text-[#E63946] tracking-wide uppercase mb-3">Profesionální správa pronájmu v Praze, Plzni a Berouně</p>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-4">
-                            <span class="block">Váš nájemník jsme my.</span>
-                            <span class="block">Nájemné platíme vždy.</span>
-                        </h1>
-                        
-                        <p class="mt-3 text-lg text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                            Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze na účet každý měsíc – i když nájemník nezaplatí. Fungujeme od roku 1999.
-                        </p>
-
-                        <div class="fade-in-up mt-8 mb-8 space-y-4">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 text-[#E63946] mr-3">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <p class="text-gray-700"><strong>Jistý nájem</strong> – platíme i při výpadku nájemníka</p>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 text-[#E63946] mr-3">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <p class="text-gray-700"><strong>Byt v perfektním stavu</strong> – pravidelné kontroly + technický servis</p>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 text-[#E63946] mr-3">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <p class="text-gray-700"><strong>25+ let zkušeností</strong> – přes 2 750 pronajatých nemovitostí</p>
-                            </div>
-                        </div>
-
-                        <div class="fade-in-up mt-6 flex flex-col sm:flex-row gap-4">
-                            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 transform hover:scale-105">
-                                Chci pronajímat bez starostí
-                            </button>
-                            <a href="kalkulator-trzniho-najemneho.html" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
-                                Kolik bych dostával?
-                            </a>
-                        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+                <!-- LEFT: Copy -->
+                <div class="lg:col-span-3">
+                    <div class="inline-flex items-center gap-2 mb-6 pb-1 border-b border-slate-300/60">
+                        <span class="text-xs uppercase tracking-[0.2em] text-slate-500 font-medium">Skupina PTF · od roku 1999</span>
                     </div>
-                    <div class="mt-12 lg:mt-0 lg:col-span-5 flex justify-center lg:justify-end relative z-10">
-                        <img src="images/hero-illustration.png" alt="Hero ilustrace" class="w-[600px] h-[600px] object-contain">
+                    <h1 class="text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-6 leading-[1.1]">
+                        Váš nájemník <span class="text-[#E63946]">jsme my.</span><br>
+                        <span class="serif italic font-medium" style="color: #2F7871">Nájemné platíme vždy.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed font-light">
+                        Pronajmeme váš byt spolehlivým lidem, postaráme se o údržbu a vy dostanete peníze na účet každý měsíc — i&nbsp;když nájemník nezaplatí.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <a href="#jisty-najem-widget" class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
+                            Spočítat můj nájem
+                        </a>
+                        <a href="#jak-to-funguje" class="inline-flex items-center gap-2 text-base font-medium py-3.5 px-6 border-b border-slate-300 hover:border-slate-900 text-slate-700 transition-colors">
+                            Jak to funguje →
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-200/70">
+                        <div>
+                            <div class="text-2xl font-semibold text-slate-900 serif">25+</div>
+                            <div class="text-[11px] uppercase tracking-widest text-slate-500 mt-0.5">Let zkušeností</div>
+                        </div>
+                        <div class="w-px h-10 bg-slate-200"></div>
+                        <div>
+                            <div class="text-2xl font-semibold text-slate-900 serif">2 750+</div>
+                            <div class="text-[11px] uppercase tracking-widest text-slate-500 mt-0.5">Pronajatých bytů</div>
+                        </div>
+                        <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
+                        <div class="hidden sm:block">
+                            <div class="text-2xl font-semibold text-[#E63946] serif">98 %</div>
+                            <div class="text-[11px] uppercase tracking-widest text-slate-500 mt-0.5">Obnovení smluv</div>
+                        </div>
                     </div>
                 </div>
-                <!-- Animated Arrow -->
-                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-                    <div class="text-sm text-gray-600 mb-2"></div>
-                    <div class="animate-bounce">
-                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                        </svg>
+
+                <!-- RIGHT: Jistý nájem kalkulátor -->
+                <div class="lg:col-span-2" id="jisty-najem-widget">
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200/70 relative">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-[#E63946] font-semibold">Kalkulátor</span>
+                            <div class="flex-1 border-t border-slate-200"></div>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-900 mb-1 serif">Kolik dostanu jistě?</h3>
+                        <p class="text-sm text-slate-500 mb-6">3 údaje &middot; výsledek okamžitě</p>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-xs font-semibold uppercase tracking-widest text-slate-500 block mb-2">PSČ vašeho bytu</label>
+                                <input type="text" inputmode="numeric" maxlength="5" data-jn-psc value="30100" placeholder="např. 32600" class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 focus:border-[#E63946] rounded-2xl focus:outline-none font-semibold text-slate-900">
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold uppercase tracking-widest text-slate-500 block mb-2">Dispozice</label>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <button type="button" data-jn-disposition="1+kk" class="bg-slate-50 py-2.5 rounded-xl text-sm font-semibold text-slate-900 hover:bg-[#FDE7E9] hover:text-[#E63946] transition">1+kk</button>
+                                    <button type="button" data-jn-disposition="2+kk" class="bg-[#E63946] text-white py-2.5 rounded-xl text-sm font-semibold selected">2+kk</button>
+                                    <button type="button" data-jn-disposition="3+kk" class="bg-slate-50 py-2.5 rounded-xl text-sm font-semibold text-slate-900 hover:bg-[#FDE7E9] hover:text-[#E63946] transition">3+kk</button>
+                                    <button type="button" data-jn-disposition="3+1" class="bg-slate-50 py-2.5 rounded-xl text-sm font-semibold text-slate-900 hover:bg-[#FDE7E9] hover:text-[#E63946] transition">3+1</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold uppercase tracking-widest text-slate-500 block mb-2">Plocha v&nbsp;m²</label>
+                                <input type="text" inputmode="numeric" data-jn-area value="55" placeholder="např. 55" class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 focus:border-[#E63946] rounded-2xl focus:outline-none font-semibold text-slate-900">
+                            </div>
+                            <div data-jn-result class="rounded-2xl p-4 border-2 border-dashed transition-opacity" style="border-color: #2F7871; background: #E4EFED">
+                                <div class="text-xs text-slate-600 mb-1">Předběžný jistý nájem</div>
+                                <div data-jn-result-text class="text-2xl font-semibold text-slate-900 serif">— — — Kč</div>
+                                <div class="text-xs mt-1 font-medium" style="color: #2F7871">Každý měsíc &middot; bez ohledu na nájemníka</div>
+                            </div>
+                            <button type="button" data-jn-submit class="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                Chci konkrétní nabídku
+                            </button>
+                            <p class="text-xs text-center text-slate-500">Nezávazně &middot; voláme do konce dne</p>
+                        </div>
+
+                        <div data-jn-wizard class="hidden mt-6 pt-6 border-t border-slate-200 space-y-3">
+                            <div>
+                                <label class="text-xs font-semibold uppercase tracking-widest text-slate-500 block mb-2">Váš e-mail</label>
+                                <input type="email" data-jn-email placeholder="jmeno@email.cz" class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 focus:border-[#E63946] rounded-2xl focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="text-xs font-semibold uppercase tracking-widest text-slate-500 block mb-2">Telefon</label>
+                                <input type="tel" data-jn-phone placeholder="+420 ..." class="w-full px-4 py-3 bg-slate-50 border-2 border-slate-100 focus:border-[#E63946] rounded-2xl focus:outline-none">
+                            </div>
+                            <button type="button" data-jn-final class="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#C82F3B] transition-colors">
+                                Odeslat &nbsp;&rarr;
+                            </button>
+                            <p class="text-[11px] text-slate-500 text-center">
+                                Odesláním souhlasíte se&nbsp;<a href="gdpr.html" class="underline">zpracováním údajů</a>.
+                            </p>
+                        </div>
+
+                        <div data-jn-success class="hidden mt-6 pt-6 border-t border-slate-200 text-center">
+                            <div class="w-12 h-12 bg-[#E4EFED] rounded-full flex items-center justify-center mx-auto mb-3" style="color: #2F7871">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <h4 class="text-lg font-semibold text-slate-900 mb-1 serif">Přijali jsme.</h4>
+                            <p class="text-sm text-slate-600">Zavoláme vám do konce dne v&nbsp;pracovní době.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <script src="js/jisty-najem.js"></script>
 
     <!-- Trust Bar -->
     <section class="py-12 bg-ivory border-b border-gray-100">
@@ -406,7 +452,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center justify-center mb-12 gap-6">
             <div class="md:w-1/4 flex-shrink-0">
-                <img src="images/problem.png" alt="Problémový nájemník" class="rounded-full w-40 h-40 object-cover mx-auto shadow-lg border-4 border-white">
+                <img src="images/problem.png" alt="Problémový nájemník" class="rounded-full w-40 h-40 object-cover mx-auto border-4 border-white">
             </div>
             <div class="md:w-3/4 text-left">
                 <h2 class="text-4xl font-bold text-gray-900 mb-3">Kolik vás může stát problémový nájemník?</h2>
@@ -450,7 +496,7 @@
             <div class="p-8 text-center">
                 <p class="text-gray-600 mb-6">Po kliknutí vám ukážeme komplexní analýzu nákladů a potenciálních úspor při využití našich služeb.</p>
                 
-                <button @click="toggleDetailedAnalysis()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <button @click="toggleDetailedAnalysis()" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90  transition-all duration-200">
                     Spočítat a zobrazit detailní náklady
                 </button>
                 
@@ -516,7 +562,7 @@
         </div>
 
         <div class="mt-12 text-center">
-            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/80  transition-all duration-200">
                 Chci mít klid a pravidelný příjem
             </button>
         </div>
@@ -537,10 +583,10 @@
                 <div class="space-y-12 md:space-y-16">
                     <!-- Krok 1 -->
                     <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10 shadow-lg">1</div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">1</div>
                         <div class="md:w-1/2 md:text-right md:pr-16">
                             <div class="flex items-center md:justify-end mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg">1</div>
+                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">1</div>
                                 <h3 class="text-xl font-bold text-gray-900">Zavoláme si</h3>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Zavoláme si</h3>
@@ -551,11 +597,11 @@
 
                     <!-- Krok 2 -->
                     <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10 shadow-lg">2</div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">2</div>
                         <div class="md:w-1/2 md:pr-16"></div>
                         <div class="md:w-1/2 md:pl-16">
                             <div class="flex items-center mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg">2</div>
+                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">2</div>
                                 <h3 class="text-xl font-bold text-gray-900">Dohodneme podmínky</h3>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Dohodneme podmínky</h3>
@@ -565,10 +611,10 @@
 
                     <!-- Krok 3 -->
                     <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10 shadow-lg">3</div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">3</div>
                         <div class="md:w-1/2 md:text-right md:pr-16">
                             <div class="flex items-center md:justify-end mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg">3</div>
+                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">3</div>
                                 <h3 class="text-xl font-bold text-gray-900">Převezmeme byt</h3>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Převezmeme byt</h3>
@@ -579,11 +625,11 @@
 
                     <!-- Krok 4 -->
                     <div class="relative md:flex md:items-start md:gap-12">
-                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10 shadow-lg">4</div>
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-[#E63946] rounded-full items-center justify-center text-white font-bold text-lg z-10">4</div>
                         <div class="md:w-1/2 md:pr-16"></div>
                         <div class="md:w-1/2 md:pl-16">
                             <div class="flex items-center mb-2 md:hidden">
-                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg">4</div>
+                                <div class="w-10 h-10 bg-[#E63946] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">4</div>
                                 <h3 class="text-xl font-bold text-gray-900">Dostáváte peníze</h3>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2 hidden md:block">Dostáváte peníze</h3>
@@ -594,7 +640,7 @@
             </div>
 
             <div class="mt-16 text-center">
-                <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 ">
                     Chci pronajímat takhle →
                 </button>
             </div>
@@ -665,7 +711,7 @@
                 <!-- GARANCE - NEJOBLÍBENĚJŠÍ -->
                 <div class="relative bg-white rounded-2xl shadow-xl p-8 border-2 border-[#E63946] h-full flex flex-col">
                     <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-auto">
-                        <span class="px-6 py-2 bg-[#E63946] rounded-full text-sm font-medium text-white shadow-lg">NEJOBLÍBENĚJŠÍ</span>
+                        <span class="px-6 py-2 bg-[#E63946] rounded-full text-sm font-medium text-white">NEJOBLÍBENĚJŠÍ</span>
                     </div>
                     
                     <div class="text-center mb-8">
@@ -706,7 +752,7 @@
                         <p class="text-lg font-bold text-gray-900">Řekneme vám ji na schůzce</p>
                     </div>
                     
-                    <button data-open-popup class="block w-full text-center px-6 py-3 bg-[#E63946] text-white font-bold rounded-full hover:bg-[#E63946]/90 transition-colors duration-200 shadow-lg">
+                    <button data-open-popup class="block w-full text-center px-6 py-3 bg-[#E63946] text-white font-bold rounded-full hover:bg-[#E63946]/90 transition-colors duration-200">
                         Chci znát svůj jistý nájem →
                     </button>
                 </div>
@@ -766,7 +812,7 @@
 
             <div class="mt-12 text-center">
                 <p id="case-study-count" class="text-sm text-gray-500 mb-6">Aktivní nabídky v&nbsp;Plzni, Praze a&nbsp;okolí.</p>
-                <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all duration-300 ">
                     Chci vědět, kolik vydělá můj byt →
                 </button>
                 <p class="text-sm text-gray-500 mt-4">Pošlete 3 detaily o svém bytě. Telefonujeme mezi 9:00 a&nbsp;17:00.</p>
@@ -830,7 +876,7 @@
             imgWrap.appendChild(img);
 
             const badge = document.createElement('span');
-            badge.className = 'absolute top-3 left-3 px-3 py-1 bg-[#E63946] text-white text-xs font-semibold uppercase tracking-wider rounded-full shadow-md';
+            badge.className = 'absolute top-3 left-3 px-3 py-1 bg-[#E63946] text-white text-xs font-semibold uppercase tracking-wider rounded-full';
             badge.textContent = 'V nabídce';
             imgWrap.appendChild(badge);
 
@@ -1061,9 +1107,9 @@
                         </ul>
                     </div>
                     <div class="flex-shrink-0 text-center">
-                        <img src="images/tenant.png" alt="Nájemník" class="w-40 h-40 mx-auto rounded-full shadow-lg object-cover border-4 border-white mb-4">
+                        <img src="images/tenant.png" alt="Nájemník" class="w-40 h-40 mx-auto rounded-full object-cover border-4 border-white mb-4">
                         <div class="text-3xl font-bold text-[#E63946] mb-4">Zdarma</div>
-                        <button data-open-popup class="inline-block px-8 py-4 bg-[#E63946] text-white font-medium rounded-full hover:bg-[#E63946]/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                        <button data-open-popup class="inline-block px-8 py-4 bg-[#E63946] text-white font-medium rounded-full hover:bg-[#E63946]/90 transition-all duration-300 ">
                             Chci najít spolehlivého nájemníka
                         </button>
                     </div>
@@ -1099,7 +1145,7 @@
                                 <li class="flex items-start"><svg class="w-5 h-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Konkrétní nabídku jistého nájmu</li>
                                 <li class="flex items-start"><svg class="w-5 h-5 text-white mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tipy, jak zvýšit výnos z pronájmu</li>
                             </ul>
-                            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-[#E63946] bg-white hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full text-[#E63946] bg-white hover:bg-gray-100 transition-all duration-200 ">
                                 Chci vědět, kolik bych dostával →
                             </button>
                         </div>
@@ -1180,12 +1226,12 @@
             
             <!-- Šipky pro navigaci na větších obrazovkách -->
             <div class="hidden md:block">
-                <button class="absolute top-1/2 left-0 transform -translate-y-1/2 -ml-4 bg-white rounded-full shadow-lg p-2 focus:outline-none">
+                <button class="absolute top-1/2 left-0 transform -translate-y-1/2 -ml-4 bg-white rounded-full p-2 focus:outline-none">
                     <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </button>
-                <button class="absolute top-1/2 right-0 transform -translate-y-1/2 -mr-4 bg-white rounded-full shadow-lg p-2 focus:outline-none">
+                <button class="absolute top-1/2 right-0 transform -translate-y-1/2 -mr-4 bg-white rounded-full p-2 focus:outline-none">
                     <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                     </svg>
@@ -1194,7 +1240,7 @@
         </div>
         
         <div class="mt-16 text-center">
-            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/80 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button data-open-popup class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/80  transition-all duration-200">
                 Chci vědět, kdo se o můj byt postará →
             </button>
         </div>

@@ -21,10 +21,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary-color: #E63946; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+        .serif { font-family: 'Playfair Display', Georgia, serif; }
         .description p { margin-bottom: 1rem; }
         .description p:last-child { margin-bottom: 0; }
         .description strong { color: #111; }
@@ -131,7 +132,7 @@
                             <p class="text-sm text-gray-500 mb-1">Měsíční nájemné</p>
                             <p id="price" class="text-3xl font-bold text-gray-900 mb-1"></p>
                             <p id="price-note" class="text-sm text-gray-500 mb-5 hidden"></p>
-                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-[#E63946] text-white font-semibold rounded-full hover:bg-[#E63946]/90 transition-all shadow-md">
+                            <button type="button" data-open-popup class="w-full inline-flex items-center justify-center px-5 py-3 bg-[#E63946] text-white font-semibold rounded-full hover:bg-[#E63946]/90 transition-all">
                                 Mám zájem o tuto nabídku
                             </button>
                             <a id="external-link" href="#" target="_blank" rel="noopener" class="mt-3 w-full inline-flex items-center justify-center px-5 py-2.5 border border-gray-200 text-gray-700 font-medium rounded-full hover:bg-gray-50 transition-all text-sm">

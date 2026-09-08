@@ -25,10 +25,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.13.5/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary-color: #E63946; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+        .serif { font-family: 'Playfair Display', Georgia, serif; }
         .form-input:focus { box-shadow: 0 0 0 4px rgba(13, 40, 242, 0.12); }
     </style>
     <script type="application/ld+json">
@@ -257,7 +258,7 @@
                             <!-- Submit -->
                             <div>
                                 <button type="submit" id="submit-btn"
-                                        class="w-full inline-flex justify-center items-center px-8 py-4 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                        class="w-full inline-flex justify-center items-center px-8 py-4 text-base font-semibold rounded-full text-white bg-[#E63946] hover:bg-[#E63946]/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                                     <span id="submit-label">Odeslat — do hodiny obdržíte PDF report</span>
                                     <svg id="submit-spinner" class="hidden ml-3 h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
