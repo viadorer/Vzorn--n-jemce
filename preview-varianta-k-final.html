@@ -66,8 +66,8 @@
         .ticker-content { animation: marquee 40s linear infinite; }
 
         /* Card hover lift */
-        .lift { transition: transform .3s ease, box-shadow .3s ease; }
-        .lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
+        .lift { transition: transform .3s ease; }
+        .lift:hover { transform: translateY(-4px); }
 
         /* Buttons */
         .btn-primary {
@@ -76,10 +76,9 @@
             padding: 16px 32px;
             border-radius: 999px;
             font-weight: 700;
-            box-shadow: 0 8px 20px -4px rgba(255,90,95,0.4);
             transition: all .2s;
         }
-        .btn-primary:hover { background: var(--coral-hover); transform: translateY(-2px); box-shadow: 0 12px 24px -4px rgba(255,90,95,0.5); }
+        .btn-primary:hover { background: var(--coral-hover); transform: translateY(-2px); }
         .btn-secondary {
             background: var(--navy);
             color: white;
@@ -102,7 +101,6 @@
             border-radius: 999px;
             font-weight: 700;
             text-align: center;
-            box-shadow: 0 12px 32px -8px rgba(0,0,0,0.3);
             z-index: 100;
             display: none;
         }
@@ -151,7 +149,7 @@
 <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 coral rounded-2xl flex items-center justify-center transform -rotate-3 shadow-lg" style="box-shadow: 0 4px 12px rgba(255,90,95,0.3)">
+            <div class="w-10 h-10 coral rounded-2xl flex items-center justify-center transform -rotate-3">
                 <span class="text-white font-black text-xl">V</span>
             </div>
             <div>
@@ -184,10 +182,10 @@
     <img src="images/Vzorný nájemce happy.png"
          alt="Vzorný nájemce"
          class="hidden xl:block absolute bottom-0 left-0 w-64 float-slow z-10 pointer-events-none"
-         style="filter: drop-shadow(0 20px 30px rgba(44,62,80,0.15))"
+         style=""
          loading="lazy">
     <!-- Ochranná bublina pod postavou (jako "mluví") -->
-    <div class="hidden xl:block absolute bottom-6 left-64 z-10 bg-white rounded-2xl shadow-xl p-4 max-w-xs float-slow" style="animation-delay: 1s">
+    <div class="hidden xl:block absolute bottom-6 left-64 z-10 bg-white rounded-2xl p-4 max-w-xs float-slow" style="animation-delay: 1s">
         <div class="text-xs font-black coral-t uppercase tracking-widest mb-1">Vzorný nájemce říká:</div>
         <div class="text-sm font-semibold navy-t leading-snug">"Zaplatím vám nájem 1. den v měsíci. I&nbsp;když bude byt prázdný."</div>
         <!-- Špička bubliny -->
@@ -197,7 +195,7 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16 items-center relative z-10">
         <div class="lg:col-span-3">
             <!-- Trust chip -->
-            <div class="inline-flex items-center gap-2 bg-white shadow-md px-5 py-2.5 rounded-full mb-8">
+            <div class="inline-flex items-center gap-2 bg-white px-5 py-2.5 rounded-full mb-8">
                 <div class="w-2 h-2 teal rounded-full animate-pulse"></div>
                 <span class="navy-t uppercase tracking-widest text-xs font-black">Fungujeme 25+ let · Od 1999</span>
             </div>
@@ -244,14 +242,14 @@
         <!-- Kalkulator -->
         <div class="lg:col-span-2 relative">
             <!-- Floating badges -->
-            <div class="absolute -top-4 -right-4 z-10 coral text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-lg float-slow">
+            <div class="absolute -top-4 -right-4 z-10 coral text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full float-slow">
                 ⚡ Za 60 sekund
             </div>
-            <div class="absolute -bottom-6 -left-4 z-10 teal text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full shadow-lg float-slow-delay">
+            <div class="absolute -bottom-6 -left-4 z-10 teal text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full float-slow-delay">
                 ✓ Zdarma · Bez telefonátu
             </div>
 
-            <div class="bg-white rounded-3xl shadow-2xl p-8 relative border border-gray-100">
+            <div class="bg-white rounded-3xl p-8 relative border border-gray-100">
                 <div class="flex items-center justify-between mb-2">
                     <h3 class="text-2xl font-black navy-t">Kolik dostanu?</h3>
                     <div class="text-xs text-slate-500">Krok 2 / 3</div>
@@ -272,7 +270,7 @@
                         <label class="text-xs font-bold uppercase tracking-widest navy-t block mb-2">Dispozice</label>
                         <div class="grid grid-cols-4 gap-2">
                             <button class="bg-slate-50 py-2.5 rounded-xl text-sm font-bold navy-t hover:coral hover:text-white transition">1+kk</button>
-                            <button class="coral text-white py-2.5 rounded-xl text-sm font-bold shadow-md">2+kk</button>
+                            <button class="coral text-white py-2.5 rounded-xl text-sm font-bold">2+kk</button>
                             <button class="bg-slate-50 py-2.5 rounded-xl text-sm font-bold navy-t hover:coral hover:text-white transition">3+kk</button>
                             <button class="bg-slate-50 py-2.5 rounded-xl text-sm font-bold navy-t hover:coral hover:text-white transition">3+1</button>
                         </div>
@@ -334,7 +332,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="cream p-10 rounded-3xl lift">
                 <div class="flex items-center justify-between mb-6">
-                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg">01</div>
+                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl">01</div>
                     <div class="teal-light-bg teal-t text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">S námi: 0 %</div>
                 </div>
                 <h3 class="text-2xl font-black navy-t mb-3">Neplatič</h3>
@@ -346,7 +344,7 @@
             </div>
             <div class="cream p-10 rounded-3xl lift">
                 <div class="flex items-center justify-between mb-6">
-                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg">02</div>
+                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl">02</div>
                     <div class="teal-light-bg teal-t text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">S námi: 0 %</div>
                 </div>
                 <h3 class="text-2xl font-black navy-t mb-3">Zdevastovaný byt</h3>
@@ -358,7 +356,7 @@
             </div>
             <div class="cream p-10 rounded-3xl lift">
                 <div class="flex items-center justify-between mb-6">
-                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg">03</div>
+                    <div class="w-14 h-14 coral rounded-2xl flex items-center justify-center text-white font-black text-2xl">03</div>
                     <div class="teal-light-bg teal-t text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full">S námi: 0 h</div>
                 </div>
                 <h3 class="text-2xl font-black navy-t mb-3">Ukradený čas</h3>
@@ -388,25 +386,25 @@
             <div class="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 border-t-2 border-dashed coral-b opacity-30"></div>
 
             <div class="text-center relative bg-white rounded-3xl p-8 lift">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4 shadow-xl">1</div>
+                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">1</div>
                 <div class="text-xs uppercase tracking-widest teal-t font-black mb-2">15 minut</div>
                 <h3 class="text-xl font-black navy-t mb-3">Kontakt</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">Vyplníte formulář nebo zavoláte. Domluvíme si nezávaznou schůzku ve vašem bytě.</p>
             </div>
             <div class="text-center relative bg-white rounded-3xl p-8 lift">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4 shadow-xl">2</div>
+                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">2</div>
                 <div class="text-xs uppercase tracking-widest teal-t font-black mb-2">60 minut</div>
                 <h3 class="text-xl font-black navy-t mb-3">Prohlídka</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">Přijedeme se podívat, spočítáme reálný jistý nájem, řekneme co by pomohlo.</p>
             </div>
             <div class="text-center relative bg-white rounded-3xl p-8 lift">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4 shadow-xl">3</div>
+                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">3</div>
                 <div class="text-xs uppercase tracking-widest teal-t font-black mb-2">30 minut</div>
                 <h3 class="text-xl font-black navy-t mb-3">Smlouva</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">Podepíšeme nájemní smlouvu na 3–5 let. Máte 14 dní na rozmyšlenou.</p>
             </div>
             <div class="text-center relative bg-white rounded-3xl p-8 lift border-2 coral-b">
-                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4 shadow-xl">4</div>
+                <div class="w-16 h-16 coral rounded-full flex items-center justify-center text-white font-black text-2xl mx-auto mb-4">4</div>
                 <div class="text-xs uppercase tracking-widest coral-t font-black mb-2">Každý měsíc</div>
                 <h3 class="text-xl font-black navy-t mb-3">Nájem na účtu</h3>
                 <p class="text-sm text-slate-600 leading-relaxed">1. den v měsíci máte peníze. Bez ohledu na to, co dělá náš podnájemník.</p>
@@ -504,7 +502,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <!-- Správa -->
-            <div class="bg-white rounded-3xl p-10 shadow-lg lift">
+            <div class="bg-white rounded-3xl p-10 lift">
                 <div class="teal-light-bg teal-t font-black uppercase tracking-widest text-xs px-4 py-2 rounded-full inline-block mb-4">Správa</div>
                 <h3 class="text-3xl font-black navy-t mb-2">Chci mít klid</h3>
                 <p class="text-slate-600 mb-6">Najdeme, prověříme, spravujeme. Menší riziko na naší straně, větší výnos pro vás.</p>
@@ -523,7 +521,7 @@
             </div>
 
             <!-- Jistý nájem -->
-            <div class="navy text-white rounded-3xl p-10 shadow-2xl lift relative overflow-hidden">
+            <div class="navy text-white rounded-3xl p-10 lift relative overflow-hidden">
                 <div class="absolute -top-8 -right-8 w-40 h-40 coral rounded-full opacity-20 blur-2xl"></div>
                 <div class="relative">
                     <div class="coral text-white font-black uppercase tracking-widest text-xs px-4 py-2 rounded-full inline-block mb-4">⭐ Nejoblíbenější · Jistý nájem</div>
