@@ -11,17 +11,17 @@
         body { font-family: 'Inter', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
         .serif { font-family: 'Playfair Display', Georgia, serif; }
 
-        /* Palette K v2 — Airbnb Warmth refined */
+        /* Palette K v3 — decent, ale coral výrazná */
         :root {
-            --coral: #D9535A;         /* méně křiklavá coral */
-            --coral-hover: #C4444B;
-            --coral-light: #F9E6E5;
-            --teal: #2F7871;          /* tlumenější teal */
+            --coral: #E63946;         /* Poppy Coral — vivid, sophisticated */
+            --coral-hover: #C82F3B;
+            --coral-light: #FDE7E9;
+            --teal: #2F7871;          /* tlumenější teal, ať coral zazáří */
             --teal-hover: #245F59;
             --teal-light: #E4EFED;
             --navy: #2C3E50;
             --navy-hover: #1F2D3D;
-            --cream: #FBF7F2;         /* teplejší paper */
+            --cream: #FBF7F2;
             --warm-white: #FDFCFA;
             --sand: #F2EBE1;
         }
@@ -68,10 +68,11 @@
         .btn-primary {
             background: var(--coral);
             color: white;
-            padding: 14px 28px;
+            padding: 15px 30px;
             border-radius: 999px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 15px;
+            letter-spacing: 0.01em;
             transition: background .2s;
         }
         .btn-primary:hover { background: var(--coral-hover); }
@@ -171,7 +172,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="cream section-y relative overflow-hidden" style="padding-top: 60px">
-    <div class="blob coral" style="width: 400px; height: 400px; top: -150px; right: -200px; opacity: 0.06"></div>
+    <div class="blob coral" style="width: 450px; height: 450px; top: -150px; right: -180px; opacity: 0.12"></div>
     <div class="blob teal" style="width: 350px; height: 350px; bottom: -150px; left: -150px; opacity: 0.05"></div>
 
     <!-- Vzorný nájemce postava — plovoucí decorativně vlevo dole -->
@@ -195,7 +196,7 @@
             </div>
 
             <h1 class="text-5xl lg:text-6xl font-semibold navy-t mb-6 leading-[1.1] tracking-tight">
-                Ať váš byt pracuje.<br>
+                Ať váš byt <span class="coral-t">pracuje.</span><br>
                 <span class="serif italic teal-t font-medium">Vy dělejte jiné věci.</span>
             </h1>
 
@@ -298,7 +299,7 @@
             <div class="text-xs uppercase tracking-widest text-slate-500 mt-1">Obnovení smluv</div>
         </div>
         <div class="text-center md:text-left">
-            <div class="text-3xl font-semibold navy-t serif">4,8 ★</div>
+            <div class="text-3xl font-semibold coral-t serif">4,8 ★</div>
             <div class="text-xs uppercase tracking-widest text-slate-500 mt-1">120+ recenzí</div>
         </div>
     </div>
