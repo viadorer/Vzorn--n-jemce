@@ -605,11 +605,84 @@
                     <button id="reopenGate" class="inline-flex items-center gap-1 ml-2 px-2 py-1 rounded-full bg-yellow-600 text-white hover:bg-yellow-700">Odemknout kalkulačku</button>
                 </div>
             </div>
-            <div class="tabs">
+            <!-- Mode toggle: rychle vs detail -->
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-3" data-mode-wrap>
+                <div class="inline-flex p-1 bg-slate-100 rounded-full text-sm">
+                    <button type="button" data-mode="simple" class="px-4 py-2 rounded-full font-medium bg-white text-slate-900 shadow-sm">Rychlé posouzení</button>
+                    <button type="button" data-mode="detail" class="px-4 py-2 rounded-full font-medium text-slate-600">Detailní analýza</button>
+                </div>
+                <div class="text-sm text-slate-500">
+                    <span data-mode-hint="simple">4 klíčové otázky · orientační skóre</span>
+                    <span data-mode-hint="detail" class="hidden">20+ polí · přesná analýza rizika</span>
+                </div>
+            </div>
+
+            <div class="tabs" data-tabs-detail>
                 <button class="tab active" onclick="showTab(event, 'personal')">Osobní údaje</button>
                 <button class="tab" onclick="showTab(event, 'income')">Příjmy</button>
                 <button class="tab" onclick="showTab(event, 'expenses')">Výdaje & závazky</button>
                 <button class="tab" onclick="showTab(event, 'evaluation')">Vyhodnocení</button>
+            </div>
+
+            <!-- Rychlé posouzení: kompaktní formulář -->
+            <div id="simple-mode" class="tab-content active" style="display:none;">
+                <div class="section">
+                    <h3>Rychlé posouzení bonity</h3>
+                    <div class="info-text">
+                        Odpovězte na 4 klíčové otázky a dostanete orientační skóre. Pro přesnější analýzu přepněte na <button type="button" data-mode="detail" class="underline text-[#E63946] hover:opacity-80" style="background:none;border:none;padding:0;font:inherit;cursor:pointer;">Detailní analýzu</button>.
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="simpleRent">Měsíční nájemné (Kč)</label>
+                            <input type="number" id="simpleRent" placeholder="15000" min="0" oninput="syncSimpleToDetail()">
+                        </div>
+                        <div class="form-group">
+                            <label for="simpleIncome">Čistý měsíční příjem nájemníka (Kč)</label>
+                            <input type="number" id="simpleIncome" placeholder="45000" min="0" oninput="syncSimpleToDetail()">
+                        </div>
+                        <div class="form-group">
+                            <label for="simpleEmployment">Typ zaměstnání</label>
+                            <select id="simpleEmployment" onchange="syncSimpleToDetail()">
+                                <option value="">Vyberte typ</option>
+                                <option value="employee">Zaměstnanec (HPP)</option>
+                                <option value="contract">Zaměstnanec (DPP/DPČ)</option>
+                                <option value="selfemployed">OSVČ</option>
+                                <option value="pensioner">Důchodce</option>
+                                <option value="student">Student</option>
+                                <option value="unemployed">Nezaměstnaný</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="simpleRegistry">Má nájemník aktivní exekuci nebo insolvenci?</label>
+                            <select id="simpleRegistry" onchange="syncSimpleToDetail()">
+                                <option value="">Vyberte odpověď</option>
+                                <option value="not_checked">Nevím / neprověřeno</option>
+                                <option value="isir_clean">Prověřeno — bez záznamu</option>
+                                <option value="execution_found">Ano — má exekuci</option>
+                                <option value="insolvency">Ano — je v insolvenci</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- CTA: prověřit v rejstřících zdarma -->
+                    <div class="mt-6 rounded-xl bg-[#FBF7F2] border border-[#E63946]/20 p-4 flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#E63946]/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-[#E63946]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm font-semibold text-slate-900 mb-1">Nevíte, jestli má nájemník záznam?</div>
+                            <p class="text-sm text-slate-600 mb-3">Prověříme za vás v ISIR + CEE + ARES + Justice.cz. PDF report do 60 minut, jednou zdarma.</p>
+                            <a href="preverit-zajemce.html" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E63946] hover:underline">
+                                Prověřit zdarma
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button type="button" onclick="calculateBonita(); document.getElementById('bonitaScore')?.scrollIntoView({behavior:'smooth', block:'center'});" class="calculate-btn" style="max-width:280px;">Spočítat skóre</button>
+                    </div>
+                </div>
             </div>
 
             <!-- Osobní údaje -->
@@ -998,19 +1071,97 @@
         function showTab(event, tabName) {
             // Hide all tab contents
             const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
-            
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = '';
+            });
+
             // Remove active class from all tabs
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => tab.classList.remove('active'));
-            
+
             // Show selected tab content
             document.getElementById(tabName).classList.add('active');
-            
+
             // Add active class to clicked tab
             (event.currentTarget || event.target).classList.add('active');
         }
+
+        // Mode toggle: rychlé vs detailní posouzení
+        function setBonitaMode(mode) {
+            const isSimple = mode === 'simple';
+            document.querySelectorAll('[data-mode]').forEach(btn => {
+                const active = btn.getAttribute('data-mode') === mode;
+                if (btn.classList.contains('underline')) return; // inline link
+                btn.classList.toggle('bg-white', active);
+                btn.classList.toggle('text-slate-900', active);
+                btn.classList.toggle('shadow-sm', active);
+                btn.classList.toggle('text-slate-600', !active);
+            });
+            document.querySelectorAll('[data-mode-hint]').forEach(el => {
+                el.classList.toggle('hidden', el.getAttribute('data-mode-hint') !== mode);
+            });
+            const tabsBar = document.querySelector('[data-tabs-detail]');
+            if (tabsBar) tabsBar.style.display = isSimple ? 'none' : '';
+            // Hide all detail tabs
+            ['personal', 'income', 'expenses', 'evaluation'].forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (isSimple) {
+                    el.classList.remove('active');
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = '';
+                }
+            });
+            // Simple mode container
+            const simpleEl = document.getElementById('simple-mode');
+            if (simpleEl) {
+                if (isSimple) {
+                    simpleEl.style.display = '';
+                    simpleEl.classList.add('active');
+                } else {
+                    simpleEl.style.display = 'none';
+                    simpleEl.classList.remove('active');
+                    document.getElementById('personal')?.classList.add('active');
+                }
+            }
+            // v detail modu recalc, aby se zobrazily aktuální fieldy
+            if (typeof calculateBonita === 'function') try { calculateBonita(); } catch (_) {}
+            try { localStorage.setItem('bonitaMode', mode); } catch (_) {}
+        }
+
+        // Sync z jednoduchých polí do detailních (aby calculateBonita fungovala)
+        function syncSimpleToDetail() {
+            const map = {
+                simpleRent: 'monthlyRent',
+                simpleIncome: 'mainIncome',
+                simpleEmployment: 'employmentType',
+                simpleRegistry: 'creditRegistry'
+            };
+            for (const [from, to] of Object.entries(map)) {
+                const s = document.getElementById(from);
+                const d = document.getElementById(to);
+                if (!s || !d) continue;
+                d.value = s.value;
+            }
+            if (typeof calculateBonita === 'function') try { calculateBonita(); } catch (_) {}
+        }
         
+        // Init mode toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('[data-mode]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    setBonitaMode(btn.getAttribute('data-mode'));
+                });
+            });
+            // default = simple (nebo z localStorage)
+            let saved = 'simple';
+            try { saved = localStorage.getItem('bonitaMode') || 'simple'; } catch (_) {}
+            setBonitaMode(saved);
+        });
+
         // Show/hide guarantor section based on checkbox
         document.addEventListener('DOMContentLoaded', function() {
             const guarantorCheckbox = document.getElementById('hasGuarantor');
