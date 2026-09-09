@@ -3,6 +3,11 @@
 // Thin wrapper nad ISPIS Lustrace API (https://ispis.cz/lustrace/apidocs)
 // s vícevrstvou pojistkou proti svévolnému spálení kreditu.
 //
+// Business model (referenční — placený flow zatím není implementován):
+//   - Freemium:  1× zdarma / e-mail / měsíc přes /preverit-zajemce (magic link)
+//   - Placený:   79 Kč / lustrace (rozhodnuto 2026-09-09, čeká na Stripe/GoPay integraci)
+//   - Balíček:   případně 20× za 990 Kč (49,50 Kč/kus, 37 % sleva) — k diskusi
+//
 // Vrstvy obrany (v pořadí, jak se aplikují):
 //   1) Kill-switch ENV: bez ISPIS_ENABLED=true se ISPIS NIKDY nevolá
 //   2) Credentials check: bez ISPIS_USERNAME/PASSWORD se nevolá
