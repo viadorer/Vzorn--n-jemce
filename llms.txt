@@ -1,64 +1,119 @@
 # Vzorný nájemce
 
-> Online služba pro prověřování nájemníků. Ověření bonity, dluhů a spolehlivosti potenciálních nájemníků před podpisem smlouvy.
+> Jistý nájem pro majitele bytů: převezmeme váš byt do své správy, sami ho pronajmeme prověřenému nájemníkovi a vy dostáváte fixní částku na účet každý měsíc — i&nbsp;když nájemník nezaplatí, i&nbsp;když je byt prázdný.
+
+## Základní fakta
+
+- **Provozovatel:** PTF reality, s.r.o., IČO 06684394
+- **Skupina:** PTF reality — na trhu od roku 1999 (25+ let bez insolvence a bez restrukturalizace)
+- **Sídla:** Plzeň (Radyňská 33), Praha (Pod Turnovskou tratí 18), působíme také v Berouně
+- **Kontakt:** kontakt@vzornynajemce.cz &middot; +420 603 834 921 (Po–Pá 8:00–17:00)
+- **Web:** https://www.vzornynajemce.cz
+- **Klíčové číslo:** 2 750+ pronajatých bytů; 98 % majitelů prodlužuje smlouvu; 0 měsíců výpadku nájmu za historii spolupráce
+- **Právní forma vztahu:** nájemní smlouva mezi majitelem a Vzorným nájemcem (my jsme nájemník majitele; nájemníka bytu sháníme sami jako podnájem)
+
+## Nabídka (Grand Slam Offer)
+
+Souhrn: součet reálných tržních cen samostatných služeb činí 120–140 000 Kč/rok. Majitel místo toho platí rozdíl 15–20 % z tržního nájmu.
+
+- **Fixní měsíční nájem** — 5. dne v měsíci na účtu, ať se děje cokoliv
+- **Kompletní právní ochrana** — smlouva, výpověď, případný soud jdou na naše náklady
+- **Vyhledání a prověření nájemníka** — insolvence, exekuce, reference, zaměstnavatel
+- **Technická správa** — havárie, opravy, revize, kontroly bytu
+- **Účetní evidence** — roční přehled příjmů pro daňové přiznání
+- **Vrácení bytu v protokolárním stavu** — škody nad běžné opotřebení hradí Vzorný nájemce s.r.o.
+- **Předávací a odchodový protokol** — fotodokumentace vypracovaná naším technikem
+
+## Tři smluvní garance
+
+1. **Termín platby:** nájem 5. dne v měsíci, penále z prodlení dle smlouvy
+2. **Byt zpět v protokolárním stavu:** škody nad běžné opotřebení hradíme z vlastního (do 30 dnů od ukončení, dle protokolu)
+3. **Ukončení z vaší strany:** 3měsíční výpověď bez důvodu a bez penále
+
+## Jak to funguje (3 kroky)
+
+1. **Den 1 — 15minutový hovor:** projdeme byt a lokalitu, do 24 hodin dostanete konkrétní částku, kterou budeme každý měsíc posílat
+2. **Do 7 dní — prohlídka + smlouva:** technik nafotí byt a sepíše předávací protokol, podepíšeme nájemní smlouvu (osobně nebo online)
+3. **Od 2. měsíce — nájem na účtu:** peníze chodí 5. dne v měsíci; obsazenost a platby jsou náš problém
 
 ## Pro koho
-- Cílové skupiny: 1. INVESTOŘI (35-55 let): Koupili byt jako investici, nechtějí se starat, vlastní 1-3 byty. 2. DĚDICI: Zdědili nemovitost, nechtějí prodávat ani se starat, často v jiném městě. 3. EXPATI: Vlastní nemo...
-- Bolesti majitelů: Hlavní problémy: 1) Neplatící nájemníci. 2) Poškození nemovitosti. 3) Čas a starosti (5-15 h/měsíc). 4) Právní rizika. 5) Výpadky příjmu (1-3 měsíce mezi nájemníky). 6) Vzdálená správa. 7) Stres (volá...
 
-## Případové studie
-- Investor se 3 byty v Praze: Pan Novák (45) vlastnil 3 byty, sám pronajímal 5 let. 15 h/měsíc správa, 2× neplatič (ztráta 120 tis. Kč), vakance 2 měs/rok. Po předání Vzornému nájemci: garance 42 000 Kč/měsíc (vs. průměr 38 000 př...
-- Dědička bytu v jiném městě: Paní Svobodová (52) zdědila byt 2+1 v Brně, žije v Praze. Po roce vlastní správy: problémový nájemník, 3 měsíce dluh, poškozená koupelna. Po předání: garance 13 500 Kč/měsíc, byt opravený, pravidelný ...
-- Senior s volným bytem: Pan Dvořák (72) se přestěhoval k dceři, byt 3+1 v Ostravě prázdný. Garance 11 000 Kč/měsíc, peníze na účtu 15. každého měsíce. "Konečně mám klid. Nemusím nikomu volat, nic řešit."
-- Expat v Londýně: Tomáš (38) pracuje v Londýně, byt 2+kk na Praze 5. Správa na dálku byla noční můra. Po předání: online dashboard, garance 16 800 Kč/měsíc. "Podívám se na dashboard jednou za měsíc. Vše funguje."
+- **Investoři** (35–55 let), kteří vlastní 1–3 byty a nechtějí se starat
+- **Dědici** nemovitosti v jiném městě
+- **Expati** s bytem v ČR, žijící v zahraničí
+- **Senioři**, kteří se přestěhovali z bytu a nechtějí ho prodat
+- Obecně majitelé, kteří chtějí **stabilní příjem bez rizika** a bez správcovské agendy
 
-## Data a statistiky
-- Statistiky nájemního trhu ČR 2026: 1,2 mil. domácností v nájmu (28 %). Průměrný nájem 2+kk: Praha 24 tis., Brno 18 tis., Ostrava 12 tis. Meziroční růst 5-8 %. Průměrná vakance: 1,5 měs/rok. Podíl problémových nájemníků: 8-12 %.
-- Ekonomika jistého nájmu: Srovnání za 3 roky (2+kk Praha, tržní 20 000 Kč): VLASTNÍ SPRÁVA: 720 tis. hrubý - 90 tis. vakance - 40 tis. neplatič - 108 tis. čas = 482 tis. čistý. GARANCE (17 000): 612 tis. - 0 - 0 - 0 = 612 tis....
-- Rizika samostatného pronájmu: 8-12 % nájemníků přestane platit. Vystěhování neplatiče: 6-12 měsíců soudně. Průměrná škoda: 30-80 tis. Kč. 15 % majitelů zažilo poškození nad 50 tis. Vakance 1,5 měs/rok. Právní náklady: 20-60 tis. K...
-- Výnosnost pronájmu v ČR 2026: Hrubá výnosnost: Praha 3,5-4,5 %, Brno 4,5-5,5 %, Ostrava 6-8 %, Plzeň 4-5,5 %. S garancí nižší o 10-15 %, ale STABILNÍ a BEZRIZIKOVÁ. Reálná výnosnost po rizicích často VYŠŠÍ.
+## Bolesti majitelů (kterými se web zabývá)
 
-## Časté otázky
-- Kolik budu dostávat?: Jistý nájem je 85-90 % tržního nájmu. Příklad: tržní nájem 18 000 Kč → garance 15 300-16 200 Kč/měsíc. Rozdíl pokrývá správu, riziko a výpadky. Dostáváte méně, ale KAŽDÝ měsíc bez výjimky.
-- Na jak dlouho je smlouva?: Standardně 3 roky, minimum 2 roky. Výpovědní lhůta 3 měsíce. Po skončení můžete prodloužit, převzít nájemníka, nebo nemovitost převzít zpět.
-- Co když nájemník neplatí?: To je náš problém, ne váš. Vy dostáváte jistý nájem bez ohledu na platby nájemníka. Máme screening, kauce 2 měsíce, pojištění a právní oddělení.
-- Kdo platí opravy?: Drobné opravy do 2 000 Kč jsou v ceně. Větší opravy hradí majitel, ale my koordinujeme - vybereme řemeslníka, dohlédneme na kvalitu. Havárie řešíme okamžitě. Vše s fotodokumentací.
-- Mohu nemovitost prodat?: Ano. Nový majitel může převzít smlouvu (výhoda - okamžitý příjem), nebo ji ukončíme s 3měsíční výpovědní lhůtou. Jistý nájem může zvýšit prodejní cenu.
-- Jaké nemovitosti přijímáte?: Byty a domy v dobrém stavu v Praze a krajských městech. Funkční rozvody, bez závažných vad, platný PENB. Před podpisem provedeme bezplatnou prohlídku a ocenění.
-- Jak prověřujete nájemníky?: 5stupňový screening: 1) Ověření identity. 2) Kontrola příjmu (min. 3× nájem). 3) Registry dlužníků (SOLUS, CRIBIS). 4) Reference od předchozího pronajímatele. 5) Osobní pohovor. Odmítáme cca 30 % žada...
+- **Neplatič:** průměrné soudní vystěhování 540 dní starým řízením; nový „rozkaz k vyklizení" (od 7/2025) 6–8 týdnů bez odporu, s odporem 6–12 měsíců
+- **Právní náklady:** 35–90 000 Kč (advokát, soud, exekutor)
+- **Fyzické vystěhování:** od 40 000 Kč (firma, výměna zámků, hloubkový úklid)
+- **Ušlé nájemné:** modelově 423 000 Kč (Praha 2+kk, 23 500 Kč × 18 měsíců)
+- **Poškození bytu:** 15–30 000 Kč (výmalba, hloubkový úklid — kauce padne na dluh)
+- **Souhrnný nejhorší scénář:** ~500 000 Kč a rok a půl času
 
-## Obecné informace
-- O společnosti: Vzorný nájemce je česká společnost specializující se na jistý nájem a profesionální správu nemovitostí. Působíme v Praze a krajských městech. Mise: Přeměnit pronájem z noční můry na pasivní příj...
-- Proč pronájem místo prodeje: 5 důvodů: 1) Pasivní příjem. 2) Růst hodnoty 5-8 %/rok. 3) Inflační ochrana. 4) Daňové výhody (odpisy, paušál). 5) Dědictví. S jistým nájmem všechny výhody BEZ nevýhod.
+## Případové studie (anonymizované)
 
-## Právní informace
-- Právní rámec nájmu v ČR: Nájemní smlouva písemně pro dobu > 1 rok. Výpovědní lhůta 3 měsíce. Kauce max 3 nájmy (standardně 2). Vystěhování pouze soudně (6-12 měsíců). Majitel nesmí vstoupit bez souhlasu. Drobné opravy nájemní...
-- Daňové aspekty pronájmu: Daň 15 % (FO) nebo 21 % (PO). Paušální výdaje 30 %. Skutečné: odpisy, opravy, pojištění, správa, úroky. DPH osvobozeno. Sociální/zdravotní neplatí (pokud není hlavní činnost). Poplatek za jistý ...
+- **Plzeň-Bory, 2+kk 48 m²** — dlouhodobá správa od 2022, **0 dní** bez nájemníka za 3 roky. Majitelka žije v Itálii.
+- **Praha-Hostivař, 3+1 72 m²** — rychlá výměna 2024, nový nájemník **11 dní** po odchodu předchozího.
+- **Beroun, 1+1 38 m²** — převzetí problému 2023, **6 týdnů** od převzetí k novému nájmu; předchozí nájemník neplatil 5 měsíců.
 
-## Trh
-- Trendy nájemního trhu 2026: 1) Růst nájmů 5-8 %. 2) Profesionalizace (build-to-rent). 3) Regulace posiluje ochranu nájemníků. 4) Digitalizace správy. 5) ESG a energetická náročnost. 6) Remote work - poptávka po větších bytech. G...
-- Build-to-rent trend: BTR je globální trend: projekty stavěné k pronájmu. V ČR: Heimstaden, Mint Investments, Trigema Rent. Individuální majitelé soutěží s profesionály. Vzorný nájemce je cesta, jak konkurovat BTR bez vlas...
+## Nejčastější námitky (Q&A)
 
-## Jak to funguje
-- Jak začít s Vzorným nájemcem: 1) KONTAKT: Formulář nebo telefon. 2) PROHLÍDKA: Zhodnotíme stav a potenciál. 3) NABÍDKA: Do 48 hodin jistá výše nájmu. 4) SMLOUVA: 2-5 let, jasné podmínky. 5) PŘEDÁNÍ: Protokol s fotodokumentac...
-- Screening nájemníků: 5 stupňů: 1) Ověření identity. 2) Potvrzení příjmu (min. 3× nájem). 3) Registry dlužníků (SOLUS, CRIBIS, exekuce). 4) Reference od předchozího pronajímatele. 5) Osobní pohovor. Odmítáme 30 % žadatelů.
-- Po podpisu smlouvy: Měsíc 1: Předání, fotodokumentace, drobné úpravy. Měsíc 1-2: Inzerce, prohlídky, screening. Měsíc 2-3: Smlouva s nájemníkem, předání. Průběžně: Nájem na účtu 15. každého měsíce. Čtvrtletně: Kontrola...
+- **Kolik budu dostávat?** Jistý nájem je 80–90 % tržního nájmu. Rozdíl pokrývá správu, riziko výpadků a služby v hodnotě 120–140 000 Kč/rok. Konkrétní částka pro váš byt na schůzce.
+- **A když si to rozmyslím?** 3 měsíce výpověď z vaší strany, bez důvodu, bez penále. Stejná lhůta jako u běžného nájemníka podle občanského zákoníku.
+- **Co když nájemník poškodí byt víc než kauce?** Škody nad běžné opotřebení hradí přímo Vzorný nájemce s.r.o. Kauce je jen záloha. Protokol dělá náš technik s časovou fotodokumentací.
+- **Není to drahé?** Za rozdíl 15–20 % z nájmu nemáte 60 000 Kč rizika ušlého nájemného, 24 000 Kč advokáta, 30 000 Kč správy, 8 000 Kč účetní — plus rezervu 350 000 Kč pro případ neplatiče.
+- **Co když zkrachujete?** PTF reality funguje od 1999, 25 let bez insolvence. Nájem chodil krizí 2008, covidem 2020 i energetickou krizí 2022–2023.
+- **Kdo bude bydlet v mém bytě?** Prověřujeme v 6 rejstřících (insolvence, exekuce, zaměstnavatel, reference) a vy nájemníka schvalujete před podpisem podnájemní smlouvy.
+- **Na jak dlouho je smlouva?** Standardně 2–5 let, výpovědní lhůta 3 měsíce. 98 % klientů prodlužuje.
+- **Kdo platí opravy?** Drobné opravy do 2 000 Kč jsou v ceně. Větší opravy hradí majitel, ale koordinuje je Vzorný nájemce.
+- **Mohu byt prodat?** Ano. Nový majitel může převzít smlouvu (výhoda — okamžitý příjem), nebo smlouvu ukončíme s 3měsíční výpovědní lhůtou.
 
-## Služby
-- Co je Vzorný nájemce: Vzorný nájemce je služba jistého nájmu pro majitele bytů a domů. Fungujeme jako prostředník mezi majitelem a nájemníkem. Majitel pronajme nemovitost nám a my vyplácíme pravidelný měsíční nájem...
-- Jistý nájem - jak to funguje: Princip: 1) Majitel podepíše smlouvu na 2-5 let. 2) Vyplácíme fixní měsíční nájem (85-90 % tržního). 3) Nájem přichází každý měsíc bez výjimky. 4) Najdeme a prověříme nájemníky. 5) Řešíme komunikaci...
-- Správa nemovitosti v ceně: V rámci jistého nájmu zajišťujeme: hledání a prověřování nájemníků, přípravu smluv, předávací protokoly s fotodokumentací, pravidelné kontroly stavu (1× za 3 měsíce), běžnou údržbu a drobné opra...
-- Pojištění a ochrana nemovitosti: Každá nemovitost ve správě je chráněna: pojištění odpovědnosti za škody, kauce 2 měsíční nájmy na escrow účtu, fotodokumentace při předání a vrácení, pravidelné kontroly, smluvní závazek vrácení v pův...
+## Lead magnet: Prověření zájemce zdarma
 
-## Klíčové výhody
-- Proč Vzorný nájemce: Výhody: 1) JISTOTA NÁJMU - platíme i když je byt prázdný. 2) NULOVÉ STAROSTI - kompletní správa. 3) PROVĚŘENÍ NÁJEMNÍCI - důkladný screening. 4) PRÁVNÍ JISTOTA - profesionální smlouvy. 5) PRAVIDELNÉ K...
-- Rozdíl oproti konkurenci: Vlastní pronájem: Vyšší nájem, ale riziko neplacení, výpadky, 5-15 h/měsíc práce. Realitní kancelář: Najdou nájemníka za provizi, pak jste sami. Správcovská firma: Spravují za 8-15 % nájmu, ale NEGARA...
+Pro nerozhodnuté majitele: pošleme zdarma PDF report ze 4 rejstříků (Insolvenční, ARES, Centrální evidence exekucí, Justice.cz) pro jednoho zájemce o nájem. Do 60 minut v pracovní době. Postup:
 
-## FAQ
-- Kolik budu dostávat? Jistý nájem je 85-90 % tržního nájmu. Příklad: tržní nájem 18 000 Kč → garance 15 300-16 200 Kč/měsíc. Rozdíl pokrývá správu, riziko a výpadky. Dostáváte méně, ale KAŽDÝ měsíc bez výjimky.
-- Na jak dlouho je smlouva? Standardně 3 roky, minimum 2 roky. Výpovědní lhůta 3 měsíce. Po skončení můžete prodloužit, převzít nájemníka, nebo nemovitost převzít zpět.
-- Co když nájemník neplatí? To je náš problém, ne váš. Vy dostáváte jistý nájem bez ohledu na platby nájemníka. Máme screening, kauce 2 měsíce, pojištění a právní oddělení.
-- Kdo platí opravy? Drobné opravy do 2 000 Kč jsou v ceně. Větší opravy hradí majitel, ale my koordinujeme - vybereme řemeslníka, dohlédneme na kvalitu. Havárie řešíme okamžitě. Vše s fotodokumentací.
-- Mohu nemovitost prodat? Ano. Nový majitel může převzít smlouvu (výhoda - okamžitý příjem), nebo ji ukončíme s 3měsíční výpovědní lhůtou. Jistý nájem může zvýšit prodejní cenu.
-- Jaké nemovitosti přijímáte? Byty a domy v dobrém stavu v Praze a krajských městech. Funkční rozvody, bez závažných vad, platný PENB. Před podpisem provedeme bezplatnou prohlídku a ocenění.
-- Jak prověřujete nájemníky? 5stupňový screening: 1) Ověření identity. 2) Kontrola příjmu (min. 3× nájem). 3) Registry dlužníků (SOLUS, CRIBIS). 4) Reference od předchozího pronajímatele. 5) Osobní pohovor. Odmítáme cca 30 % žadatelů.
+1. Majitel zadá svůj e-mail na `/preverit-zajemce`
+2. Pošleme mu magic link (HMAC token, platnost 48 h)
+3. Vyplní jméno + datum narození zájemce + kontakt
+4. Do 60 min přijde PDF report
+
+## Kalkulačky
+
+- `/kalkulator-trzniho-najemneho` — odhad tržního nájmu (cemap.cz widget, PSČ + parametry bytu)
+- `/kalkulator-skrytych-nakladu` — skryté náklady vlastní správy
+
+## Ceník a alternativy k jistému nájmu
+
+- **Jistý nájem** — fixní částka od nás, my neseme veškeré riziko (hlavní produkt)
+- **Správa** — my zajišťujeme celou správu, ale výnos se dělí (majitel bere vyšší tržní nájem, ale nese riziko výpadků)
+- **Jen vyhledání nájemníka zdarma** — pro majitele, kteří chtějí správu zůstat sami
+
+Konkrétní čísla na `/cenik` a na schůzce.
+
+## Odkazy pro AI vyhledávače
+
+- Homepage: https://www.vzornynajemce.cz/
+- Ceník a modelové výpočty: https://www.vzornynajemce.cz/cenik
+- Kalkulačka tržního nájmu: https://www.vzornynajemce.cz/kalkulator-trzniho-najemneho
+- Kalkulačka skrytých nákladů: https://www.vzornynajemce.cz/kalkulator-skrytych-nakladu
+- O službě: https://www.vzornynajemce.cz/o-sluzbe
+- Prověřit zájemce zdarma: https://www.vzornynajemce.cz/preverit-zajemce
+- Bonita nájemníka (kalkulačka): https://www.vzornynajemce.cz/bonita_najemnika
+- Problémový nájemník (řešení): https://www.vzornynajemce.cz/problemovy-najemnik
+- Aktuální nabídky pronájmů: https://www.vzornynajemce.cz/pronajmy
+- Blog: https://www.vzornynajemce.cz/blog/
+- GDPR: https://www.vzornynajemce.cz/gdpr
+- Cookies: https://www.vzornynajemce.cz/cookies
+- Obchodní podmínky: https://www.vzornynajemce.cz/obchodni-podminky
+- Sitemap: https://www.vzornynajemce.cz/sitemap.xml
+- Strukturovaná AI-data (JSON-LD): https://www.vzornynajemce.cz/ai-data.json
+
+## Jazyk a lokalizace
+
+- Web je v češtině (cs-CZ)
+- Působíme výhradně v České republice (aktuálně Plzeň, Praha, Beroun)
+
+Poslední aktualizace: 2026-09-09

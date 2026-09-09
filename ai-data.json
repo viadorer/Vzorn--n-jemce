@@ -1,56 +1,146 @@
 {
   "@context": "https://schema.org",
-  "generatedAt": "2026-03-23T08:03:31.283Z",
-  "generatedBy": "Hugo Orchestrator AIO Engine",
-  "projectType": "html",
-  "schemas": {
-    "organization": {
-      "@context": "https://schema.org",
+  "generatedAt": "2026-09-09T00:00:00.000Z",
+  "@graph": [
+    {
       "@type": "Organization",
+      "@id": "https://www.vzornynajemce.cz/#organization",
       "name": "Vzorný nájemce",
-      "description": "Online služba pro prověřování nájemníků. Ověření bonity, dluhů a spolehlivosti potenciálních nájemníků před podpisem smlouvy.",
+      "legalName": "PTF reality, s.r.o.",
+      "url": "https://www.vzornynajemce.cz",
+      "logo": "https://www.vzornynajemce.cz/images/logo.png",
+      "foundingDate": "1999",
+      "vatID": "CZ06684394",
+      "taxID": "06684394",
+      "description": "Jistý nájem pro majitele bytů: převezmeme byt do vlastní správy a majitel dostává fixní částku každý měsíc, i když nájemník nezaplatí.",
+      "areaServed": [
+        { "@type": "City", "name": "Plzeň" },
+        { "@type": "City", "name": "Praha" },
+        { "@type": "City", "name": "Beroun" }
+      ],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Radyňská 33",
+          "addressLocality": "Plzeň",
+          "postalCode": "326 00",
+          "addressCountry": "CZ"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Pod Turnovskou tratí 18",
+          "addressLocality": "Praha",
+          "postalCode": "198 00",
+          "addressCountry": "CZ"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+420603834921",
+        "email": "kontakt@vzornynajemce.cz",
+        "availableLanguage": ["cs"],
+        "hoursAvailable": "Mo-Fr 08:00-17:00"
+      },
       "sameAs": [
         "https://vzornynajemce.cz"
       ],
-      "keywords": "Vzorný nájemce, prověření nájemníka, bonita nájemníka, insolvence, exekuce, pronajímatel, pronájem bytu, neplatič, InvestCzech"
+      "keywords": "jistý nájem, správa nemovitostí, pronájem bytu, prověření nájemníka, garance nájmu, PTF reality, subnájem, insolvence, exekuce"
     },
-    "faq": {
-      "@context": "https://schema.org",
+    {
+      "@type": "Service",
+      "@id": "https://www.vzornynajemce.cz/#service-jisty-najem",
+      "name": "Jistý nájem",
+      "serviceType": "Guaranteed rent / subletting service",
+      "provider": { "@id": "https://www.vzornynajemce.cz/#organization" },
+      "areaServed": { "@type": "Country", "name": "Česká republika" },
+      "audience": { "@type": "Audience", "audienceType": "Majitelé bytů" },
+      "description": "Vzorný nájemce si od majitele pronajme byt na dlouhodobou smlouvu a sám ho pronajme prověřenému podnájemníkovi. Majitel dostává fixní částku 5. dne v měsíci bez ohledu na obsazenost nebo platby podnájemníka. Součástí je právní ochrana, technická správa, vyhledání a prověření nájemníka, účetní evidence a vrácení bytu v protokolárním stavu.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "CZK",
+        "eligibleCustomerType": "Owner of a residential apartment",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.vzornynajemce.cz/#service-preverit",
+      "name": "Prověření zájemce o nájem",
+      "serviceType": "Tenant screening in public registers",
+      "provider": { "@id": "https://www.vzornynajemce.cz/#organization" },
+      "areaServed": { "@type": "Country", "name": "Česká republika" },
+      "audience": { "@type": "Audience", "audienceType": "Pronajímatelé bytů" },
+      "description": "Bezplatné prověření jednoho zájemce o nájem v Insolvenčním rejstříku, ARES, Centrální evidenci exekucí a Justice.cz. PDF report do 60 minut v pracovní době.",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CZK",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
       "@type": "FAQPage",
+      "@id": "https://www.vzornynajemce.cz/#faq",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Co je Vzorný nájemce?",
+          "name": "Kolik budu dostávat s jistým nájmem?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vzorný nájemce je služba, která se specializuje na správu nemovitostí s garancí nájmu. Umožňuje majitelům pronajmout byt bez starostí."
+            "text": "Jistý nájem je typicky 80–90 % tržního nájmu. Rozdíl 15–20 % pokrývá kompletní správu, právní ochranu, technický servis a účetní evidenci (souhrnná tržní hodnota 120–140 000 Kč/rok), plus rezervu na výpadky a poškození. Konkrétní částku pro váš byt spočítáme na schůzce."
           }
         },
         {
           "@type": "Question",
-          "name": "Od kdy Vzorný nájemce funguje?",
+          "name": "Co když si to rozmyslím a chci byt zpátky?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vzorný nájemce funguje od roku 1999."
+            "text": "3 měsíce výpověď z vaší strany, bez důvodu, bez penále. To je stejná lhůta, kterou vám dává občanský zákoník u běžného nájemníka."
           }
         },
         {
           "@type": "Question",
-          "name": "V jakých lokalitách Vzorný nájemce působí?",
+          "name": "Co když nájemník poškodí byt víc, než pokryje kauce?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vzorný nájemce působí v Plzni, Praze a Berouně."
+            "text": "Škody nad rámec běžného opotřebení hradí přímo Vzorný nájemce s.r.o. Kauce je jen záloha. Předávací a odchodový protokol dělá náš technik s časovou fotodokumentací a majitel má 30 dní na reklamaci."
           }
         },
         {
           "@type": "Question",
-          "name": "Jak mohu kontaktovat Vzorného nájemce?",
+          "name": "Co když Vzorný nájemce / PTF reality zkrachuje?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Vzorného nájemce lze kontaktovat telefonicky na čísle +420603834921 nebo e-mailem na vzornynajemce@ptf.cz."
+            "text": "PTF reality funguje od roku 1999 — 25 let bez insolvence a bez restrukturalizace. Nájem chodil majitelům každý měsíc krizí 2008, covidem 2020 i energetickou krizí 2022–2023."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kdo bude bydlet v mém bytě? Můžu si vybrat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nájemníka prověřujeme v 6 rejstřících (insolvence, exekuce, zaměstnavatel, reference) a majitel ho schvaluje před podpisem podnájemní smlouvy. Pokud nesedí, hledáme dál."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jak dlouho trvá vystěhování neplatiče v ČR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Průměr starým soudním řízením je 540 dní. Nový 'rozkaz k vyklizení' od 7/2025 zkracuje na 6–8 týdnů bez odporu, s odporem 6–12 měsíců. S jistým nájmem od Vzorného nájemce riziko na majitele nedopadá — nájemné chodí bez ohledu na to, co se s podnájemníkem děje."
           }
         }
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.vzornynajemce.cz/#website",
+      "url": "https://www.vzornynajemce.cz",
+      "name": "Vzorný nájemce",
+      "inLanguage": "cs-CZ",
+      "publisher": { "@id": "https://www.vzornynajemce.cz/#organization" }
     }
-  }
+  ]
 }

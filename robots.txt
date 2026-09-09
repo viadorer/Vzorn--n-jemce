@@ -1,6 +1,99 @@
+# robots.txt pro vzornynajemce.cz
+# Cíl: povolit indexaci klasickými i AI vyhledávači, chránit interní / testovací stránky.
+# Zdroj: https://www.vzornynajemce.cz/robots.txt
+
+# ============================================
+# Standard vyhledávače (Google, Bing, Seznam …)
+# ============================================
 User-agent: *
 Allow: /
 Disallow: /klientska-zona.html
 Disallow: /test.html
+Disallow: /paleta.html
+Disallow: /preview-barvy.html
+Disallow: /preview-varianta-k-final.html
+Disallow: /preview-varianty-drive.html
+Disallow: /preview-varianty-hij.html
+Disallow: /Tah%C3%A1k*
+Disallow: /api/
+Disallow: /*?token=
+Disallow: /*?access=
+Disallow: /*&token=
 
+# ============================================
+# AI / LLM crawlery — explicitně povoleno
+# ============================================
+
+# OpenAI (ChatGPT, SearchGPT, GPT training data)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google Gemini / Bard / Vertex AI training
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity (AI search)
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI (Llama, Meta AI search)
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Amazon (Alexa, Nova, Bedrock training)
+User-agent: Amazonbot
+Allow: /
+
+# Common Crawl — základ pro mnoho LLM datasetů
+User-agent: CCBot
+Allow: /
+
+# You.com / Cohere
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Bytespider (ByteDance / TikTok / Doubao)
+User-agent: Bytespider
+Allow: /
+
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# ============================================
+# Sitemapy a strojově čitelné zdroje
+# ============================================
 Sitemap: https://www.vzornynajemce.cz/sitemap.xml
