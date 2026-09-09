@@ -17,6 +17,7 @@ const SENDER_NAME = 'Vzorný nájemce — Prověření zájemce';
 
 // Verifikace přístupového tokenu (magic link z /api/preverit-request-access)
 import crypto from 'crypto';
+import { lustraceSearchSubject, summarize, isConfigured as ispisConfigured } from './_ispis.js';
 const ACCESS_LINK_SECRET = process.env.ACCESS_LINK_SECRET || 'dev-only-secret-please-set-in-vercel-env';
 
 function verifyAccessToken(email, token) {
@@ -219,8 +220,53 @@ export default async function handler(req, res) {
     'www.vzornynajemce.cz',
   ].filter(Boolean).join('\n');
 
+  // ---- Auto-lustrace přes ISPIS (pokud je nakonfigurováno) ----
+  // Voláme paralelně proti insolvenčnímu rejstříku (ISIR) a evidenci exekucí (CEE).
+  // Výsledky přidáme do interní notifikace. Selhání není fatální — mail chodí i tak.
+  let ispisText = '';
+  let ispisSummary = null;
+  if (ispisConfigured()) {
+    // Formát datumu pro ISPIS: dd.MM.yyyy
+    let narozen = '';
+    if (candidateDob && /^\d{4}-\d{2}-\d{2}$/.test(candidateDob)) {
+      const [y, m, d] = candidateDob.split('-');
+      narozen = `${d}.${m}.${y}`;
+    }
+    const nameParts = candidateName.split(/\s+/);
+    const firstName = nameParts.slice(0, -1).join(' ') || nameParts[0] || '';
+    const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
+    const subject = type === 'fyzicka'
+      ? { Jmeno: firstName, Prijmeni: lastName, Narozen: narozen }
+      : { IC: candidateIc };
+
+    const profiles = type === 'fyzicka' ? ['ISIR', 'CEE'] : ['ISIR', 'Zakladni'];
+    try {
+      const results = await Promise.allSettled(
+        profiles.map(p => lustraceSearchSubject(subject, p).then(r => ({ profile: p, ...r })))
+      );
+      ispisSummary = results.map(r => r.status === 'fulfilled' ? r.value : { profile: '?', ok: false, error: String(r.reason) });
+      ispisText = [
+        '',
+        'AUTOMATICKÁ LUSTRACE (ISPIS)',
+        '=================================================',
+        ...ispisSummary.map(r => {
+          if (!r.ok) return `  ${r.profile}: CHYBA — ${r.error || 'neznámá'}`;
+          const s = summarize(r.data);
+          return `  ${r.profile}: ${s.summary}${s.hasRecord ? '  ⚠️ ZKONTROLOVAT' : ''}`;
+        }),
+        '',
+        '  RAW JSON odpovědi v příloze / logs Vercel.',
+      ].join('\n');
+    } catch (e) {
+      ispisText = `\nAUTOMATICKÁ LUSTRACE (ISPIS): SELHALA — ${String(e).slice(0, 200)}\n`;
+    }
+  } else {
+    ispisText = '\nAUTOMATICKÁ LUSTRACE: ISPIS_USERNAME/PASSWORD nejsou nastavené, prověření je manuální.\n';
+  }
+
   // ---- Send via Brevo (or skip if not configured) ----
   let internalSent = false, confirmSent = false, errorDetail = null;
+  const internalTextWithIspis = internalText + '\n' + ispisText;
 
   if (BREVO_API_KEY) {
     const headers = {
@@ -236,7 +282,7 @@ export default async function handler(req, res) {
           to: [{ email: RECIPIENT }],
           replyTo: { email: requesterEmail, name: requesterName || requesterEmail },
           subject: internalSubject,
-          textContent: internalText,
+          textContent: internalTextWithIspis,
         }),
       });
       internalSent = r1.ok;
@@ -262,13 +308,15 @@ export default async function handler(req, res) {
   } else {
     // Žádný klíč: zalogovat pro audit / pozdější doručení
     console.log('[Preverit] No BREVO_API_KEY — submission logged only:');
-    console.log(internalText);
+    console.log(internalTextWithIspis);
   }
 
   // Vždy success pro uživatele — interní zpracování může jet asynchronně
   return res.status(200).json({
     success: true,
     message: 'Žádost přijata. Brzy se vám ozveme s PDF reportem.',
-    debug: BREVO_API_KEY ? { internalSent, confirmSent, errorDetail } : { reason: 'no-api-key-logged-only' },
+    debug: BREVO_API_KEY
+      ? { internalSent, confirmSent, errorDetail, ispis: ispisSummary ? ispisSummary.map(r => ({ profile: r.profile, ok: r.ok, error: r.error })) : null }
+      : { reason: 'no-api-key-logged-only' },
   });
 }
