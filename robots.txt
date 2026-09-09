@@ -29,11 +29,15 @@ Disallow: /*&token=
 # Public API endpoints (JSON pro AI) — allow
 Allow: /api/ai-index
 Allow: /api/health
+Allow: /api/indexnow
 Allow: /api/properties
 Allow: /api/property
 Allow: /api/blog
 Allow: /api/blog-post
 Allow: /api/filters
+
+# IndexNow key file (Bing/Yandex/Seznam/Naver okamžité oznámení)
+Allow: /8cc2a4e98add5f3f32426828652b141a.txt
 
 # ============================================
 # AI / LLM crawlery — explicitně povoleno
