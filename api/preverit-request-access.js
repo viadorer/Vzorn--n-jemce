@@ -15,8 +15,11 @@
 import crypto from 'crypto';
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const FROM_EMAIL = process.env.LEAD_FROM_EMAIL || 'kontakt@vzornynajemce.cz';
-const RECIPIENT_EMAIL = process.env.LEAD_RECIPIENT_EMAIL || 'kontakt@vzornynajemce.cz';
+// Pozor: nepoužíváme ENV var pro sender/recipient — na Vercelu byl v ENV překlep
+// (vzronynajemce.cz místo vzornynajemce.cz), který způsoboval odmítnutí odesílání
+// v Brevo. Adresy jsou zafixované zde.
+const FROM_EMAIL = 'kontakt@vzornynajemce.cz';
+const RECIPIENT_EMAIL = 'kontakt@vzornynajemce.cz';
 const SECRET = process.env.ACCESS_LINK_SECRET || 'dev-only-secret-please-set-in-vercel-env';
 const TTL_HOURS = parseInt(process.env.ACCESS_LINK_TTL_HOURS || '48', 10);
 const BASE_URL = process.env.PUBLIC_BASE_URL || 'https://www.vzornynajemce.cz';

@@ -8,8 +8,11 @@
 // a vrátí se success. Tím se forms na frontu neblokuje při nedokončeném setupu.
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const RECIPIENT = process.env.SCREENING_RECIPIENT_EMAIL || 'kontakt@vzornynajemce.cz';
-const SENDER_EMAIL = process.env.SCREENING_FROM_EMAIL || 'noreply@vzornynajemce.cz';
+// Pozor: nepoužíváme ENV var pro sender/recipient — na Vercelu byl v ENV překlep
+// (vzronynajemce.cz místo vzornynajemce.cz), který způsoboval odmítnutí odesílání
+// v Brevo. Adresy jsou zafixované zde.
+const RECIPIENT = 'kontakt@vzornynajemce.cz';
+const SENDER_EMAIL = 'kontakt@vzornynajemce.cz';
 const SENDER_NAME = 'Vzorný nájemce — Prověření zájemce';
 
 // Verifikace přístupového tokenu (magic link z /api/preverit-request-access)
