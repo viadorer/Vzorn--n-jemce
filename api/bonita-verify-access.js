@@ -14,23 +14,41 @@ const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const FROM_EMAIL = 'kontakt@vzornynajemce.cz';
 const RECIPIENT_EMAIL = 'kontakt@vzornynajemce.cz';
 
-function verifyBonitaPassword(email, password) {
-    if (typeof email !== 'string' || !email || typeof password !== 'string' || !password) {
-        return { ok: false, reason: 'missing' };
-    }
+// URL-safe base64 decode
+function b64urlDecode(s) {
+    if (typeof s !== 'string') return '';
+    const norm = s.replace(/-/g, '+').replace(/_/g, '/');
+    const pad = norm.length % 4 === 0 ? '' : '='.repeat(4 - (norm.length % 4));
+    try { return Buffer.from(norm + pad, 'base64').toString('utf-8'); } catch { return ''; }
+}
+
+// Ověření hesla — email si extrahujeme z tokenu (uživatel ho nezadává)
+// Token format: <expHex>.<emailB64url>.<sigHex>
+// Legacy format: <expHex>.<sigHex> (bez emailu) — vyžaduje email argument
+function verifyBonitaPassword(password, emailHint) {
+    if (typeof password !== 'string' || !password) return { ok: false, reason: 'missing' };
     const parts = password.split('.');
-    if (parts.length !== 2) return { ok: false, reason: 'malformed' };
-    const [expHex, sig] = parts;
+    let expHex, emailFromToken, sig;
+    if (parts.length === 3) {
+        [expHex, , sig] = parts;
+        emailFromToken = b64urlDecode(parts[1]);
+    } else if (parts.length === 2 && emailHint) {
+        [expHex, sig] = parts;
+        emailFromToken = emailHint.toLowerCase();
+    } else {
+        return { ok: false, reason: 'malformed' };
+    }
+    if (!emailFromToken || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailFromToken)) return { ok: false, reason: 'malformed' };
     const exp = parseInt(expHex, 16);
     if (!Number.isFinite(exp)) return { ok: false, reason: 'malformed' };
     if (exp * 1000 < Date.now()) return { ok: false, reason: 'expired' };
-    const payload = `bonita:${email.toLowerCase()}:${expHex}`;
+    const payload = `bonita:${emailFromToken}:${expHex}`;
     const expected = crypto.createHmac('sha256', SECRET).update(payload).digest('hex').slice(0, 12);
     const a = Buffer.from(sig, 'utf-8');
     const b = Buffer.from(expected, 'utf-8');
     if (a.length !== b.length) return { ok: false, reason: 'invalid' };
     if (!crypto.timingSafeEqual(a, b)) return { ok: false, reason: 'invalid' };
-    return { ok: true, expiresAt: exp };
+    return { ok: true, expiresAt: exp, email: emailFromToken };
 }
 
 // Rate limit for verify — chrání proti brute-force uhádnutí hesla
@@ -50,8 +68,8 @@ export default async function handler(req, res) {
 
     let body = req.body;
     if (typeof body === 'string') { try { body = JSON.parse(body); } catch { body = {}; } }
-    const email = (body && typeof body.email === 'string') ? body.email.trim().toLowerCase() : '';
     const password = (body && typeof body.password === 'string') ? body.password.trim() : '';
+    const emailHint = (body && typeof body.email === 'string') ? body.email.trim().toLowerCase() : '';
 
     // Brute-force protection: 10 pokusů / hod / IP
     const ip = String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown').split(',')[0].trim();
@@ -59,8 +77,9 @@ export default async function handler(req, res) {
         return res.status(429).json({ ok: false, reason: 'rate-limited', message: 'Příliš mnoho pokusů. Zkuste za hodinu.' });
     }
 
-    const result = verifyBonitaPassword(email, password);
+    const result = verifyBonitaPassword(password, emailHint);
     if (!result.ok) return res.status(401).json(result);
+    const email = result.email;
 
     // Log úspěšného odemknutí — interní notifikace (fire-and-forget)
     if (BREVO_API_KEY) {
@@ -83,7 +102,7 @@ export default async function handler(req, res) {
         console.log(`[bonita-verify-access] Unlock ${email} from ${ip}`);
     }
 
-    return res.status(200).json({ ok: true, expiresAt: result.expiresAt });
+    return res.status(200).json({ ok: true, expiresAt: result.expiresAt, email });
 }
 
 export { verifyBonitaPassword };

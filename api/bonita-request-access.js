@@ -41,12 +41,20 @@ function isValidEmail(e) {
     return typeof e === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e) && e.length <= 200;
 }
 
+// URL-safe base64 encoding (bez '+', '/', '=' pro čistý copy-paste)
+function b64url(buf) {
+    return Buffer.from(buf).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+// Token format: <expHex>.<emailB64url>.<sigHex>
+// - stačí opsat jen heslo, backend z něj rozbalí e-mail
 function createBonitaPassword(email) {
     const exp = Math.floor(Date.now() / 1000) + TTL_DAYS * 86400;
     const expHex = exp.toString(16).padStart(8, '0');
+    const emailB64 = b64url(email.toLowerCase());
     const payload = `bonita:${email.toLowerCase()}:${expHex}`;
     const sig = crypto.createHmac('sha256', SECRET).update(payload).digest('hex').slice(0, 12);
-    return { password: `${expHex}.${sig}`, exp };
+    return { password: `${expHex}.${emailB64}.${sig}`, exp };
 }
 
 export default async function handler(req, res) {

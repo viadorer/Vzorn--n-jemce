@@ -558,10 +558,8 @@
 
                 <!-- TAB: mám heslo -->
                 <div data-gate-panel="have">
-                    <p class="text-slate-600 text-sm mb-4">Zadejte e-mail, na který jste dostali heslo, a heslo z e-mailu:</p>
+                    <p class="text-slate-600 text-sm mb-4">Vložte heslo z e-mailu. Váš e-mail spárujeme automaticky — nemusíte ho zadávat.</p>
                     <div class="space-y-3">
-                        <input type="email" id="gateEmail" autocomplete="email" placeholder="váš e-mail"
-                               class="w-full h-11 px-4 border border-slate-300 rounded-full focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 focus:outline-none transition-colors">
                         <input type="text" id="gatePassword" autocomplete="off" spellcheck="false" placeholder="přístupové heslo z e-mailu"
                                class="w-full h-11 px-4 border border-slate-300 rounded-full focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 focus:outline-none font-mono text-sm">
                         <button id="unlockBtn" class="w-full px-4 py-3 rounded-full bg-[#E63946] text-white font-semibold hover:bg-[#C82F3B] transition-colors">
@@ -1639,7 +1637,7 @@
         (function() {
             const closeBtn = document.getElementById('closeGateBtn');
             const modal = document.getElementById('gateModal');
-            const emailInput = document.getElementById('gateEmail');
+            const emailInput = null; // email se extrahuje z hesla samotného, není potřeba
             const pwdInput = document.getElementById('gatePassword');
             const unlockBtn = document.getElementById('unlockBtn');
             const errorEl = document.getElementById('gateError');
@@ -1691,10 +1689,9 @@
             }
 
             async function unlock() {
-                const email = (emailInput?.value || '').trim();
                 const password = (pwdInput?.value || '').trim();
-                if (!email || !password) {
-                    errorEl.textContent = 'Vyplňte e-mail i heslo.';
+                if (!password) {
+                    errorEl.textContent = 'Vyplňte heslo.';
                     errorEl.classList.remove('hidden');
                     return;
                 }
@@ -1705,17 +1702,18 @@
                     const r = await fetch('/api/bonita-verify-access', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, password })
+                        body: JSON.stringify({ password })
                     });
                     if (r.ok) {
+                        const data = await r.json().catch(() => ({}));
                         container.classList.remove('locked');
                         if (notice) notice.style.display = 'none';
-                        try { sessionStorage.setItem('bonitaEmail', email); } catch (_) {}
+                        try { if (data.email) sessionStorage.setItem('bonitaEmail', data.email); } catch (_) {}
                         closeModal();
                     } else {
                         const data = await r.json().catch(() => ({}));
-                        const reasons = { missing: 'Vyplňte e-mail i heslo.', malformed: 'Heslo má neplatný formát.', expired: 'Heslo vypršelo. Vyžádejte si nové.', invalid: 'Heslo neodpovídá tomuto e-mailu.', 'rate-limited': data.message || 'Příliš mnoho pokusů — zkuste za hodinu.' };
-                        errorEl.textContent = reasons[data.reason] || 'Nesprávné heslo nebo e-mail.';
+                        const reasons = { missing: 'Vyplňte heslo.', malformed: 'Heslo má neplatný formát. Zkopírujte ho přesně z e-mailu.', expired: 'Heslo vypršelo. Vyžádejte si nové v záložce „Nemám heslo".', invalid: 'Heslo je neplatné.', 'rate-limited': data.message || 'Příliš mnoho pokusů — zkuste za hodinu.' };
+                        errorEl.textContent = reasons[data.reason] || 'Nesprávné heslo.';
                         errorEl.classList.remove('hidden');
                     }
                 } catch (err) {
@@ -1763,12 +1761,10 @@
                 }
             });
 
-            // Auto-unlock z URL (magic link)
+            // Auto-unlock z URL (magic link) — email extract se dělá backend
             const urlParams = new URLSearchParams(window.location.search);
-            const urlEmail = urlParams.get('email');
             const urlPassword = urlParams.get('password');
-            if (urlEmail && urlPassword) {
-                if (emailInput) emailInput.value = urlEmail;
+            if (urlPassword) {
                 if (pwdInput) pwdInput.value = urlPassword;
                 unlock();
             }
