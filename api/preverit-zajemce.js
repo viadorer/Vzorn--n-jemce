@@ -17,7 +17,25 @@ const SENDER_NAME = 'Vzorný nájemce — Prověření zájemce';
 
 // Verifikace přístupového tokenu (magic link z /api/preverit-request-access)
 import crypto from 'crypto';
-import { lustraceSearchSubject, summarize, isConfigured as ispisConfigured } from './_ispis.js';
+import { lustraceSearchSubject, summarize, isConfigured as ispisConfigured, isEnabled as ispisEnabled, getState as ispisState } from './_ispis.js';
+
+// ---- Rate limit vůči zneužití /api/preverit-zajemce ----
+// Module-level, přežívá mezi warm invocations. Pro chladný start toleruje bezvadně.
+const RL_IP_MAX_PER_HOUR = parseInt(process.env.PREVERIT_RL_IP_PER_HOUR || '5', 10);
+const RL_EMAIL_MAX_PER_DAY = parseInt(process.env.PREVERIT_RL_EMAIL_PER_DAY || '3', 10);
+const _rlHits = new Map(); // key -> number[] (timestamps ms)
+
+function rlCheck(key, windowMs, max) {
+  const now = Date.now();
+  const hits = (_rlHits.get(key) || []).filter(t => now - t < windowMs);
+  if (hits.length >= max) {
+    _rlHits.set(key, hits);
+    return { ok: false, retryInMs: windowMs - (now - hits[0]) };
+  }
+  hits.push(now);
+  _rlHits.set(key, hits);
+  return { ok: true };
+}
 const ACCESS_LINK_SECRET = process.env.ACCESS_LINK_SECRET || 'dev-only-secret-please-set-in-vercel-env';
 
 function verifyAccessToken(email, token) {
@@ -109,6 +127,23 @@ export default async function handler(req, res) {
   if (data.website && String(data.website).trim() !== '') {
     // pretend success but ignore
     return res.status(200).json({ success: true });
+  }
+
+  // Rate limit: per IP a per e-mail — chrání ISPIS quotu i naši Brevo quotu.
+  const clientIp = String(req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown').split(',')[0].trim();
+  const rlIp = rlCheck(`ip:${clientIp}`, 3600 * 1000, RL_IP_MAX_PER_HOUR);
+  if (!rlIp.ok) {
+    return res.status(429).json({
+      error: 'Příliš mnoho požadavků z této IP adresy',
+      details: [`Zkuste to znovu za ${Math.ceil(rlIp.retryInMs / 60000)} min. Pokud potřebujete prověřit více zájemců, napište na kontakt@vzornynajemce.cz.`]
+    });
+  }
+  const rlEmail = rlCheck(`email:${String(data.requester_email || '').trim().toLowerCase()}`, 24 * 3600 * 1000, RL_EMAIL_MAX_PER_DAY);
+  if (!rlEmail.ok) {
+    return res.status(429).json({
+      error: 'Denní limit prověření na e-mail dosažen',
+      details: [`Bezplatné prověření je 1× denně na e-mail. Pro víc kontaktů napište na kontakt@vzornynajemce.cz.`]
+    });
   }
 
   // Ověření přístupového tokenu (pokud byl poslán z email-gate flow)
@@ -220,12 +255,17 @@ export default async function handler(req, res) {
     'www.vzornynajemce.cz',
   ].filter(Boolean).join('\n');
 
-  // ---- Auto-lustrace přes ISPIS (pokud je nakonfigurováno) ----
+  // ---- Auto-lustrace přes ISPIS (defense-in-depth pojistky v _ispis.js) ----
   // Voláme paralelně proti insolvenčnímu rejstříku (ISIR) a evidenci exekucí (CEE).
-  // Výsledky přidáme do interní notifikace. Selhání není fatální — mail chodí i tak.
+  // Selhání není fatální — mail chodí i tak. Kill-switch ISPIS_ENABLED=false skipne.
   let ispisText = '';
   let ispisSummary = null;
-  if (ispisConfigured()) {
+  let ispisAlert = null;
+  if (!ispisEnabled()) {
+    ispisText = '\nAUTOMATICKÁ LUSTRACE: ISPIS_ENABLED je vypnutý (kill-switch) — prověření je manuální.\n';
+  } else if (!ispisConfigured()) {
+    ispisText = '\nAUTOMATICKÁ LUSTRACE: ISPIS_USERNAME/PASSWORD chybí — prověření je manuální.\n';
+  } else {
     // Formát datumu pro ISPIS: dd.MM.yyyy
     let narozen = '';
     if (candidateDob && /^\d{4}-\d{2}-\d{2}$/.test(candidateDob)) {
@@ -245,23 +285,33 @@ export default async function handler(req, res) {
         profiles.map(p => lustraceSearchSubject(subject, p).then(r => ({ profile: p, ...r })))
       );
       ispisSummary = results.map(r => r.status === 'fulfilled' ? r.value : { profile: '?', ok: false, error: String(r.reason) });
+
+      // Detekce alarmních stavů (aby PTF věděl v subjectu e-mailu)
+      const blocked = ispisSummary.filter(r => r.blocked);
+      const costCapHit = ispisSummary.some(r => r.costCapExceeded);
+      const hasRecord = ispisSummary.some(r => r.ok && summarize(r).hasRecord);
+      if (blocked.length) ispisAlert = `ISPIS BLOCKED: ${blocked.map(r => r.blocked).join(', ')}`;
+      else if (costCapHit) ispisAlert = 'ISPIS: cena za lustraci přesáhla limit';
+      else if (hasRecord) ispisAlert = 'Zájemce má záznam — zkontrolovat!';
+
+      const state = ispisState();
       ispisText = [
         '',
         'AUTOMATICKÁ LUSTRACE (ISPIS)',
         '=================================================',
         ...ispisSummary.map(r => {
-          if (!r.ok) return `  ${r.profile}: CHYBA — ${r.error || 'neznámá'}`;
-          const s = summarize(r.data);
-          return `  ${r.profile}: ${s.summary}${s.hasRecord ? '  ⚠️ ZKONTROLOVAT' : ''}`;
+          const s = summarize(r);
+          return `  ${r.profile}: ${s.summary}`;
         }),
         '',
-        '  RAW JSON odpovědi v příloze / logs Vercel.',
-      ].join('\n');
+        `  Stav quoty: ${state.dailyCount}/${state.dailyLimit} volání dnes · zůstatek ${state.currentBalanceKc ?? '?'} Kč · min ${state.minBalanceKc} Kč`,
+        state.killedByFloor ? '  ⚠️ ISPIS zablokován balance floor pro tuto instanci!' : '',
+        '',
+        '  RAW JSON v Vercel Function logs (Deployments → Functions → preverit-zajemce).',
+      ].filter(Boolean).join('\n');
     } catch (e) {
       ispisText = `\nAUTOMATICKÁ LUSTRACE (ISPIS): SELHALA — ${String(e).slice(0, 200)}\n`;
     }
-  } else {
-    ispisText = '\nAUTOMATICKÁ LUSTRACE: ISPIS_USERNAME/PASSWORD nejsou nastavené, prověření je manuální.\n';
   }
 
   // ---- Send via Brevo (or skip if not configured) ----
@@ -275,13 +325,14 @@ export default async function handler(req, res) {
       'accept': 'application/json',
     };
     try {
+      const alertedSubject = ispisAlert ? `⚠️ ${ispisAlert} — ${internalSubject}` : internalSubject;
       const r1 = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST', headers,
         body: JSON.stringify({
           sender: { email: SENDER_EMAIL, name: SENDER_NAME },
           to: [{ email: RECIPIENT }],
           replyTo: { email: requesterEmail, name: requesterName || requesterEmail },
-          subject: internalSubject,
+          subject: alertedSubject,
           textContent: internalTextWithIspis,
         }),
       });
