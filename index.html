@@ -67,6 +67,84 @@
         ]
     }
     </script>
+    <!-- FAQPage schema — Google AI Overviews + rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Co když si to majitel rozmyslí a chce byt zpátky?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "3 měsíce výpověď z jeho strany, bez důvodu, bez penále. To je stejná lhůta, kterou dává občanský zákoník u běžného nájemníka — neztrácí flexibilitu, získává jen jistotu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co když nájemník poškodí byt víc, než pokryje kauce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Škody nad rámec běžného opotřebení hradí přímo Vzorný nájemce s.r.o. Kauce je jen záloha. Předávací a odchodový protokol dělá náš technik s časovou fotodokumentací a majitel má 30 dní na reklamaci."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Není to drahé? Vezmete si 15–20 % z nájmu.",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Za to nemáte 60 000 Kč ročně rizika ušlého nájemného, 24 000 Kč advokáta, 30 000 Kč správy, 8 000 Kč účetní. U většiny bytů vyjde náš odečet levněji než součet služeb, které byste sháněli sami — plus 350 000 Kč rezerva pro případ neplatiče, kterou nemusíte držet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co když Vzorný nájemce zkrachuje?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skupina PTF reality funguje od 1999 — 25 let bez insolvence a bez restrukturalizace. Nájem chodil majitelům každý měsíc krizí 2008, covidem 2020 i energetickou krizí 2022–2023."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kdo bude bydlet v mém bytě? Můžu si vybrat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nájemníka prověřujeme v 6 rejstřících (insolvence, exekuce, zaměstnavatel, reference) a majitel ho schvaluje před podpisem podnájemní smlouvy. Pokud nesedí, hledáme dál."
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- BreadcrumbList schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Úvod", "item": "https://www.vzornynajemce.cz/" }
+      ]
+    }
+    </script>
+    <!-- Service schema — Jistý nájem -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Jistý nájem",
+      "provider": { "@type": "Organization", "name": "PTF reality, s.r.o.", "url": "https://www.vzornynajemce.cz" },
+      "serviceType": "Guaranteed rent / property subletting",
+      "areaServed": { "@type": "Country", "name": "Česká republika" },
+      "audience": { "@type": "Audience", "audienceType": "Majitelé bytů" },
+      "description": "Vzorný nájemce si od majitele pronajme byt na dlouhodobou smlouvu a sám ho pronajme prověřenému nájemníkovi. Majitel dostává fixní nájem každý měsíc 5. dne bez ohledu na obsazenost nebo platby.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "CZK",
+        "eligibleCustomerType": "Owner of a residential apartment",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
