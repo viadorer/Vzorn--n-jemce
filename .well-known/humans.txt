@@ -1,0 +1,15 @@
+/* TEAM */
+Skupina: PTF reality, s.r.o.
+Vznik:   1999
+Sídla:   Radyňská 33, Plzeň · Pod Turnovskou tratí 18, Praha
+Web:     https://www.vzornynajemce.cz
+E-mail:  kontakt@vzornynajemce.cz
+
+/* SITE */
+Standards:      HTML5, CSS3, JSON-LD, sitemap.xml, robots.txt
+Components:     Tailwind CSS, Alpine.js
+Backend:        Vercel serverless (Node.js 20)
+Analytics:      Google Analytics 4 (Consent Mode v2, IP anonymized)
+AI-visibility:  robots.txt allow-list pro 17+ AI crawlerů, llms.txt, ai-data.json
+Language:       cs-CZ
+Doctype:        HTML5

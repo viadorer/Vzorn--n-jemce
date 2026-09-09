@@ -1,0 +1,7 @@
+Contact: mailto:kontakt@vzornynajemce.cz
+Contact: tel:+420603834921
+Expires: 2027-12-31T23:59:00.000Z
+Preferred-Languages: cs, en
+Canonical: https://www.vzornynajemce.cz/.well-known/security.txt
+Policy: https://www.vzornynajemce.cz/gdpr
+Acknowledgments: https://www.vzornynajemce.cz/gdpr
