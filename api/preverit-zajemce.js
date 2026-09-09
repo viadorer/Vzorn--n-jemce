@@ -18,6 +18,7 @@ const SENDER_NAME = 'Vzorný nájemce — Prověření zájemce';
 // Verifikace přístupového tokenu (magic link z /api/preverit-request-access)
 import crypto from 'crypto';
 import { lustraceSearchSubject, summarize, isConfigured as ispisConfigured, isEnabled as ispisEnabled, getState as ispisState } from './_ispis.js';
+import { generateReport } from './_pdf-report.js';
 
 // ---- Rate limit vůči zneužití /api/preverit-zajemce ----
 // Module-level, přežívá mezi warm invocations. Pro chladný start toleruje bezvadně.
@@ -314,9 +315,40 @@ export default async function handler(req, res) {
     }
   }
 
+  // ---- Vygenerovat PDF report (fire-and-forget, ale zaručíme dokončení před e-mailem) ----
+  let pdfBase64 = null;
+  let pdfError = null;
+  try {
+    const pdfBuffer = await generateReport({
+      candidate: {
+        type,
+        name: candidateName,
+        dob: candidateDob,
+        ic: candidateIc,
+        address: candidateAddress,
+      },
+      requester: {
+        name: requesterName,
+        email: requesterEmail,
+        phone: requesterPhone,
+        propertyLocation,
+      },
+      lustrace: ispisSummary || [],
+    });
+    pdfBase64 = pdfBuffer.toString('base64');
+  } catch (e) {
+    pdfError = String(e).slice(0, 200);
+    console.warn('[Preverit] PDF generation failed:', pdfError);
+  }
+
+  const pdfAttachment = pdfBase64 ? [{
+    name: `preverit-${candidateName.replace(/[^A-Za-zÀ-ž0-9 ]+/g, '').replace(/\s+/g, '-').slice(0, 40) || 'zajemce'}.pdf`,
+    content: pdfBase64,
+  }] : undefined;
+
   // ---- Send via Brevo (or skip if not configured) ----
   let internalSent = false, confirmSent = false, errorDetail = null;
-  const internalTextWithIspis = internalText + '\n' + ispisText;
+  const internalTextWithIspis = internalText + '\n' + ispisText + (pdfError ? `\n\n[PDF] Generace selhala: ${pdfError}` : '\n\n[PDF] V příloze — profi report s brandingem.');
 
   if (BREVO_API_KEY) {
     const headers = {
@@ -334,6 +366,7 @@ export default async function handler(req, res) {
           replyTo: { email: requesterEmail, name: requesterName || requesterEmail },
           subject: alertedSubject,
           textContent: internalTextWithIspis,
+          ...(pdfAttachment ? { attachment: pdfAttachment } : {}),
         }),
       });
       internalSent = r1.ok;
