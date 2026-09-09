@@ -538,30 +538,56 @@
 
     <!-- Password Gate Modal -->
     <div id="gateModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
         <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 mx-auto">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-2">
                         <img src="images/logo.png" alt="Vzorný nájemce" class="h-9 w-auto" />
-                        <span class="text-base font-semibold text-gray-900">Vzorný nájemce</span>
+                        <span class="text-base font-semibold text-slate-900">Kalkulačka bonity</span>
                     </div>
-                    <button id="closeGateBtn" type="button" aria-label="Zavřít" class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#E63946]">
+                    <button id="closeGateBtn" type="button" aria-label="Zavřít" class="p-2 rounded-full hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#E63946]">
                         <span class="text-xl leading-none">&times;</span>
                     </button>
                 </div>
-            <div class="text-gray-700 text-[15px] leading-6 mb-4">
-                Prověřte finanční spolehlivost nájemníka během 2 minut. Výsledek berte jako doporučení – <strong>stoprocentní klid přináší Jistý nájem</strong>.
-            </div>
-            <div class="space-y-3">
-                <div class="flex items-stretch gap-2 rounded-2xl border border-[#E63946]/30 focus-within:ring-2 focus-within:ring-[#E63946] p-1.5">
-                    <input type="password" id="gatePassword" class="flex-1 border-0 focus:outline-none px-3 py-2 rounded-xl" placeholder="Zadejte heslo" />
+
+                <!-- Tab switcher -->
+                <div class="flex gap-1 mb-5 p-1 bg-slate-100 rounded-full text-sm">
+                    <button type="button" data-gate-tab="have" class="flex-1 py-2 rounded-full font-medium bg-white text-slate-900 shadow-sm">Mám heslo</button>
+                    <button type="button" data-gate-tab="request" class="flex-1 py-2 rounded-full font-medium text-slate-600">Nemám heslo</button>
                 </div>
-                <button id="unlockBtn" class="w-full px-4 py-3 rounded-full bg-[#E63946] text-white font-semibold hover:bg-[#E63946]/90">Odemknout kalkulačku</button>
-                <p id="gateError" class="text-sm text-red-600 hidden"></p>
-                <div class="rounded-xl bg-[#E63946]/5 text-[#E63946] px-3 py-2 text-sm">
+
+                <!-- TAB: mám heslo -->
+                <div data-gate-panel="have">
+                    <p class="text-slate-600 text-sm mb-4">Zadejte e-mail, na který jste dostali heslo, a heslo z e-mailu:</p>
+                    <div class="space-y-3">
+                        <input type="email" id="gateEmail" autocomplete="email" placeholder="váš e-mail"
+                               class="w-full h-11 px-4 border border-slate-300 rounded-full focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 focus:outline-none transition-colors">
+                        <input type="text" id="gatePassword" autocomplete="off" spellcheck="false" placeholder="přístupové heslo z e-mailu"
+                               class="w-full h-11 px-4 border border-slate-300 rounded-full focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 focus:outline-none font-mono text-sm">
+                        <button id="unlockBtn" class="w-full px-4 py-3 rounded-full bg-[#E63946] text-white font-semibold hover:bg-[#C82F3B] transition-colors">
+                            Odemknout kalkulačku
+                        </button>
+                        <p id="gateError" class="text-sm text-red-600 hidden"></p>
+                    </div>
+                </div>
+
+                <!-- TAB: nemám heslo -->
+                <div data-gate-panel="request" class="hidden">
+                    <p class="text-slate-600 text-sm mb-4">Zadejte e-mail a my vám na něj pošleme přístupové heslo. <br><span class="text-slate-500">Heslo platí 30 dní pro tento e-mail.</span></p>
+                    <form id="requestForm" class="space-y-3">
+                        <input type="email" name="email" required autocomplete="email" placeholder="váš e-mail"
+                               class="w-full h-11 px-4 border border-slate-300 rounded-full focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 focus:outline-none transition-colors">
+                        <button type="submit" id="requestBtn" class="w-full px-4 py-3 rounded-full bg-[#E63946] text-white font-semibold hover:bg-[#C82F3B] transition-colors">
+                            Poslat heslo na e-mail
+                        </button>
+                        <p id="requestStatus" class="text-sm min-h-[20px]"></p>
+                    </form>
+                </div>
+
+                <!-- Footer note -->
+                <div class="mt-5 pt-5 border-t border-slate-200 rounded-xl bg-[#E63946]/5 -mx-6 -mb-6 px-6 py-4 text-sm text-[#E63946]">
                     Tip: nechcete nic řešit? <a href="#" class="js-open-cta underline font-medium">Zjistěte vše o Jistém nájmu</a>
                 </div>
-            </div>
 
         </div>
     </div>
@@ -1609,46 +1635,142 @@
         }
     </script>
     <script>
-        // Vanilla JS controller for password gate
+        // Vanilla JS controller for password gate (per-email HMAC token flow)
         (function() {
             const closeBtn = document.getElementById('closeGateBtn');
             const modal = document.getElementById('gateModal');
+            const emailInput = document.getElementById('gateEmail');
             const pwdInput = document.getElementById('gatePassword');
             const unlockBtn = document.getElementById('unlockBtn');
             const errorEl = document.getElementById('gateError');
             const container = document.getElementById('calculatorContainer');
             const notice = document.getElementById('lockedNotice');
             const reopenBtn = document.getElementById('reopenGate');
+            // Request form
+            const requestForm = document.getElementById('requestForm');
+            const requestBtn = document.getElementById('requestBtn');
+            const requestStatus = document.getElementById('requestStatus');
+            // Tabs
+            const tabBtns = document.querySelectorAll('[data-gate-tab]');
+            const tabPanels = document.querySelectorAll('[data-gate-panel]');
             // CTA modal
             const ctaModal = document.getElementById('ctaModal');
             const ctaOverlay = document.querySelector('#ctaModal .modal-overlay');
             const closeCtaBtn = document.getElementById('closeCtaBtn');
             const ctaTriggers = document.querySelectorAll('.js-open-cta');
 
-            const checkPassword = (p) => p === 'vzorny2025'; // demo only
+            // Tab switching
+            function switchTab(name) {
+                tabBtns.forEach(b => {
+                    const active = b.getAttribute('data-gate-tab') === name;
+                    b.classList.toggle('bg-white', active);
+                    b.classList.toggle('text-slate-900', active);
+                    b.classList.toggle('shadow-sm', active);
+                    b.classList.toggle('text-slate-600', !active);
+                });
+                tabPanels.forEach(p => {
+                    p.classList.toggle('hidden', p.getAttribute('data-gate-panel') !== name);
+                });
+                errorEl.classList.add('hidden');
+                errorEl.textContent = '';
+                if (requestStatus) { requestStatus.textContent = ''; requestStatus.className = 'text-sm min-h-[20px]'; }
+            }
+            tabBtns.forEach(b => b.addEventListener('click', () => switchTab(b.getAttribute('data-gate-tab'))));
 
             function openModal() {
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 errorEl.classList.add('hidden');
                 errorEl.textContent = '';
-                pwdInput.value = '';
-                setTimeout(() => pwdInput.focus(), 0);
+                if (pwdInput) pwdInput.value = '';
+                setTimeout(() => emailInput?.focus(), 0);
             }
             function closeModal() {
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }
-            function unlock() {
-                const val = pwdInput.value || '';
-                if (checkPassword(val)) {
-                    container.classList.remove('locked');
-                    if (notice) notice.style.display = 'none';
-                    closeModal();
-                } else {
-                    errorEl.textContent = 'Nesprávné heslo';
+
+            async function unlock() {
+                const email = (emailInput?.value || '').trim();
+                const password = (pwdInput?.value || '').trim();
+                if (!email || !password) {
+                    errorEl.textContent = 'Vyplňte e-mail i heslo.';
                     errorEl.classList.remove('hidden');
+                    return;
                 }
+                unlockBtn.disabled = true;
+                const origLabel = unlockBtn.textContent;
+                unlockBtn.textContent = 'Ověřuji…';
+                try {
+                    const r = await fetch('/api/bonita-verify-access', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+                    if (r.ok) {
+                        container.classList.remove('locked');
+                        if (notice) notice.style.display = 'none';
+                        try { sessionStorage.setItem('bonitaEmail', email); } catch (_) {}
+                        closeModal();
+                    } else {
+                        const data = await r.json().catch(() => ({}));
+                        const reasons = { missing: 'Vyplňte e-mail i heslo.', malformed: 'Heslo má neplatný formát.', expired: 'Heslo vypršelo. Vyžádejte si nové.', invalid: 'Heslo neodpovídá tomuto e-mailu.', 'rate-limited': data.message || 'Příliš mnoho pokusů — zkuste za hodinu.' };
+                        errorEl.textContent = reasons[data.reason] || 'Nesprávné heslo nebo e-mail.';
+                        errorEl.classList.remove('hidden');
+                    }
+                } catch (err) {
+                    errorEl.textContent = 'Nepodařilo se ověřit. Zkontrolujte připojení a zkuste znovu.';
+                    errorEl.classList.remove('hidden');
+                } finally {
+                    unlockBtn.disabled = false;
+                    unlockBtn.textContent = origLabel;
+                }
+            }
+
+            // Request password form
+            requestForm?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = requestForm.email.value.trim();
+                if (!email) return;
+                requestBtn.disabled = true;
+                const orig = requestBtn.textContent;
+                requestBtn.textContent = 'Posílám…';
+                requestStatus.className = 'text-sm min-h-[20px] text-slate-500';
+                requestStatus.textContent = '';
+                try {
+                    const r = await fetch('/api/bonita-request-access', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email })
+                    });
+                    const data = await r.json().catch(() => ({}));
+                    if (r.ok) {
+                        requestStatus.className = 'text-sm min-h-[20px] text-emerald-600';
+                        requestStatus.innerHTML = '&#10003; Heslo posíláme na <strong>' + email + '</strong>. Do 5 min ho máte v e-mailu.';
+                        requestForm.reset();
+                        // pre-fill email v have-panel
+                        if (emailInput) emailInput.value = email;
+                    } else {
+                        requestStatus.className = 'text-sm min-h-[20px] text-red-600';
+                        requestStatus.textContent = data.message || 'Nepodařilo se odeslat, zkuste za chvíli znovu.';
+                    }
+                } catch (err) {
+                    requestStatus.className = 'text-sm min-h-[20px] text-red-600';
+                    requestStatus.textContent = 'Nepodařilo se odeslat. Zkontrolujte připojení.';
+                } finally {
+                    requestBtn.disabled = false;
+                    requestBtn.textContent = orig;
+                }
+            });
+
+            // Auto-unlock z URL (magic link)
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlEmail = urlParams.get('email');
+            const urlPassword = urlParams.get('password');
+            if (urlEmail && urlPassword) {
+                if (emailInput) emailInput.value = urlEmail;
+                if (pwdInput) pwdInput.value = urlPassword;
+                unlock();
             }
 
             // CTA modal helpers
