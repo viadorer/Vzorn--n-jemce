@@ -9,7 +9,6 @@
       "legalName": "PTF reality, s.r.o.",
       "url": "https://www.vzornynajemce.cz",
       "logo": "https://www.vzornynajemce.cz/images/logo.png",
-      "foundingDate": "1999",
       "vatID": "CZ06684394",
       "taxID": "06684394",
       "description": "Jistý nájem pro majitele bytů: převezmeme byt do vlastní správy a majitel dostává fixní částku každý měsíc, i když nájemník nezaplatí.",
@@ -105,7 +104,7 @@
           "name": "Co když nájemník poškodí byt víc, než pokryje kauce?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Škody nad rámec běžného opotřebení hradí přímo Vzorný nájemce s.r.o. Kauce je jen záloha. Předávací a odchodový protokol dělá náš technik s časovou fotodokumentací a majitel má 30 dní na reklamaci."
+            "text": "Škody nad rámec běžného opotřebení hradí přímo Infinity Loop, s.r.o. Kauce je jen záloha. Předávací a odchodový protokol dělá náš technik s časovou fotodokumentací a majitel má 30 dní na reklamaci."
           }
         },
         {
@@ -113,7 +112,7 @@
           "name": "Co když Vzorný nájemce / PTF reality zkrachuje?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PTF reality funguje od roku 1999 — 25 let bez insolvence a bez restrukturalizace. Nájem chodil majitelům každý měsíc krizí 2008, covidem 2020 i energetickou krizí 2022–2023."
+            "text": "Garanci poskytuje Infinity Loop, s.r.o. ze skupiny PTF reality. Nájem chodil majitelům každý měsíc krizí 2008, covidem 2020 i energetickou krizí 2022–2023."
           }
         },
         {
